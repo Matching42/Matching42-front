@@ -1,13 +1,14 @@
-import React from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
-import resetCss from "reset-css";
-import { createGlobalStyle } from "styled-components";
-import MainPage from "./pages/MainPage";
+import React from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import resetCss from 'reset-css';
+import { createGlobalStyle } from 'styled-components';
+import MainPage from './pages/MainPage';
 
 const GlobalStyle = createGlobalStyle`
   ${resetCss};
   html, body {
     height: 100%;
+    background-color: #f9f9f9;
   }
   #root {
     width: 100%;
