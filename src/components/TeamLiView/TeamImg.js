@@ -1,11 +1,11 @@
 import React from 'react'
-import { UserImgStyled } from './TeamImg.styles'
+import { TeamImgStyled, UserImgStyled } from './TeamImg.styles'
 
 export const TeamImg = (props) => (
-	<span>
+	<TeamImgStyled>
 		<UserImgStyled url={props.profileUrl[0]} />
 		<UserImgStyled url={props.profileUrl[1]} />
 		<UserImgStyled url={props.profileUrl[2]} />
-	</span>
+	</TeamImgStyled>
 	// {props.profileUrl ? props.profileUrl.map(x => <UserImgStyled url={x}></UserImgStyled>) : <div>Not found</div>}
 )

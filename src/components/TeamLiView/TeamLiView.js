@@ -4,7 +4,9 @@ import { HashTags } from './HashTags'
 import { TeamImg } from './TeamImg';
 
 const profileUrl = [
-	// team member profile_url
+	"https://cdn.intra.42.fr/users/seolim.jpg",
+	"https://cdn.intra.42.fr/users/minjakim.jpg",
+	"https://cdn.intra.42.fr/users/sulee.jpg"
 ];
 
 const TeamLiView = (Props) => (
