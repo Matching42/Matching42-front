@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const dummy = [
 	{id: 1, subject: "libft"},
-	{id: 2, subject: "gnl"},
+	{id: 2, subject: "get-next-line"},
 	{id: 3, subject: "printf"},
 ]
 
