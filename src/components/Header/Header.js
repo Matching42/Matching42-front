@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import HeaderStyled from './Header.styles';
+import logo from '../img/42_logo.svg';
 
 const Header = props => {
   const { user } = props;
@@ -8,7 +9,7 @@ const Header = props => {
   return (
     <HeaderStyled>
       <Link to="/">
-        <div>Logo</div>
+        <div><img src={logo} alt="logo" width='60' filter='invert'/></div>
       </Link>
       <p>{user}</p>
     </HeaderStyled>
@@ -16,7 +17,7 @@ const Header = props => {
 };
 
 Header.defaultProps = {
-  user: 'jiwonlee'
+  user: ''
 };
 
 export default Header;

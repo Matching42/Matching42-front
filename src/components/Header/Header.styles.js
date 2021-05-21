@@ -25,4 +25,12 @@ const HeaderStyled = styled.nav`
   }
 `;
 
+const div = styled.nav`
+  width = 50px;
+`;
+
+const logo = styled.nav`
+  
+`;
+
 export default HeaderStyled;
