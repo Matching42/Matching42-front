@@ -14,7 +14,6 @@ export function Dropdown() {
 	const buttonOnClick = (e) => {
 		e.stopPropagation(); // 서브젝트 선택으로도 드롭다운 닫히게 하고 싶다면 제거
 		isActive ? setisActive(false) : setisActive(true);
-		console.log("onClick");
 	}
 
 	const subjectOnClick = (event) => {
