@@ -9,7 +9,7 @@ const Header = props => {
   return (
     <HeaderStyled>
       <Link to="/">
-        <div><img src={logo} alt="logo" width='60' filter='invert'/></div>
+        <div><img src={logo} alt="logo" width='58'/></div>
       </Link>
       <p>{user}</p>
     </HeaderStyled>
