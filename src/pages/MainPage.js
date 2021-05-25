@@ -8,6 +8,7 @@ import AllTeamListView from '../components/TeamListView/TeamListView';
 
 const MainPage = () => {
   console.log('Main Page');
+
   return (
     <>
       <Header />
