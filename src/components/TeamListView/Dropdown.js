@@ -3,11 +3,11 @@ import styled from 'styled-components';
 
 export function Dropdown(props) {
 
-	const [isActive, setisActive] = useState(false);
+	const [isActive, setIsActive] = useState(false);
 
 	const buttonOnClick = (e) => {
 		e.stopPropagation(); // 서브젝트 선택으로도 드롭다운 닫히게 하고 싶다면 제거
-		setisActive(!isActive);
+		setIsActive(!isActive);
 	}
 
 	const subjectOnClick = (event) => {

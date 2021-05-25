@@ -3,10 +3,10 @@ import {WaitToggleStyled, WaitSpanStyled, ToggleStyled, WaitToggleButtonStyled} 
 
 export const WaitToggleButton = () => {
 
-	const [Toggle, setToggle] = useState(true);
+	const [toggle, setToggle] = useState(true);
 
 	const onClick = () => {
-		setToggle(!Toggle);
+		setToggle(!toggle);
 	}
 
 	return (
@@ -15,7 +15,7 @@ export const WaitToggleButton = () => {
 				Wait
 			</WaitSpanStyled>
 			<WaitToggleButtonStyled onClick={onClick}>
-				<ToggleStyled Toggle={Toggle}/>
+				<ToggleStyled toggle={toggle}/>
 			</WaitToggleButtonStyled>
 		</WaitToggleStyled>
 	);

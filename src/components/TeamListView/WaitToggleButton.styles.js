@@ -15,7 +15,7 @@ export const WaitSpanStyled = styled.div`
 
 export const ToggleStyled = styled.div`
 	position: absolute;
-	left: ${(props) => props.Toggle ? "50%" : "0%"};
+	left: ${(props) => props.toggle ? "50%" : "0%"};
 	margin: 2px;
 	width: calc(50% - 4px);
 	height: calc(100% - 4px);
