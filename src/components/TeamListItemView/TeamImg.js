@@ -3,8 +3,6 @@ import { TeamImgStyled, UserImgStyled } from './TeamImg.styles'
 
 export const TeamImg = (props) => (
 	<TeamImgStyled>
-		<UserImgStyled url={props.profileUrl[0]} />
-		<UserImgStyled url={props.profileUrl[1]} />
-		<UserImgStyled url={props.profileUrl[2]} />
+		{props.teamMember.map(member => <UserImgStyled key={member.id} url={`https://cdn.intra.42.fr/users/small_${member.name}.jpg`} />)}
 	</TeamImgStyled>
 )

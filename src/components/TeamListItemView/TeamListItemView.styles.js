@@ -1,19 +1,16 @@
 import styled from 'styled-components';
 
-export const TeamLiViewStyled = styled.div`
+export const TeamListItemViewStyled = styled.div`
   width: inherit;
   display: flex;
   justify-content: space-between;
 	flex-direction: column;
 	padding: 20px 5px 0 10px;
-  // align-items: center;
-  // background-color: #fff;
-  // border-radius: 15px;
   box-sizing: border-box;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.11);
 `;
 
-export const TeamLidivStyled = styled.div`
+export const TeamListItemdivStyled = styled.div`
 	display: flex;
 	justify-content: space-between;
 	padding-bottom: 15px;

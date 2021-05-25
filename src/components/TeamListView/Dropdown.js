@@ -1,19 +1,13 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-const dummy = [
-	{id: 1, subject: "libft"},
-	{id: 2, subject: "get-next-line"},
-	{id: 3, subject: "printf"},
-]
-
-export function Dropdown() {
+export function Dropdown(props) {
 
 	const [isActive, setisActive] = useState(false);
 
 	const buttonOnClick = (e) => {
 		e.stopPropagation(); // 서브젝트 선택으로도 드롭다운 닫히게 하고 싶다면 제거
-		isActive ? setisActive(false) : setisActive(true);
+		setisActive(!isActive);
 	}
 
 	const subjectOnClick = (event) => {
@@ -21,18 +15,30 @@ export function Dropdown() {
 	}
 
 	return (
-		<DropdownDiv>
+		<Dropdown.Div>
 			<Dropdown.Button type='button' onClick={buttonOnClick}>
 				Subject
 			</Dropdown.Button>
 			<Dropdown.Box active={isActive}>
-				{dummy.map((x) => <div key={x.id} onClick={subjectOnClick}>{x.subject}</div>)}
+				{props.dummy.map(subject => <div key={subject.id} onClick={subjectOnClick}>{subject.Name}</div>)}
 			</Dropdown.Box>
-		</DropdownDiv>
+		</Dropdown.Div>
 	);
 }
 
-const DropdownDiv = styled.div`
+Dropdown.defaultProps = {
+	dummy: [
+		{id: 1, Name: "libft"},
+		{id: 2, Name: "get-next-line"},
+		{id: 3, Name: "printf"},
+		{id: 4, Name: "netwhat"},
+		{id: 5, Name: "ft_server"},
+		{id: 6, Name: "cub3d"},
+		{id: 7, Name: "mini_rt"},
+	]
+};
+
+Dropdown.Div = styled.div`
 	// display: inline-block;
 	cursor: pointer;
 `;
