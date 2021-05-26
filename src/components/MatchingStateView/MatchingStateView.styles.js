@@ -29,4 +29,9 @@ export const MatchingStartButton = styled.button`
   color: #fff;
   background-color: #27BABB;
   border-radius: 10px;
+  cursor: pointer;
+`;
+
+export const Bold = styled.span`
+  font-weight: bold;
 `;
