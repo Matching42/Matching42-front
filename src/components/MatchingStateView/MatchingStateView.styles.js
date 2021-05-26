@@ -18,7 +18,7 @@ export const MatchingState = styled.div`
 `;
 
 export const MatchingStartButton = styled.button`
-  height: 100%;
+  height: 60px;
   width: 25%;
   display: flex;
   align-items: center;
