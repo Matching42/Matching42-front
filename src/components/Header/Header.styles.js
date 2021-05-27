@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+export const LogoStyled = styled.nav`
+  margin-top: 4px;
+`;
+
 const HeaderStyled = styled.nav`
   position: fixed;
   top: 0;
@@ -23,14 +27,6 @@ const HeaderStyled = styled.nav`
   p {
     color: #fff;
   }
-`;
-
-const div = styled.nav`
-  width = 50px;
-`;
-
-const logo = styled.nav`
-  
 `;
 
 export default HeaderStyled;

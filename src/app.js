@@ -35,7 +35,7 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route path="/" exact component={MainPage} />
-          <Route path="/Login" exact component={LoginPage} />
+          <Route path="/login" exact component={LoginPage} />
         </Switch>
       </BrowserRouter>
       <GlobalStyle />
