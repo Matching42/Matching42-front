@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
+import styled from 'styled-components';
 import { useSWRInfinite } from 'swr';
-import { TeamListViewStyled, TeamListTopbarStyled, TopbarBtnStyled, TeamListContainerStyled } from './TeamListView.styles';
+import { TeamListViewStyled, TeamListTopbarStyled, TopbarBtnStyled, TeamListContainerStyled, TeamListTitleStyled } from './TeamListView.styles';
 import TeamListItemView from '../TeamListItemView/TeamListItemView';
 import { Dropdown } from './Dropdown'
 import { WaitToggleButton } from './WaitToggleButton';
@@ -16,7 +17,11 @@ const dummy = Array.from({ length: 100 }).map((_, i) =>
 	({
 		ID: i,
 		leaderId: "seolim",
-		memberId: ["seolim", "kwlee", "snpark"],
+		memberId: [
+			{id: 1, name: "seolim"},
+			{id: 2, name: "hyeokim"},
+			{id: 3, name: "kwlee"}
+		],
 		subject: "cub3d",
 		state: "progress",
 		notionLink: "",
@@ -72,7 +77,7 @@ const TeamListView = () => {
 	return (
 		<TeamListViewStyled>
 			<TeamListTopbarStyled>
-				<span>Team List 23건</span>
+				<TeamListTitleStyled>Team List 23건</TeamListTitleStyled>
 				<TopbarBtnStyled>
 					<Dropdown />
 					<WaitToggleButton />
@@ -81,7 +86,7 @@ const TeamListView = () => {
 			<TeamListContainerStyled>
 				{
 					teams.map((team, index) => 
-						<TeamListItemView key={index} subject={team.subject} startDate={team.startDate} />
+						<TeamListItemView key={index} subject={team.subject} startDate={team.startDate} memberId={team.memberId}/>
 					)
 				}
 				{

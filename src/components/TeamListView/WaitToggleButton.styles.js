@@ -16,9 +16,9 @@ export const WaitSpanStyled = styled.div`
 export const ToggleStyled = styled.div`
 	position: absolute;
 	left: ${(props) => props.toggle ? "50%" : "0%"};
-	margin: 2px;
+	margin: 3px 4px;
 	width: calc(50% - 4px);
-	height: calc(100% - 4px);
+	height: calc(100% - 6px);
 	background-color: #fff;
 	border-radius: 50%;
 	box-sizing: border-box;
@@ -30,7 +30,7 @@ export const WaitToggleButtonStyled = styled.div`
 	display: flex;
 	cursor: pointer;
 	align-items: center;
-	width: 40px;
+	width: 38px;
 	height: 100%;
 	background-color: rgb(21, 178, 179);
 	border-radius: 22px;
