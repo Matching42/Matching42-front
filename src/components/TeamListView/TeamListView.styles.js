@@ -7,11 +7,9 @@ export const TeamListViewStyled = styled.div`
 	flex-direction: column;
   align-items: start;
   background-color: #fff;
-  padding: 30px 30px 30px 30px;
+  padding: 30px;
   border-radius: 15px;
   box-sizing: border-box;
-	overflow: scroll;
-	// position: relative;
 `;
 
 export const TeamListTopbarStyled = styled.div`
@@ -19,12 +17,32 @@ export const TeamListTopbarStyled = styled.div`
 	max-width: inherit;
 	border-bottom: 2px solid rgba(0, 0, 0, 0.11);
 	padding-bottom: 20px;
-	font-weight: bold;
 	display: flex;
-	// position: fixed;
 	justify-content: space-between;
 `;
 
 export const TeamListStyled = styled.div`
+
+`;
+
+export const TeamListTitleStyled = styled.span`
+	margin-left: 5px;
+	font-size: 1.25rem;
+	font-weight: bold;
+`;
+
+export const TopbarBtnStyled = styled.div`
+	display: flex;
+	justify-content: space-between;
+	width: 30%;
+	padding: 0 5px;
+	font-size: 0.875rem;
+`;
+
+export const TeamListContainerStyled = styled.div`
+	width: 100%;
 	overflow: scroll;
+	::hover {
+		overflow-y: scroll;
+	}
 `;

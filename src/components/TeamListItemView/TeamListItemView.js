@@ -19,8 +19,8 @@ const TeamListItemView = (props) => (
 TeamListItemView.defaultProps = {
 	memberId: [
 		{id: 1, name: "seolim"},
-		{id: 2, name: "minjakim"},
-		{id: 3, name: "sulee"}
+		{id: 2, name: "kwlee"},
+		{id: 3, name: "hyeokim"}
 	]
 }
 
