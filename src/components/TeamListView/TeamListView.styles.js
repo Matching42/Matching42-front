@@ -10,8 +10,6 @@ export const TeamListViewStyled = styled.div`
   padding: 30px 30px 30px 30px;
   border-radius: 15px;
   box-sizing: border-box;
-	overflow: scroll;
-	// position: relative;
 `;
 
 export const TeamListTopbarStyled = styled.div`
@@ -21,10 +19,21 @@ export const TeamListTopbarStyled = styled.div`
 	padding-bottom: 20px;
 	font-weight: bold;
 	display: flex;
-	// position: fixed;
 	justify-content: space-between;
 `;
 
 export const TeamListStyled = styled.div`
+	overflow: scroll;
+`;
+
+export const TopbarBtnStyled = styled.div`
+	display: flex;
+	justify-content: space-between;
+	width: 30%;
+	padding: 0 5px;
+`;
+
+export const TeamListContainerStyled = styled.div`
+	width: 100%;
 	overflow: scroll;
 `;
