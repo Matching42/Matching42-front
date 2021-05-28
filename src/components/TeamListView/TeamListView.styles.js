@@ -39,22 +39,16 @@ export const TopbarBtnStyled = styled.div`
 
 export const TeamListContainerStyled = styled.div`
   width: 100%;
-  overflow-y: scroll;
+  overflow: auto;
   padding-right: 10px;
   box-sizing: border-box;
 
   ::-webkit-scrollbar {
-    display: block;
     width: 4px;
-    padding-top: 10px;
   }
-  ::-webkit-scrollbar,
   ::-webkit-scrollbar-thumb {
-    overflow: visible;
     border-radius: 4px;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: #d5d5d5;
+    background-color: #d5d5d5;
   }
   ::-webkit-scrollbar-track {
     margin: 10px 0;
