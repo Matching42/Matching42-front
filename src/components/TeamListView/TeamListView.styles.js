@@ -4,12 +4,27 @@ export const TeamListViewStyled = styled.div`
   width: 100%;
   height: 78%;
   display: flex;
+  position: relative;
   flex-direction: column;
   align-items: start;
   background-color: #fff;
   padding: 30px;
   border-radius: 15px;
   box-sizing: border-box;
+
+  .scrollbar {
+    width: 4px;
+    height: calc(100% - 80px);
+    position: absolute;
+    top: 80px;
+    right: 30px;
+    background-color: #fff;
+    opacity: 1;
+    transition: 0.5s;
+  }
+  :hover .scrollbar {
+    opacity: 0;
+  }
 `;
 
 export const TeamListTopbarStyled = styled.div`
