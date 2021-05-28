@@ -21,11 +21,6 @@ const GlobalStyle = createGlobalStyle`
 		padding: 0;
     font-family: 'Spoqa Han Sans', sans-serif;
 	}
-  ::-webkit-scrollbar {
-    display: none;
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
-  }
 `;
 
 function App() {
