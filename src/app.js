@@ -31,7 +31,7 @@ const GlobalStyle = createGlobalStyle`
 function App() {
   return (
     <>
-      <BrowserRouter>
+      <BrowserRouter basename="/Matching42-front">
         <Switch>
           <Route path="/" exact component={MainPage} />
         </Switch>
