@@ -8,7 +8,7 @@ const Header = props => {
   return (
     <HeaderStyled>
       <Link to="/">
-        <div>Logo</div>
+        <div>Logo Test</div>
       </Link>
       <p>{user}</p>
     </HeaderStyled>
