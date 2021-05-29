@@ -22,7 +22,7 @@ export const Title = styled.h3`
 export const Description = styled.p`
   font-size: 1.6em;
   font-weight: regular;
-  line-height: 24px;
+  line-height: 1.5;
 `;
 
 export const UserStateList = styled.ul`
@@ -35,7 +35,7 @@ export const UserStateItem = styled.li`
   background-color: rgba(0,0,0,15%);
   border-radius: 8px;
   font-size: 1.4em;
-  line-height: 19px;
+  line-height: 1.4;
   padding: 5px 10px;
   margin-right: 10px;
 `;
