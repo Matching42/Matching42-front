@@ -1,0 +1,23 @@
+name: test
+on:
+  pull_request:
+    branches: [ deploy ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v2
+
+      - name: Check Node
+        run: node -v
+
+      - name: Install Dependencies
+        run: yarn install
+
+      - name: Check ESLint
+        run: yarn run lint
+
+      - name: Check Build
+        run: yarn build
