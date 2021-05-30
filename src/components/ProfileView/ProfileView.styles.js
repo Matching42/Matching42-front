@@ -6,23 +6,24 @@ export const ProfileViewStyled = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  background-color: #27babb;       
-  border-radius: 20px;
-  padding: 35px 30px;
+  background-color: #27babb;
+  padding: 30px;
+  border-radius: 15px;
   box-sizing: border-box;
   color: #fff;
-  font-size: 62.5%;
+  font-size: 10px;
 `;
 
 export const Title = styled.h3`
-  font-size: 3.2em;
+  font-size: 3em;
   font-weight: bold;
+  letter-spacing: 1px;
 `;
 
 export const Description = styled.p`
-  font-size: 1.6em;
-  font-weight: regular;
-  line-height: 1.5;
+  font-size: 1.5em;
+  font-weight: 300;
+  line-height: 20px;
 `;
 
 export const UserStateList = styled.ul`
@@ -32,10 +33,10 @@ export const UserStateList = styled.ul`
 `;
 
 export const UserStateItem = styled.li`
-  background-color: rgba(0,0,0,15%);
-  border-radius: 8px;
-  font-size: 1.4em;
-  line-height: 1.4;
-  padding: 5px 10px;
+  background-color: #219E9F;
   margin-right: 10px;
+  font-size: 1.3em;
+  font-weight: 300;
+  padding: 8px 6px 5px 6px;
+  border-radius: 5px;
 `;
