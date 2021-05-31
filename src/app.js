@@ -3,6 +3,8 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import resetCss from 'reset-css';
 import { createGlobalStyle } from 'styled-components';
 import MainPage from './pages/MainPage';
+import LoginPage from './pages/LoginPage';
+import DetailPage from './pages/DetailPage';
 
 const GlobalStyle = createGlobalStyle`
   ${resetCss};
@@ -21,10 +23,10 @@ const GlobalStyle = createGlobalStyle`
 		padding: 0;
     font-family: 'Spoqa Han Sans', sans-serif;
 	}
-  ::-webkit-scrollbar {
-    display: none;
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+  a {
+    text-decoration: none;
+    color: #000;
+    width: 100%;
   }
 `;
 
@@ -34,6 +36,8 @@ function App() {
       <BrowserRouter basename="/Matching42-front">
         <Switch>
           <Route path="/" exact component={MainPage} />
+          <Route path="/login" exact component={LoginPage} />
+          <Route path="/detail/:id" exact component={DetailPage} />
         </Switch>
       </BrowserRouter>
       <GlobalStyle />

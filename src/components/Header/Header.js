@@ -10,13 +10,9 @@ const Header = props => {
       <Link to="/">
         <div>Logo</div>
       </Link>
-      <p>{user}</p>
+      {user && <p>{user}</p>}
     </HeaderStyled>
   );
-};
-
-Header.defaultProps = {
-  user: 'jiwonlee'
 };
 
 export default Header;
