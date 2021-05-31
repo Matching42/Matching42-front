@@ -27,7 +27,7 @@ export const MatchingStartButton = styled.button`
   font-weight: bold;
   line-height: 24px;
   color: #fff;
-  background-color: #27BABB;
+  background-color: #27babb;
   border-radius: 10px;
   cursor: pointer;
 `;
