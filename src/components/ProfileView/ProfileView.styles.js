@@ -6,7 +6,7 @@ export const ProfileViewStyled = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  background-color: #27babb;       
+  background-color: #27babb;
   border-radius: 20px;
   padding: 35px 30px;
   box-sizing: border-box;
@@ -32,7 +32,7 @@ export const UserStateList = styled.ul`
 `;
 
 export const UserStateItem = styled.li`
-  background-color: rgba(0,0,0,15%);
+  background-color: rgba(0, 0, 0, 15%);
   border-radius: 8px;
   font-size: 1.4em;
   line-height: 1.4;
