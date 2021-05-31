@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+export const LogoStyled = styled.nav`
+  margin-top: 4px;
+`;
+
 const HeaderStyled = styled.nav`
   position: fixed;
   top: 0;
