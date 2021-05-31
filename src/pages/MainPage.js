@@ -11,7 +11,7 @@ const MainPage = () => {
 
   return (
     <>
-      <Header />
+      <Header user="jiwonlee" />
       <MainContainer>
         <MainContainer.Section>
           <MainContainer.Left>
