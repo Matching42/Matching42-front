@@ -11,18 +11,18 @@ export const ProfileViewStyled = styled.div`
   padding: 35px 30px;
   box-sizing: border-box;
   color: #fff;
-  font-size: 62.5%;
+  font-size: 28px;
 `;
 
-export const Title = styled.h3`
-  font-size: 3.2em;
+export const ProfileTitle = styled.h3`
+  font-size: 0.9em;
   font-weight: bold;
 `;
 
-export const Description = styled.p`
-  font-size: 1.6em;
-  font-weight: regular;
+export const ProfileDescription = styled.p`
+  font-size: 0.45em;
   line-height: 1.5;
+  padding: 10px 0;
 `;
 
 export const UserStateList = styled.ul`
@@ -31,10 +31,10 @@ export const UserStateList = styled.ul`
   align-items: center;
 `;
 
-export const UserStateItem = styled.li`
+UserStateList.Item = styled.li`
   background-color: rgba(0, 0, 0, 15%);
   border-radius: 8px;
-  font-size: 1.4em;
+  font-size: 0.4em;
   line-height: 1.4;
   padding: 5px 10px;
   margin-right: 10px;

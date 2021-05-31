@@ -9,14 +9,15 @@ export const TeamListViewStyled = styled.div`
   align-items: start;
   background-color: #fff;
   padding: 30px;
-  border-radius: 15px;
+  border-radius: 20px;
   box-sizing: border-box;
+  font-size: 28px;
 
   .scrollbar {
     width: 4px;
     height: calc(100% - 80px);
     position: absolute;
-    top: 80px;
+    top: 70px;
     right: 30px;
     background-color: #fff;
     opacity: 1;
@@ -27,32 +28,36 @@ export const TeamListViewStyled = styled.div`
   }
 `;
 
-export const TeamListTopbarStyled = styled.div`
+export const TeamListTopbar = styled.div`
   width: 100%;
   max-width: inherit;
   border-bottom: 2px solid rgba(0, 0, 0, 0.11);
-  padding-bottom: 20px;
+  padding-bottom: 15px;
   display: flex;
   justify-content: space-between;
 `;
 
-export const TeamListStyled = styled.div``;
-
-export const TeamListTitleStyled = styled.span`
+TeamListTopbar.Title = styled.span`
   margin-left: 5px;
-  font-size: 1.25rem;
+  font-size: 0.6em;
   font-weight: bold;
 `;
 
-export const TopbarBtnStyled = styled.div`
+TeamListTopbar.SubTitle = styled.span`
+  margin-left: 8px;
+  font-size: 0.9em;
+  color: #27babb;
+`;
+
+TeamListTopbar.Button = styled.div`
   display: flex;
   justify-content: space-between;
   width: 30%;
   padding: 0 5px;
-  font-size: 0.875rem;
+  font-size: 0.5em;
 `;
 
-export const TeamListContainerStyled = styled.div`
+export const TeamListContainer = styled.div`
   width: 100%;
   overflow: auto;
   padding-right: 10px;

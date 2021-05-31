@@ -1,47 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
-import styled from 'styled-components';
-import { useSWRInfinite } from 'swr';
-import { TeamListViewStyled, TeamListTopbarStyled, TopbarBtnStyled, TeamListContainerStyled, TeamListTitleStyled } from './TeamListView.styles';
-import TeamListItemView from '../TeamListItemView/TeamListItemView';
-import { Dropdown } from './Dropdown';
-import { WaitToggleButton } from './WaitToggleButton';
+import { TeamListViewStyled, TeamListTopbar, TeamListContainer } from './TeamListView.styles';
+import TeamListItem from '../TeamListItem/TeamListItem';
+import Dropdown from '../Dropdown/Dropdown';
+import ToggleButton from '../ToggleButton/ToggleButton';
 
-const getKey = (pageIndex, previousPageData) => {
-  if (previousPageData && !previousPageData.length) return null; // reached the end
-  return `${pageIndex}`;
-  // return `/users?page=${pageIndex}&limit=5`;                    // SWR key, API 구현되면 url 반환으로 변경
-};
-
-// 더미데이터
-const dummy = Array.from({ length: 100 }).map((_, i) => ({
-  ID: i,
-  leaderId: 'seolim',
-  memberId: [
-    { id: 1, name: 'seolim' },
-    { id: 2, name: 'hyeokim' },
-    { id: 3, name: 'kwlee' }
-  ],
-  subject: 'cub3d',
-  state: 'progress',
-  notionLink: '',
-  gitLink: '',
-  teamName: '1번팀',
-  startDate: 'D +21'
-}));
-
-const sleep = () => new Promise(resolve => setTimeout(resolve, 1000));
-
-// api 구현되면 Data Fetching 기능으로 바뀔 예정 page, limit 제거
-// hooks 폴더로 이동 예정
-export const fetchData = async url => {
-  const page = Number(url);
-  const limit = 5;
-  await sleep();
-  return dummy.slice(page * limit, (page + 1) * limit);
-};
-
-const TeamListView = () => {
-  const { data, setSize } = useSWRInfinite(getKey, fetchData);
+const TeamListView = ({ teamList, onMoreTeamListItem, projects, totalSize }) => {
   const [target, setTarget] = useState(null);
 
   const observer = useRef(
@@ -49,7 +12,7 @@ const TeamListView = () => {
       entires => {
         const first = entires[0];
         if (first.isIntersecting) {
-          setSize(size => size + 1);
+          onMoreTeamListItem(size => size + 1);
         }
       },
       {
@@ -73,26 +36,39 @@ const TeamListView = () => {
     };
   }, [target]);
 
-  const teams = data ? [].concat(...data) : [];
-
   return (
     <TeamListViewStyled>
-      <TeamListTopbarStyled>
-        <TeamListTitleStyled>Team List 23건</TeamListTitleStyled>
-        <TopbarBtnStyled>
-          <Dropdown />
-          <WaitToggleButton />
-        </TopbarBtnStyled>
-      </TeamListTopbarStyled>
-      <TeamListContainerStyled>
-        {teams.map((team, index) => (
-          <TeamListItemView key={index} subject={team.subject} startDate={team.startDate} memberId={team.memberId} />
+      <TeamListTopbar>
+        <TeamListTopbar.Title>
+          Team List
+          <TeamListTopbar.SubTitle>{totalSize}건</TeamListTopbar.SubTitle>
+        </TeamListTopbar.Title>
+        <TeamListTopbar.Button>
+          <Dropdown projects={projects} />
+          <ToggleButton />
+        </TeamListTopbar.Button>
+      </TeamListTopbar>
+      <TeamListContainer>
+        {teamList?.map((team, index) => (
+          <TeamListItem key={index} teamData={team} />
         ))}
-        {data && <div ref={setTarget} style={{ height: '10px' }} />}
-      </TeamListContainerStyled>
+        {teamList && <div ref={setTarget} style={{ height: '10px' }} />}
+      </TeamListContainer>
       <div className="scrollbar" />
     </TeamListViewStyled>
   );
+};
+
+TeamListView.defaultProps = {
+  projects: [
+    { id: 1, Name: 'libft' },
+    { id: 2, Name: 'get-next-line' },
+    { id: 3, Name: 'printf' },
+    { id: 4, Name: 'netwhat' },
+    { id: 5, Name: 'ft_server' },
+    { id: 6, Name: 'cub3d' },
+    { id: 7, Name: 'mini_rt' }
+  ]
 };
 
 export default TeamListView;
