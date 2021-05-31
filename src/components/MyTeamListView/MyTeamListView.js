@@ -1,37 +1,12 @@
 import React from 'react';
-import { MyTeamListViewStyled, TopbarStyled } from './MyTeamListView.styles';
-import TeamListItemView from '../TeamListItemView/TeamListItemView';
+import { MyTeamListViewStyled, Topbar } from './MyTeamListView.styles';
+import TeamListItem from '../TeamListItem/TeamListItem';
 
-const MyTeamListView = (props) => (
-	<MyTeamListViewStyled>
-		<TopbarStyled>My Team</TopbarStyled>
-		{props.dummy.map(x => <TeamListItemView key={x.ID} subject={x.subject} startDate={x.startDate}/>)}
-	</MyTeamListViewStyled>
+const MyTeamListView = ({ myTeamList }) => (
+  <MyTeamListViewStyled>
+    <Topbar>My Team</Topbar>
+    {myTeamList ? myTeamList.map((team, index) => <TeamListItem key={index} teamData={team} />) : <p>목록이 없습니다.</p>}
+  </MyTeamListViewStyled>
 );
-
-MyTeamListView.defaultProps = {
-	dummy: [
-		{
-			ID: 1,
-			leaderId: "seolim",
-			memberId: ["seolim", "kwlee", "snpark"],
-			subject: "cub3d",
-			state: "progress",
-			notionLink: "",
-			gitLink: "",
-			teamName: "1번팀",
-			startDate: "D +21"},
-		{
-			ID: 2,
-			leaderId: "seolim",
-			memberId: ["seolim", "kwlee", "snpark"],
-			subject: "cub3d",
-			state: "progress",
-			notionLink: "",
-			gitLink: "",
-			teamName: "1번팀",
-			startDate: "D +21"},
-	]
-};
 
 export default MyTeamListView;

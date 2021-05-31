@@ -1,26 +1,13 @@
 import React from 'react';
-import { scryRenderedDOMComponentsWithClass } from 'react-dom/test-utils';
-import { MatchingStateViewStyled, MatchingState, MatchingStartButton, Bold } from './MatchingStateView.styles';
+import { MatchingStateViewStyled, MatchingState, MatchingStartButton } from './MatchingStateView.styles';
 
 const MatchingStateView = ({ waitList, user }) => (
   <MatchingStateViewStyled>
     <MatchingState>
-      현재 <Bold>{waitList.size}명</Bold>이 <Bold>매칭</Bold>을 기다리고 있어요!
+      현재 <MatchingState.Strong>{waitList.size}명</MatchingState.Strong>이 <MatchingState.Strong>매칭</MatchingState.Strong>을 기다리고 있어요!
     </MatchingState>
     <MatchingStartButton>{user.waitMatching ? '매칭 대기 중' : '매칭 신청하기 +'}</MatchingStartButton>
   </MatchingStateViewStyled>
 );
-
-MatchingStateView.defaultProps = {
-  waitList: {
-    size: 30,
-    cub3d: ['hokim', 'hyeokim', 'jiwonlee', 'jongkim', 'kwlee', 'minjakim', 'seolim', 'seomoon', 'snpark', 'sulee'],
-    ft_printf: ['hokim', 'hyeokim', 'jiwonlee', 'jongkim', 'kwlee', 'minjakim', 'seolim', 'seomoon', 'snpark', 'sulee'],
-    libasm: ['hokim', 'hyeokim', 'jiwonlee', 'jongkim', 'kwlee', 'minjakim', 'seolim', 'seomoon', 'snpark', 'sulee']
-  },
-  user: {
-    waitMatching: false
-  }
-};
 
 export default MatchingStateView;
