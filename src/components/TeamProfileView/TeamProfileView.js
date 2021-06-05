@@ -1,5 +1,6 @@
 import React from 'react';
 import { TeamProfileViewStyled, TeamProfile, TeamDescription, TeamTagList } from './TeamProfileView.styles';
+import EditIcon from '../../assets/images/edit_team_profile_icon.svg';
 
 const TeamProfileView = ({ team }) => {
   console.log('team profile');
@@ -16,7 +17,7 @@ const TeamProfileView = ({ team }) => {
     <TeamProfileViewStyled>
       <TeamProfile>
         <TeamProfile.Name>{team.teamName}</TeamProfile.Name>
-        <TeamProfile.EditButton />
+        <TeamProfile.EditButton src={EditIcon} />
         <TeamProfile.Dday>D-{getDday(team.startDate)}+</TeamProfile.Dday>
       </TeamProfile>
       <TeamDescription>Team GitHub Repository, Notion, Slack 적극 활용하여 동료들과 함께 학습을 진행해보세요!</TeamDescription>

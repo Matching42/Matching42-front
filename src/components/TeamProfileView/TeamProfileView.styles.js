@@ -25,7 +25,12 @@ TeamProfile.Name = styled.div`
   font-weight: bold;
 `;
 
-TeamProfile.EditButton = styled.div``;
+TeamProfile.EditButton = styled.img`
+  width: 20px;
+  height: 20px;
+  margin-left: 20px;
+  cursor: pointer;
+`;
 
 TeamProfile.Dday = styled.div`
   font-size: 1em;
