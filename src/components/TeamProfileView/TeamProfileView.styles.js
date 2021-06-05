@@ -6,9 +6,23 @@ export const TeamProfileViewStyled = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #fff;
+  background-color: #27babb;
   padding: 30px;
   border-radius: 20px;
   box-sizing: border-box;
   font-size: 28px;
 `;
+
+export const TeamProfile = styled.div``;
+
+TeamProfile.Name = styled.div``;
+
+TeamProfile.EditButton = styled.div``;
+
+TeamProfile.Dday = styled.div``;
+
+export const TeamDescription = styled.div``;
+
+export const TeamTagList = styled.div``;
+
+TeamTagList.Item = styled.div``;
