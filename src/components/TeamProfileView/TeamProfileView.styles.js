@@ -33,9 +33,6 @@ TeamProfile.Dday = styled.div`
   line-height: 1.3;
   background-color: #219e9f;
   border-radius: 8px;
-  box-sizing: border-box;
-  align-items: center;
-  text-align: center;
   padding: 7px 15px;
   position: absolute;
   top: 34px;
