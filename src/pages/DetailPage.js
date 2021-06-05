@@ -30,7 +30,7 @@ const DetailPage = props => {
 DetailPage.defaultProps = {
   team: {
     teamName: 'Cub3d Team',
-    startDate: new Date(),
+    startDate: new Date(2021, 4, 20),
     tags: ['낮', '온라인', '매일 2시간']
   }
 };
