@@ -3,8 +3,6 @@ import { TeamProfileViewStyled, TeamProfile, TeamDescription, TeamTagList } from
 import EditIcon from '../../assets/images/edit_team_profile_icon.svg';
 
 const TeamProfileView = ({ team }) => {
-  console.log('team profile');
-
   const getDday = startDate => {
     const nowDate = new Date();
     const milliseconds = nowDate.getTime() - startDate.getTime();

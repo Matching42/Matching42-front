@@ -7,7 +7,6 @@ import TeamWorkspaceView from '../components/TeamWorkspaceView/TeamWorkspaceView
 
 const DetailPage = props => {
   const { team } = props;
-  console.log('detail page');
 
   return (
     <>
