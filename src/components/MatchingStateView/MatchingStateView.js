@@ -4,6 +4,7 @@ import { MatchingStateViewStyled, MatchingState, MatchingStartButton } from './M
 import useToggleDialog from '../../hooks/useToggleDialog';
 import Dialog from '../Dialog/Dialog';
 import DialogCloseButton from '../DialogCloseButton/DialogCloseButton';
+import SurveyForm from '../SurveyForm/SurveyForm';
 
 const MatchingStateView = ({ waitList, user }) => {
   const { state, openButtonProps, openButtonRef } = useToggleDialog();
@@ -22,7 +23,7 @@ const MatchingStateView = ({ waitList, user }) => {
         <OverlayContainer>
           <Dialog isOpen onClose={state.close} isDimissable>
             <DialogCloseButton onCloseButton={state.close} />
-            <div>!</div>
+            <SurveyForm />
           </Dialog>
         </OverlayContainer>
       )}

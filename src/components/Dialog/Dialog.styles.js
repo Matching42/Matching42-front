@@ -27,4 +27,6 @@ DialogStyled.Box = styled.div`
   background: #fff;
   color: #252831;
   border-radius: 20px;
+  padding: 80px;
+  box-sizing: border-box;
 `;
