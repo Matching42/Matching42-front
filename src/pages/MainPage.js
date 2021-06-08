@@ -8,7 +8,7 @@ import AllTeamListView from '../components/TeamListView/TeamListView';
 import { useFetchTeamListData } from '../hooks/useTeamListData';
 
 const MainPage = props => {
-  const { user, waitList, myTeamList, totalSize } = props;
+  const { user, waitList, myTeamList, subjectList, totalSize } = props;
   const { teams, teamListData } = useFetchTeamListData();
 
   return (
@@ -22,7 +22,7 @@ const MainPage = props => {
           </MainContainer.Left>
           <MainContainer.Right>
             <MatchingStateView user={user} waitList={waitList} />
-            <AllTeamListView teamList={teams} onMoreTeamListItem={teamListData.setSize} totalSize={totalSize} />
+            <AllTeamListView teamList={teams} onMoreTeamListItem={teamListData.setSize} totalSize={totalSize} subjectList={subjectList} />
           </MainContainer.Right>
         </MainContainer.Section>
       </MainContainer>
