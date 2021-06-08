@@ -3,6 +3,7 @@ import { DropdownStyled, DropdownButton, DropdownBox } from './Dropdown.styles';
 
 const Dropdown = ({ subjectList }) => {
   const [isActive, setIsActive] = useState(false);
+  const [selectedSubject, setSubject] = useState('Libft');
 
   const buttonOnClick = e => {
     setIsActive(!isActive);
@@ -10,7 +11,8 @@ const Dropdown = ({ subjectList }) => {
 
   const subjectOnClick = event => {
     setIsActive(!isActive);
-    console.log(event.target.innerHTML);
+    setSubject(event.target.innerHTML);
+    console.log(selectedSubject);
   };
 
   return (
