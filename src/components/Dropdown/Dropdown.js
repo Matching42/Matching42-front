@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { DropdownStyled, DropdownButton, DropdownBox } from './Dropdown.styles';
 
-const Dropdown = ({ projects }) => {
+const Dropdown = ({ subjectList }) => {
   const [isActive, setIsActive] = useState(false);
 
   const buttonOnClick = e => {
@@ -18,14 +18,41 @@ const Dropdown = ({ projects }) => {
         Subject
       </DropdownButton>
       <DropdownBox active={isActive}>
-        {projects.map(subject => (
-          <div key={subject.id} onClick={subjectOnClick}>
-            {subject.Name}
-          </div>
+        {subjectList.map((subjects, circle) => (
+          <DropdownBox.List key={circle}>
+            {subjects.map((subject, index) => (
+              <DropdownBox.Item key={index} onClick={subjectOnClick}>
+                {subject}
+              </DropdownBox.Item>
+            ))}
+          </DropdownBox.List>
         ))}
       </DropdownBox>
     </DropdownStyled>
   );
+};
+
+Dropdown.defaultProps = {
+  subjectList: [
+    ['Libft', 'Born2beroot', 'get_next_line', 'ft_printf'],
+    ['push_swap', 'minitalk', 'pipex', 'FdF', 'fract-ol', 'Exam Rank 02'],
+    ['minishell', 'Inception', 'ft_services', 'Exam Rank 03'],
+    [
+      'netwhat',
+      'cub3d',
+      'miniRT',
+      'CPP Module 00',
+      'CPP Module 01',
+      'CPP Module 02',
+      'CPP Module 03',
+      'CPP Module 04',
+      'CPP Module 05',
+      'CPP Module 06',
+      'CPP Module 07',
+      'CPP Module 08',
+      'Exam Rank 04'
+    ]
+  ]
 };
 
 export default Dropdown;

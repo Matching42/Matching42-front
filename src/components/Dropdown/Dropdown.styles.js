@@ -21,3 +21,7 @@ export const DropdownBox = styled.div`
   display: ${props => (props.active ? 'flex' : 'none')};
   flex-direction: column;
 `;
+
+DropdownBox.List = styled.div``;
+
+DropdownBox.Item = styled.span``;
