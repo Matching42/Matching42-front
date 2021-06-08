@@ -20,6 +20,7 @@ const Dropdown = ({ subjectList }) => {
       <DropdownBox active={isActive}>
         {subjectList.map((subjects, circle) => (
           <DropdownBox.List key={circle}>
+            <DropdownBox.List.Title>{circle} Circle</DropdownBox.List.Title>
             {subjects.map((subject, index) => (
               <DropdownBox.Item key={index} onClick={subjectOnClick}>
                 {subject}
@@ -51,7 +52,9 @@ Dropdown.defaultProps = {
       'CPP Module 07',
       'CPP Module 08',
       'Exam Rank 04'
-    ]
+    ],
+    ['webserv', 'ft_irc', 'ft_containers', 'Exam Rank 05'],
+    ['ft_transcendence', 'Exam Rank 06']
   ]
 };
 
