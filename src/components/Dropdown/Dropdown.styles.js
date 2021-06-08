@@ -28,6 +28,7 @@ export const DropdownBox = styled.div`
   border: 1px solid #27babb;
   border-radius: 10px;
   background-color: #fff;
+  margin-top: 11px;
 `;
 
 DropdownBox.List = styled.div`
