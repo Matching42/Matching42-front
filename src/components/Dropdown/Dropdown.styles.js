@@ -43,6 +43,7 @@ DropdownBox.List.Title = styled.p`
 `;
 
 DropdownBox.Item = styled.span`
+  display: inline-block;
   margin-right: 15px;
   font-size: 0.85em;
 `;
