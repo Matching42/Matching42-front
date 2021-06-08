@@ -9,6 +9,7 @@ const Dropdown = ({ subjectList }) => {
   };
 
   const subjectOnClick = event => {
+    setIsActive(!isActive);
     console.log(event.target.innerHTML);
   };
 
@@ -35,7 +36,8 @@ const Dropdown = ({ subjectList }) => {
 
 Dropdown.defaultProps = {
   subjectList: [
-    ['Libft', 'Born2beroot', 'get_next_line', 'ft_printf'],
+    ['Libft'],
+    ['Born2beroot', 'get_next_line', 'ft_printf'],
     ['push_swap', 'minitalk', 'pipex', 'FdF', 'fract-ol', 'Exam Rank 02'],
     ['minishell', 'Inception', 'ft_services', 'Exam Rank 03'],
     [
