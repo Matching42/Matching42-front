@@ -12,7 +12,6 @@ const Dropdown = ({ subjectList }) => {
   const subjectOnClick = event => {
     setIsActive(!isActive);
     setSubject(event.target.innerHTML);
-    console.log(selectedSubject);
   };
 
   return (
@@ -25,7 +24,7 @@ const Dropdown = ({ subjectList }) => {
           <DropdownBox.List key={circle}>
             <DropdownBox.List.Title>{circle} Circle</DropdownBox.List.Title>
             {subjects.map((subject, index) => (
-              <DropdownBox.Item key={index} onClick={subjectOnClick}>
+              <DropdownBox.Item key={index} onClick={subjectOnClick} selected={subject === selectedSubject}>
                 {subject}
               </DropdownBox.Item>
             ))}
