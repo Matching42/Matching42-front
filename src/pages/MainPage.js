@@ -55,7 +55,7 @@ MainPage.defaultProps = {
       notionLink: '',
       gitLink: '',
       teamName: '1번팀',
-      startDate: 'D +21'
+      startDate: '2021-04-30'
     },
     {
       ID: 2,
@@ -67,7 +67,7 @@ MainPage.defaultProps = {
       notionLink: '',
       gitLink: '',
       teamName: '1번팀',
-      startDate: 'D +21'
+      startDate: '2021-06-04'
     }
   ],
   totalSize: 53

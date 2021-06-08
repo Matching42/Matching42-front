@@ -5,6 +5,19 @@ import TeamMemberView from '../components/TeamMemberView/TeamMemberView';
 import TeamProfileView from '../components/TeamProfileView/TeamProfileView';
 import TeamWorkspaceView from '../components/TeamWorkspaceView/TeamWorkspaceView';
 
+const dummy = {
+	ID: 1,
+	leaderID: 'jiwonlee',
+	memberID: ['seomoon', 'sulee', 'jongkim'],
+	tags: ['낮', '온라인', '매일 2시간', 'pdf 숙지', '비대면', '모각코'],
+	subject: 'cub3d',
+	state: 'wait_member',
+	notionLink: '',
+	gitLink: '',
+	teamName: '1번팀',
+	startDate: '2021-05-27'
+};
+
 const DetailPage = () => {
   console.log('detail page');
 
@@ -15,7 +28,7 @@ const DetailPage = () => {
         <DetailContainer.Section>
           <DetailContainer.Top>
             <TeamProfileView />
-            <TeamMemberView />
+            <TeamMemberView state={dummy.state} teamMember={[dummy.leaderID, ...dummy.memberID]}/>
           </DetailContainer.Top>
           <DetailContainer.Bottom>
             <TeamWorkspaceView />
@@ -26,7 +39,8 @@ const DetailPage = () => {
   );
 };
 
-DetailPage.defaultProps = {};
+DetailPage.defaultProps = {
+};
 
 export default DetailPage;
 

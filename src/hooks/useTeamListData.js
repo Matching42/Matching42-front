@@ -25,7 +25,7 @@ const dummy = Array.from({ length: 100 }).map((_, i) => {
 				ID: i,
 				leaderID: 'jiwonlee',
 				memberID: ['seomoon', 'sulee', 'jongkim'],
-				tags: ['낮', '온라인', '매일 2시간'],
+				tags: ['낮', '온라인', '매일 2시간', 'pdf 숙지', '비대면', '모각코'],
 				subject: 'cub3d',
 				state: 'progress',
 				notionLink: '',

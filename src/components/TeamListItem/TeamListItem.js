@@ -8,16 +8,13 @@ import Lock from '../../assets/images/TeamListItem_Lock.svg'
 const TeamListItem = ({ teamData }) => {
 
   const { ID, subject, startDate, tags, leaderID, memberID } = teamData;
+	const member = [leaderID, ...memberID];
 
 	const calculateStartDate = () => {
 		const diff = new Date() - new Date(startDate);
 		const day = 24 * 60 * 60 * 1000;
-		console.log(diff / day);
-
 		return (parseInt(diff / day, 10));
 	}
-	// console.log(teamDate, nowDate);
-	const member = [leaderID, ...memberID];
 
   return (
     <Link to={`/detail/${ID}`}>

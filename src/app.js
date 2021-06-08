@@ -15,7 +15,7 @@ const GlobalStyle = createGlobalStyle`
   #root {
     width: 100%;
     height: 100%;
-    font-family: 'Noto Sans', 'Spoqa Han Sans', sans-serif;
+    font-family: 'Spoqa Han Sans', sans-serif;
     font-weight: normal;
   }
 	button {
