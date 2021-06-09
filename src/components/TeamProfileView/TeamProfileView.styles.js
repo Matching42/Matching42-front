@@ -23,12 +23,10 @@ export const TeamProfile = styled.div`
 TeamProfile.Name = styled.div`
   font-size: 1.15em;
   font-weight: bold;
+  margin-right: 20px;
 `;
 
-TeamProfile.EditButton = styled.img`
-  width: 20px;
-  height: 20px;
-  margin-left: 20px;
+TeamProfile.EditButton = styled.div`
   cursor: pointer;
 `;
 
