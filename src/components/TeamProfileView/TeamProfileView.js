@@ -1,6 +1,6 @@
 import React from 'react';
 import { TeamProfileViewStyled, TeamProfile, TeamDescription, TeamTagList } from './TeamProfileView.styles';
-import EditIcon from '../../assets/images/edit_team_profile_icon.svg';
+import EditIcon from '../../assets/icons/edit_team_profile_icon.svg';
 
 const TeamProfileView = ({ team }) => {
   const getDday = startDate => {
