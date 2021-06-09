@@ -32,6 +32,10 @@ TeamMemberViewTop.Title = styled.h1`
 	font-weight: bold;
 `;
 
+TeamMemberViewTop.Lock = styled.div`
+	cursor: pointer;
+`;
+
 TeamMemberViewTop.Description = styled.p`
 	height: 17px;
 	font-size: 0.5em;
