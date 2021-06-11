@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { OverlayProvider } from '@react-aria/overlays';
 import Header from '../components/Header/Header';
 import ProfileView from '../components/ProfileView/ProfileView';
 import MyTeamListView from '../components/MyTeamListView/MyTeamListView';
@@ -12,7 +13,7 @@ const MainPage = props => {
   const { teams, teamListData } = useFetchTeamListData();
 
   return (
-    <>
+    <OverlayProvider>
       <Header user="jiwonlee" />
       <MainContainer>
         <MainContainer.Section>
@@ -26,7 +27,7 @@ const MainPage = props => {
           </MainContainer.Right>
         </MainContainer.Section>
       </MainContainer>
-    </>
+    </OverlayProvider>
   );
 };
 
