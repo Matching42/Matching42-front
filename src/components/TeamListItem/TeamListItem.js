@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { TeamListItemStyled, TeamListItemBox } from './TeamListItem.styles';
 import HashTag from './common/HashTag/HashTag';
 import TeamImage from './common/TeamImage/TeamImage';
-import Lock from '../../assets/images/TeamListItem_Lock.svg'
+import { ReactComponent as Lock } from '../../assets/icons/TeamListItem_Lock.svg';
 
 const TeamListItem = ({ teamData }) => {
 
@@ -21,7 +21,7 @@ const TeamListItem = ({ teamData }) => {
       <TeamListItemStyled>
         <TeamListItemBox>
           <TeamListItemBox.Subject>
-						{subject} {teamData.state === "wait_member" ? <img src={Lock} alt="logo" width="10" /> : null}
+						{subject} { teamData.state === "wait_member" && <Lock /> }
 					</TeamListItemBox.Subject>
           <TeamListItemBox.StartDate>D +{calculateStartDate()}</TeamListItemBox.StartDate>
         </TeamListItemBox>
