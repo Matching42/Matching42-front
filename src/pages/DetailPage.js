@@ -5,8 +5,8 @@ import TeamMemberView from '../components/TeamMemberView/TeamMemberView';
 import TeamProfileView from '../components/TeamProfileView/TeamProfileView';
 import TeamWorkspaceView from '../components/TeamWorkspaceView/TeamWorkspaceView';
 
-const DetailPage = () => {
-  console.log('detail page');
+const DetailPage = props => {
+  const { team } = props;
 
   return (
     <>
@@ -14,7 +14,7 @@ const DetailPage = () => {
       <DetailContainer>
         <DetailContainer.Section>
           <DetailContainer.Top>
-            <TeamProfileView />
+            <TeamProfileView team={team} />
             <TeamMemberView />
           </DetailContainer.Top>
           <DetailContainer.Bottom>
@@ -26,7 +26,13 @@ const DetailPage = () => {
   );
 };
 
-DetailPage.defaultProps = {};
+DetailPage.defaultProps = {
+  team: {
+    teamName: 'Cub3d Team',
+    startDate: new Date(2021, 4, 20),
+    tags: ['낮', '온라인', '매일 2시간']
+  }
+};
 
 export default DetailPage;
 
