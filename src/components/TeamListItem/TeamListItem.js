@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { TeamListItemStyled, TeamListItemBox } from './TeamListItem.styles';
 import HashTag from './common/HashTag/HashTag';
 import TeamImage from './common/TeamImage/TeamImage';
+import Dday from '../Dday/Dday';
 
 const TeamListItem = ({ teamData }) => {
   const { ID, subject, startDate, tags, memberId } = teamData;
@@ -12,7 +13,7 @@ const TeamListItem = ({ teamData }) => {
       <TeamListItemStyled>
         <TeamListItemBox>
           <TeamListItemBox.Subject>{subject}</TeamListItemBox.Subject>
-          <TeamListItemBox.StartDate>{startDate}</TeamListItemBox.StartDate>
+          <Dday mode="light" startDate={startDate} />
         </TeamListItemBox>
         <TeamListItemBox>
           <HashTag tags={tags} />

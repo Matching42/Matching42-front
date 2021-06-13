@@ -12,7 +12,7 @@ const dummy = Array.from({ length: 100 }).map((_, i) => ({
   notionLink: '',
   gitLink: '',
   teamName: '1번팀',
-  startDate: 'D +21'
+  startDate: new Date(2021, 4, 20)
 }));
 
 const sleep = () => new Promise(resolve => setTimeout(resolve, 1000));

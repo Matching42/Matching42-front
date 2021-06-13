@@ -30,18 +30,6 @@ TeamProfile.EditButton = styled.div`
   cursor: pointer;
 `;
 
-TeamProfile.Dday = styled.div`
-  font-size: 1em;
-  font-weight: bold;
-  line-height: 1.3;
-  background-color: #219e9f;
-  border-radius: 8px;
-  padding: 7px 15px;
-  position: absolute;
-  top: 34px;
-  right: 34px;
-`;
-
 export const TeamDescription = styled.div`
   font-size: 0.57em;
   line-height: 1.2;
