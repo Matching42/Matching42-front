@@ -5,7 +5,7 @@ const TeamMemberImageStyled = styled.div`
 	flex-direction: row;
 	justify-contents: flex-start;
 	margin-left: 4px;
-	padding-top: 25.6px;
+	padding-top: 0.91em;
 `;
 
 TeamMemberImageStyled.Item = styled.div`
@@ -14,7 +14,7 @@ TeamMemberImageStyled.Item = styled.div`
 	align-items: center;
 	align-self: flex-end;
 	padding-right: 24.8px;
-	font-size: 12px;
+	font-size: 0.43em;
 	text-align: center;
 `;
 

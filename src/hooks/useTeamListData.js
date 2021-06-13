@@ -10,12 +10,12 @@ const dummy = Array.from({ length: 100 }).map((_, i) => {
 				leaderID: 'hokim',
 				memberID: ['hyeokim', 'kwlee', 'snpark', 'seolim'],
 				tags: ['밤', '오프라인', '매일 2시간', 'pdf숙지', '오프라인 모임'],
-				subject: 'cub3d',
+				subject: 'minishell',
 				state: 'progress',
 				notionLink: '',
 				gitLink: '',
 				teamName: '1번팀',
-				startDate: '2021-05-20'
+				startDate: new Date(2021, 5, 20)
 			}
 		)
 	}
@@ -25,13 +25,13 @@ const dummy = Array.from({ length: 100 }).map((_, i) => {
 				ID: i,
 				leaderID: 'jiwonlee',
 				memberID: ['seomoon', 'sulee', 'jongkim'],
-				tags: ['낮', '온라인', '매일 2시간', 'pdf 숙지', '비대면', '모각코'],
-				subject: 'cub3d',
+				tags: ['낮', '온라인', '매일 2시간', 'pdf 숙지', '비대면'],
+				subject: 'webserv',
 				state: 'progress',
 				notionLink: '',
 				gitLink: '',
 				teamName: '1번팀',
-				startDate: '2021-05-27'
+				startDate: new Date(2021, 5, 27)
 			}
 		)
 	} 
@@ -46,7 +46,7 @@ const dummy = Array.from({ length: 100 }).map((_, i) => {
 			notionLink: '',
 			gitLink: '',
 			teamName: '1번팀',
-			startDate: '2021-04-30'
+			startDate: new Date(2021, 4, 30)
 		}
 	)
 })

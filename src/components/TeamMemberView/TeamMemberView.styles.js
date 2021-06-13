@@ -10,7 +10,7 @@ export const TeamMemberViewStyled = styled.div`
   padding: 30px;
   border-radius: 20px;
   box-sizing: border-box;
-  font-size: 24px;
+  font-size: 28px;
 `;
 
 export const TeamMemberViewTop = styled.div`
@@ -18,7 +18,7 @@ export const TeamMemberViewTop = styled.div`
 	height: 50px;
 	margin-left: 4px;
 	border-bottom: 2px solid #F9F9F9;
-	padding-bottom: 24.8px;
+	padding-bottom: 0.88em;
 	display: flex;
 	justify-content: space-between;
 `;
@@ -38,5 +38,5 @@ TeamMemberViewTop.Lock = styled.div`
 
 TeamMemberViewTop.Description = styled.p`
 	height: 17px;
-	font-size: 0.5em;
+	font-size: 0.43em;
 `;

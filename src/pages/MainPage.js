@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { OverlayProvider } from '@react-aria/overlays';
 import Header from '../components/Header/Header';
 import ProfileView from '../components/ProfileView/ProfileView';
 import MyTeamListView from '../components/MyTeamListView/MyTeamListView';
@@ -12,7 +13,7 @@ const MainPage = props => {
   const { teams, teamListData } = useFetchTeamListData();
 
   return (
-    <>
+    <OverlayProvider>
       <Header user="jiwonlee" />
       <MainContainer>
         <MainContainer.Section>
@@ -26,7 +27,7 @@ const MainPage = props => {
           </MainContainer.Right>
         </MainContainer.Section>
       </MainContainer>
-    </>
+    </OverlayProvider>
   );
 };
 
@@ -49,13 +50,13 @@ MainPage.defaultProps = {
       ID: 1,
       leaderID: 'seolim',
       memberID: ['kwlee', 'snpark'],
-      tags: ['낮', '온라인', '매일 2시간', 'pdf숙지', '비대면', '모각코'],
+      tags: ['낮', '온라인', '매일 2시간'],
       subject: 'cub3d',
       state: 'progress',
       notionLink: '',
       gitLink: '',
       teamName: '1번팀',
-      startDate: '2021-04-30'
+      startDate: new Date(2021, 4, 20)
     },
     {
       ID: 2,
@@ -67,7 +68,7 @@ MainPage.defaultProps = {
       notionLink: '',
       gitLink: '',
       teamName: '1번팀',
-      startDate: '2021-06-04'
+      startDate: new Date(2021, 4, 20)
     }
   ],
   totalSize: 53

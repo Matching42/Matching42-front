@@ -3,27 +3,19 @@ import { Link } from 'react-router-dom';
 import { TeamListItemStyled, TeamListItemBox } from './TeamListItem.styles';
 import HashTag from './common/HashTag/HashTag';
 import TeamImage from './common/TeamImage/TeamImage';
-import { ReactComponent as Lock } from '../../assets/icons/TeamListItem_Lock.svg';
+import Dday from '../Dday/Dday';
 
 const TeamListItem = ({ teamData }) => {
 
   const { ID, subject, startDate, tags, leaderID, memberID } = teamData;
 	const member = [leaderID, ...memberID];
 
-	const calculateStartDate = () => {
-		const diff = new Date() - new Date(startDate);
-		const day = 24 * 60 * 60 * 1000;
-		return (parseInt(diff / day, 10));
-	}
-
   return (
     <Link to={`/detail/${ID}`}>
       <TeamListItemStyled>
         <TeamListItemBox>
-          <TeamListItemBox.Subject>
-						{subject} { teamData.state === "wait_member" && <Lock /> }
-					</TeamListItemBox.Subject>
-          <TeamListItemBox.StartDate>D +{calculateStartDate()}</TeamListItemBox.StartDate>
+          <TeamListItemBox.Subject>{subject}</TeamListItemBox.Subject>
+          <Dday mode="light" startDate={startDate} />
         </TeamListItemBox>
         <TeamListItemBox>
           <HashTag tags={tags} />
