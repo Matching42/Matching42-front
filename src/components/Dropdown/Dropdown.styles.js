@@ -10,12 +10,14 @@ export const DropdownButton = styled.button`
   cursor: pointer;
   background-color: #fff;
   color: ${props => (props.active ? '#27BABB' : '#252831')};
-  &:after {
-    content: url('https://api.iconify.design/ant-design:down-outlined.svg?color=%2315B2B3&height=16');
-    vertical-align: -0.3em;
-    padding-left: 3px;
-  }
+  display: flex;
 `;
+
+DropdownButton.Name = styled.div`
+  margin-right: 8px;
+`;
+
+DropdownButton.ArrowIcon = styled.div``;
 
 export const DropdownBox = styled.div`
   position: absolute;
