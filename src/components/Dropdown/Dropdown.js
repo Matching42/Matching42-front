@@ -16,7 +16,7 @@ const Dropdown = ({ subjectList }) => {
 
   return (
     <DropdownStyled>
-      <DropdownButton type="button" onClick={buttonOnClick}>
+      <DropdownButton type="button" onClick={buttonOnClick} active={isActive}>
         Subject
       </DropdownButton>
       <DropdownBox active={isActive}>
