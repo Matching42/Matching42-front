@@ -1,12 +1,27 @@
 import React from 'react';
-import { TeamImageStyled, UserImageStyled } from './TeamImage.styles';
+import { TeamImageStyled, UserImageStyled, RestMemberImageStyled } from './TeamImage.styles';
 
-const TeamImage = ({ teamMember }) => (
-  <TeamImageStyled>
-    {teamMember.map((member, i) => (
-      <UserImageStyled key={i} url={`https://cdn.intra.42.fr/users/small_${member}.jpg`} />
-    ))}
-  </TeamImageStyled>
-);
+const TeamImage = ({ teamMember }) => {
+
+	const teamMemberLen = teamMember.length;
+
+	const teamMemberLessthan3 = () => (
+		teamMember.map((member, index) => (<UserImageStyled key={index} size="small" url={`https://cdn.intra.42.fr/users/small_${member}.jpg`} />))
+	)
+
+	const teamMembermorethan3 = () => (
+		[
+			<UserImageStyled key={0} size="small" url={`https://cdn.intra.42.fr/users/small_${teamMember[0]}.jpg`} />,
+			<UserImageStyled key={1} size="small" url={`https://cdn.intra.42.fr/users/small_${teamMember[1]}.jpg`} />,
+			<RestMemberImageStyled key={2}>+{teamMemberLen - 2}</RestMemberImageStyled>
+		]
+	);
+
+	return (
+		<TeamImageStyled>
+			{teamMemberLen > 3 ? teamMembermorethan3() : teamMemberLessthan3()}
+		</TeamImageStyled>
+	);
+};
 
 export default TeamImage;
