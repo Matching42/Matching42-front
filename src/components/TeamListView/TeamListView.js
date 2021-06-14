@@ -6,6 +6,7 @@ import ToggleButton from '../ToggleButton/ToggleButton';
 
 const TeamListView = ({ teamList, onMoreTeamListItem, subjectList, totalSize }) => {
   const [target, setTarget] = useState(null);
+  const [teams, setTeams] = useState(teamList);
 
   const observer = useRef(
     new IntersectionObserver(
@@ -45,14 +46,14 @@ const TeamListView = ({ teamList, onMoreTeamListItem, subjectList, totalSize }) 
         </TeamListTopbar.Title>
         <TeamListTopbar.Button>
           <Dropdown subjectList={subjectList} />
-          <ToggleButton />
+          <ToggleButton teamList={teamList} setTeams={setTeams} />
         </TeamListTopbar.Button>
       </TeamListTopbar>
       <TeamListContainer>
-        {teamList?.map((team, index) => (
+        {teams?.map((team, index) => (
           <TeamListItem key={index} teamData={team} />
         ))}
-        {teamList && <div ref={setTarget} style={{ height: '10px' }} />}
+        {teams && <div ref={setTarget} style={{ height: '10px' }} />}
       </TeamListContainer>
       <div className="scrollbar" />
     </TeamListViewStyled>

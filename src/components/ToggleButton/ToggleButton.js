@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
 import { WaitToggleStyled, WaitSpanStyled, ToggleStyled, WaitToggleButtonStyled } from './ToggleButton.styles';
 
-const WaitToggleButton = () => {
-  const [toggle, setToggle] = useState(true);
+const WaitToggleButton = ({ teamList, setTeams }) => {
+  const [toggle, setToggle] = useState(false);
 
   const onClick = () => {
     setToggle(toggle => !toggle);
+    let filterTeams = teamList;
+    if (toggle)
+      filterTeams = teamList.filter(team => team.state === "wait_team");
+    console.log(filterTeams);
+    setTeams(filterTeams);
   };
 
   return (

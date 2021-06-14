@@ -16,7 +16,7 @@ export const WaitSpanStyled = styled.div`
 
 export const ToggleStyled = styled.div`
   position: absolute;
-  left: ${props => (props.toggle ? '4px' : '20px')};
+  left: ${props => (props.toggle ? '20px' : '4px')};
   width: 14px;
   height: 14px;
   background-color: #fff;
@@ -32,6 +32,6 @@ export const WaitToggleButtonStyled = styled.div`
   align-items: center;
   width: 38px;
   height: 100%;
-  background-color: ${props => (props.toggle ? '#D5D5D5' : '#27BABB')};
+  background-color: ${props => (props.toggle ? '#27BABB' : '#D5D5D5')};
   border-radius: 22px;
 `;
