@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="current" height="currnet" viewBox="0 0 52.238 53.506">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="합치기_1" data-name="합치기 1" d="M0,34.291s5.512-11.137,20.231-11.41c14.689-.271,19.835,11.363,19.856,11.41,0,0-2.047,10.591-20.447,10.591S0,34.291,0,34.291Zm9.656-23.9A10.388,10.388,0,1,1,20.044,20.776,10.388,10.388,0,0,1,9.656,10.389Z" transform="translate(0)" fill="none" stroke="#f2f2f2" stroke-width="1" stroke-dasharray="5"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <path id="합치기_1-2" data-name="합치기 1" d="M0,34.291s5.512-11.137,20.231-11.41c14.689-.271,19.835,11.363,19.856,11.41,0,0-2.047,10.591-20.447,10.591S0,34.291,0,34.291Zm9.656-23.9A10.388,10.388,0,1,1,20.044,20.776,10.388,10.388,0,0,1,9.656,10.389Z" transform="translate(0)" fill="#f2f2f2"/>
+    </clipPath>
+  </defs>
+  <g id="그룹_32" data-name="그룹 32" transform="translate(-1172 -303)">
+    <g id="그룹_21" data-name="그룹 21" transform="translate(238.5 2)">
+      <g id="타원_9" data-name="타원 9" transform="translate(933.5 301)" fill="none" stroke="#f2f2f2" stroke-width="1" stroke-dasharray="5">
+        <circle cx="26.119" cy="26.119" r="26.119" stroke="none"/>
+        <circle cx="26.119" cy="26.119" r="25.619" fill="none"/>
+      </g>
+      <g id="마스크_그룹_1" data-name="마스크 그룹 1" transform="translate(939.426 309.625)" clip-path="url(#clip-path)">
+        <g id="타원_10" data-name="타원 10" transform="translate(-5.926 -8.625)" fill="none" stroke="#f2f2f2" stroke-width="1" stroke-dasharray="5">
+          <circle cx="26.119" cy="26.119" r="26.119" stroke="none"/>
+          <circle cx="26.119" cy="26.119" r="25.619" fill="none"/>
+        </g>
+      </g>
+    </g>
+    <g id="구성_요소_1_13" data-name="구성 요소 1 – 13" transform="translate(1178.075 311.625)">
+      <g id="마스크_그룹_1-2" data-name="마스크 그룹 1" transform="translate(0)" clip-path="url(#clip-path-2)">
+        <circle id="타원_10-2" data-name="타원 10" cx="26.119" cy="26.119" r="26.119" transform="translate(-5.926 -8.625)" fill="#f2f2f2"/>
+      </g>
+    </g>
+  </g>
+</svg>
