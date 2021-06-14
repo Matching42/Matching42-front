@@ -4,7 +4,7 @@ import TeamListItem from '../TeamListItem/TeamListItem';
 import Dropdown from '../Dropdown/Dropdown';
 import ToggleButton from '../ToggleButton/ToggleButton';
 
-const TeamListView = ({ teamList, onMoreTeamListItem, projects, totalSize }) => {
+const TeamListView = ({ teamList, onMoreTeamListItem, subjectList, totalSize }) => {
   const [target, setTarget] = useState(null);
 
   const observer = useRef(
@@ -44,7 +44,7 @@ const TeamListView = ({ teamList, onMoreTeamListItem, projects, totalSize }) => 
           <TeamListTopbar.SubTitle>{totalSize}건</TeamListTopbar.SubTitle>
         </TeamListTopbar.Title>
         <TeamListTopbar.Button>
-          <Dropdown projects={projects} />
+          <Dropdown subjectList={subjectList} />
           <ToggleButton />
         </TeamListTopbar.Button>
       </TeamListTopbar>
@@ -57,18 +57,6 @@ const TeamListView = ({ teamList, onMoreTeamListItem, projects, totalSize }) => 
       <div className="scrollbar" />
     </TeamListViewStyled>
   );
-};
-
-TeamListView.defaultProps = {
-  projects: [
-    { id: 1, Name: 'libft' },
-    { id: 2, Name: 'get-next-line' },
-    { id: 3, Name: 'printf' },
-    { id: 4, Name: 'netwhat' },
-    { id: 5, Name: 'ft_server' },
-    { id: 6, Name: 'cub3d' },
-    { id: 7, Name: 'mini_rt' }
-  ]
 };
 
 export default TeamListView;
