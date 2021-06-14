@@ -2,18 +2,54 @@ import { useSWRInfinite } from 'swr';
 import api from '../api';
 
 // 더미데이터
-const dummy = Array.from({ length: 100 }).map((_, i) => ({
-  ID: i,
-  leaderId: 'seolim',
-  memberId: ['seolim', 'kwlee', 'snpark'],
-  tags: ['낮', '온라인', '매일 2시간'],
-  subject: 'cub3d',
-  state: 'progress',
-  notionLink: '',
-  gitLink: '',
-  teamName: '1번팀',
-  startDate: new Date(2021, 4, 20)
-}));
+const dummy = Array.from({ length: 100 }).map((_, i) => {
+	if (i % 3 === 0) {
+		return (
+			{
+				ID: i,
+				leaderID: 'hokim',
+				memberID: ['hyeokim', 'kwlee', 'snpark', 'seolim'],
+				tags: ['밤', '오프라인', '매일 2시간', 'pdf숙지', '오프라인 모임'],
+				subject: 'minishell',
+				state: 'progress',
+				notionLink: '',
+				gitLink: '',
+				teamName: '1번팀',
+				startDate: new Date(2021, 5, 20)
+			}
+		)
+	}
+	if (i % 2 === 0) {
+		return (
+			{
+				ID: i,
+				leaderID: 'jiwonlee',
+				memberID: ['seomoon', 'sulee', 'jongkim'],
+				tags: ['낮', '온라인', '매일 2시간', 'pdf 숙지', '비대면'],
+				subject: 'webserv',
+				state: 'progress',
+				notionLink: '',
+				gitLink: '',
+				teamName: '1번팀',
+				startDate: new Date(2021, 5, 27)
+			}
+		)
+	} 
+	return (
+		{
+			ID: i,
+			leaderID: 'minjakim',
+			memberID: ['snpark', 'jongkim'],
+			tags: ['새벽', '오프라인', '매일 24시간'],
+			subject: 'cub3d',
+			state: 'wait_member',
+			notionLink: '',
+			gitLink: '',
+			teamName: '1번팀',
+			startDate: new Date(2021, 4, 30)
+		}
+	)
+})
 
 const sleep = () => new Promise(resolve => setTimeout(resolve, 1000));
 

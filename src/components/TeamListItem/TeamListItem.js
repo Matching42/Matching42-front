@@ -6,7 +6,9 @@ import TeamImage from './common/TeamImage/TeamImage';
 import Dday from '../Dday/Dday';
 
 const TeamListItem = ({ teamData }) => {
-  const { ID, subject, startDate, tags, memberId } = teamData;
+
+  const { ID, subject, startDate, tags, leaderID, memberID } = teamData;
+	const member = [leaderID, ...memberID];
 
   return (
     <Link to={`/detail/${ID}`}>
@@ -17,7 +19,7 @@ const TeamListItem = ({ teamData }) => {
         </TeamListItemBox>
         <TeamListItemBox>
           <HashTag tags={tags} />
-          <TeamImage teamMember={memberId} />
+          <TeamImage teamMember={member} />
         </TeamListItemBox>
       </TeamListItemStyled>
     </Link>

@@ -14,8 +14,8 @@ const DetailPage = props => {
       <DetailContainer>
         <DetailContainer.Section>
           <DetailContainer.Top>
-            <TeamProfileView team={team} />
-            <TeamMemberView />
+						<TeamProfileView team={team} />
+            <TeamMemberView state={team.state} teamMember={[team.leaderID, ...team.memberID]}/>
           </DetailContainer.Top>
           <DetailContainer.Bottom>
             <TeamWorkspaceView />
@@ -28,9 +28,16 @@ const DetailPage = props => {
 
 DetailPage.defaultProps = {
   team: {
-    teamName: 'Cub3d Team',
-    startDate: new Date(2021, 4, 20),
-    tags: ['낮', '온라인', '매일 2시간']
+    ID: 1,
+		leaderID: 'jiwonlee',
+		memberID: ['seomoon', 'sulee', 'jongkim'],
+		tags: ['낮', '온라인', '매일 2시간', 'pdf 숙지', '비대면'],
+		subject: 'cub3d',
+		state: 'wait_member',
+		notionLink: '',
+		gitLink: '',
+		teamName: 'Cub3d Team',
+		startDate: new Date(2021, 4, 20),
   }
 };
 

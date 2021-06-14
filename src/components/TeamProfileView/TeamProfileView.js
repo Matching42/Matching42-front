@@ -23,8 +23,8 @@ const TeamProfileView = ({ team }) => {
       </TeamProfile>
       <TeamDescription>Team GitHub Repository, Notion, Slack 적극 활용하여 동료들과 함께 학습을 진행해보세요!</TeamDescription>
       <TeamTagList>
-        {team.tags.map(item => (
-          <TeamTagList.Item># {item}</TeamTagList.Item>
+        {team.tags.map((item, index) => (
+          <TeamTagList.Item key={index}># {item}</TeamTagList.Item>
         ))}
       </TeamTagList>
     </TeamProfileViewStyled>
