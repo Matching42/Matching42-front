@@ -49,4 +49,8 @@ DropdownBox.Item = styled.span`
   margin-right: 15px;
   font-size: 0.85em;
   color: ${props => (props.selected ? '#27BABB' : '#252831')};
+
+  :hover {
+    color: #27babb;
+  }
 `;

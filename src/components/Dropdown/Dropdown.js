@@ -4,7 +4,7 @@ import SVG from '../../assets/icons/SVG';
 
 const Dropdown = ({ subjectList }) => {
   const [isActive, setIsActive] = useState(false);
-  const [selectedSubject, setSubject] = useState('Libft');
+  const [selectedSubject, setSubject] = useState('Subject');
 
   const buttonOnClick = e => {
     setIsActive(!isActive);
@@ -18,7 +18,7 @@ const Dropdown = ({ subjectList }) => {
   return (
     <DropdownStyled>
       <DropdownButton type="button" onClick={buttonOnClick} active={isActive}>
-        <DropdownButton.Name>Subject</DropdownButton.Name>
+        <DropdownButton.Name>{selectedSubject}</DropdownButton.Name>
         <DropdownButton.ArrowIcon>
           <SVG color={isActive ? '#27BABB' : '#252831'} active={isActive ? 'translate(1453.069 137.659) rotate(180)' : 'translate(-1439.141 -128.991)'} />
         </DropdownButton.ArrowIcon>
