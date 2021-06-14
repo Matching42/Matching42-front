@@ -1,14 +1,47 @@
 import styled from 'styled-components';
 
 export const TeamMemberViewStyled = styled.div`
-  width: 59%;
+  width: 52%;
   height: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
+	flex-direction: column;
   background-color: #fff;
   padding: 30px;
   border-radius: 20px;
   box-sizing: border-box;
   font-size: 28px;
+`;
+
+export const TeamMemberViewTop = styled.div`
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	border-bottom: 2px solid #F9F9F9;
+  padding-bottom: 15px;
+`;
+
+TeamMemberViewTop.Wrap = styled.div`
+`;
+
+TeamMemberViewTop.Title = styled.h1`
+  font-size: 0.8em;
+	font-weight: bold;
+  padding-bottom: 5px;
+`;
+
+TeamMemberViewTop.Description = styled.p`
+	font-size: 0.4em;
+  line-height: 1.5;
+`;
+
+TeamMemberViewTop.Lock = styled.div`
+  width: 23px;
+	cursor: pointer;
+  margin-right: 10px;
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
 `;

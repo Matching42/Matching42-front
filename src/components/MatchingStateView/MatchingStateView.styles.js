@@ -32,4 +32,10 @@ export const MatchingStartButton = styled.button`
   background-color: #27babb;
   border-radius: 10px;
   cursor: pointer;
+  outline: 0;
+  transition: 0.15s;
+
+  :hover {
+    background-color: #25a9aa;
+  }
 `;
