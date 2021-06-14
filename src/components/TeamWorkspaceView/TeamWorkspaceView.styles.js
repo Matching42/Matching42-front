@@ -17,7 +17,7 @@ export const TeamWorkspaceViewStyled = styled.div`
 TeamWorkspaceViewStyled.Title = styled.div`
   font-family: 'Noto Sans KR', sans-serif;
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 0.55em;
   margin-bottom: 10px;
 `;
 
@@ -25,47 +25,55 @@ TeamWorkspaceViewStyled.Line = styled.div`
   border: solid 2px #f9f9f9;
 `;
 
-export const Line = styled.div`
-  border: solid 1px #f9f9f9;
-  width: 1090px;
-  border-bottom: 0px;
-  text-align: left;
-`;
-
 export const LinkList = styled.div`
-  font-size: 0.75rem;
-  vertical-align: top;
+  width: 100%;
+  overflow: scroll;
+  margin-bottom: 15px;
+  font-size: 0.75em;
 `;
 
 LinkList.Title = styled.div`
   font-size: 0.75rem;
   font-weight: bold;
-  margin-top: 20px;
+  margin-top: 18px;
   margin-left: 6px;
 `;
 
 LinkList.Link = styled.div`
-  margin-top: 9px;
-  margin-left: 6px;
-  margin-bottom: 18px;
+  border-bottom: 2px solid #F9F9F9;
+  padding-bottom: 18px;
+
   a {
     color: #d3d4d6;
+    font-size: 0.55em;
+    margin-left: 6px;
+
     :hover {
       color: #808080;
     }
   }
 `;
 
+TeamWorkspaceViewStyled.Button = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`;
+
 export const FinishStudyButton = styled.div`
-  width: 6rem;
-  text-align: center;
-  font-size: 0.8rem;
-  background: #0bd;
+  padding: 15px 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.5em;
+  font-weight: bold;
   color: #fff;
-  background: #27babb;
-  border-radius: 5px;
-  margin-top: 2.5rem;
-  margin-left: 61rem;
-  padding: 0.9rem;
+  background-color: #27babb;
+  border-radius: 10px;
   cursor: pointer;
+  outline: 0;
+  transition: 0.15s;
+
+  :hover {
+    background-color: #25a9aa;
+  }
 `;

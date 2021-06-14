@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const TeamMemberViewStyled = styled.div`
-  width: 59%;
+  width: 52%;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -15,28 +15,33 @@ export const TeamMemberViewStyled = styled.div`
 
 export const TeamMemberViewTop = styled.div`
 	width: 100%;
-	height: 50px;
-	margin-left: 4px;
-	border-bottom: 2px solid #F9F9F9;
-	padding-bottom: 0.88em;
 	display: flex;
 	justify-content: space-between;
+	border-bottom: 2px solid #F9F9F9;
+  padding-bottom: 15px;
 `;
 
 TeamMemberViewTop.Wrap = styled.div`
 `;
 
 TeamMemberViewTop.Title = styled.h1`
-	height: 33px;
-	padding-bottom: 4px;
+  font-size: 0.8em;
 	font-weight: bold;
-`;
-
-TeamMemberViewTop.Lock = styled.div`
-	cursor: pointer;
+  padding-bottom: 5px;
 `;
 
 TeamMemberViewTop.Description = styled.p`
-	height: 17px;
-	font-size: 0.43em;
+	font-size: 0.4em;
+  line-height: 1.5;
+`;
+
+TeamMemberViewTop.Lock = styled.div`
+  width: 23px;
+	cursor: pointer;
+  margin-right: 10px;
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
 `;

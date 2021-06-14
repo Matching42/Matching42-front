@@ -7,14 +7,11 @@ export const DdayLight = styled.div`
 `;
 
 export const DdayDark = styled.div`
-  font-size: 1em;
+  font-size: 0.8em;
   font-weight: bold;
   color: #ffffff;
   background-color: #219e9f;
-  padding: 7px 15px;
+  padding: 8px 14px;
   box-sizing: border-box;
   border-radius: 8px;
-  position: absolute;
-  top: 34px;
-  right: 34px;
 `;

@@ -23,7 +23,7 @@ const TeamMemberImage = ({ teamMember }) => {
 		for (let i = 0; i < len; i++) {
 			Array.push(
 				<TeamMemberImageStyled.Item key={i + 3}>
-					<EmptyIcon width="53px" height="53px" />
+					<EmptyIcon width="45px" height="45px" />
 					<TeamMemberImageStyled.EmptyName>(empty)</TeamMemberImageStyled.EmptyName>
 				</TeamMemberImageStyled.Item>
 			)

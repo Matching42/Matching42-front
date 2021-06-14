@@ -6,8 +6,8 @@ export const TeamImageStyled = styled.span`
 `;
 
 const staticUserImageStyled = css`
-	width: ${ props => props.size === "small" ? "20px" : "53px" };
-	height: ${ props => props.size === "small" ? "20px" : "53px" };
+	width: ${ props => props.size === "small" ? "20px" : "45px" };
+	height: ${ props => props.size === "small" ? "20px" : "45px" };
 	margin-left: ${ props => props.size === "small" ? "5px" : "0" };
 `;
 
@@ -15,6 +15,7 @@ export const UserImageStyled = styled.img`
 	${staticUserImageStyled}
   border-radius: 50%;
   background-image: url(${props => props.url});
+  background-position: center;
   background-size: cover;
 `;
 
