@@ -27,6 +27,15 @@ const HeaderStyled = styled.nav`
   p {
     color: #fff;
   }
+  .logo {
+    width: 50px;
+    height: 50px;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
 `;
 
 export default HeaderStyled;
