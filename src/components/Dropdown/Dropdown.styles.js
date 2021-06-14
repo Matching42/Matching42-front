@@ -1,9 +1,24 @@
 import styled from 'styled-components';
 
 export const DropdownStyled = styled.div`
-  // display: inline-block;
   cursor: pointer;
   font-size: 16px;
+  height: 78%;
+  padding-right: 10px;
+
+  .scrollbar {
+    width: 4px;
+    height: calc(100% - 80px);
+    position: absolute;
+    top: 70px;
+    right: 30px;
+    background-color: #fff;
+    opacity: 1;
+    transition: 0.5s;
+  }
+  :hover .scrollbar {
+    opacity: 0;
+  }
 `;
 
 export const DropdownButton = styled.button`
@@ -21,8 +36,8 @@ DropdownButton.ArrowIcon = styled.div``;
 
 export const DropdownBox = styled.div`
   position: absolute;
-  left: 35px;
-  right: 30px;
+  left: 33px;
+  right: 29px;
   padding: 2px 26px;
   z-index: 100;
   display: ${props => (props.active ? 'flex' : 'none')};
@@ -30,7 +45,22 @@ export const DropdownBox = styled.div`
   border: 1px solid #27babb;
   border-radius: 10px;
   background-color: #fff;
-  margin-top: 11px;
+  margin-top: 17px;
+  overflow: auto;
+  height: 80%;
+
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+  ::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: #d5d5d5;
+  }
+  ::-webkit-scrollbar-track {
+    margin: 10px 0;
+  }
+  ::-webkit-scrollbar-track-piece {
+  }
 `;
 
 DropdownBox.List = styled.div`

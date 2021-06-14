@@ -35,6 +35,7 @@ const Dropdown = ({ subjectList }) => {
           </DropdownBox.List>
         ))}
       </DropdownBox>
+      <div className="scrollbar" />
     </DropdownStyled>
   );
 };
