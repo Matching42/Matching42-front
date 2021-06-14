@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { OverlayProvider } from '@react-aria/overlays';
 import Header from '../components/Header/Header';
 import ProfileView from '../components/ProfileView/ProfileView';
 import MyTeamListView from '../components/MyTeamListView/MyTeamListView';
@@ -12,7 +13,7 @@ const MainPage = props => {
   const { teams, teamListData } = useFetchTeamListData();
 
   return (
-    <>
+    <OverlayProvider>
       <Header user="jiwonlee" />
       <MainContainer>
         <MainContainer.Section>
@@ -26,7 +27,7 @@ const MainPage = props => {
           </MainContainer.Right>
         </MainContainer.Section>
       </MainContainer>
-    </>
+    </OverlayProvider>
   );
 };
 
@@ -47,27 +48,27 @@ MainPage.defaultProps = {
   myTeamList: [
     {
       ID: 1,
-      leaderId: 'seolim',
-      memberId: ['seolim', 'kwlee', 'snpark'],
+      leaderID: 'seolim',
+      memberID: ['kwlee', 'snpark'],
       tags: ['낮', '온라인', '매일 2시간'],
       subject: 'cub3d',
       state: 'progress',
       notionLink: '',
       gitLink: '',
       teamName: '1번팀',
-      startDate: 'D +21'
+      startDate: new Date(2021, 4, 20)
     },
     {
       ID: 2,
-      leaderId: 'seolim',
-      memberId: ['seolim', 'kwlee', 'snpark'],
-      tags: ['낮', '온라인', '매일 2시간'],
+      leaderID: 'seolim',
+      memberID: ['kwlee', 'snpark'],
+      tags: ['낮', '온라인', '매일 2시간', 'pdf숙지', '비대면'],
       subject: 'cub3d',
       state: 'progress',
       notionLink: '',
       gitLink: '',
       teamName: '1번팀',
-      startDate: 'D +21'
+      startDate: new Date(2021, 4, 20)
     }
   ],
   totalSize: 53
