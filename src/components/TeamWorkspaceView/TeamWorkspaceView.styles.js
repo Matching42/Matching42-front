@@ -4,6 +4,7 @@ export const TeamWorkspaceViewStyled = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: top;
   align-items: top;
   background-color: #fff;
@@ -44,10 +45,15 @@ LinkList.Title = styled.div`
 `;
 
 LinkList.Link = styled.div`
-  color: #d3d4d6;
   margin-top: 9px;
   margin-left: 6px;
   margin-bottom: 18px;
+  a {
+    color: #d3d4d6;
+    :hover {
+      color: #808080;
+    }
+  }
 `;
 
 export const FinishStudyButton = styled.div`
