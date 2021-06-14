@@ -14,7 +14,7 @@ const MainPage = props => {
 
   return (
     <OverlayProvider>
-      <Header user="jiwonlee" />
+      <Header user={user} />
       <MainContainer>
         <MainContainer.Section>
           <MainContainer.Left>
@@ -34,7 +34,7 @@ const MainPage = props => {
 MainPage.defaultProps = {
   user: {
     userId: 1,
-    nickname: 'seomoon',
+    nickname: 'seolim',
     level: 4.01,
     blackhole: 28,
     waitMatching: false
