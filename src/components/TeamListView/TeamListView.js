@@ -3,10 +3,13 @@ import { TeamListViewStyled, TeamListTopbar, TeamListContainer } from './TeamLis
 import TeamListItem from '../TeamListItem/TeamListItem';
 import Dropdown from '../Dropdown/Dropdown';
 import ToggleButton from '../ToggleButton/ToggleButton';
+import Loader from '../loaderSpinner/loaderSpinner';
 
 const TeamListView = ({ teamList, onMoreTeamListItem, subjectList, totalSize }) => {
   const [target, setTarget] = useState(null);
-  const [teams, setTeams] = useState(teamList);
+	const [toggle, setToggle] = useState(false);
+	const [teams, setTeams] = useState(teamList);
+	const [loading, setLoading] = useState(false);
 
   const observer = useRef(
     new IntersectionObserver(
@@ -37,6 +40,14 @@ const TeamListView = ({ teamList, onMoreTeamListItem, subjectList, totalSize }) 
     };
   }, [target]);
 
+	useEffect(() => {
+		if (toggle)
+			setTeams(teamList.filter(team => team.state === "wait_member"));
+		else
+			setTeams(teamList);
+		if (!teams.length) setLoading(!loading);
+	}, [teamList, toggle]);
+
   return (
     <TeamListViewStyled>
       <TeamListTopbar>
@@ -46,10 +57,11 @@ const TeamListView = ({ teamList, onMoreTeamListItem, subjectList, totalSize }) 
         </TeamListTopbar.Title>
         <TeamListTopbar.Button>
           <Dropdown subjectList={subjectList} />
-          <ToggleButton teamList={teamList} setTeams={setTeams} />
+          <ToggleButton toggle={toggle} setToggle={setToggle} />
         </TeamListTopbar.Button>
       </TeamListTopbar>
       <TeamListContainer>
+				{!loading && <Loader />}
         {teams?.map((team, index) => (
           <TeamListItem key={index} teamData={team} />
         ))}
