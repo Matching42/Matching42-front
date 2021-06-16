@@ -9,7 +9,6 @@ const TeamListView = ({ teamList, onMoreTeamListItem, subjectList, totalSize }) 
   const [target, setTarget] = useState(null);
 	const [toggle, setToggle] = useState(false);
 	const [teams, setTeams] = useState(teamList);
-	const [loading, setLoading] = useState(false);
 
   const observer = useRef(
     new IntersectionObserver(
@@ -45,7 +44,6 @@ const TeamListView = ({ teamList, onMoreTeamListItem, subjectList, totalSize }) 
 			setTeams(teamList.filter(team => team.state === "wait_member"));
 		else
 			setTeams(teamList);
-		if (!teams.length) setLoading(!loading);
 	}, [teamList, toggle]);
 
   return (
@@ -61,7 +59,7 @@ const TeamListView = ({ teamList, onMoreTeamListItem, subjectList, totalSize }) 
         </TeamListTopbar.Button>
       </TeamListTopbar>
       <TeamListContainer>
-				{!loading && <Loader />}
+				{!teams.length && <Loader />}
         {teams?.map((team, index) => (
           <TeamListItem key={index} teamData={team} />
         ))}
