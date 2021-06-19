@@ -35,12 +35,15 @@ DropdownButton.Name = styled.div`
 DropdownButton.ArrowIcon = styled.div``;
 
 export const DropdownBox = styled.div`
+  display: flex;
   position: absolute;
   left: 33px;
   right: 29px;
   padding: 2px 26px;
   z-index: 100;
   display: ${props => (props.active ? 'flex' : 'none')};
+  opacity: ${props => (props.active ? '1' : '0')};
+  transition: opacity 0.1s ease-in-out;
   flex-direction: column;
   border: 1px solid #27babb;
   border-radius: 10px;
