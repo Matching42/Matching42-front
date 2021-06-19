@@ -5,7 +5,7 @@ const TeamWorkspaceView = props => {
   const { gitHub, notion, subjectPDF } = props;
 
   return (
-    <TeamWorkspaceViewStyled>
+    <TeamWorkspaceViewStyled className="scrollbar">
       <TeamWorkspaceViewStyled.Title>Team Workspace Link</TeamWorkspaceViewStyled.Title>
       <TeamWorkspaceViewStyled.Line />
       <LinkList>
@@ -25,6 +25,7 @@ const TeamWorkspaceView = props => {
       <TeamWorkspaceViewStyled.Button>
         <FinishStudyButton>스터디 종료</FinishStudyButton>
       </TeamWorkspaceViewStyled.Button>
+      <div className="scrollbar" />
     </TeamWorkspaceViewStyled>
   );
 };
