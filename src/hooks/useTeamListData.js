@@ -15,7 +15,7 @@ const dummy = Array.from({ length: 100 }).map((_, i) => {
 				notionLink: '',
 				gitLink: '',
 				teamName: '1번팀',
-				startDate: new Date(2021, 5, 20)
+				startDate: new Date(2021, 4, 20)
 			}
 		)
 	}
@@ -31,7 +31,7 @@ const dummy = Array.from({ length: 100 }).map((_, i) => {
 				notionLink: '',
 				gitLink: '',
 				teamName: '1번팀',
-				startDate: new Date(2021, 5, 27)
+				startDate: new Date(2021, 4, 27)
 			}
 		)
 	} 
@@ -46,7 +46,7 @@ const dummy = Array.from({ length: 100 }).map((_, i) => {
 			notionLink: '',
 			gitLink: '',
 			teamName: '1번팀',
-			startDate: new Date(2021, 4, 30)
+			startDate: new Date(2021, 3, 30)
 		}
 	)
 })

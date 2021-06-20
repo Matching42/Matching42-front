@@ -6,11 +6,11 @@ import TeamProfileView from '../components/TeamProfileView/TeamProfileView';
 import TeamWorkspaceView from '../components/TeamWorkspaceView/TeamWorkspaceView';
 
 const DetailPage = props => {
-  const { team } = props;
+  const { user, team } = props;
 
   return (
     <>
-      <Header user="jiwonlee" />
+      <Header user={user} />
       <DetailContainer>
         <DetailContainer.Section>
           <DetailContainer.Top>
@@ -27,11 +27,18 @@ const DetailPage = props => {
 };
 
 DetailPage.defaultProps = {
+  user: {
+    userId: 1,
+    nickname: 'seolim',
+    level: 4.01,
+    blackhole: 28,
+    waitMatching: false
+  },
   team: {
     ID: 1,
 		leaderID: 'jiwonlee',
 		memberID: ['seomoon', 'sulee', 'jongkim'],
-		tags: ['낮', '온라인', '매일 2시간', 'pdf 숙지', '비대면'],
+		tags: ['낮', '온라인', '매일2시간', '비대면'],
 		subject: 'cub3d',
 		state: 'wait_member',
 		notionLink: '',

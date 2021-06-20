@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
 import { DropdownStyled, DropdownButton, DropdownBox } from './Dropdown.styles';
 
-const Dropdown = ({ projects }) => {
+const Dropdown = ({ subjectList }) => {
   const [isActive, setIsActive] = useState(false);
+  const [selectedSubject, setSubject] = useState('Libft');
 
   const buttonOnClick = e => {
-    e.stopPropagation(); // 서브젝트 선택으로도 드롭다운 닫히게 하고 싶다면 제거
     setIsActive(!isActive);
   };
 
   const subjectOnClick = event => {
-    console.log(event.innerHtml);
+    setIsActive(!isActive);
+    setSubject(event.target.innerHTML);
   };
 
   return (
@@ -19,10 +20,15 @@ const Dropdown = ({ projects }) => {
         Subject
       </DropdownButton>
       <DropdownBox active={isActive}>
-        {projects.map(subject => (
-          <div key={subject.id} onClick={subjectOnClick}>
-            {subject.Name}
-          </div>
+        {subjectList.map((subjects, circle) => (
+          <DropdownBox.List key={circle}>
+            <DropdownBox.List.Title>{circle} Circle</DropdownBox.List.Title>
+            {subjects.map((subject, index) => (
+              <DropdownBox.Item key={index} onClick={subjectOnClick} selected={subject === selectedSubject}>
+                {subject}
+              </DropdownBox.Item>
+            ))}
+          </DropdownBox.List>
         ))}
       </DropdownBox>
     </DropdownStyled>
