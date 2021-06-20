@@ -23,7 +23,7 @@ const MatchingStateView = ({ waitList, user }) => {
         <OverlayContainer>
           <Dialog isOpen onClose={state.close} isDimissable>
             <DialogCloseButton onCloseButton={state.close} />
-            <SurveyForm />
+            <SurveyForm onCloseButton={state.close} />
           </Dialog>
         </OverlayContainer>
       )}

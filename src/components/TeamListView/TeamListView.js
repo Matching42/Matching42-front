@@ -5,10 +5,11 @@ import Dropdown from '../Dropdown/Dropdown';
 import ToggleButton from '../ToggleButton/ToggleButton';
 import Loader from '../loaderSpinner/loaderSpinner';
 
-const TeamListView = ({ teamList, onMoreTeamListItem, subjectList, totalSize }) => {
+const TeamListView = ({ teamList, onMoreTeamListItem, totalSize }) => {
   const [target, setTarget] = useState(null);
 	const [toggle, setToggle] = useState(false);
 	const [teams, setTeams] = useState(teamList);
+  const [selectedSubject, setSelectedSubject] = useState('Subject');
 
   const observer = useRef(
     new IntersectionObserver(
@@ -54,7 +55,9 @@ const TeamListView = ({ teamList, onMoreTeamListItem, subjectList, totalSize }) 
           <TeamListTopbar.SubTitle>{totalSize}건</TeamListTopbar.SubTitle>
         </TeamListTopbar.Title>
         <TeamListTopbar.Button>
-          <Dropdown subjectList={subjectList} />
+          <TeamListTopbar.Dropdown>
+            <Dropdown selectedSubject={selectedSubject} setSelectedSubject={setSelectedSubject} />
+          </TeamListTopbar.Dropdown>
           <ToggleButton toggle={toggle} setToggle={setToggle} />
         </TeamListTopbar.Button>
       </TeamListTopbar>

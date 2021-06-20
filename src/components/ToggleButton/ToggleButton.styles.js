@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const WaitToggleStyled = styled.div`
-  width: 80px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -11,14 +10,16 @@ export const WaitToggleStyled = styled.div`
 export const WaitSpanStyled = styled.div`
   vertical-align: middle;
   padding: 2px 0;
-  font-size: 0.5em;
+  padding-right: 8px;
+  font-size: 0.45em;
+  color: #252831;
 `;
 
 export const ToggleStyled = styled.div`
   position: absolute;
-  left: ${props => (props.toggle ? '20px' : '4px')};
-  width: 14px;
-  height: 14px;
+  left: ${props => (props.toggle ? '16px' : '4px')};
+  width: 10px;
+  height: 10px;
   background-color: #fff;
   border-radius: 50%;
   box-sizing: border-box;
@@ -30,7 +31,7 @@ export const WaitToggleButtonStyled = styled.div`
   display: flex;
   cursor: pointer;
   align-items: center;
-  width: 38px;
+  width: 30px;
   height: 100%;
   background-color: ${props => (props.toggle ? '#27BABB' : '#D5D5D5')};
   border-radius: 22px;
