@@ -51,14 +51,20 @@ TeamListTopbar.SubTitle = styled.span`
 
 TeamListTopbar.Button = styled.div`
   display: flex;
-  justify-content: space-between;
-  width: 30%;
+  justify-content: flex-end;
+  width: 40%;
   padding: 0 5px;
   font-size: 0.5em;
 `;
 
+TeamListTopbar.Dropdown = styled.div`
+  margin-right: 10px;
+`;
+
 export const TeamListContainer = styled.div`
   width: 100%;
+	height: 100%;
+	position: relative;
   overflow: auto;
   padding-right: 10px;
   box-sizing: border-box;

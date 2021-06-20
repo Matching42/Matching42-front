@@ -15,10 +15,10 @@ export const DialogStyled = styled.div`
 `;
 
 DialogStyled.Box = styled.div`
-  width: 60%;
-  height: 80%;
-  min-width: 800px;
-  min-height: 500px;
+  width: ${props => (props.type === 'alert' ? '400px' : '60%')};
+  height: ${props => (props.type === 'alert' ? '240px' : '80%')};
+  min-width: ${props => props.type === 'form' && '800px'};
+  min-height: ${props => props.type === 'form' && '500px'};
   position: relative;
   display: flex;
   flex-direction: column;
@@ -27,6 +27,6 @@ DialogStyled.Box = styled.div`
   background: #fff;
   color: #252831;
   border-radius: 20px;
-  padding: 80px;
+  padding: 70px 80px;
   box-sizing: border-box;
 `;

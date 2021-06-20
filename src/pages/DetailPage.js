@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { OverlayProvider } from '@react-aria/overlays';
 import Header from '../components/Header/Header';
 import TeamMemberView from '../components/TeamMemberView/TeamMemberView';
 import TeamProfileView from '../components/TeamProfileView/TeamProfileView';
@@ -10,18 +11,20 @@ const DetailPage = props => {
 
   return (
     <>
-      <Header user={user} />
-      <DetailContainer>
-        <DetailContainer.Section>
-          <DetailContainer.Top>
-						<TeamProfileView team={team} />
-            <TeamMemberView state={team.state} teamMember={[team.leaderID, ...team.memberID]}/>
-          </DetailContainer.Top>
-          <DetailContainer.Bottom>
-            <TeamWorkspaceView />
-          </DetailContainer.Bottom>
-        </DetailContainer.Section>
-      </DetailContainer>
+      <OverlayProvider>
+        <Header user={user} />
+        <DetailContainer>
+          <DetailContainer.Section>
+            <DetailContainer.Top>
+              <TeamProfileView team={team} />
+              <TeamMemberView team={team} user={user} />
+            </DetailContainer.Top>
+            <DetailContainer.Bottom>
+              <TeamWorkspaceView />
+            </DetailContainer.Bottom>
+          </DetailContainer.Section>
+        </DetailContainer>
+      </OverlayProvider>
     </>
   );
 };
@@ -29,22 +32,22 @@ const DetailPage = props => {
 DetailPage.defaultProps = {
   user: {
     userId: 1,
-    nickname: 'seolim',
+    nickname: 'jiwonlee',
     level: 4.01,
     blackhole: 28,
     waitMatching: false
   },
   team: {
     ID: 1,
-		leaderID: 'jiwonlee',
-		memberID: ['seomoon', 'sulee', 'jongkim'],
-		tags: ['낮', '온라인', '매일2시간', '비대면'],
-		subject: 'cub3d',
-		state: 'wait_member',
-		notionLink: '',
-		gitLink: '',
-		teamName: 'Cub3d Team',
-		startDate: new Date(2021, 4, 20),
+    leaderID: 'jiwonlee',
+    memberID: ['seomoon', 'sulee', 'jongkim'],
+    tags: ['낮', '온라인', '매일2시간', '비대면'],
+    subject: 'cub3d',
+    state: 'wait_member',
+    notionLink: '',
+    gitLink: '',
+    teamName: 'Cub3d Team',
+    startDate: new Date(2021, 4, 20)
   }
 };
 

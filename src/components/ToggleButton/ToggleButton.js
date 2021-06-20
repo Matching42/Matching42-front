@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { WaitToggleStyled, WaitSpanStyled, ToggleStyled, WaitToggleButtonStyled } from './ToggleButton.styles';
 
-const WaitToggleButton = () => {
-  const [toggle, setToggle] = useState(true);
+const WaitToggleButton = ({ toggle, setToggle }) => {
 
   const onClick = () => {
-    setToggle(toggle => !toggle);
+		setToggle(toggle => !toggle);
   };
 
   return (
