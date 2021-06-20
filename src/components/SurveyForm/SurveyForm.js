@@ -23,7 +23,6 @@ const SurveyForm = ({ onCloseButton }) => {
       setCheckEmptyInput(true);
       return ;
     }
-    alert('신청되었습니다!'); 
     onCloseButton();
   };
 
