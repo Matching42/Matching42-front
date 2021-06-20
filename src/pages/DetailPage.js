@@ -15,7 +15,7 @@ const DetailPage = props => {
         <DetailContainer.Section>
           <DetailContainer.Top>
 						<TeamProfileView team={team} />
-            <TeamMemberView state={team.state} teamMember={[team.leaderID, ...team.memberID]}/>
+            <TeamMemberView team={team} user={user} />
           </DetailContainer.Top>
           <DetailContainer.Bottom>
             <TeamWorkspaceView />
@@ -29,7 +29,7 @@ const DetailPage = props => {
 DetailPage.defaultProps = {
   user: {
     userId: 1,
-    nickname: 'seolim',
+    nickname: 'jiwonlee',
     level: 4.01,
     blackhole: 28,
     waitMatching: false
@@ -37,7 +37,7 @@ DetailPage.defaultProps = {
   team: {
     ID: 1,
 		leaderID: 'jiwonlee',
-		memberID: ['seomoon', 'sulee', 'jongkim'],
+		memberID: ['seomoon', 'sulee', 'jongkim', ],
 		tags: ['낮', '온라인', '매일2시간', '비대면'],
 		subject: 'cub3d',
 		state: 'wait_member',

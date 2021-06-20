@@ -63,6 +63,8 @@ TeamListTopbar.Dropdown = styled.div`
 
 export const TeamListContainer = styled.div`
   width: 100%;
+	height: 100%;
+	position: relative;
   overflow: auto;
   padding-right: 10px;
   box-sizing: border-box;

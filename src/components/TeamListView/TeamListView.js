@@ -3,9 +3,12 @@ import { TeamListViewStyled, TeamListTopbar, TeamListContainer } from './TeamLis
 import TeamListItem from '../TeamListItem/TeamListItem';
 import Dropdown from '../Dropdown/Dropdown';
 import ToggleButton from '../ToggleButton/ToggleButton';
+import Loader from '../loaderSpinner/loaderSpinner';
 
 const TeamListView = ({ teamList, onMoreTeamListItem, totalSize }) => {
   const [target, setTarget] = useState(null);
+	const [toggle, setToggle] = useState(false);
+	const [teams, setTeams] = useState(teamList);
   const [selectedSubject, setSelectedSubject] = useState('Subject');
 
   const observer = useRef(
@@ -37,6 +40,13 @@ const TeamListView = ({ teamList, onMoreTeamListItem, totalSize }) => {
     };
   }, [target]);
 
+	useEffect(() => {
+		if (toggle)
+			setTeams(teamList.filter(team => team.state === "wait_member"));
+		else
+			setTeams(teamList);
+	}, [teamList, toggle]);
+
   return (
     <TeamListViewStyled>
       <TeamListTopbar>
@@ -48,14 +58,15 @@ const TeamListView = ({ teamList, onMoreTeamListItem, totalSize }) => {
           <TeamListTopbar.Dropdown>
             <Dropdown selectedSubject={selectedSubject} setSelectedSubject={setSelectedSubject} />
           </TeamListTopbar.Dropdown>
-          <ToggleButton />
+          <ToggleButton toggle={toggle} setToggle={setToggle} />
         </TeamListTopbar.Button>
       </TeamListTopbar>
       <TeamListContainer>
-        {teamList?.map((team, index) => (
+				{!teams.length && <Loader />}
+        {teams?.map((team, index) => (
           <TeamListItem key={index} teamData={team} />
         ))}
-        {teamList && <div ref={setTarget} style={{ height: '10px' }} />}
+        {teams && <div ref={setTarget} style={{ height: '10px' }} />}
       </TeamListContainer>
       <div className="scrollbar" />
     </TeamListViewStyled>
