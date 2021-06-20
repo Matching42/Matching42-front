@@ -3,16 +3,18 @@ import { SurveyFormStyled, Logo, SelectForm, SelectItem, SubmitButton } from './
 import logoBlack from '../../assets/images/42_logo_black.svg';
 import TextInput from '../TextInput/TextInput';
 import RadioButton from '../RadioButton/RadioButton';
+import Dropdown from '../Dropdown/Dropdown';
 
 const SurveyForm = ({ onCloseButton }) => {
-  const [subject, setSubject] = useState('');
+  const [selectedSubject, setSelectedSubject] = useState('Libft');
   const [githubId, setGithubId] = useState('');
   const [preferredCluster, setPreferredCluster] = useState('개포');
 
   useEffect(() => {
+    console.log('subject : ', selectedSubject);
     console.log('github id : ', githubId);
     console.log('preferred Cluster : ', preferredCluster);
-  }, [githubId, preferredCluster]);
+  }, [selectedSubject, githubId, preferredCluster]);
 
   const handleSubmitButtonClick = () => {
     onCloseButton();
@@ -27,7 +29,9 @@ const SurveyForm = ({ onCloseButton }) => {
         <SelectForm.Box>
           <SelectItem>
             <SelectItem.Title>Subject</SelectItem.Title>
-            <SelectItem.Info>Dropdown</SelectItem.Info>
+            <SelectItem.Info>
+              <Dropdown selectedSubject={selectedSubject} setSelectedSubject={setSelectedSubject} type='form' />
+            </SelectItem.Info>
           </SelectItem>
           <SelectItem>
             <SelectItem.Title>Github ID</SelectItem.Title>
