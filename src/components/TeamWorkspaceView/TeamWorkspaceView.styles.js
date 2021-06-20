@@ -12,6 +12,22 @@ export const TeamWorkspaceViewStyled = styled.div`
   border-radius: 20px;
   box-sizing: border-box;
   font-size: 28px;
+  position: relative;
+
+  .scrollbar {
+    width: 4px;
+    height: calc(100% - 142px);
+    position: absolute;
+    z-index: 100;
+    top: 70px;
+    right: 30px;
+    background-color: #fff;
+    opacity: 1;
+    transition: 0.5s;
+  }
+  :hover .scrollbar {
+    opacity: 0;
+  }
 `;
 
 TeamWorkspaceViewStyled.Title = styled.div`
@@ -27,9 +43,20 @@ TeamWorkspaceViewStyled.Line = styled.div`
 
 export const LinkList = styled.div`
   width: 100%;
-  overflow: scroll;
+  overflow: auto;
   margin-bottom: 15px;
   font-size: 0.75em;
+
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+  ::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: #d5d5d5;
+  }
+  ::-webkit-scrollbar-track {
+    margin: 10px 0;
+  }
 `;
 
 LinkList.Title = styled.div`
@@ -40,7 +67,7 @@ LinkList.Title = styled.div`
 `;
 
 LinkList.Link = styled.div`
-  border-bottom: 2px solid #F9F9F9;
+  border-bottom: 2px solid #f9f9f9;
   padding-bottom: 18px;
 
   a {
