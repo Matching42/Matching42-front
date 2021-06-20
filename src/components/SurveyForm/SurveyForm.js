@@ -8,6 +8,7 @@ import Dropdown from '../Dropdown/Dropdown';
 const SurveyForm = ({ onCloseButton }) => {
   const [selectedSubject, setSelectedSubject] = useState('Libft');
   const [githubId, setGithubId] = useState('');
+  const [checkEmptyInput, setCheckEmptyInput] = useState(false);
   const [preferredCluster, setPreferredCluster] = useState('개포');
 
   useEffect(() => {
@@ -17,6 +18,12 @@ const SurveyForm = ({ onCloseButton }) => {
   }, [selectedSubject, githubId, preferredCluster]);
 
   const handleSubmitButtonClick = () => {
+    if (githubId === '')
+    {
+      setCheckEmptyInput(true);
+      return ;
+    }
+    alert('신청되었습니다!'); 
     onCloseButton();
   };
 
@@ -36,7 +43,7 @@ const SurveyForm = ({ onCloseButton }) => {
           <SelectItem>
             <SelectItem.Title>Github ID</SelectItem.Title>
             <SelectItem.Info>
-              <TextInput placeholderInfo="레포지토리 생성에 필요한 아이디를 입력해주세요." inputText={githubId} setInputText={setGithubId} />
+              <TextInput placeholderInfo="레포지토리 생성에 필요한 아이디를 입력해주세요." inputText={githubId} setInputText={setGithubId} checkEmptyInput={checkEmptyInput} />
             </SelectItem.Info>
           </SelectItem>
           <SelectItem>
