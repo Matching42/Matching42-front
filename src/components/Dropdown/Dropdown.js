@@ -2,28 +2,27 @@ import React, { useState } from 'react';
 import { DropdownStyled, DropdownButton, DropdownBox } from './Dropdown.styles';
 import SVG from '../../assets/icons/SVG';
 
-const Dropdown = ({ subjectList }) => {
+const Dropdown = ({ subjectList, selectedSubject, setSelectedSubject, type }) => {
   const [isActive, setIsActive] = useState(false);
-  const [selectedSubject, setSubject] = useState('Subject');
 
-  const buttonOnClick = e => {
+  const buttonOnClick = () => {
     setIsActive(!isActive);
   };
 
-  const subjectOnClick = event => {
+  const subjectOnClick = e => {
     setIsActive(!isActive);
-    setSubject(event.target.innerHTML);
+    setSelectedSubject(e.target.innerHTML);
   };
 
   return (
-    <DropdownStyled>
+    <DropdownStyled active={isActive} type={type}>
       <DropdownButton type="button" onClick={buttonOnClick} active={isActive}>
         <DropdownButton.Name>{selectedSubject}</DropdownButton.Name>
         <DropdownButton.ArrowIcon>
           <SVG color={isActive ? '#27BABB' : '#252831'} active={isActive ? 'translate(1453.069 137.659) rotate(180)' : 'translate(-1439.141 -128.991)'} />
         </DropdownButton.ArrowIcon>
       </DropdownButton>
-      <DropdownBox active={isActive}>
+      <DropdownBox active={isActive} type={type}>
         {subjectList.map((subjects, circle) => (
           <DropdownBox.List key={circle}>
             <DropdownBox.List.Title>{circle} Circle</DropdownBox.List.Title>
@@ -38,6 +37,33 @@ const Dropdown = ({ subjectList }) => {
       <div className="scrollbar" />
     </DropdownStyled>
   );
+};
+
+Dropdown.defaultProps = {
+  subjectList: [
+    ['Libft'],
+    ['Born2beroot', 'get_next_line', 'ft_printf'],
+    ['push_swap', 'minitalk', 'pipex', 'FdF', 'fract-ol', 'Exam Rank 02'],
+    ['minishell', 'Inception', 'ft_services', 'Exam Rank 03'],
+    [
+      'netwhat',
+      'cub3d',
+      'miniRT',
+      'CPP Module 00',
+      'CPP Module 01',
+      'CPP Module 02',
+      'CPP Module 03',
+      'CPP Module 04',
+      'CPP Module 05',
+      'CPP Module 06',
+      'CPP Module 07',
+      'CPP Module 08',
+      'Exam Rank 04'
+    ],
+    ['webserv', 'ft_irc', 'ft_containers', 'Exam Rank 05'],
+    ['ft_transcendence', 'Exam Rank 06']
+  ],
+  type: 'default',
 };
 
 export default Dropdown;

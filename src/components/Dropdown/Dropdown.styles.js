@@ -1,12 +1,18 @@
 import styled from 'styled-components';
 
 export const DropdownStyled = styled.div`
-  cursor: pointer;
-  font-size: 16px;
+  width: 100%;
   height: 78%;
+  font-size: 16px;
   padding-right: 10px;
+  box-sizing: border-box;
+  padding-bottom: ${props => (props.type === 'form' && '10px')};
+  padding-left: ${props => (props.type === 'form' && '5px')};
+  border-bottom: ${props => (props.type === 'form' && !props.active ? '1px solid #252831' : 'none')};
+  cursor: pointer;
 
   .scrollbar {
+    display: ${props => (props.active ? 'block' : 'none')};
     width: 4px;
     height: calc(100% - 80px);
     position: absolute;
@@ -22,10 +28,13 @@ export const DropdownStyled = styled.div`
 `;
 
 export const DropdownButton = styled.button`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   cursor: pointer;
   background-color: #fff;
   color: ${props => (props.active ? '#27BABB' : '#252831')};
-  display: flex;
 `;
 
 DropdownButton.Name = styled.div`
@@ -37,8 +46,10 @@ DropdownButton.ArrowIcon = styled.div``;
 export const DropdownBox = styled.div`
   display: flex;
   position: absolute;
-  left: 33px;
-  right: 29px;
+  width: ${props => (props.type === 'default' && '82%')};
+  left: ${props => (props.type === 'default' ? '50%' : '0')};
+  right: 0;
+  transform: ${props => (props.type === 'default' && 'translate(-50%)')};
   padding: 2px 26px;
   z-index: 100;
   display: ${props => (props.active ? 'flex' : 'none')};
@@ -48,7 +59,7 @@ export const DropdownBox = styled.div`
   border: 1px solid #27babb;
   border-radius: 10px;
   background-color: #fff;
-  margin-top: 17px;
+  margin-top: 10px;
   overflow: auto;
   height: 80%;
 
@@ -67,8 +78,13 @@ export const DropdownBox = styled.div`
 `;
 
 DropdownBox.List = styled.div`
-  padding: 20px 0;
+  padding: 15px 0;
+  padding-top: 20px;
   border-bottom: 2px solid #f9f9f9;
+
+  :last-child {
+    border: none;
+  }
 `;
 
 DropdownBox.List.Title = styled.p`
@@ -80,8 +96,9 @@ DropdownBox.List.Title = styled.p`
 DropdownBox.Item = styled.span`
   display: inline-block;
   margin-right: 15px;
-  font-size: 0.85em;
+  font-size: 0.8em;
   color: ${props => (props.selected ? '#27BABB' : '#252831')};
+  padding: 5px 0;
 
   :hover {
     color: #27babb;
