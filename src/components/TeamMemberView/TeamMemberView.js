@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { ReactComponent as Lock } from '../../assets/icons/icon-lock.svg';
-import { ReactComponent as Unlock } from '../../assets/icons/icon-unlock.svg';
+import { ReactComponent as LockIcon } from '../../assets/icons/icon-lock.svg';
+import { ReactComponent as UnlockIcon } from '../../assets/icons/icon-unlock.svg';
 import { TeamMemberViewStyled, TeamMemberViewTop } from './TeamMemberView.styles';
 import TeamMemberImage from './TeamMemberImage/TeamMemberImage';
 
@@ -27,7 +27,7 @@ const TeamMemberView = ({ user, team }) => {
 					</TeamMemberViewTop.Description>
 				</TeamMemberViewTop.Wrap>
 				<TeamMemberViewTop.Lock onClick={changeTeamState}>
-					{teamState ? <Unlock /> : <Lock />}
+					{teamState ? <UnlockIcon /> : <LockIcon />}
 				</TeamMemberViewTop.Lock>
 			</TeamMemberViewTop>
 			<TeamMemberImage teamMember={teamMember}/>
