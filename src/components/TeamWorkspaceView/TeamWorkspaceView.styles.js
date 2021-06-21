@@ -16,7 +16,7 @@ export const TeamWorkspaceViewStyled = styled.div`
 
   .scrollbar {
     width: 4px;
-    height: calc(100% - 142px);
+    height: calc(100% - 145px);
     position: absolute;
     z-index: 100;
     top: 70px;
@@ -27,6 +27,7 @@ export const TeamWorkspaceViewStyled = styled.div`
   }
   :hover .scrollbar {
     opacity: 0;
+    height: 0;
   }
 `;
 
