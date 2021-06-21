@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { OverlayProvider } from '@react-aria/overlays';
-import Header from '../components/Header/Header';
 import ProfileView from '../components/ProfileView/ProfileView';
 import MyTeamListView from '../components/MyTeamListView/MyTeamListView';
 import MatchingStateView from '../components/MatchingStateView/MatchingStateView';
@@ -15,20 +14,15 @@ const MainPage = props => {
   const { teams, teamListData } = useFetchTeamListData();
 
   if (getUserData.error) {
-    return (
-      <div>에러 발생!</div>
-    );
-  };
+    return <div>에러 발생!</div>;
+  }
 
   if (getUserData.data === null || getUserData.isValidating) {
-    return (
-      <div>로딩중!</div>
-    );
-  };
+    return <div>로딩중!</div>;
+  }
 
   return (
     <OverlayProvider>
-      <Header user={getUserData.data} />
       <MainContainer>
         <MainContainer.Section>
           <MainContainer.Left>
