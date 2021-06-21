@@ -5,7 +5,7 @@ import { FocusScope } from '@react-aria/focus';
 import { DialogStyled } from './Dialog.styles';
 
 const Dialog = props => {
-  const { children } = props;
+  const { children, type } = props;
   const ref = useRef();
   const { overlayProps, underlayProps } = useOverlay(props, ref);
 
@@ -15,9 +15,9 @@ const Dialog = props => {
   const { dialogProps } = useDialog(props, ref);
 
   return (
-    <DialogStyled {...underlayProps}>
+    <DialogStyled {...underlayProps} type={type}>
       <FocusScope contain restoreFocus autoFocus>
-        <DialogStyled.Box {...overlayProps} {...dialogProps} {...modalProps} ref={ref}>
+        <DialogStyled.Box {...overlayProps} {...dialogProps} {...modalProps} ref={ref} type={type}>
           {children}
         </DialogStyled.Box>
       </FocusScope>

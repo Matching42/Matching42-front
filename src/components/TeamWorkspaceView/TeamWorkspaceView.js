@@ -1,32 +1,60 @@
 import React from 'react';
-import { TeamWorkspaceViewStyled, LinkList, FinishStudyButton } from './TeamWorkspaceView.styles';
+import { OverlayContainer } from '@react-aria/overlays';
+import { TeamWorkspaceViewStyled, LinkList, TeamFinishedButton, Alert } from './TeamWorkspaceView.styles';
+import useToggleDialog from '../../hooks/useToggleDialog';
+import Dialog from '../Dialog/Dialog';
+import DialogCloseButton from '../DialogCloseButton/DialogCloseButton';
 
 const TeamWorkspaceView = props => {
   const { gitHub, notion, subjectPDF } = props;
+  const { state, openButtonProps, openButtonRef } = useToggleDialog();
+
+  const handleFinishedButtonClick = () => {
+    state.close();
+  };
 
   return (
-    <TeamWorkspaceViewStyled className="scrollbar">
-      <TeamWorkspaceViewStyled.Title>Team Workspace Link</TeamWorkspaceViewStyled.Title>
-      <TeamWorkspaceViewStyled.Line />
-      <LinkList>
-        <LinkList.Title>GitHub Repository</LinkList.Title>
-        <LinkList.Link>
-          <a href="https://github.com/Matching42/Matching42-front">{gitHub}</a>
-        </LinkList.Link>
-        <LinkList.Title>Notion</LinkList.Title>
-        <LinkList.Link>
-          <a href="https://github.com/Matching42/Matching42-front">{notion}</a>
-        </LinkList.Link>
-        <LinkList.Title>Subject PDF</LinkList.Title>
-        <LinkList.Link>
-          <a href="https://github.com/Matching42/Matching42-front">{subjectPDF}</a>
-        </LinkList.Link>
-      </LinkList>
-      <TeamWorkspaceViewStyled.Button>
-        <FinishStudyButton>스터디 종료</FinishStudyButton>
-      </TeamWorkspaceViewStyled.Button>
-      <div className="scrollbar" />
-    </TeamWorkspaceViewStyled>
+    <>
+      <TeamWorkspaceViewStyled className="scrollbar">
+        <TeamWorkspaceViewStyled.Title>Team Workspace Link</TeamWorkspaceViewStyled.Title>
+        <TeamWorkspaceViewStyled.Line />
+        <LinkList>
+          <LinkList.Title>GitHub Repository</LinkList.Title>
+          <LinkList.Link>
+            <a href="https://github.com/Matching42/Matching42-front">{gitHub}</a>
+          </LinkList.Link>
+          <LinkList.Title>Notion</LinkList.Title>
+          <LinkList.Link>
+            <a href="https://github.com/Matching42/Matching42-front">{notion}</a>
+          </LinkList.Link>
+          <LinkList.Title>Subject PDF</LinkList.Title>
+          <LinkList.Link>
+            <a href="https://github.com/Matching42/Matching42-front">{subjectPDF}</a>
+          </LinkList.Link>
+        </LinkList>
+        <TeamWorkspaceViewStyled.Button>
+          <TeamFinishedButton {...openButtonProps} ref={openButtonRef}>
+            스터디 종료
+          </TeamFinishedButton>
+        </TeamWorkspaceViewStyled.Button>
+        <div className="scrollbar" />
+      </TeamWorkspaceViewStyled>
+      {state.isOpen && (
+        <OverlayContainer>
+          <Dialog isOpen onClose={state.close} isDimissable type="alert">
+            <DialogCloseButton onCloseButton={state.close} />
+            <Alert>
+              <Alert.Text>스터디 종료 시, 팀 페이지는 사라지게 됩니다. 완전히 종료하고자 한다면 아래 버튼을 눌러주세요.</Alert.Text>
+              <Alert.Button>
+                <button type="button" onClick={handleFinishedButtonClick}>
+                  완료
+                </button>
+              </Alert.Button>
+            </Alert>
+          </Dialog>
+        </OverlayContainer>
+      )}
+    </>
   );
 };
 

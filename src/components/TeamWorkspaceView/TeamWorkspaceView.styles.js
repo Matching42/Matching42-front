@@ -86,7 +86,7 @@ TeamWorkspaceViewStyled.Button = styled.div`
   justify-content: flex-end;
 `;
 
-export const FinishStudyButton = styled.div`
+export const TeamFinishedButton = styled.button`
   padding: 15px 20px;
   display: inline-flex;
   align-items: center;
@@ -102,5 +102,38 @@ export const FinishStudyButton = styled.div`
 
   :hover {
     background-color: #25a9aa;
+  }
+`;
+
+export const Alert = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+Alert.Text = styled.p`
+  font-size: 12px;
+  color: #252831;
+  line-height: 1.5;
+  word-break: keep-all;
+  text-align: center;
+`;
+
+Alert.Button = styled.div`
+  button {
+    padding: 15px 30px;
+    box-sizing: border-box;
+    color: #fff;
+    background-color: #27babb;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.15s;
+
+    :hover {
+      background-color: #25a9aa;
+    }
   }
 `;

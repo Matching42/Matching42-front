@@ -21,7 +21,7 @@ const MatchingStateView = ({ waitList, user }) => {
       </MatchingStateViewStyled>
       {state.isOpen && (
         <OverlayContainer>
-          <Dialog isOpen onClose={state.close} isDimissable>
+          <Dialog isOpen onClose={state.close} isDimissable type="form">
             <DialogCloseButton onCloseButton={state.close} />
             <SurveyForm onCloseButton={state.close} />
           </Dialog>
