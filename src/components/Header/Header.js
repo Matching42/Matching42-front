@@ -23,23 +23,27 @@ const Header = props => {
 					<Logo />
 				</Link>
 			</div>
-			<HeaderStyled.Image>
-				{user && <UserImageStyled onClick={handleVisibleLogoutForm} key={1} size="big" url={`https://cdn.intra.42.fr/users/small_${user.nickname}.jpg`} />}
-			</HeaderStyled.Image>
-			<Logout isVisible={isVisible}>
-				<div className="bubble">
-					<Logout.UserWrap>
-						<UserImageStyled size="big" url={`https://cdn.intra.42.fr/users/small_${user.nickname}.jpg`}/>
-						<Logout.UserInfo>
-							<h2>{user.nickname}</h2>
-							<p>
-								Level 2 - 30% | {user.blackhole} days left
-							</p>
-						</Logout.UserInfo>
-					</Logout.UserWrap>
-					<Logout.Button onClick={handleLogoutButtonClick}>로그아웃</Logout.Button>
-				</div>
-			</Logout>
+			{user && (
+				<>
+					<HeaderStyled.Image>
+						<UserImageStyled onClick={handleVisibleLogoutForm} key={1} size="big" url={`https://cdn.intra.42.fr/users/small_${user.nickname}.jpg`} />
+					</HeaderStyled.Image>
+					<Logout isVisible={isVisible}>
+						<div className="bubble">
+							<Logout.UserWrap>
+								<UserImageStyled size="big" url={`https://cdn.intra.42.fr/users/small_${user.nickname}.jpg`}/>
+								<Logout.UserInfo>
+									<h2>{user.nickname}</h2>
+									<p>
+										Level 2 - 30% | {user.blackhole} days left
+									</p>
+								</Logout.UserInfo>
+							</Logout.UserWrap>
+							<Logout.Button onClick={handleLogoutButtonClick}>로그아웃</Logout.Button>
+						</div>
+					</Logout>
+				</>
+			)}
 		</HeaderStyled>
   );
 };

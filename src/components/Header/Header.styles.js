@@ -47,7 +47,7 @@ export const Logout = styled.div`
  	display: ${ props => props.isVisible === false ? "none" : "block" };
 	position: absolute;
 	top: 75px;
-	right: 24px;
+	right: 34px;
 
 	.bubble {
 		display: flex;
@@ -95,12 +95,11 @@ Logout.UserWrap = styled.div`
 	align-items: center;
 	width: 100%;
 	padding-bottom: 10px;
-	padding-left: 5px;
 	border-bottom: 2px solid #f9f9f9;
 `;
 
 Logout.UserInfo = styled.div`
-	margin-left: 15px;
+	margin-left: 10px;
 
 	h2 {
 		font-weight: bold;
