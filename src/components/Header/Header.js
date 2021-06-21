@@ -19,19 +19,19 @@ const Header = props => {
   return (
 		<HeaderStyled>
 			<div className="logo">
-				<Link to="/">
+				<Link to="/home">
 					<Logo />
 				</Link>
 			</div>
 			{user && (
 				<>
 					<HeaderStyled.Image>
-						<UserImageStyled onClick={handleVisibleLogoutForm} key={1} size="big" url={`https://cdn.intra.42.fr/users/small_${user.nickname}.jpg`} />
+						<UserImageStyled onClick={handleVisibleLogoutForm} key={1} size="big" src={`https://cdn.intra.42.fr/users/small_${user.nickname}.jpg`} />
 					</HeaderStyled.Image>
 					<Logout isVisible={isVisible}>
 						<div className="bubble">
 							<Logout.UserWrap>
-								<UserImageStyled size="big" url={`https://cdn.intra.42.fr/users/small_${user.nickname}.jpg`}/>
+								<UserImageStyled size="big" src={`https://cdn.intra.42.fr/users/small_${user.nickname}.jpg`}/>
 								<Logout.UserInfo>
 									<h2>{user.nickname}</h2>
 									<p>

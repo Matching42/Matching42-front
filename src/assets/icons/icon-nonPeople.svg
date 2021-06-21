@@ -1,4 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
-  <circle id="타원_6" data-name="타원 6" cx="12.5" cy="12.5" r="12.5" fill="#f2f2f2"/>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="19.295" height="21.603" viewBox="0 0 19.295 21.603">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="합치기_3" data-name="합치기 3" d="M0,16.505a11.093,11.093,0,0,1,9.738-5.492A10.158,10.158,0,0,1,19.3,16.505s-.986,5.1-9.842,5.1S0,16.505,0,16.505ZM4.648,5a5,5,0,1,1,5,5A5,5,0,0,1,4.648,5Z" transform="translate(681.852 526)" fill="#d5d5d5"/>
+    </clipPath>
+  </defs>
+  <g id="마스크_그룹_3" data-name="마스크 그룹 3" transform="translate(-681.852 -526)" clip-path="url(#clip-path)">
+    <circle id="타원_14" data-name="타원 14" cx="12.5" cy="12.5" r="12.5" transform="translate(679 522)" fill="#d5d5d5"/>
+  </g>
 </svg>
-

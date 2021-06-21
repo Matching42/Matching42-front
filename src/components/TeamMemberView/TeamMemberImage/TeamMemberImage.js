@@ -10,7 +10,7 @@ const TeamMemberImage = ({ teamMember }) => {
 		teamMember.map((member, index) => (
 			<TeamMemberImageStyled.Item key={index}>
 				{index === 0 && <CrownIcon />}
-				<UserImageStyled size="big" url={`https://cdn.intra.42.fr/users/small_${member}.jpg`} />
+				<UserImageStyled size="big" src={`https://cdn.intra.42.fr/users/small_${member}.jpg`} />
 				{member}
 			</TeamMemberImageStyled.Item>
 		))

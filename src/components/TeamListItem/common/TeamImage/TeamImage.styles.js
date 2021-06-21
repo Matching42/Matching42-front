@@ -15,10 +15,11 @@ const staticUserImageStyled = css`
 export const UserImageStyled = styled.img`
 	${staticUserImageStyled}
 	border-radius: 50%;
-	background-image: ${nonPeople};
+	background-image: url(${nonPeople});
+	background-repeat: no-repeat;
 	// src: url(${props => props.url});
-	background-position: center;
-	background-size: cover;
+	background-position: center center;
+	background-size: contain;
 `;
 
 export const RestMemberImageStyled = styled.span`

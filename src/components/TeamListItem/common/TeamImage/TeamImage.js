@@ -6,7 +6,7 @@ const TeamImage = ({ teamMember }) => {
 	const teamMemberLen = teamMember.length;
 
 	const teamMemberLessthan3 = () => (
-		teamMember.map((member, index) => (<UserImageStyled key={index} size="small" src1={`https://cdn.intra.42.fr/users/small_${member}.jpg`} />))
+		teamMember.map((member, index) => (<UserImageStyled key={index} size="small" src={`https://cdn.intra.42.fr/users/small_${member}.jpg`} />))
 	)
 
 	const teamMembermorethan3 = () => (
