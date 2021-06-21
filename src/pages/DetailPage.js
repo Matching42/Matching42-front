@@ -5,19 +5,33 @@ import Header from '../components/Header/Header';
 import TeamMemberView from '../components/TeamMemberView/TeamMemberView';
 import TeamProfileView from '../components/TeamProfileView/TeamProfileView';
 import TeamWorkspaceView from '../components/TeamWorkspaceView/TeamWorkspaceView';
+import { useUserData } from '../hooks/useUserData';
 
 const DetailPage = props => {
   const { user, team } = props;
+  const { getUserData } = useUserData(user);
+  
+  if (getUserData.error) {
+    return (
+      <div>에러 발생!</div>
+    );
+  };
+
+  if (getUserData.data === null || getUserData.isValidating) {
+    return (
+      <div>로딩중!</div>
+    );
+  };
 
   return (
     <>
       <OverlayProvider>
-        <Header user={user} />
+        <Header user={getUserData.data} />
         <DetailContainer>
           <DetailContainer.Section>
             <DetailContainer.Top>
               <TeamProfileView team={team} />
-              <TeamMemberView team={team} user={user} />
+              <TeamMemberView team={team} user={getUserData.data} />
             </DetailContainer.Top>
             <DetailContainer.Bottom>
               <TeamWorkspaceView />
@@ -30,13 +44,6 @@ const DetailPage = props => {
 };
 
 DetailPage.defaultProps = {
-  user: {
-    userId: 1,
-    nickname: 'jiwonlee',
-    level: 4.01,
-    blackhole: 28,
-    waitMatching: false
-  },
   team: {
     ID: 1,
     leaderID: 'jiwonlee',

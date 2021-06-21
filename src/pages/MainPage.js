@@ -7,22 +7,36 @@ import MyTeamListView from '../components/MyTeamListView/MyTeamListView';
 import MatchingStateView from '../components/MatchingStateView/MatchingStateView';
 import AllTeamListView from '../components/TeamListView/TeamListView';
 import { useFetchTeamListData } from '../hooks/useTeamListData';
+import { useUserData } from '../hooks/useUserData';
 
 const MainPage = props => {
   const { user, waitList, myTeamList, subjectList, totalSize } = props;
+  const { getUserData } = useUserData(user);
   const { teams, teamListData } = useFetchTeamListData();
+
+  if (getUserData.error) {
+    return (
+      <div>에러 발생!</div>
+    );
+  };
+
+  if (getUserData.data === null || getUserData.isValidating) {
+    return (
+      <div>로딩중!</div>
+    );
+  };
 
   return (
     <OverlayProvider>
-      <Header user={user} />
+      <Header user={getUserData.data} />
       <MainContainer>
         <MainContainer.Section>
           <MainContainer.Left>
-            <ProfileView user={user} />
+            <ProfileView user={getUserData.data} />
             <MyTeamListView myTeamList={myTeamList} />
           </MainContainer.Left>
           <MainContainer.Right>
-            <MatchingStateView user={user} waitList={waitList} />
+            <MatchingStateView user={getUserData.data} waitList={waitList} />
             <AllTeamListView teamList={teams} onMoreTeamListItem={teamListData.setSize} totalSize={totalSize} subjectList={subjectList} />
           </MainContainer.Right>
         </MainContainer.Section>
@@ -32,17 +46,10 @@ const MainPage = props => {
 };
 
 MainPage.defaultProps = {
-  user: {
-    userId: 1,
-    nickname: 'seolim',
-    level: 4.01,
-    blackhole: 28,
-    waitMatching: false
-  },
   waitList: {
     size: 30,
     cub3d: ['hokim', 'hyeokim', 'jiwonlee', 'jongkim', 'kwlee', 'minjakim', 'seolim', 'seomoon', 'snpark', 'sulee'],
-    ft_printf: ['hokim', 'hyeokim', 'jiwonlee', 'jongkim', 'kwlee', 'minjakim', 'seolim', 'seomoon', 'snpark', 'sulee'],
+    printf: ['hokim', 'hyeokim', 'jiwonlee', 'jongkim', 'kwlee', 'minjakim', 'seolim', 'seomoon', 'snpark', 'sulee'],
     libasm: ['hokim', 'hyeokim', 'jiwonlee', 'jongkim', 'kwlee', 'minjakim', 'seolim', 'seomoon', 'snpark', 'sulee']
   },
   myTeamList: [

@@ -26,16 +26,16 @@ const Header = props => {
 			{user && (
 				<>
 					<HeaderStyled.Image>
-						<UserImageStyled onClick={handleVisibleLogoutForm} key={1} size="big" url={`https://cdn.intra.42.fr/users/small_${user.nickname}.jpg`} />
+						<UserImageStyled onClick={handleVisibleLogoutForm} key={1} size="big" url={`https://cdn.intra.42.fr/users/small_${user.ID}.jpg`} />
 					</HeaderStyled.Image>
 					<Logout isVisible={isVisible}>
 						<div className="bubble">
 							<Logout.UserWrap>
-								<UserImageStyled size="big" url={`https://cdn.intra.42.fr/users/small_${user.nickname}.jpg`}/>
+								<UserImageStyled size="big" url={`https://cdn.intra.42.fr/users/small_${user.ID}.jpg`}/>
 								<Logout.UserInfo>
-									<h2>{user.nickname}</h2>
+									<h2>{user.ID}</h2>
 									<p>
-										Level 2 - 30% | {user.blackhole} days left
+										Level 2 - 30% | {user.intraInfo[0].blackholed_at} days left
 									</p>
 								</Logout.UserInfo>
 							</Logout.UserWrap>
