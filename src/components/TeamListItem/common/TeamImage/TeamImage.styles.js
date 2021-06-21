@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import nonPeople from "../../../../assets/icons/icon-nonPeople.svg";
 
 export const TeamImageStyled = styled.span`
   display: flex;
@@ -13,10 +14,11 @@ const staticUserImageStyled = css`
 
 export const UserImageStyled = styled.img`
 	${staticUserImageStyled}
-  border-radius: 50%;
-  background-image: url(${props => props.url});
-  background-position: center;
-  background-size: cover;
+	border-radius: 50%;
+	background-image: ${nonPeople};
+	// src: url(${props => props.url});
+	background-position: center;
+	background-size: cover;
 `;
 
 export const RestMemberImageStyled = styled.span`

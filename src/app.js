@@ -48,10 +48,10 @@ function App() {
       <BrowserRouter basename="/Matching42-front">
         <Switch>
           <Route exact path="/" component={MainPage}>
-            {token === 'null' || token === null ? <LoginPage /> : <MainPage />}
+            {token ? <MainPage /> : <Redirect to="/login" />}
           </Route>
           <Route exact path="/login" component={LoginPage}>
-            {token !== 'null' || token === null ? <MainPage /> : <LoginPage />}
+            {token ? <Redirect to="/" /> : <LoginPage />}
           </Route>
           <Route path="/detail/:id" exact component={DetailPage} />
         </Switch>
