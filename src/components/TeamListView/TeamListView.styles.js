@@ -25,6 +25,7 @@ export const TeamListViewStyled = styled.div`
   }
   :hover .scrollbar {
     opacity: 0;
+    height: 0;
   }
 `;
 
