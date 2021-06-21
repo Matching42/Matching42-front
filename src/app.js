@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import resetCss from 'reset-css';
 import { createGlobalStyle } from 'styled-components';
 import MainPage from './pages/MainPage';
@@ -31,12 +31,28 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 function App() {
+  const [token, setToken] = useState(localStorage.getItem('token'));
+  const urlParams = new URLSearchParams(window.location.search);
+
+  useEffect(async () => {
+    if (token === 'null' || token === null)
+    {
+      const res = await urlParams.get('token');
+      await localStorage.setItem('token', res);
+      await setToken(res);
+    }
+  }, []);
+
   return (
     <>
       <BrowserRouter basename="/Matching42-front">
         <Switch>
-          <Route path="/" exact component={MainPage} />
-          <Route path="/login" exact component={LoginPage} />
+          <Route exact path="/" component={MainPage}>
+            {token === 'null' || token === null ? <LoginPage /> : <MainPage />}
+          </Route>
+          <Route exact path="/login" component={LoginPage}>
+            {token !== 'null' || token === null ? <MainPage /> : <LoginPage />}
+          </Route>
           <Route path="/detail/:id" exact component={DetailPage} />
         </Switch>
       </BrowserRouter>

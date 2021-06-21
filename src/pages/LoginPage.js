@@ -4,7 +4,7 @@ import LoginSectionView from '../components/LoginSectionView/LoginSectionView';
 
 const LoginPage = () => {
   const handleLoginButtonClick = () => {
-    console.log('click!');
+    window.location.replace('https://gentle-tor-36751.herokuapp.com/login/42');
   };
 
   return (
