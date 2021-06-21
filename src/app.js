@@ -47,11 +47,11 @@ function App() {
     <>
       <BrowserRouter basename="/Matching42-front">
         <Switch>
-          <Route exact path="/" component={MainPage}>
-            {token === 'null' || token === null ? <LoginPage /> : <MainPage />}
+          <Route exact path="/home" component={MainPage}>
+            {token ? <MainPage /> : <Redirect to="/" />}
           </Route>
-          <Route exact path="/login" component={LoginPage}>
-            {token !== 'null' || token === null ? <MainPage /> : <LoginPage />}
+          <Route exact path="/" component={LoginPage}>
+            {token ? <Redirect to="/home" /> : <LoginPage />}
           </Route>
           <Route path="/detail/:id" exact component={DetailPage} />
         </Switch>
