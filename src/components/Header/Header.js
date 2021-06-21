@@ -6,15 +6,15 @@ import { UserImageStyled } from '../TeamListItem/common/TeamImage/TeamImage.styl
 
 const Header = props => {
   const { user } = props;
-	const [logState, setlogState] = useState(false);
+	const [isVisible, setIsVisible] = useState(false);
 
-	const logoutWindowManage = () => {
-		setlogState(!logState);
+	const handleVisibleLogoutForm = () => {
+		setIsVisible(!isVisible);
 	};
 
-	const FuncLogout = () => {
+	const handleLogoutButtonClick = () => {
 		console.log("Logout");
-	}
+	};
 
   return (
 		<HeaderStyled>
@@ -24,20 +24,20 @@ const Header = props => {
 				</Link>
 			</div>
 			<HeaderStyled.Image>
-				{user && <UserImageStyled onClick={logoutWindowManage} key={1} size="big" url={`https://cdn.intra.42.fr/users/small_${user.nickname}.jpg`} />}
+				{user && <UserImageStyled onClick={handleVisibleLogoutForm} key={1} size="big" url={`https://cdn.intra.42.fr/users/small_${user.nickname}.jpg`} />}
 			</HeaderStyled.Image>
-			<Logout logState={logState}>
+			<Logout isVisible={isVisible}>
 				<div className="bubble">
 					<Logout.UserWrap>
 						<UserImageStyled size="big" url={`https://cdn.intra.42.fr/users/small_${user.nickname}.jpg`}/>
 						<Logout.UserInfo>
-							<h2>{ user.nickname }</h2>
+							<h2>{user.nickname}</h2>
 							<p>
 								Level 2 - 30% | {user.blackhole} days left
 							</p>
 						</Logout.UserInfo>
 					</Logout.UserWrap>
-					<Logout.Button onClick={FuncLogout}>로그아웃</Logout.Button>
+					<Logout.Button onClick={handleLogoutButtonClick}>로그아웃</Logout.Button>
 				</div>
 			</Logout>
 		</HeaderStyled>

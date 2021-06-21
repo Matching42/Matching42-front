@@ -18,6 +18,7 @@ const HeaderStyled = styled.nav`
   padding: 0 30px;
   box-sizing: border-box;
   background-color: #252831;
+  font-size: 28px;
   z-index: 1;
 
   a {
@@ -43,58 +44,59 @@ HeaderStyled.Image = styled.div`
 `;
 
 export const Logout = styled.div`
- 	display: ${ props => props.logState === false ? "none" : "block" };
+ 	display: ${ props => props.isVisible === false ? "none" : "block" };
 	position: absolute;
-	top: 85px;
-	right: 1px;
+	top: 75px;
+	right: 24px;
+
 	.bubble {
 		display: flex;
 		flex-direction: column;
 		position: relative;
-		width: 285px;
-		height: 130px;
-		padding: 30px 25px;
-		background: #FFFFFF;
+		padding: 25px 30px;
+		background: #ffffff;
 		-webkit-border-radius: 10px;
 		-moz-border-radius: 10px;
 		border-radius: 10px;
-		border: #27babb solid 3px;
+		border: #27babb solid 1px;
 	}
 
 	.bubble:after {
 		content: '';
 		position: absolute;
 		border-style: solid;
-		border-width: 0 13px 24px;
-		border-color: #FFFFFF transparent;
+		border-width: 0 8px 16px;
+		border-color: #ffffff transparent;
 		display: block;
 		width: 0;
 		z-index: 1;
-		top: -24px;
-		left: 223px;
+		top: -15px;
+		left: 229px;
 	}
 
 	.bubble:before {
 		content: '';
 		position: absolute;
 		border-style: solid;
-		border-width: 0 15px 26px;
+		border-width: 0 9px 18px;
 		border-color: #27babb transparent;
 		display: block;
 		width: 0;
 		z-index: 0;
-		top: -29px;
-		left: 221px;
+		top: -18px;
+		left: 228px;
 	}
 `;
 
 Logout.UserWrap = styled.div`
 	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
 	width: 100%;
-	margin: 10px 0;
-	padding-bottom: 20px;
+	padding-bottom: 10px;
 	padding-left: 5px;
-	border-bottom: 2px solid rgba(0, 0, 0, 0.11);
+	border-bottom: 2px solid #f9f9f9;
 `;
 
 Logout.UserInfo = styled.div`
@@ -102,19 +104,27 @@ Logout.UserInfo = styled.div`
 
 	h2 {
 		font-weight: bold;
-		font-size: 22px;
-		margin-bottom: 5px;
+		font-size: 0.6em;
+		margin-bottom: 8px;
 	}
 
 	p {
-		color: #252831;
+		color: #7c7e83;
+		font-size: 0.4em;
 	}
 `;
 
 Logout.Button = styled.div`
-	color: #252831;
-	margin-top: 18px;
+	color: #7c7e83;
+	font-size: 0.5em;
+	margin-top: 20px;
 	padding-left: 5px;
+	transition: .2s;
+	cursor: pointer;
+
+	:hover {
+		color: #252831;
+	}
 `;
 
 export default HeaderStyled;
