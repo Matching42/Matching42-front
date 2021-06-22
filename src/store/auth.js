@@ -1,11 +1,25 @@
-import { atom } from "recoil";
+import React, { createContext, useState } from 'react';
 
-export const authStore = atom({
-  key: "authStore",
-  default: localStorage.getItem("token"),
+const AuthContext = createContext({
+  state: { token: localStorage.getItem('token'), user: null },
+  actions: {
+    setToken: () => {},
+    setUser: () => {}
+  }
 });
 
-export const userStore = atom({
-  key: "userStore",
-	default: null,
-});
+const AuthProvider = ({ children }) => {
+  const [token, setToken] = useState(localStorage.getItem('token'));
+  const [user, setUser] = useState(null);
+
+  const value = {
+    state: { token, user },
+    actions: { setToken, setUser }
+  };
+
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+};
+
+const { Consumer: AuthConsumer } = AuthContext;
+export { AuthProvider, AuthConsumer };
+export default AuthContext;

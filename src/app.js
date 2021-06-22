@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Router, Switch, Route, Redirect } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
-import { RecoilRoot, useRecoilState } from 'recoil';
 import resetCss from 'reset-css';
 import * as jwtDecode from 'jwt-decode';
 import styled, { createGlobalStyle } from 'styled-components';
@@ -9,7 +8,7 @@ import MainPage from './pages/MainPage';
 import LoginPage from './pages/LoginPage';
 import DetailPage from './pages/DetailPage';
 import Header from './components/Header/Header';
-import { authStore, userStore } from './store/auth';
+import AuthContext, { AuthProvider } from './store/auth';
 
 const GlobalStyle = createGlobalStyle`
   ${resetCss};
@@ -38,8 +37,9 @@ const GlobalStyle = createGlobalStyle`
 const history = createBrowserHistory({ basename: '/Matching42-front' });
 
 function App() {
-  const [token, setToken] = useRecoilState(authStore);
-  const [user, setUser] = useRecoilState(userStore);
+  const { state, actions } = useContext(AuthContext);
+  const { token, user } = state;
+  const { setToken, setUser } = actions;
 
   useEffect(async () => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -77,9 +77,9 @@ function App() {
 }
 
 export default () => (
-  <RecoilRoot>
+  <AuthProvider>
     <App />
-  </RecoilRoot>
+  </AuthProvider>
 );
 
 const Wrapper = styled.div`
