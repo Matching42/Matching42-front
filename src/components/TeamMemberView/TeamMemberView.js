@@ -10,7 +10,7 @@ const TeamMemberView = ({ user, team }) => {
 	const [teamState, setTeamState] = useState(condition); // post 구현되면 삭제
 
 	const  changeTeamState = () => {
-		if (teamMember.length === 5 || user.nickname !== team.leaderID) return ;
+		if (teamMember.length === 5 || user.ID !== team.leaderID) return ;
 		setTeamState(!teamState); // post 구현되면 삭제
 	}
 

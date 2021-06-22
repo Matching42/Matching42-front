@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import React, { useContext, useEffect } from 'react';
+import { Router, Switch, Route, Redirect } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
 import resetCss from 'reset-css';
-import { createGlobalStyle } from 'styled-components';
+import * as jwtDecode from 'jwt-decode';
+import styled, { createGlobalStyle } from 'styled-components';
 import MainPage from './pages/MainPage';
 import LoginPage from './pages/LoginPage';
 import DetailPage from './pages/DetailPage';
+import Header from './components/Header/Header';
+import AuthContext, { AuthProvider } from './store/auth';
 
 const GlobalStyle = createGlobalStyle`
   ${resetCss};
@@ -30,35 +34,55 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
+const history = createBrowserHistory({ basename: '/Matching42-front' });
+
 function App() {
-  const [token, setToken] = useState(localStorage.getItem('token'));
-  const urlParams = new URLSearchParams(window.location.search);
+  const { state, actions } = useContext(AuthContext);
+  const { token, user } = state;
+  const { setToken, setUser } = actions;
 
   useEffect(async () => {
-    if (token === 'null' || token === null)
-    {
-      const res = await urlParams.get('token');
-      await localStorage.setItem('token', res);
-      await setToken(res);
+    const urlParams = new URLSearchParams(window.location.search);
+    const token = urlParams.get('token');
+
+    if (token != null) {
+      localStorage.setItem('token', token);
+      setToken(token);
     }
   }, []);
 
+  useEffect(() => {
+    if (token != null) setUser(jwtDecode.default(token));
+  }, [token]);
+
   return (
     <>
-      <BrowserRouter basename="/Matching42-front">
-        <Switch>
-          <Route exact path="/home" component={MainPage}>
-            {token ? <MainPage /> : <Redirect to="/" />}
-          </Route>
-          <Route exact path="/" component={LoginPage}>
-            {token ? <Redirect to="/home" /> : <LoginPage />}
-          </Route>
-          <Route path="/detail/:id" exact component={DetailPage} />
-        </Switch>
-      </BrowserRouter>
+      <Router history={history}>
+        <Wrapper>
+          <Header user={user ? user.user : null} />
+          <Switch>
+            <Route exact path="/home">
+              {user ? <MainPage user={user.user} /> : <Redirect to="/" />}
+            </Route>
+            <Route exact path="/">
+              {user ? <Redirect to="/home" /> : <LoginPage />}
+            </Route>
+            <Route path="/detail/:id" exact render={() => <DetailPage user={user.user} />} />
+          </Switch>
+        </Wrapper>
+      </Router>
       <GlobalStyle />
     </>
   );
 }
 
-export default App;
+export default () => (
+  <AuthProvider>
+    <App />
+  </AuthProvider>
+);
+
+const Wrapper = styled.div`
+  width: 100%;
+  height: 100%;
+`;
