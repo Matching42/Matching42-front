@@ -41,21 +41,34 @@ function App() {
   const { token, user } = state;
   const { setToken, setUser } = actions;
 
-  useLayoutEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const token = urlParams.get('token');
-
-    if (token != null) {
-      localStorage.setItem('token', token);
-      setToken(token);
-
-      const user = jwtDecode.default(token);
-      if (user != null) {
+  const getUserId = token => {
+    const user = jwtDecode.default(token);
+    if (user !== null) {
+      if (user.exp < Date.now() / 1000) {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        setToken(null);
+        setUser(null);
+      } else {
         localStorage.setItem('user', user.user);
         setUser(user.user);
       }
     }
-  }, [token, user]);
+  };
+
+  useLayoutEffect(() => {
+    if (token !== null) getUserId(token);
+    else {
+      const urlParams = new URLSearchParams(window.location.search);
+      const getToken = urlParams.get('token');
+
+      if (getToken !== null) {
+        localStorage.setItem('token', getToken);
+        setToken(getToken);
+        getUserId(getToken);
+      }
+    }
+  }, []);
 
   return (
     <>
@@ -64,10 +77,10 @@ function App() {
           <Header user={user} />
           <Switch>
             <Route exact path="/">
-              {user ? <Redirect to="/home" /> : <LoginPage />}
+              {user && user !== 'null' ? <Redirect to="/home" /> : <LoginPage />}
             </Route>
-            <Route path="/home">{user ? <MainPage user={user} /> : <Redirect to="/" />}</Route>
-            <Route path="/detail/:id">{user ? <DetailPage user={user} /> : <Redirect to="/" />}</Route>
+            <Route path="/home">{user && user !== 'null' ? <MainPage user={user} /> : <Redirect to="/" />}</Route>
+            <Route path="/detail/:id">{user && user !== 'null' ? <DetailPage user={user} /> : <Redirect to="/" />}</Route>
             {/* Not Found */}
             <Route component={() => <Redirect to="/" />} />
           </Switch>
