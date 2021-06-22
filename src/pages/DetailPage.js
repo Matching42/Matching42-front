@@ -11,11 +11,11 @@ const DetailPage = props => {
   const { getUserData } = useUserData(user);
 
   if (getUserData.error) {
-    return <div>에러 발생!</div>;
+    return <Loading>에러 발생!</Loading>;
   }
 
-  if (getUserData.data === null || getUserData.isValidating) {
-    return <div>로딩중!</div>;
+  if (getUserData.data === null) {
+    return <Loading>로딩중!</Loading>;
   }
 
   return (
@@ -86,4 +86,12 @@ DetailContainer.Bottom = styled.div`
   width: 100%;
   height: 58%;
   display: flex;
+`;
+
+export const Loading = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;

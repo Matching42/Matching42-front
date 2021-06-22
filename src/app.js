@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useLayoutEffect } from 'react';
 import { Router, Switch, Route, Redirect } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import resetCss from 'reset-css';
@@ -41,33 +41,47 @@ function App() {
   const { token, user } = state;
   const { setToken, setUser } = actions;
 
-  useEffect(async () => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const token = urlParams.get('token');
+  const getUserId = token => {
+    const user = jwtDecode.default(token);
+    if (user !== null) {
+      if (user.exp < Date.now() / 1000) {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        setToken(null);
+        setUser(null);
+      } else {
+        localStorage.setItem('user', user.user);
+        setUser(user.user);
+      }
+    }
+  };
 
-    if (token != null) {
-      localStorage.setItem('token', token);
-      setToken(token);
+  useLayoutEffect(() => {
+    if (token !== null) getUserId(token);
+    else {
+      const urlParams = new URLSearchParams(window.location.search);
+      const getToken = urlParams.get('token');
+
+      if (getToken !== null) {
+        localStorage.setItem('token', getToken);
+        setToken(getToken);
+        getUserId(getToken);
+      }
     }
   }, []);
-
-  useEffect(() => {
-    if (token != null) setUser(jwtDecode.default(token));
-  }, [token]);
 
   return (
     <>
       <Router history={history}>
         <Wrapper>
-          <Header user={user ? user.user : null} />
+          <Header user={user} />
           <Switch>
-            <Route exact path="/home">
-              {user ? <MainPage user={user.user} /> : <Redirect to="/" />}
-            </Route>
             <Route exact path="/">
-              {user ? <Redirect to="/home" /> : <LoginPage />}
+              {user && user !== 'null' ? <Redirect to="/home" /> : <LoginPage />}
             </Route>
-            <Route path="/detail/:id" exact render={() => <DetailPage user={user.user} />} />
+            <Route path="/home">{user && user !== 'null' ? <MainPage user={user} /> : <Redirect to="/" />}</Route>
+            <Route path="/detail/:id">{user && user !== 'null' ? <DetailPage user={user} /> : <Redirect to="/" />}</Route>
+            <Route component={() => <Redirect to="/" />} />
           </Switch>
         </Wrapper>
       </Router>

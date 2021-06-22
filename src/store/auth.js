@@ -1,7 +1,7 @@
 import React, { createContext, useState } from 'react';
 
 const AuthContext = createContext({
-  state: { token: localStorage.getItem('token'), user: null },
+  state: { token: null, user: null },
   actions: {
     setToken: () => {},
     setUser: () => {}
@@ -10,7 +10,7 @@ const AuthContext = createContext({
 
 const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem('token'));
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(localStorage.getItem('user'));
 
   const value = {
     state: { token, user },
