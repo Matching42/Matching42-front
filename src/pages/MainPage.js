@@ -1,28 +1,36 @@
 import React from 'react';
 import styled from 'styled-components';
 import { OverlayProvider } from '@react-aria/overlays';
-import Header from '../components/Header/Header';
 import ProfileView from '../components/ProfileView/ProfileView';
 import MyTeamListView from '../components/MyTeamListView/MyTeamListView';
 import MatchingStateView from '../components/MatchingStateView/MatchingStateView';
 import AllTeamListView from '../components/TeamListView/TeamListView';
 import { useFetchTeamListData } from '../hooks/useTeamListData';
+import { useUserData } from '../hooks/useUserData';
 
 const MainPage = props => {
   const { user, waitList, myTeamList, subjectList, totalSize } = props;
+  const { getUserData } = useUserData(user);
   const { teams, teamListData } = useFetchTeamListData();
+
+  if (getUserData.error) {
+    return <Loading>에러 발생!</Loading>;
+  }
+
+  if (getUserData.data === null) {
+    return <Loading>로딩중!</Loading>;
+  }
 
   return (
     <OverlayProvider>
-      <Header user={user} />
       <MainContainer>
         <MainContainer.Section>
           <MainContainer.Left>
-            <ProfileView user={user} />
+            <ProfileView user={getUserData.data} />
             <MyTeamListView myTeamList={myTeamList} />
           </MainContainer.Left>
           <MainContainer.Right>
-            <MatchingStateView user={user} waitList={waitList} />
+            <MatchingStateView user={getUserData.data} waitList={waitList} />
             <AllTeamListView teamList={teams} onMoreTeamListItem={teamListData.setSize} totalSize={totalSize} subjectList={subjectList} />
           </MainContainer.Right>
         </MainContainer.Section>
@@ -32,17 +40,10 @@ const MainPage = props => {
 };
 
 MainPage.defaultProps = {
-  user: {
-    userId: 1,
-    nickname: 'seolim',
-    level: 4.01,
-    blackhole: 28,
-    waitMatching: false
-  },
   waitList: {
     size: 30,
     cub3d: ['hokim', 'hyeokim', 'jiwonlee', 'jongkim', 'kwlee', 'minjakim', 'seolim', 'seomoon', 'snpark', 'sulee'],
-    ft_printf: ['hokim', 'hyeokim', 'jiwonlee', 'jongkim', 'kwlee', 'minjakim', 'seolim', 'seomoon', 'snpark', 'sulee'],
+    printf: ['hokim', 'hyeokim', 'jiwonlee', 'jongkim', 'kwlee', 'minjakim', 'seolim', 'seomoon', 'snpark', 'sulee'],
     libasm: ['hokim', 'hyeokim', 'jiwonlee', 'jongkim', 'kwlee', 'minjakim', 'seolim', 'seomoon', 'snpark', 'sulee']
   },
   myTeamList: [
@@ -110,4 +111,12 @@ MainContainer.Right = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+`;
+
+export const Loading = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
