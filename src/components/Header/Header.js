@@ -28,7 +28,7 @@ const Header = props => {
       {user && (
         <>
           <HeaderStyled.Image>
-            <UserImageStyled onClick={handleVisibleLogoutForm} key={1} size="big" url={`https://cdn.intra.42.fr/users/small_${user}.jpg`} />
+            <UserImageStyled onClick={handleVisibleLogoutForm} key={1} size="big" src={`https://cdn.intra.42.fr/users/small_${user}.jpg`} />
           </HeaderStyled.Image>
           <Logout isVisible={isVisible}>
             <div className="bubble">

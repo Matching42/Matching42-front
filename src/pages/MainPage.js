@@ -9,15 +9,15 @@ import { useFetchTeamListData } from '../hooks/useTeamListData';
 import { useUserData } from '../hooks/useUserData';
 
 const MainPage = props => {
-  const { user, waitList, myTeamList, subjectList, totalSize } = props;
-  const { getUserData } = useUserData(user);
+  const { user, waitList, subjectList, totalSize } = props;
+  const { getUserData }= useUserData(user);
   const { teams, teamListData } = useFetchTeamListData();
 
   if (getUserData.error) {
     return <Loading>에러 발생!</Loading>;
   }
 
-  if (getUserData.data === null) {
+  if (getUserData.data === null || getUserData.data === undefined) {
     return <Loading>로딩중!</Loading>;
   }
 
@@ -27,7 +27,7 @@ const MainPage = props => {
         <MainContainer.Section>
           <MainContainer.Left>
             <ProfileView user={getUserData.data} />
-            <MyTeamListView myTeamList={myTeamList} />
+            <MyTeamListView myTeamList={getUserData.data.teamID} />
           </MainContainer.Left>
           <MainContainer.Right>
             <MatchingStateView user={getUserData.data} waitList={waitList} />
@@ -46,33 +46,7 @@ MainPage.defaultProps = {
     printf: ['hokim', 'hyeokim', 'jiwonlee', 'jongkim', 'kwlee', 'minjakim', 'seolim', 'seomoon', 'snpark', 'sulee'],
     libasm: ['hokim', 'hyeokim', 'jiwonlee', 'jongkim', 'kwlee', 'minjakim', 'seolim', 'seomoon', 'snpark', 'sulee']
   },
-  myTeamList: [
-    {
-      ID: 1,
-      leaderID: 'seolim',
-      memberID: ['kwlee', 'snpark'],
-      tags: ['낮', '온라인', '매일 2시간'],
-      subject: 'cub3d',
-      state: 'progress',
-      notionLink: '',
-      gitLink: '',
-      teamName: '1번팀',
-      startDate: new Date(2021, 4, 20)
-    },
-    {
-      ID: 2,
-      leaderID: 'seolim',
-      memberID: ['kwlee', 'snpark'],
-      tags: ['낮', '온라인', '매일 2시간', 'pdf숙지', '비대면'],
-      subject: 'cub3d',
-      state: 'progress',
-      notionLink: '',
-      gitLink: '',
-      teamName: '1번팀',
-      startDate: new Date(2021, 4, 20)
-    }
-  ],
-  totalSize: 53
+  totalSize: 53,
 };
 
 export default MainPage;
