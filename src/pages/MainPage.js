@@ -1,28 +1,54 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import styled from 'styled-components';
 import { OverlayProvider } from '@react-aria/overlays';
-import Header from '../components/Header/Header';
 import ProfileView from '../components/ProfileView/ProfileView';
 import MyTeamListView from '../components/MyTeamListView/MyTeamListView';
 import MatchingStateView from '../components/MatchingStateView/MatchingStateView';
 import AllTeamListView from '../components/TeamListView/TeamListView';
 import { useFetchTeamListData } from '../hooks/useTeamListData';
+import { useUserData } from '../hooks/useUserData';
+import { api } from '../api';
 
 const MainPage = props => {
-  const { user, waitList, myTeamList, subjectList, totalSize } = props;
+  const { user, waitList, subjectList, totalSize } = props;
+  const { getUserData } = useUserData(user);
   const { teams, teamListData } = useFetchTeamListData();
+
+  const handleMatchingButtonClick = useCallback(
+    async (selectedSubject, githubId, preferredCluster) => {
+      console.log(user, selectedSubject, githubId, preferredCluster);
+      await api
+        .post('/waitlist/', {
+          userID: user,
+          subjectName: selectedSubject,
+          gitName: githubId,
+          cluster: preferredCluster
+        })
+        .then(res => console.log(res))
+        .catch(error => console.warn(error));
+      getUserData.mutate();
+    },
+    [getUserData]
+  );
+
+  if (getUserData.error) {
+    return <Loading>에러 발생!</Loading>;
+  }
+
+  if (getUserData.data === null || getUserData.data === undefined) {
+    return <Loading>로딩중!</Loading>;
+  }
 
   return (
     <OverlayProvider>
-      <Header user={user} />
       <MainContainer>
         <MainContainer.Section>
           <MainContainer.Left>
-            <ProfileView user={user} />
-            <MyTeamListView myTeamList={myTeamList} />
+            <ProfileView user={getUserData.data} />
+            <MyTeamListView myTeamList={getUserData.data.teamID} />
           </MainContainer.Left>
           <MainContainer.Right>
-            <MatchingStateView user={user} waitList={waitList} />
+            <MatchingStateView user={getUserData.data} waitList={waitList} onMatchingButtonClick={handleMatchingButtonClick} />
             <AllTeamListView teamList={teams} onMoreTeamListItem={teamListData.setSize} totalSize={totalSize} subjectList={subjectList} />
           </MainContainer.Right>
         </MainContainer.Section>
@@ -32,45 +58,12 @@ const MainPage = props => {
 };
 
 MainPage.defaultProps = {
-  user: {
-    userId: 1,
-    nickname: 'seolim',
-    level: 4.01,
-    blackhole: 28,
-    waitMatching: false
-  },
   waitList: {
     size: 30,
     cub3d: ['hokim', 'hyeokim', 'jiwonlee', 'jongkim', 'kwlee', 'minjakim', 'seolim', 'seomoon', 'snpark', 'sulee'],
-    ft_printf: ['hokim', 'hyeokim', 'jiwonlee', 'jongkim', 'kwlee', 'minjakim', 'seolim', 'seomoon', 'snpark', 'sulee'],
+    printf: ['hokim', 'hyeokim', 'jiwonlee', 'jongkim', 'kwlee', 'minjakim', 'seolim', 'seomoon', 'snpark', 'sulee'],
     libasm: ['hokim', 'hyeokim', 'jiwonlee', 'jongkim', 'kwlee', 'minjakim', 'seolim', 'seomoon', 'snpark', 'sulee']
   },
-  myTeamList: [
-    {
-      ID: 1,
-      leaderID: 'seolim',
-      memberID: ['kwlee', 'snpark'],
-      tags: ['낮', '온라인', '매일 2시간'],
-      subject: 'cub3d',
-      state: 'progress',
-      notionLink: '',
-      gitLink: '',
-      teamName: '1번팀',
-      startDate: new Date(2021, 4, 20)
-    },
-    {
-      ID: 2,
-      leaderID: 'seolim',
-      memberID: ['kwlee', 'snpark'],
-      tags: ['낮', '온라인', '매일 2시간', 'pdf숙지', '비대면'],
-      subject: 'cub3d',
-      state: 'progress',
-      notionLink: '',
-      gitLink: '',
-      teamName: '1번팀',
-      startDate: new Date(2021, 4, 20)
-    }
-  ],
   totalSize: 53
 };
 
@@ -110,4 +103,12 @@ MainContainer.Right = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+`;
+
+export const Loading = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;

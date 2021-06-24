@@ -19,6 +19,6 @@ export const TextInputStyled = styled.input`
 
 TextInputStyled.EmptyText = styled.p`
   font-size: 10px;
-  color: #FE4747;
+  color: #fe4747;
   margin-top: 8px;
 `;

@@ -5,7 +5,7 @@ export const TeamWorkspaceViewStyled = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: top;
+  justify-content: space-around;
   align-items: top;
   background-color: #fff;
   padding: 30px;
@@ -17,9 +17,10 @@ export const TeamWorkspaceViewStyled = styled.div`
   .scrollbar {
     width: 4px;
     height: calc(100% - 145px);
+    max-height: 210px;
     position: absolute;
     z-index: 100;
-    top: 70px;
+    top: 60px;
     right: 30px;
     background-color: #fff;
     opacity: 1;
@@ -27,7 +28,6 @@ export const TeamWorkspaceViewStyled = styled.div`
   }
   :hover .scrollbar {
     opacity: 0;
-    height: 0;
   }
 `;
 

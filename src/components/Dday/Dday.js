@@ -4,7 +4,7 @@ import { DdayLight, DdayDark } from './Dday.styles';
 const Dday = ({ mode, startDate }) => {
   const getDday = startDate => {
     const nowDate = new Date();
-    const milliseconds = nowDate.getTime() - startDate.getTime();
+    const milliseconds = nowDate.getTime() - Date.parse(startDate);
     const days = milliseconds / 1000 / 60 / 60 / 24;
 
     return Math.floor(days);

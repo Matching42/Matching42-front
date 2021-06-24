@@ -1,23 +1,31 @@
 import React from 'react';
 import styled from 'styled-components';
 import { OverlayProvider } from '@react-aria/overlays';
-import Header from '../components/Header/Header';
 import TeamMemberView from '../components/TeamMemberView/TeamMemberView';
 import TeamProfileView from '../components/TeamProfileView/TeamProfileView';
 import TeamWorkspaceView from '../components/TeamWorkspaceView/TeamWorkspaceView';
+import { useUserData } from '../hooks/useUserData';
 
 const DetailPage = props => {
   const { user, team } = props;
+  const { getUserData } = useUserData(user);
+
+  if (getUserData.error) {
+    return <Loading>에러 발생!</Loading>;
+  }
+
+  if (getUserData.data === null) {
+    return <Loading>로딩중!</Loading>;
+  }
 
   return (
     <>
       <OverlayProvider>
-        <Header user={user} />
         <DetailContainer>
           <DetailContainer.Section>
             <DetailContainer.Top>
               <TeamProfileView team={team} />
-              <TeamMemberView team={team} user={user} />
+              <TeamMemberView team={team} user={getUserData.data} />
             </DetailContainer.Top>
             <DetailContainer.Bottom>
               <TeamWorkspaceView />
@@ -30,13 +38,6 @@ const DetailPage = props => {
 };
 
 DetailPage.defaultProps = {
-  user: {
-    userId: 1,
-    nickname: 'jiwonlee',
-    level: 4.01,
-    blackhole: 28,
-    waitMatching: false
-  },
   team: {
     ID: 1,
     leaderID: 'jiwonlee',
@@ -85,4 +86,12 @@ DetailContainer.Bottom = styled.div`
   width: 100%;
   height: 58%;
   display: flex;
+`;
+
+export const Loading = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
