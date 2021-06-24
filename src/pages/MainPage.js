@@ -57,7 +57,7 @@ const MainPage = props => {
   );
 };
 
-MainPage.defaultParameter = {
+MainPage.defaultProps = {
   waitList: {
     size: 30,
     cub3d: ['hokim', 'hyeokim', 'jiwonlee', 'jongkim', 'kwlee', 'minjakim', 'seolim', 'seomoon', 'snpark', 'sulee'],

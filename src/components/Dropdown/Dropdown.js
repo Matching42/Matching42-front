@@ -39,7 +39,7 @@ const Dropdown = ({ subjectList, selectedSubject, setSelectedSubject, type }) =>
   );
 };
 
-Dropdown.defaultParameter = {
+Dropdown.defaultProps = {
   subjectList: [
     ['Libft'],
     ['Born2beroot', 'get_next_line', 'ft_printf'],

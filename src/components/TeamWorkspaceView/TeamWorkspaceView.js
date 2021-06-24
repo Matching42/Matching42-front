@@ -58,7 +58,7 @@ const TeamWorkspaceView = props => {
   );
 };
 
-TeamWorkspaceView.defaultParameter = {
+TeamWorkspaceView.defaultProps = {
   gitHub: 'https://github.com/Matching42/Matching42-front',
   notion: 'https://github.com/Matching42/Matching42-front',
   subjectPDF: 'https://github.com/Matching42/Matching42-front'
