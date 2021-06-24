@@ -37,7 +37,7 @@ const DetailPage = props => {
   );
 };
 
-DetailPage.defaultProps = {
+DetailPage.defaultParameter = {
   team: {
     ID: 1,
     leaderID: 'jiwonlee',
