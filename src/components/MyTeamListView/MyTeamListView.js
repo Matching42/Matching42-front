@@ -5,15 +5,15 @@ import TeamListItem from '../TeamListItem/TeamListItem';
 import Loader from '../loaderSpinner/loaderSpinner';
 
 const MyTeamListView = ({ myTeamList }) => {
-	const { getTeamData } = useTeamData(myTeamList);
-	const teamData = getTeamData.data;
+  const { getTeamData } = useTeamData(myTeamList);
+  const teamData = getTeamData.data;
 
-	return (
-		<MyTeamListViewStyled>
-			<Topbar>My Team</Topbar>
-			{teamData ? [teamData].map((team, index) => <TeamListItem key={index} teamData={team} />) : <Loader />}
-  	</MyTeamListViewStyled>
-	)
+  return (
+    <MyTeamListViewStyled>
+      <Topbar>My Team</Topbar>
+      {teamData ? <TeamListItem teamData={teamData} /> : <Loader />}
+    </MyTeamListViewStyled>
+  );
 };
 
 export default MyTeamListView;

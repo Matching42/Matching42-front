@@ -4,7 +4,7 @@ export const MyTeamListViewStyled = styled.div`
   width: 100%;
   height: 63%;
   display: flex;
-	position: relative;
+  position: relative;
   flex-direction: column;
   align-items: start;
   background-color: #fff;

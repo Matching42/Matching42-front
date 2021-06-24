@@ -17,7 +17,6 @@ export const UserImageStyled = styled.img`
 	border-radius: 50%;
 	background-image: url(${nonPeople});
 	background-repeat: no-repeat;
-	// src: url(${props => props.url});
 	background-position: center center;
 	background-size: contain;
 `;
