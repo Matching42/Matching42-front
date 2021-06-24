@@ -19,15 +19,13 @@ const MatchingStateView = ({ waitList, user, onMatchingButtonClick }) => {
         <MatchingState>
           현재 <MatchingState.Strong>{waitList.size}명</MatchingState.Strong>이 <MatchingState.Strong>매칭</MatchingState.Strong>을 기다리고 있어요!
         </MatchingState>
-        {user?.waitMatching !== null ?
-          <MatchingWaitButton>
-            매칭 대기중
-          </MatchingWaitButton>
-        :
+        {user?.waitMatching !== null ? (
+          <MatchingWaitButton>매칭 대기중</MatchingWaitButton>
+        ) : (
           <MatchingStartButton {...openButtonProps} ref={openButtonRef}>
             매칭 신청 +
           </MatchingStartButton>
-        }
+        )}
       </MatchingStateViewStyled>
       {state.isOpen && (
         <OverlayContainer>

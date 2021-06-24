@@ -12,10 +12,9 @@ const SurveyForm = ({ onCloseButton, onSubmitButton }) => {
   const [preferredCluster, setPreferredCluster] = useState('개포');
 
   const handleSubmitButtonClick = () => {
-    if (githubId === '')
-    {
+    if (githubId === '') {
       setCheckEmptyInput(true);
-      return ;
+      return;
     }
     onSubmitButton?.(selectedSubject, githubId, preferredCluster);
     onCloseButton();
@@ -31,7 +30,7 @@ const SurveyForm = ({ onCloseButton, onSubmitButton }) => {
           <SelectItem>
             <SelectItem.Title>Subject</SelectItem.Title>
             <SelectItem.Info>
-              <Dropdown selectedSubject={selectedSubject} setSelectedSubject={setSelectedSubject} type='form' />
+              <Dropdown selectedSubject={selectedSubject} setSelectedSubject={setSelectedSubject} type="form" />
             </SelectItem.Info>
           </SelectItem>
           <SelectItem>

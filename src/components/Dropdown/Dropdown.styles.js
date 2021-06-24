@@ -6,8 +6,8 @@ export const DropdownStyled = styled.div`
   font-size: 16px;
   padding-right: 10px;
   box-sizing: border-box;
-  padding-bottom: ${props => (props.type === 'form' && '10px')};
-  padding-left: ${props => (props.type === 'form' && '5px')};
+  padding-bottom: ${props => props.type === 'form' && '10px'};
+  padding-left: ${props => props.type === 'form' && '5px'};
   border-bottom: ${props => (props.type === 'form' && !props.active ? '1px solid #252831' : 'none')};
   cursor: pointer;
 
@@ -46,10 +46,10 @@ DropdownButton.ArrowIcon = styled.div``;
 export const DropdownBox = styled.div`
   display: flex;
   position: absolute;
-  width: ${props => (props.type === 'default' && '82%')};
+  width: ${props => props.type === 'default' && '82%'};
   left: ${props => (props.type === 'default' ? '50%' : '0')};
   right: 0;
-  transform: ${props => (props.type === 'default' && 'translate(-50%)')};
+  transform: ${props => props.type === 'default' && 'translate(-50%)'};
   padding: 2px 26px;
   z-index: 100;
   display: ${props => (props.active ? 'flex' : 'none')};
