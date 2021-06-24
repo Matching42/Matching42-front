@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import styled from 'styled-components';
 import { OverlayProvider } from '@react-aria/overlays';
 import ProfileView from '../components/ProfileView/ProfileView';
@@ -7,11 +7,28 @@ import MatchingStateView from '../components/MatchingStateView/MatchingStateView
 import AllTeamListView from '../components/TeamListView/TeamListView';
 import { useFetchTeamListData } from '../hooks/useTeamListData';
 import { useUserData } from '../hooks/useUserData';
+import { api } from '../api';
 
 const MainPage = props => {
   const { user, waitList, subjectList, totalSize } = props;
   const { getUserData }= useUserData(user);
   const { teams, teamListData } = useFetchTeamListData();
+
+  const handleMatchingButtonClick = useCallback(
+    async (selectedSubject, githubId, preferredCluster) => {
+      console.log(user, selectedSubject, githubId, preferredCluster);
+      await api.post('/waitlist/', {
+        userID: user,
+        subjectName: selectedSubject,
+        gitName: githubId,
+        cluster: preferredCluster
+      })
+      .then((res) => console.log(res))
+      .catch((error) => console.warn(error));
+      getUserData.mutate();
+    },
+    [getUserData]
+  )
 
   if (getUserData.error) {
     return <Loading>에러 발생!</Loading>;
@@ -30,7 +47,7 @@ const MainPage = props => {
             <MyTeamListView myTeamList={getUserData.data.teamID} />
           </MainContainer.Left>
           <MainContainer.Right>
-            <MatchingStateView user={getUserData.data} waitList={waitList} />
+            <MatchingStateView user={getUserData.data} waitList={waitList} onMatchingButtonClick={handleMatchingButtonClick} />
             <AllTeamListView teamList={teams} onMoreTeamListItem={teamListData.setSize} totalSize={totalSize} subjectList={subjectList} />
           </MainContainer.Right>
         </MainContainer.Section>

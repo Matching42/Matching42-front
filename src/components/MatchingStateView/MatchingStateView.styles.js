@@ -39,3 +39,17 @@ export const MatchingStartButton = styled.button`
     background-color: #25a9aa;
   }
 `;
+
+export const MatchingWaitButton = styled.button`
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.5em;
+  font-weight: bold;
+  color: #fff;
+  background-color: #d5d5d5;
+  border-radius: 10px;
+  cursor: pointer;
+  outline: 0;
+`;

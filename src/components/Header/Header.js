@@ -18,6 +18,15 @@ const Header = props => {
     console.log('Logout');
   };
 
+  const getDday = date => {
+    const nowDate = new Date().getTime();
+    const blackholeDate = Date.parse(date);
+    const milliseconds = blackholeDate - nowDate;
+    const days = milliseconds / 1000 / 60 / 60 / 24;
+
+    return Math.floor(days);
+  };
+
   return (
     <HeaderStyled>
       <div className="logo">
@@ -36,7 +45,9 @@ const Header = props => {
                 <UserImageStyled size="big" url={`https://cdn.intra.42.fr/users/small_${user}.jpg`} />
                 <Logout.UserInfo>
                   <h2>{getUserData.data?.ID}</h2>
-                  <p>Level 2 - 30% | {getUserData.data?.intraInfo[0].blackholed_at} days left</p>
+                  <p>
+                    Level: {getUserData.data?.intraInfo[0].level}% | {user && getDday(getUserData.data.intraInfo[0].blackholed_at)} days left
+                  </p>
                 </Logout.UserInfo>
               </Logout.UserWrap>
               <Logout.Button onClick={handleLogoutButtonClick}>로그아웃</Logout.Button>
