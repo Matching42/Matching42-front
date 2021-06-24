@@ -81,7 +81,6 @@ function App() {
             </Route>
             <Route path="/home">{user && user !== 'null' ? <MainPage user={user} /> : <Redirect to="/" />}</Route>
             <Route path="/detail/:id">{user && user !== 'null' ? <DetailPage user={user} /> : <Redirect to="/" />}</Route>
-            {/* Not Found */}
             <Route component={() => <Redirect to="/" />} />
           </Switch>
         </Wrapper>

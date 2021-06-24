@@ -11,3 +11,14 @@ export const useUserData = userId => {
 
   return { getUserData };
 };
+
+export const useTeamData = (teamID) => {
+  const getTeamData = useSWR(['getTeamData', teamID], (_, teamID) =>
+    api
+      .get(`team/${teamID}`)
+      .then(res => res.data.data)
+      .catch(error => console.log(error))
+  );
+
+  return { getTeamData };
+};

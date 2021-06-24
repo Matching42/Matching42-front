@@ -21,7 +21,8 @@ const TeamListItem = ({ teamData }) => {
           <Dday mode="light" startDate={teamData.startDate} />
         </TeamListItemBox>
         <TeamListItemBox>
-          <HashTag tags={teamData.tags} />
+					{/* team 데이터에 tags가 생기면 교체 예정 */}
+          <HashTag tags={['낮', '온라인', '매일 2시간']} /> 
           <TeamImage teamMember={member} />
         </TeamListItemBox>
       </TeamListItemStyled>

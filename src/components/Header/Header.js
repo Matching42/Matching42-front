@@ -37,7 +37,7 @@ const Header = props => {
       {user && (
         <>
           <HeaderStyled.Image>
-            <UserImageStyled onClick={handleVisibleLogoutForm} key={1} size="big" url={`https://cdn.intra.42.fr/users/small_${user}.jpg`} />
+            <UserImageStyled onClick={handleVisibleLogoutForm} key={1} size="big" src={`https://cdn.intra.42.fr/users/small_${user}.jpg`} />
           </HeaderStyled.Image>
           <Logout isVisible={isVisible}>
             <div className="bubble">
@@ -46,7 +46,7 @@ const Header = props => {
                 <Logout.UserInfo>
                   <h2>{getUserData.data?.ID}</h2>
                   <p>
-                    Level: {getUserData.data?.intraInfo[0].level}% | {user && getDday(getUserData.data.intraInfo[0].blackholed_at)} days left
+                    Level: {getUserData.data?.intraInfo[0].level}% | {user && getDday(getUserData.data?.intraInfo[0].blackholed_at)} days left
                   </p>
                 </Logout.UserInfo>
               </Logout.UserWrap>
