@@ -20,8 +20,8 @@ const ProfileView = ({ user }) => {
         오른쪽 상단의 매칭 신청하기 버튼을 눌러 시작해보세요!
       </ProfileDescription>
       <UserStateList>
-        <UserStateList.Item>Level: {user?.intraInfo[0].level}%</UserStateList.Item>
-        <UserStateList.Item>Black Hole : {user && getDday(user.intraInfo[0].blackholed_at)} days left</UserStateList.Item>
+        <UserStateList.Item>Level: {user?.intraInfo.level}%</UserStateList.Item>
+        <UserStateList.Item>Black Hole : {user && getDday(user.intraInfo.blackholed_at)} days left</UserStateList.Item>
       </UserStateList>
     </ProfileViewStyled>
   );
