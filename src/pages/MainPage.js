@@ -7,16 +7,17 @@ import MatchingStateView from '../components/MatchingStateView/MatchingStateView
 import AllTeamListView from '../components/TeamListView/TeamListView';
 import { useFetchTeamListData } from '../hooks/useTeamListData';
 import { useUserData } from '../hooks/useUserData';
+import { useStateData } from '../hooks/useStateData';
 import { api } from '../api';
 
 const MainPage = props => {
   const { user, waitList, subjectList, totalSize } = props;
   const { getUserData } = useUserData(user);
+  const { getMatchingStateData } = useStateData();
   const { teams, teamListData } = useFetchTeamListData();
 
   const handleMatchingButtonClick = useCallback(
     async (selectedSubject, githubId, preferredCluster) => {
-      console.log(user, selectedSubject, githubId, preferredCluster);
       await api
         .post('/waitlist/', {
           userID: user,
@@ -27,6 +28,7 @@ const MainPage = props => {
         .then(res => console.log(res))
         .catch(error => console.warn(error));
       getUserData.mutate();
+      getMatchingStateData.mutate();
     },
     [getUserData]
   );
@@ -58,12 +60,6 @@ const MainPage = props => {
 };
 
 MainPage.defaultProps = {
-  waitList: {
-    size: 30,
-    cub3d: ['hokim', 'hyeokim', 'jiwonlee', 'jongkim', 'kwlee', 'minjakim', 'seolim', 'seomoon', 'snpark', 'sulee'],
-    printf: ['hokim', 'hyeokim', 'jiwonlee', 'jongkim', 'kwlee', 'minjakim', 'seolim', 'seomoon', 'snpark', 'sulee'],
-    libasm: ['hokim', 'hyeokim', 'jiwonlee', 'jongkim', 'kwlee', 'minjakim', 'seolim', 'seomoon', 'snpark', 'sulee']
-  },
   totalSize: 53
 };
 
