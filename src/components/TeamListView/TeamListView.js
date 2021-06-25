@@ -61,7 +61,7 @@ const TeamListView = ({ teamList, onMoreTeamListItem, totalSize }) => {
       </TeamListTopbar>
       <TeamListContainer>
         {!teams.length && <Loader />}
-        {teams?.map((team, index) => (
+        {teams.map((team, index) => (
           <TeamListItem key={index} teamData={team} />
         ))}
         {teams && <div ref={setTarget} style={{ height: '10px' }} />}
