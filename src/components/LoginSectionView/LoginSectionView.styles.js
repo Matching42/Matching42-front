@@ -52,6 +52,7 @@ export const Description = styled.div`
   font-size: 0.7rem;
   line-height: 0.9rem;
   padding: 20px;
+  margin-bottom: 2rem;
 `;
 
 Description.Text = styled.span`
