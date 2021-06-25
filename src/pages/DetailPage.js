@@ -18,7 +18,7 @@ const DetailPage = props => {
     return <Loading>에러 발생!</Loading>;
   }
 
-  if (getUserData.data === null || getTeamData.data === undefined) {
+  if (getUserData.data === null || getTeamData.data === null || getTeamData.data === undefined) {
     return <Loading>로딩중!</Loading>;
   }
 
@@ -32,7 +32,7 @@ const DetailPage = props => {
               <TeamMemberView team={getTeamData.data} user={getUserData.data} />
             </DetailContainer.Top>
             <DetailContainer.Bottom>
-              <TeamWorkspaceView />
+              <TeamWorkspaceView team={getTeamData.data} />
             </DetailContainer.Bottom>
           </DetailContainer.Section>
         </DetailContainer>

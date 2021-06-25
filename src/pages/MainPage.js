@@ -37,7 +37,7 @@ const MainPage = props => {
     return <Loading>에러 발생!</Loading>;
   }
 
-  if (getUserData.data === null || getUserData.data === undefined || getMatchingStateData.data === undefined) {
+  if (getUserData.data === null || getUserData.data === undefined || getMatchingStateData.data === null || getMatchingStateData.data === undefined) {
     return <Loading>로딩중!</Loading>;
   }
 
