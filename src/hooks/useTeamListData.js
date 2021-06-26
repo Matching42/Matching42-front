@@ -8,11 +8,11 @@ export const useFetchTeamListData = () => {
   };
 
   const teamListData = useSWRInfinite(getKey, getKey =>
-		api
-			.get(getKey)
-			.then(res => res.data.data)
-			.catch(error => console.log(error))
-	);
+    api
+      .get(getKey)
+      .then(res => res.data.data)
+      .catch(error => console.log(error))
+  );
 
   const teamsData = teamListData.data ?? [];
   const teams = [];

@@ -2,9 +2,8 @@ import React from 'react';
 import { WaitToggleStyled, WaitSpanStyled, ToggleStyled, WaitToggleButtonStyled } from './ToggleButton.styles';
 
 const WaitToggleButton = ({ toggle, setToggle }) => {
-
   const onClick = () => {
-		setToggle(toggle => !toggle);
+    setToggle(toggle => !toggle);
   };
 
   return (

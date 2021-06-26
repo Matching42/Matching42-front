@@ -5,7 +5,7 @@ export const TeamWorkspaceViewStyled = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: top;
+  justify-content: space-around;
   align-items: top;
   background-color: #fff;
   padding: 30px;
@@ -17,7 +17,7 @@ export const TeamWorkspaceViewStyled = styled.div`
   .scrollbar {
     width: 4px;
     height: calc(100% - 145px);
-		max-height: 210px;
+    max-height: 210px;
     position: absolute;
     z-index: 100;
     top: 60px;

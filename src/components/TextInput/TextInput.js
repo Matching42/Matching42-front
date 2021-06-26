@@ -12,7 +12,7 @@ const TextInput = ({ placeholderInfo, inputText, setInputText, checkEmptyInput }
   return (
     <>
       <TextInputStyled type="text" placeholder={placeholderInfo} value={inputText} onChange={handleChangeInput} checkEmptyInput={checkEmptyInput} />
-      {(checkEmptyInput && inputText === '') && <TextInputStyled.EmptyText>아이디를 입력해주세요.</TextInputStyled.EmptyText>}
+      {checkEmptyInput && inputText === '' && <TextInputStyled.EmptyText>아이디를 입력해주세요.</TextInputStyled.EmptyText>}
     </>
   );
 };

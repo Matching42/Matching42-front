@@ -25,7 +25,7 @@ const Header = props => {
 
     return Math.floor(days);
   };
-
+  console.log(getUserData.data);
   return (
     <HeaderStyled>
       <div className="logo">
@@ -45,7 +45,7 @@ const Header = props => {
                 <Logout.UserInfo>
                   <h2>{getUserData.data?.ID}</h2>
                   <p>
-                    Level: {getUserData.data?.intraInfo[0].level}% | {user && getDday(getUserData.data?.intraInfo[0].blackholed_at)} days left
+                    Level: {getUserData.data?.intraInfo.level}% | {user && getDday(getUserData.data?.intraInfo.blackholed_at)} days left
                   </p>
                 </Logout.UserInfo>
               </Logout.UserWrap>

@@ -63,7 +63,7 @@ Dropdown.defaultProps = {
     ['webserv', 'ft_irc', 'ft_containers', 'Exam Rank 05'],
     ['ft_transcendence', 'Exam Rank 06']
   ],
-  type: 'default',
+  type: 'default'
 };
 
 export default Dropdown;
