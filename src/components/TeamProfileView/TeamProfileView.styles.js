@@ -18,7 +18,7 @@ export const TeamProfileLeftBox = styled.div`
   width: 75%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
 `;
 
 TeamProfileLeftBox.Title = styled.div`

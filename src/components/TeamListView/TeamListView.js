@@ -7,8 +7,8 @@ import Loader from '../loaderSpinner/loaderSpinner';
 
 const TeamListView = ({ teamList, onMoreTeamListItem, totalSize }) => {
   const [target, setTarget] = useState(null);
-	const [toggle, setToggle] = useState(false);
-	const [teams, setTeams] = useState(teamList);
+  const [toggle, setToggle] = useState(false);
+  const [teams, setTeams] = useState(teamList);
   const [selectedSubject, setSelectedSubject] = useState('Subject');
 
   const observer = useRef(
@@ -40,12 +40,10 @@ const TeamListView = ({ teamList, onMoreTeamListItem, totalSize }) => {
     };
   }, [target]);
 
-	useEffect(() => {
-		if (toggle)
-			setTeams(teamList.filter(team => team.state === "wait_member"));
-		else
-			setTeams(teamList);
-	}, [teamList, toggle]);
+  useEffect(() => {
+    if (toggle) setTeams(teamList.filter(team => team.state === 'wait_member'));
+    else setTeams(teamList);
+  }, [teamList, toggle]);
 
   return (
     <TeamListViewStyled>
@@ -62,8 +60,8 @@ const TeamListView = ({ teamList, onMoreTeamListItem, totalSize }) => {
         </TeamListTopbar.Button>
       </TeamListTopbar>
       <TeamListContainer>
-				{!teams.length && <Loader />}
-        {teams?.map((team, index) => (
+        {!teams.length && <Loader />}
+        {teams.map((team, index) => (
           <TeamListItem key={index} teamData={team} />
         ))}
         {teams && <div ref={setTarget} style={{ height: '10px' }} />}

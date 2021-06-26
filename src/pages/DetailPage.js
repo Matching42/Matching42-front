@@ -1,20 +1,24 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { OverlayProvider } from '@react-aria/overlays';
 import TeamMemberView from '../components/TeamMemberView/TeamMemberView';
 import TeamProfileView from '../components/TeamProfileView/TeamProfileView';
 import TeamWorkspaceView from '../components/TeamWorkspaceView/TeamWorkspaceView';
-import { useUserData } from '../hooks/useUserData';
+import { useUserData, useTeamData } from '../hooks/useUserData';
 
 const DetailPage = props => {
-  const { user, team } = props;
+  const { user } = props;
+  const currentParams = useParams();
+  const currentId = currentParams.id;
   const { getUserData } = useUserData(user);
+  const { getTeamData } = useTeamData(currentId);
 
   if (getUserData.error) {
     return <Loading>에러 발생!</Loading>;
   }
 
-  if (getUserData.data === null) {
+  if (getUserData.data === null || getTeamData.data === undefined) {
     return <Loading>로딩중!</Loading>;
   }
 
@@ -24,8 +28,8 @@ const DetailPage = props => {
         <DetailContainer>
           <DetailContainer.Section>
             <DetailContainer.Top>
-              <TeamProfileView team={team} />
-              <TeamMemberView team={team} user={getUserData.data} />
+              <TeamProfileView team={getTeamData.data} />
+              <TeamMemberView team={getTeamData.data} user={getUserData.data} />
             </DetailContainer.Top>
             <DetailContainer.Bottom>
               <TeamWorkspaceView />
@@ -35,21 +39,6 @@ const DetailPage = props => {
       </OverlayProvider>
     </>
   );
-};
-
-DetailPage.defaultProps = {
-  team: {
-    ID: 1,
-    leaderID: 'jiwonlee',
-    memberID: ['seomoon', 'sulee', 'jongkim'],
-    tags: ['낮', '온라인', '매일2시간', '비대면'],
-    subject: 'cub3d',
-    state: 'wait_member',
-    notionLink: '',
-    gitLink: '',
-    teamName: 'Cub3d Team',
-    startDate: new Date(2021, 4, 20)
-  }
 };
 
 export default DetailPage;
