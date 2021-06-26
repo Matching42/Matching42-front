@@ -9,7 +9,6 @@ const Header = props => {
   const { user } = props;
   const { getUserData } = useUserData(user);
   const [isVisible, setIsVisible] = useState(false);
-
   const handleVisibleLogoutForm = () => {
     setIsVisible(!isVisible);
   };
@@ -42,7 +41,7 @@ const Header = props => {
           <Logout isVisible={isVisible}>
             <div className="bubble">
               <Logout.UserWrap>
-                <UserImageStyled size="big" url={`https://cdn.intra.42.fr/users/small_${user}.jpg`} />
+                <UserImageStyled size="big" src={`https://cdn.intra.42.fr/users/small_${user}.jpg`} />
                 <Logout.UserInfo>
                   <h2>{getUserData.data?.ID}</h2>
                   <p>
