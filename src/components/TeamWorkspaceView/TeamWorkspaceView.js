@@ -6,10 +6,11 @@ import Dialog from '../Dialog/Dialog';
 import DialogCloseButton from '../DialogCloseButton/DialogCloseButton';
 
 const TeamWorkspaceView = props => {
-  const { team, subjectPDF } = props;
+  const { team, subjectPDF, onFinishedButtonClick } = props;
   const { state, openButtonProps, openButtonRef } = useToggleDialog();
 
   const handleFinishedButtonClick = () => {
+    onFinishedButtonClick?.();
     state.close();
   };
 
