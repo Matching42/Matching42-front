@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { OverlayProvider } from '@react-aria/overlays';
@@ -29,7 +29,7 @@ const DetailPage = props => {
           <DetailContainer.Section>
             <DetailContainer.Top>
               <TeamProfileView team={getTeamData.data} />
-              <TeamMemberView team={getTeamData.data} user={getUserData.data} />
+              <TeamMemberView teamData={getTeamData.data} user={getUserData.data} />
             </DetailContainer.Top>
             <DetailContainer.Bottom>
               <TeamWorkspaceView />

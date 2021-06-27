@@ -10,10 +10,9 @@ const Header = props => {
   const [isVisible, setIsVisible] = useState(false);
 
   const handleVisibleLogoutForm = event => {
-    event.stopPropagation();
     setIsVisible(!isVisible);
+    event.stopPropagation();
   };
-
   return (
     <HeaderStyled>
       <div className="logo">

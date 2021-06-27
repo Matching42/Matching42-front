@@ -19,6 +19,6 @@ export const useTeamData = teamID => {
       .then(res => res.data.data)
       .catch(error => console.log(error))
   );
-
+  // console.log(getTeamData);
   return { getTeamData };
 };
