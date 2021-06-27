@@ -1,31 +1,19 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useUserData } from '../../hooks/useUserData';
-import HeaderStyled, { Logout } from './Header.styles';
-import { ReactComponent as Logo } from '../../assets/images/42_logo.svg';
+import HeaderStyled from './Header.styles';
+import Logout from './Logout';
 import { UserImageStyled } from '../TeamListItem/common/TeamImage/TeamImage.styles';
+import { ReactComponent as Logo } from '../../assets/images/42_logo.svg';
 
 const Header = props => {
   const { user } = props;
-  const { getUserData } = useUserData(user);
   const [isVisible, setIsVisible] = useState(false);
-  const handleVisibleLogoutForm = () => {
+
+  const handleVisibleLogoutForm = event => {
+    event.stopPropagation();
     setIsVisible(!isVisible);
   };
 
-  const handleLogoutButtonClick = () => {
-    console.log('Logout');
-  };
-
-  const getDday = date => {
-    const nowDate = new Date().getTime();
-    const blackholeDate = Date.parse(date);
-    const milliseconds = blackholeDate - nowDate;
-    const days = milliseconds / 1000 / 60 / 60 / 24;
-
-    return Math.floor(days);
-  };
-  console.log(getUserData.data);
   return (
     <HeaderStyled>
       <div className="logo">
@@ -38,20 +26,7 @@ const Header = props => {
           <HeaderStyled.Image>
             <UserImageStyled onClick={handleVisibleLogoutForm} key={1} size="big" src={`https://cdn.intra.42.fr/users/small_${user}.jpg`} />
           </HeaderStyled.Image>
-          <Logout isVisible={isVisible}>
-            <div className="bubble">
-              <Logout.UserWrap>
-                <UserImageStyled size="big" src={`https://cdn.intra.42.fr/users/small_${user}.jpg`} />
-                <Logout.UserInfo>
-                  <h2>{getUserData.data?.ID}</h2>
-                  <p>
-                    Level: {getUserData.data?.intraInfo.level}% | {user && getDday(getUserData.data?.intraInfo.blackholed_at)} days left
-                  </p>
-                </Logout.UserInfo>
-              </Logout.UserWrap>
-              <Logout.Button onClick={handleLogoutButtonClick}>로그아웃</Logout.Button>
-            </div>
-          </Logout>
+          {isVisible && <Logout user={user} isVisible={isVisible} setIsVisible={setIsVisible} />}
         </>
       )}
     </HeaderStyled>

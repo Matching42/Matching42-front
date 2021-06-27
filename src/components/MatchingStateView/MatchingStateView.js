@@ -14,7 +14,6 @@ const MatchingStateView = ({ user, onMatchingButtonClick }) => {
   const handleSubmitButtonClick = (selectedSubject, githubId, preferredCluster) => {
     onMatchingButtonClick?.(selectedSubject, githubId, preferredCluster);
   };
-
   return (
     <>
       <MatchingStateViewStyled>

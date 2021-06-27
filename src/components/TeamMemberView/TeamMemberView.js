@@ -11,7 +11,7 @@ const TeamMemberView = ({ user, team }) => {
 
   const changeTeamState = () => {
     if (teamMember.length === 5 || user?.ID !== team.leaderID) return;
-    setTeamState(!teamState); // post 구현되면 삭제
+    setTeamState(!teamState);
   };
 
   // post 구현되면 teamState 대신 team.state === "wait_member"로 변경
