@@ -31,6 +31,15 @@ const MainPage = props => {
     getMatchingStateData.mutate();
   };
 
+  const handleMatchingCancelButtonClick = async () => {
+    await api
+      .delete(`/waitlist/${user}`)
+      .then(res => console.log(res))
+      .catch(error => console.warn(error));
+    getUserData.mutate();
+    getMatchingStateData.mutate();
+  };
+
   if (getUserData.error) {
     return (
       <Loading>
@@ -57,7 +66,7 @@ const MainPage = props => {
             <MyTeamListView myTeamList={getUserData.data.teamID} />
           </MainContainer.Left>
           <MainContainer.Right>
-            <MatchingStateView user={getUserData.data} waitList={waitList} onMatchingButtonClick={handleMatchingButtonClick} />
+            <MatchingStateView user={getUserData.data} waitList={waitList} onMatchingButtonClick={handleMatchingButtonClick} onMatchingCancelButtonClick={handleMatchingCancelButtonClick} />
             <AllTeamListView teamList={teams} onMoreTeamListItem={teamListData.setSize} totalSize={totalSize} subjectList={subjectList} />
           </MainContainer.Right>
         </MainContainer.Section>

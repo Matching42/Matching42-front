@@ -41,7 +41,8 @@ export const MatchingStartButton = styled.button`
 `;
 
 export const MatchingWaitButton = styled.button`
-  padding: 15px 20px;
+  width: 120px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -52,4 +53,55 @@ export const MatchingWaitButton = styled.button`
   border-radius: 10px;
   cursor: pointer;
   outline: 0;
+  transition: all.1s;
+
+  .before {
+    display: block;
+  }
+  .after {
+    display: none;
+  }
+  :hover {
+    background-color: #c6c6c6;
+
+    .before {
+      display: none;
+    }
+    .after {
+      display: block;
+    }
+  }
+`;
+
+export const Alert = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+Alert.Text = styled.p`
+  font-size: 12px;
+  color: #252831;
+  line-height: 1.5;
+  word-break: keep-all;
+  text-align: center;
+`;
+
+Alert.Button = styled.div`
+  button {
+    padding: 15px 30px;
+    box-sizing: border-box;
+    color: #fff;
+    background-color: #27babb;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.15s;
+
+    :hover {
+      background-color: #25a9aa;
+    }
+  }
 `;
