@@ -6,19 +6,29 @@ import TeamMemberView from '../components/TeamMemberView/TeamMemberView';
 import TeamProfileView from '../components/TeamProfileView/TeamProfileView';
 import TeamWorkspaceView from '../components/TeamWorkspaceView/TeamWorkspaceView';
 import { useUserData, useTeamData } from '../hooks/useUserData';
+import { api } from '../api';
 
-const DetailPage = props => {
-  const { user } = props;
+const DetailPage = ({ user, history }) => {
   const currentParams = useParams();
   const currentId = currentParams.id;
   const { getUserData } = useUserData(user);
   const { getTeamData } = useTeamData(currentId);
 
+  const handleFinishedButtonClick = async () => {
+    await api
+      .patch(`/team/${getTeamData.data?.ID}`, {
+        state: 'end'
+      })
+      .then(res => console.log(res))
+      .catch(error => console.warn(error));
+    history.push('/home');
+  };
+
   if (getUserData.error) {
     return <Loading>에러 발생!</Loading>;
   }
 
-  if (getUserData.data === null || getTeamData.data === undefined) {
+  if (getUserData.data === null || getTeamData.data === null || getTeamData.data === undefined) {
     return <Loading>로딩중!</Loading>;
   }
 
@@ -32,7 +42,7 @@ const DetailPage = props => {
               <TeamMemberView team={getTeamData.data} user={getUserData.data} />
             </DetailContainer.Top>
             <DetailContainer.Bottom>
-              <TeamWorkspaceView />
+              <TeamWorkspaceView team={getTeamData.data} onFinishedButtonClick={handleFinishedButtonClick} />
             </DetailContainer.Bottom>
           </DetailContainer.Section>
         </DetailContainer>

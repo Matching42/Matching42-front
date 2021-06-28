@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { OverlayProvider } from '@react-aria/overlays';
 import ProfileView from '../components/ProfileView/ProfileView';
@@ -16,28 +16,25 @@ const MainPage = props => {
   const { getMatchingStateData } = useStateData();
   const { teams, teamListData } = useFetchTeamListData();
 
-  const handleMatchingButtonClick = useCallback(
-    async (selectedSubject, githubId, preferredCluster) => {
-      await api
-        .post('/waitlist/', {
-          userID: user,
-          subjectName: selectedSubject,
-          gitName: githubId,
-          cluster: preferredCluster
-        })
-        .then(res => console.log(res))
-        .catch(error => console.warn(error));
-      getUserData.mutate();
-      getMatchingStateData.mutate();
-    },
-    [getUserData]
-  );
+  const handleMatchingButtonClick = async (selectedSubject, githubId, preferredCluster) => {
+    await api
+      .post('/waitlist/', {
+        userID: user,
+        subjectName: selectedSubject,
+        gitName: githubId,
+        cluster: preferredCluster
+      })
+      .then(res => console.log(res))
+      .catch(error => console.warn(error));
+    getUserData.mutate();
+    getMatchingStateData.mutate();
+  };
 
   if (getUserData.error) {
     return <Loading>에러 발생!</Loading>;
   }
 
-  if (getUserData.data === null || getUserData.data === undefined || getMatchingStateData.data === undefined) {
+  if (getUserData.data === null || getUserData.data === undefined || getMatchingStateData.data === null || getMatchingStateData.data === undefined) {
     return <Loading>로딩중!</Loading>;
   }
 
