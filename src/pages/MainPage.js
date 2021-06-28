@@ -5,6 +5,7 @@ import ProfileView from '../components/ProfileView/ProfileView';
 import MyTeamListView from '../components/MyTeamListView/MyTeamListView';
 import MatchingStateView from '../components/MatchingStateView/MatchingStateView';
 import AllTeamListView from '../components/TeamListView/TeamListView';
+import LoaderSpinner from '../components/LoaderSpinner/LoaderSpinner';
 import { useFetchTeamListData } from '../hooks/useTeamListData';
 import { useUserData } from '../hooks/useUserData';
 import { useStateData } from '../hooks/useStateData';
@@ -31,11 +32,20 @@ const MainPage = props => {
   };
 
   if (getUserData.error) {
-    return <Loading>에러 발생!</Loading>;
+    return (
+      <Loading>
+        <Loading.Strong>앗!</Loading.Strong>
+        <Loading.Text>에러가 발생했어요! 잠시 후 다시 시도해주세요.</Loading.Text>
+      </Loading>
+    );
   }
 
   if (getUserData.data === null || getUserData.data === undefined || getMatchingStateData.data === null || getMatchingStateData.data === undefined) {
-    return <Loading>로딩중!</Loading>;
+    return (
+      <Loading>
+        <LoaderSpinner />
+      </Loading>
+    );
   }
 
   return (
@@ -102,6 +112,19 @@ export const Loading = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-size: 40px;
+  color: #252831;
+`;
+
+Loading.Strong = styled.p`
+  font-size: 1em;
+  font-weight: bold;
+  margin-bottom: 20px;
+`;
+
+Loading.Text = styled.p`
+  font-size: 0.4em;
 `;

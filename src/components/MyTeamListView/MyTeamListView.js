@@ -2,7 +2,7 @@ import React from 'react';
 import { useTeamData } from '../../hooks/useUserData';
 import { MyTeamListViewStyled, Topbar } from './MyTeamListView.styles';
 import TeamListItem from '../TeamListItem/TeamListItem';
-import Loader from '../loaderSpinner/loaderSpinner';
+import LoaderSpinner from '../LoaderSpinner/LoaderSpinner';
 
 const MyTeamListView = ({ myTeamList }) => {
   const { getTeamData } = useTeamData(myTeamList);
@@ -11,7 +11,7 @@ const MyTeamListView = ({ myTeamList }) => {
   return (
     <MyTeamListViewStyled>
       <Topbar>My Team</Topbar>
-      {teamData ? <TeamListItem teamData={teamData} /> : <Loader />}
+      {teamData ? <TeamListItem teamData={teamData} /> : <LoaderSpinner />}
     </MyTeamListViewStyled>
   );
 };
