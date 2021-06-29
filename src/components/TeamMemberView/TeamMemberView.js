@@ -8,7 +8,6 @@ import TeamMemberImage from './TeamMemberImage/TeamMemberImage';
 
 const TeamMemberView = ({ user, teamData }) => {
   const [team, setTeam] = useState(teamData);
-  console.log(team);
   const teamMember = [team.leaderID, ...team.memberID];
 
   const changeTeamState = async () => {
@@ -28,7 +27,6 @@ const TeamMemberView = ({ user, teamData }) => {
       .catch(error => console.log(error));
   };
 
-  // post 구현되면 teamState 대신 team.state === "wait_member"로 변경
   return (
     <TeamMemberViewStyled>
       <TeamMemberViewTop>

@@ -3,7 +3,7 @@ import { TeamListViewStyled, TeamListTopbar, TeamListContainer } from './TeamLis
 import TeamListItem from '../TeamListItem/TeamListItem';
 import Dropdown from '../Dropdown/Dropdown';
 import ToggleButton from '../ToggleButton/ToggleButton';
-import Loader from '../loaderSpinner/loaderSpinner';
+import LoaderSpinner from '../LoaderSpinner/LoaderSpinner';
 
 const TeamListView = ({ teamList, onMoreTeamListItem, totalSize }) => {
   const [target, setTarget] = useState(null);
@@ -60,7 +60,7 @@ const TeamListView = ({ teamList, onMoreTeamListItem, totalSize }) => {
         </TeamListTopbar.Button>
       </TeamListTopbar>
       <TeamListContainer>
-        {!teams.length && <Loader />}
+        {!teams.length && <LoaderSpinner />}
         {teams.map((team, index) => (
           <TeamListItem key={index} teamData={team} />
         ))}

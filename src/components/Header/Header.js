@@ -13,6 +13,20 @@ const Header = props => {
     setIsVisible(!isVisible);
     event.stopPropagation();
   };
+
+  const handleLogoutButtonClick = () => {
+    console.log('Logout');
+  };
+
+  const getDday = date => {
+    const nowDate = new Date().getTime();
+    const blackholeDate = Date.parse(date);
+    const milliseconds = blackholeDate - nowDate;
+    const days = milliseconds / 1000 / 60 / 60 / 24;
+
+    return Math.floor(days);
+  };
+
   return (
     <HeaderStyled>
       <div className="logo">

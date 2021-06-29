@@ -9,7 +9,9 @@ const Logout = ({ user, isVisible, setIsVisible }) => {
   const modalRef = useRef();
 
   const handleClickOutside = ({ target }) => {
+    console.log(target);
     if (isVisible && !modalRef.current?.contains(target)) {
+      console.log('err');
       setIsVisible(false);
     }
   };
