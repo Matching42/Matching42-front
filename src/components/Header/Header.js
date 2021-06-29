@@ -26,7 +26,7 @@ const Header = props => {
 
     return Math.floor(days);
   };
-  console.log(getUserData.data);
+
   return (
     <HeaderStyled>
       <div className="logo">
