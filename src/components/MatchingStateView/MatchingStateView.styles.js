@@ -4,6 +4,7 @@ export const MatchingStateViewStyled = styled.div`
   width: 100%;
   height: 18%;
   display: flex;
+  position: relative;
   justify-content: space-between;
   align-items: center;
   background-color: #fff;
@@ -62,7 +63,7 @@ export const MatchingWaitButton = styled.button`
     display: none;
   }
   :hover {
-    background-color: #c6c6c6;
+    background-color: #bfbfbf;
 
     .before {
       display: none;
@@ -105,3 +106,56 @@ Alert.Button = styled.div`
     }
   }
 `;
+
+export const MatchingInfo = styled.div`
+  display: flex;
+  position: relative;
+`;
+
+MatchingInfo.Box = styled.div`
+  position: absolute;
+  top: -34px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: boxAnimate 0.6s 0.3s infinite ease-in-out alternate;
+
+  @keyframes boxAnimate {
+    0% {
+      top: -34px;
+    }
+    50% {
+      top: -38px;
+    }
+    100% {
+      top: -34px;
+    }
+  }
+
+  .bubble {
+    padding: 6px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background: #27babb;
+    border-radius: 5px;
+    font-size: 12px;
+    color: #fff;
+  }
+
+  .bubble:after {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 8px 5px 0;
+    border-color: #27babb transparent;
+    display: block;
+    width: 0;
+    z-index: 1;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+`;
+
+MatchingInfo.Text = styled.p``;

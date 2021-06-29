@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { OverlayContainer } from '@react-aria/overlays';
-import { MatchingStateViewStyled, MatchingState, MatchingStartButton, MatchingWaitButton, Alert } from './MatchingStateView.styles';
+import { MatchingStateViewStyled, MatchingState, MatchingStartButton, MatchingWaitButton, Alert, MatchingInfo } from './MatchingStateView.styles';
 import useToggleDialog from '../../hooks/useToggleDialog';
 import Dialog from '../Dialog/Dialog';
 import DialogCloseButton from '../DialogCloseButton/DialogCloseButton';
@@ -28,10 +28,17 @@ const MatchingStateView = ({ user, onMatchingButtonClick, onMatchingCancelButton
           현재 <MatchingState.Strong>{getMatchingStateData.data.totalWaitingNumber}명</MatchingState.Strong>이 <MatchingState.Strong>매칭</MatchingState.Strong>을 기다리고 있어요!
         </MatchingState>
         {user.waitMatching !== null ? (
-          <MatchingWaitButton {...openButtonProps} ref={openButtonRef} onClick={() => setDialogType('cancel')}>
-            <span className="before">매칭 대기중</span>
-            <span className="after">신청 취소 -</span>
-          </MatchingWaitButton>
+          <MatchingInfo>
+            <MatchingInfo.Box>
+              <div className="bubble">
+                <MatchingInfo.Text>{user.waitMatching}</MatchingInfo.Text>
+              </div>
+            </MatchingInfo.Box>
+            <MatchingWaitButton {...openButtonProps} ref={openButtonRef} onClick={() => setDialogType('cancel')}>
+              <span className="before">매칭 대기중</span>
+              <span className="after">신청 취소 -</span>
+            </MatchingWaitButton>
+          </MatchingInfo>
         ) : (
           <MatchingStartButton {...openButtonProps} ref={openButtonRef} onClick={() => setDialogType('submit')}>
             매칭 신청 +
