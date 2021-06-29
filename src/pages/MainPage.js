@@ -15,7 +15,7 @@ const MainPage = props => {
   const { user, waitList, subjectList, totalSize } = props;
   const { getUserData } = useUserData(user);
   const { getMatchingStateData } = useStateData();
-  const { teams, teamListData } = useFetchTeamListData();
+  const { teams, teamListData, allTeamMutate } = useFetchTeamListData();
 
   const handleMatchingButtonClick = async (selectedSubject, githubId, preferredCluster) => {
     await api
@@ -67,7 +67,7 @@ const MainPage = props => {
           </MainContainer.Left>
           <MainContainer.Right>
             <MatchingStateView user={getUserData.data} waitList={waitList} onMatchingButtonClick={handleMatchingButtonClick} onMatchingCancelButtonClick={handleMatchingCancelButtonClick} />
-            <AllTeamListView teamList={teams} onMoreTeamListItem={teamListData.setSize} totalSize={totalSize} subjectList={subjectList} />
+            <AllTeamListView teamList={teams} mutate={allTeamMutate} onMoreTeamListItem={teamListData.setSize} totalSize={totalSize} subjectList={subjectList} />
           </MainContainer.Right>
         </MainContainer.Section>
       </MainContainer>

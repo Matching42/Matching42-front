@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
-import { mutate } from 'swr';
 import { api } from '../../api';
 import { ReactComponent as LockIcon } from '../../assets/icons/icon-lock.svg';
 import { ReactComponent as UnlockIcon } from '../../assets/icons/icon-unlock.svg';
 import { TeamMemberViewStyled, TeamMemberViewTop } from './TeamMemberView.styles';
 import TeamMemberImage from './TeamMemberImage/TeamMemberImage';
+import { useFetchTeamListData } from '../../hooks/useTeamListData';
 
-const TeamMemberView = ({ user, teamData }) => {
+const TeamMemberView = ({ user, teamData, mutate }) => {
   const [team, setTeam] = useState(teamData);
   const teamMember = [team.leaderID, ...team.memberID];
+  const { allTeamMutate } = useFetchTeamListData();
 
   const changeTeamState = async () => {
     if (teamMember.length === 5 || user.ID !== team.leaderID) return;
@@ -25,6 +26,8 @@ const TeamMemberView = ({ user, teamData }) => {
       .patch(`team/${team.ID}`, { state: changeState })
       .then(res => setTeam(res.data.team))
       .catch(error => console.log(error));
+    allTeamMutate();
+    mutate();
   };
 
   return (
