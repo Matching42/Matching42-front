@@ -9,10 +9,7 @@ const useToggleDialog = () => {
 
   const { buttonProps: openButtonProps } = useButton(
     {
-      onPress: e => {
-        console.log(e);
-        state.open();
-      }
+      onPress: () => state.open()
     },
     openButtonRef
   );
