@@ -8,8 +8,12 @@ import Dialog from '../Dialog/Dialog';
 import DialogCloseButton from '../DialogCloseButton/DialogCloseButton';
 import EditForm from '../EditForm/EditForm';
 
-const TeamProfileView = ({ team }) => {
+const TeamProfileView = ({ team, onTeamProfileEditButtonclick }) => {
   const { state, openButtonProps, openButtonRef } = useToggleDialog();
+
+  const handleSubmitButtonClick = (teamName, teamDescription, teamTags) => {
+    onTeamProfileEditButtonclick?.(teamName, teamDescription, teamTags);
+  }
 
   return (
     <>
@@ -36,7 +40,7 @@ const TeamProfileView = ({ team }) => {
         <OverlayContainer>
           <Dialog isOpen onClose={state.close} isDimissable>
             <DialogCloseButton onCloseButton={state.close} />
-            <EditForm team={team} onCloseButton={state.close}  />
+            <EditForm team={team} onCloseButton={state.close} onSubmitButton={handleSubmitButtonClick}  />
           </Dialog>
         </OverlayContainer>
       )}

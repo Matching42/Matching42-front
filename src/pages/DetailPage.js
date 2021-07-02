@@ -5,6 +5,7 @@ import TeamMemberView from '../components/TeamMemberView/TeamMemberView';
 import TeamProfileView from '../components/TeamProfileView/TeamProfileView';
 import TeamWorkspaceView from '../components/TeamWorkspaceView/TeamWorkspaceView';
 import { useUserData } from '../hooks/useUserData';
+import { api } from '../api';
 
 const DetailPage = props => {
   const { user, team } = props;
@@ -18,13 +19,22 @@ const DetailPage = props => {
     return <Loading>로딩중!</Loading>;
   }
 
+const handleTeamProfileEditButtonClick = ( teamName, teamDescription, teamTags) => {
+  /*
+  console.log(team.ID);
+  console.log(teamName);
+  console.log(teamDescription);
+  console.log(teamTags);
+  */
+}
+
   return (
     <>
       <OverlayProvider>
         <DetailContainer>
           <DetailContainer.Section>
             <DetailContainer.Top>
-              <TeamProfileView team={team} />
+              <TeamProfileView team={team} onTeamProfileEditButtonclick={handleTeamProfileEditButtonClick}/>
               <TeamMemberView team={team} user={getUserData.data} />
             </DetailContainer.Top>
             <DetailContainer.Bottom>

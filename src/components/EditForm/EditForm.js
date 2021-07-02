@@ -7,10 +7,9 @@ import { ReactComponent as DeleteIcon } from '../../assets/icons/icon-delete.svg
 const EditForm = ({ team, onCloseButton, onSubmitButton }) => {
     const [teamName, setTeamName] = useState('Cub3d Team');
     const [teamDescription, setTeamDescription] = useState('Team GitHub Repository, Notion, Slack 적극 활용하여 동료들과 함께 학습을 진행해보세요!');
-    const [teamTags, setTeamTags] = useState([]);
 
     const handleSubmitButtonClick = () => {
-        onSubmitButton?.(teamName, teamTags);
+        onSubmitButton?.(teamName, teamDescription, team.tags);
         onCloseButton();
     }
 
