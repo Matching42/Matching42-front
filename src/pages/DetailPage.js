@@ -34,7 +34,7 @@ const handleTeamProfileEditButtonClick = ( teamName, teamDescription, teamTags) 
         <DetailContainer>
           <DetailContainer.Section>
             <DetailContainer.Top>
-              <TeamProfileView team={team} onTeamProfileEditButtonclick={handleTeamProfileEditButtonClick}/>
+              <TeamProfileView team={team} user={user} onTeamProfileEditButtonclick={handleTeamProfileEditButtonClick}/>
               <TeamMemberView team={team} user={getUserData.data} />
             </DetailContainer.Top>
             <DetailContainer.Bottom>

@@ -35,7 +35,7 @@ TeamProfileLeftBox.Name = styled.div`
 `;
 
 TeamProfileLeftBox.EditButton = styled.div`
-  cursor: pointer;
+  cursor: ${props => (props.isActive ? 'pointer' : 'default')};
 `;
 
 export const TeamDescription = styled.div`

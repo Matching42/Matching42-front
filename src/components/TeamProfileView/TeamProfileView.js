@@ -8,7 +8,7 @@ import Dialog from '../Dialog/Dialog';
 import DialogCloseButton from '../DialogCloseButton/DialogCloseButton';
 import EditForm from '../EditForm/EditForm';
 
-const TeamProfileView = ({ team, onTeamProfileEditButtonclick }) => {
+const TeamProfileView = ({ team, user, onTeamProfileEditButtonclick }) => {
   const { state, openButtonProps, openButtonRef } = useToggleDialog();
 
   const handleSubmitButtonClick = (teamName, teamDescription, teamTags) => {
@@ -21,9 +21,15 @@ const TeamProfileView = ({ team, onTeamProfileEditButtonclick }) => {
         <TeamProfileLeftBox>
           <TeamProfileLeftBox.Title>
             <TeamProfileLeftBox.Name>{team.teamName}</TeamProfileLeftBox.Name>
-            <TeamProfileLeftBox.EditButton {...openButtonProps} ref={openButtonRef}>
-              <EditIcon />
-            </TeamProfileLeftBox.EditButton>
+            {user?.id !== team?.data?.leaderID ? (
+              <TeamProfileLeftBox.EditButton>
+                <EditIcon />
+              </TeamProfileLeftBox.EditButton>
+            ) : (
+              <TeamProfileLeftBox.EditButton isActive {...openButtonProps} ref={openButtonRef}>
+                <EditIcon />
+              </TeamProfileLeftBox.EditButton>
+            )}
           </TeamProfileLeftBox.Title>
           <TeamDescription>Team GitHub Repository, Notion, Slack 적극 활용하여 동료들과 함께 학습을 진행해보세요!</TeamDescription>
           <TeamTagList>
