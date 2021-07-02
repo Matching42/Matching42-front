@@ -5,7 +5,7 @@ export const useUserData = userId => {
   const getUserData = useSWR(['getUserData', userId], (_, userId) =>
     api
       .get(`user/${userId}`)
-      .then(res => res.data.data)
+      .then(res => res.data)
       .catch(error => console.log(error))
   );
 
@@ -16,10 +16,9 @@ export const useTeamData = teamID => {
   const getTeamData = useSWR(['getTeamData', teamID], (_, teamID) =>
     api
       .get(`team/${teamID}`)
-      .then(res => res.data.data)
+      .then(res => res.data)
       .catch(error => console.log(error))
   );
-  const teamMutate = getTeamData.mutate;
 
-  return { getTeamData, teamMutate };
+  return { getTeamData };
 };

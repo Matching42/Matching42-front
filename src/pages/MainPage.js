@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { OverlayProvider } from '@react-aria/overlays';
 import ProfileView from '../components/ProfileView/ProfileView';
@@ -13,9 +13,14 @@ import { api } from '../api';
 
 const MainPage = props => {
   const { user, waitList, subjectList, totalSize } = props;
+  const [subject, setSubject] = useState('Subject');
   const { getUserData } = useUserData(user);
   const { getMatchingStateData } = useStateData();
-  const { teams, teamListData, allTeamMutate } = useFetchTeamListData();
+  const { teams, teamListData } = useFetchTeamListData(subject);
+
+  useEffect(() => {
+    teamListData.revalidate();
+  }, [teamListData]);
 
   const handleMatchingButtonClick = async (selectedSubject, githubId, preferredCluster) => {
     await api
@@ -40,6 +45,10 @@ const MainPage = props => {
     getMatchingStateData.mutate();
   };
 
+  const handleSelectedSubjectButtonClick = selectedSubject => {
+    setSubject(selectedSubject);
+  };
+
   if (getUserData.error) {
     return (
       <Loading>
@@ -49,7 +58,7 @@ const MainPage = props => {
     );
   }
 
-  if (getUserData.data === null || getUserData.data === undefined || getMatchingStateData.data === null || getMatchingStateData.data === undefined) {
+  if (getUserData.data === null || getUserData.data?.data === null || getUserData.data?.data === undefined || getMatchingStateData.data === null || getMatchingStateData.data === undefined) {
     return (
       <Loading>
         <LoaderSpinner />
@@ -62,12 +71,19 @@ const MainPage = props => {
       <MainContainer>
         <MainContainer.Section>
           <MainContainer.Left>
-            <ProfileView user={getUserData.data} />
-            <MyTeamListView myTeamList={getUserData.data.teamID} />
+            <ProfileView user={getUserData.data.data} />
+            <MyTeamListView myTeamList={getUserData.data.data.teamID} />
           </MainContainer.Left>
           <MainContainer.Right>
-            <MatchingStateView user={getUserData.data} waitList={waitList} onMatchingButtonClick={handleMatchingButtonClick} onMatchingCancelButtonClick={handleMatchingCancelButtonClick} />
-            <AllTeamListView teamList={teams} mutate={allTeamMutate} onMoreTeamListItem={teamListData.setSize} totalSize={totalSize} subjectList={subjectList} />
+            <MatchingStateView user={getUserData.data.data} waitList={waitList} onMatchingButtonClick={handleMatchingButtonClick} onMatchingCancelButtonClick={handleMatchingCancelButtonClick} />
+            <AllTeamListView
+              teamList={teams}
+              teamListData={teamListData.data}
+              onMoreTeamListItem={teamListData.setSize}
+              totalSize={totalSize}
+              subjectList={subjectList}
+              onSelectedSubjectButtonClick={handleSelectedSubjectButtonClick}
+            />
           </MainContainer.Right>
         </MainContainer.Section>
       </MainContainer>

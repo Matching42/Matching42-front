@@ -6,10 +6,10 @@ import { TeamMemberViewStyled, TeamMemberViewTop } from './TeamMemberView.styles
 import TeamMemberImage from './TeamMemberImage/TeamMemberImage';
 import { useFetchTeamListData } from '../../hooks/useTeamListData';
 
-const TeamMemberView = ({ user, teamData, mutate }) => {
+const TeamMemberView = ({ user, teamData, userDataMutate }) => {
   const [team, setTeam] = useState(teamData);
   const teamMember = [team.leaderID, ...team.memberID];
-  const { allTeamMutate } = useFetchTeamListData();
+  const { teamListData } = useFetchTeamListData();
 
   const changeTeamState = async () => {
     if (teamMember.length === 5 || user.ID !== team.leaderID) return;
@@ -26,8 +26,8 @@ const TeamMemberView = ({ user, teamData, mutate }) => {
       .patch(`team/${team.ID}`, { state: changeState })
       .then(res => setTeam(res.data.team))
       .catch(error => console.log(error));
-    allTeamMutate();
-    mutate();
+    teamListData.mutate();
+    userDataMutate();
   };
 
   return (

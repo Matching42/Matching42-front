@@ -1,10 +1,10 @@
 import { useSWRInfinite } from 'swr';
 import { api } from '../api';
 
-export const useFetchTeamListData = () => {
+export const useFetchTeamListData = subject => {
   const getKey = (pageIndex, previousPageData) => {
     if (previousPageData && !previousPageData.length) return null;
-    return `team?page=${pageIndex}&limit=5`;
+    return `team?page=${pageIndex}&limit=5&progress=true${subject !== 'Subject' ? `&subject=${subject}` : ''}`;
   };
 
   const teamListData = useSWRInfinite(getKey, getKey =>
@@ -16,11 +16,11 @@ export const useFetchTeamListData = () => {
 
   const teamsData = teamListData.data ?? [];
   const teams = [];
-  const allTeamMutate = teamListData.mutate;
 
-  teamsData.forEach(results => {
-    teams.push(...results);
-  });
+  teamsData &&
+    teamsData.forEach(results => {
+      teams.push(...results);
+    });
 
-  return { teams, teamListData, allTeamMutate };
+  return { teams, teamListData };
 };
