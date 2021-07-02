@@ -22,7 +22,7 @@ const DetailPage = ({ user, history }) => {
       })
       .then(res => console.log(res))
       .catch(error => console.warn(error));
-    history.push('/home');
+    history.goBack();
   };
 
   if (getUserData.error) {

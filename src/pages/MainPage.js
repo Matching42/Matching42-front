@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { OverlayProvider } from '@react-aria/overlays';
 import ProfileView from '../components/ProfileView/ProfileView';
@@ -16,6 +16,10 @@ const MainPage = props => {
   const { getUserData } = useUserData(user);
   const { getMatchingStateData } = useStateData();
   const { teams, teamListData } = useFetchTeamListData();
+
+  useEffect(() => {
+    teamListData.revalidate();
+  }, [teamListData]);
 
   const handleMatchingButtonClick = async (selectedSubject, githubId, preferredCluster) => {
     await api
