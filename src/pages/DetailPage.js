@@ -42,7 +42,7 @@ DetailPage.defaultProps = {
     ID: 1,
     leaderID: 'jiwonlee',
     memberID: ['seomoon', 'sulee', 'jongkim'],
-    tags: ['낮', '온라인', '매일2시간', '비대면'],
+    tags: ['매일2시간', '매일2시간', '매일2시간', '매일2시간'],
     subject: 'cub3d',
     state: 'wait_member',
     notionLink: '',
