@@ -9,6 +9,8 @@ const TeamWorkspaceView = props => {
   const { team, subjectPDF, onFinishedButtonClick } = props;
   const { state, openButtonProps, openButtonRef } = useToggleDialog();
 
+  const forBubblingEvent = () => {};
+
   const handleFinishedButtonClick = () => {
     onFinishedButtonClick?.();
     state.close();
@@ -34,7 +36,7 @@ const TeamWorkspaceView = props => {
           </LinkList.Link>
         </LinkList>
         <TeamWorkspaceViewStyled.Button>
-          <TeamFinishedButton {...openButtonProps} ref={openButtonRef}>
+          <TeamFinishedButton {...openButtonProps} ref={openButtonRef} onClick={forBubblingEvent}>
             스터디 종료
           </TeamFinishedButton>
         </TeamWorkspaceViewStyled.Button>
