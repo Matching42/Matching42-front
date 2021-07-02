@@ -6,9 +6,16 @@ import Dday from '../Dday/Dday';
 import useToggleDialog from '../../hooks/useToggleDialog';
 import Dialog from '../Dialog/Dialog';
 import DialogCloseButton from '../DialogCloseButton/DialogCloseButton';
+import EditForm from '../EditForm/EditForm';
 
-const TeamProfileView = ({ team }) => {
+const TeamProfileView = ({ team, user, onTeamProfileEditButtonclick }) => {
   const { state, openButtonProps, openButtonRef } = useToggleDialog();
+
+  const handleSubmitButtonClick = (teamName, teamDescription, teamTags) => {
+    onTeamProfileEditButtonclick?.(teamName, teamDescription, teamTags);
+  }
+
+  const isTeamLeader = () => (user?.ID === team.leaderID);
 
   return (
     <>
@@ -16,8 +23,8 @@ const TeamProfileView = ({ team }) => {
         <TeamProfileLeftBox>
           <TeamProfileLeftBox.Title>
             <TeamProfileLeftBox.Name>{team.teamName}</TeamProfileLeftBox.Name>
-            <TeamProfileLeftBox.EditButton {...openButtonProps} ref={openButtonRef}>
-              <EditIcon />
+            <TeamProfileLeftBox.EditButton isActive={isTeamLeader()} {...openButtonProps} ref={openButtonRef}>
+                <EditIcon />
             </TeamProfileLeftBox.EditButton>
           </TeamProfileLeftBox.Title>
           <TeamDescription>Team GitHub Repository, Notion, Slack 적극 활용하여 동료들과 함께 학습을 진행해보세요!</TeamDescription>
@@ -34,6 +41,7 @@ const TeamProfileView = ({ team }) => {
         <OverlayContainer>
           <Dialog isOpen onClose={state.close} isDimissable>
             <DialogCloseButton onCloseButton={state.close} />
+            <EditForm team={team} onCloseButton={state.close} onSubmitButton={handleSubmitButtonClick}  />
           </Dialog>
         </OverlayContainer>
       )}
