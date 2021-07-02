@@ -66,8 +66,8 @@ export const TeamTagList = styled.ul`
 `;
 
 TeamTagList.Item = styled.li`
-  background-color: #DEF5F5;
-  color: #27B9BA;
+  background-color: #def5f5;
+  color: #27b9ba;
   margin-right: 7px;
   border-radius: 8px;
   padding: 8px 10px;
@@ -75,9 +75,12 @@ TeamTagList.Item = styled.li`
   font-weight: medium;
 
   svg {
-      margin-left: 12px;
-      width: 6px;
-      height: 6px;
+    margin-left: 12px;
+    width: 6px;
+    height: 6px;
+  }
+  .delete-icon {
+    cursor: pointer;
   }
 `;
 

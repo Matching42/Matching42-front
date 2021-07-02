@@ -43,12 +43,9 @@ const DetailPage = ({ user, history }) => {
   }
 
   const handleTeamProfileEditButtonClick = (teamName, teamDescription, teamTags) => {
-    /*
-  console.log(team.ID);
-  console.log(teamName);
-  console.log(teamDescription);
-  console.log(teamTags);
-  */
+    console.log(teamName);
+    console.log(teamDescription);
+    console.log(teamTags);
   };
 
   return (
@@ -57,11 +54,11 @@ const DetailPage = ({ user, history }) => {
         <DetailContainer>
           <DetailContainer.Section>
             <DetailContainer.Top>
-              <TeamProfileView team={getTeamData.data.data} user={getUserData.data.data} onTeamProfileEditButtonclick={handleTeamProfileEditButtonClick} />
-              <TeamMemberView teamData={getTeamData.data.data} user={getUserData.data.data} userDataMutate={getUserData.mutate} />
+              <TeamProfileView team={getTeamData.data?.data} user={getUserData.data?.data} onTeamProfileEditButtonclick={handleTeamProfileEditButtonClick} />
+              <TeamMemberView teamData={getTeamData.data?.data} user={getUserData.data?.data} userDataMutate={getUserData.mutate} />
             </DetailContainer.Top>
             <DetailContainer.Bottom>
-              <TeamWorkspaceView team={getTeamData.data.data} onFinishedButtonClick={handleFinishedButtonClick} />
+              <TeamWorkspaceView team={getTeamData.data?.data} onFinishedButtonClick={handleFinishedButtonClick} />
             </DetailContainer.Bottom>
           </DetailContainer.Section>
         </DetailContainer>
