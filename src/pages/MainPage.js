@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { OverlayProvider } from '@react-aria/overlays';
 import ProfileView from '../components/ProfileView/ProfileView';
@@ -13,9 +13,10 @@ import { api } from '../api';
 
 const MainPage = props => {
   const { user, waitList, subjectList, totalSize } = props;
+  const [subject, setSubject] = useState('Subject');
   const { getUserData } = useUserData(user);
   const { getMatchingStateData } = useStateData();
-  const { teams, teamListData } = useFetchTeamListData();
+  const { teams, teamListData } = useFetchTeamListData(subject);
 
   useEffect(() => {
     teamListData.revalidate();
@@ -42,6 +43,10 @@ const MainPage = props => {
       .catch(error => console.warn(error));
     getUserData.mutate();
     getMatchingStateData.mutate();
+  };
+
+  const handleSelectedSubjectButtonClick = selectedSubject => {
+    setSubject(selectedSubject);
   };
 
   if (getUserData.error) {
@@ -71,7 +76,14 @@ const MainPage = props => {
           </MainContainer.Left>
           <MainContainer.Right>
             <MatchingStateView user={getUserData.data.data} waitList={waitList} onMatchingButtonClick={handleMatchingButtonClick} onMatchingCancelButtonClick={handleMatchingCancelButtonClick} />
-            <AllTeamListView teamList={teams} teamListData={teamListData.data} onMoreTeamListItem={teamListData.setSize} totalSize={totalSize} subjectList={subjectList} />
+            <AllTeamListView
+              teamList={teams}
+              teamListData={teamListData.data}
+              onMoreTeamListItem={teamListData.setSize}
+              totalSize={totalSize}
+              subjectList={subjectList}
+              onSelectedSubjectButtonClick={handleSelectedSubjectButtonClick}
+            />
           </MainContainer.Right>
         </MainContainer.Section>
       </MainContainer>

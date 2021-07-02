@@ -5,7 +5,7 @@ import Dropdown from '../Dropdown/Dropdown';
 import ToggleButton from '../ToggleButton/ToggleButton';
 import LoaderSpinner from '../LoaderSpinner/LoaderSpinner';
 
-const TeamListView = ({ teamList, teamListData, onMoreTeamListItem, totalSize }) => {
+const TeamListView = ({ teamList, teamListData, onMoreTeamListItem, totalSize, onSelectedSubjectButtonClick }) => {
   const [target, setTarget] = useState(null);
   const [toggle, setToggle] = useState(false);
   const [teams, setTeams] = useState(teamList);
@@ -44,6 +44,10 @@ const TeamListView = ({ teamList, teamListData, onMoreTeamListItem, totalSize })
     if (toggle) setTeams(teamList.filter(team => team.state === 'wait_member'));
     else setTeams(teamList);
   }, [teamList, toggle]);
+
+  useEffect(() => {
+    onSelectedSubjectButtonClick?.(selectedSubject);
+  }, [selectedSubject]);
 
   return (
     <TeamListViewStyled>
