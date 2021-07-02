@@ -67,7 +67,7 @@ const MainPage = props => {
           </MainContainer.Left>
           <MainContainer.Right>
             <MatchingStateView user={getUserData.data} waitList={waitList} onMatchingButtonClick={handleMatchingButtonClick} onMatchingCancelButtonClick={handleMatchingCancelButtonClick} />
-            <AllTeamListView teamList={teams} onMoreTeamListItem={teamListData.setSize} totalSize={totalSize} subjectList={subjectList} />
+            <AllTeamListView teamList={teams} teamListData={teamListData.data} onMoreTeamListItem={teamListData.setSize} totalSize={totalSize} subjectList={subjectList} />
           </MainContainer.Right>
         </MainContainer.Section>
       </MainContainer>

@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { TeamListViewStyled, TeamListTopbar, TeamListContainer } from './TeamListView.styles';
+import { TeamListViewStyled, TeamListTopbar, TeamListContainer, NoneTeamListData } from './TeamListView.styles';
 import TeamListItem from '../TeamListItem/TeamListItem';
 import Dropdown from '../Dropdown/Dropdown';
 import ToggleButton from '../ToggleButton/ToggleButton';
 import LoaderSpinner from '../LoaderSpinner/LoaderSpinner';
 
-const TeamListView = ({ teamList, onMoreTeamListItem, totalSize }) => {
+const TeamListView = ({ teamList, teamListData, onMoreTeamListItem, totalSize }) => {
   const [target, setTarget] = useState(null);
   const [toggle, setToggle] = useState(false);
   const [teams, setTeams] = useState(teamList);
@@ -59,13 +59,16 @@ const TeamListView = ({ teamList, onMoreTeamListItem, totalSize }) => {
           <ToggleButton toggle={toggle} setToggle={setToggle} />
         </TeamListTopbar.Button>
       </TeamListTopbar>
-      <TeamListContainer>
-        {!teams.length && <LoaderSpinner />}
-        {teams.map((team, index) => (
-          <TeamListItem key={index} teamData={team} />
-        ))}
-        {teams && <div ref={setTarget} style={{ height: '10px' }} />}
-      </TeamListContainer>
+      {teamListData === null ? (
+        <TeamListContainer>
+          <LoaderSpinner />
+        </TeamListContainer>
+      ) : (
+        <TeamListContainer>
+          {!teams.length ? <NoneTeamListData>현재 모집중인 팀이 없습니다.</NoneTeamListData> : teams.map((team, index) => <TeamListItem key={index} teamData={team} />)}
+          {teams && <div ref={setTarget} style={{ height: '10px' }} />}
+        </TeamListContainer>
+      )}
       <div className="scrollbar" />
     </TeamListViewStyled>
   );
