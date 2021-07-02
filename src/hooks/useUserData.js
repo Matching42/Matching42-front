@@ -19,6 +19,7 @@ export const useTeamData = teamID => {
       .then(res => res.data.data)
       .catch(error => console.log(error))
   );
+  const teamMutate = getTeamData.mutate;
 
-  return { getTeamData };
+  return { getTeamData, teamMutate };
 };

@@ -58,4 +58,12 @@ TeamTagList.Item = styled.li`
   padding: 8px 10px;
 `;
 
+TeamTagList.Subject = styled.li`
+  background-color: #f4fbfb;
+  color: #27babb;
+  margin-right: 6px;
+  border-radius: 8px;
+  padding: 8px 10px;
+`;
+
 export const TeamProfileRightBox = styled.div``;

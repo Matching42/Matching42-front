@@ -1,22 +1,45 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { OverlayProvider } from '@react-aria/overlays';
 import TeamMemberView from '../components/TeamMemberView/TeamMemberView';
 import TeamProfileView from '../components/TeamProfileView/TeamProfileView';
 import TeamWorkspaceView from '../components/TeamWorkspaceView/TeamWorkspaceView';
-import { useUserData } from '../hooks/useUserData';
+import LoaderSpinner from '../components/LoaderSpinner/LoaderSpinner';
+import { useUserData, useTeamData } from '../hooks/useUserData';
 import { api } from '../api';
 
-const DetailPage = props => {
-  const { user, team } = props;
+const DetailPage = ({ user, history }) => {
+  const currentParams = useParams();
+  const currentId = currentParams.id;
   const { getUserData } = useUserData(user);
+  const { getTeamData, teamMutate } = useTeamData(currentId);
+
+  const handleFinishedButtonClick = async () => {
+    await api
+      .patch(`/team/${getTeamData.data?.ID}`, {
+        state: 'end'
+      })
+      .then(res => console.log(res))
+      .catch(error => console.warn(error));
+    history.push('/home');
+  };
 
   if (getUserData.error) {
-    return <Loading>에러 발생!</Loading>;
+    return (
+      <Loading>
+        <Loading.Strong>앗!</Loading.Strong>
+        <Loading.Text>에러가 발생했어요! 잠시 후 다시 시도해주세요.</Loading.Text>
+      </Loading>
+    );
   }
 
-  if (getUserData.data === null) {
-    return <Loading>로딩중!</Loading>;
+  if (getUserData.data === null || getTeamData.data === null || getTeamData.data === undefined) {
+    return (
+      <Loading>
+        <LoaderSpinner />
+      </Loading>
+    );
   }
 
 const handleTeamProfileEditButtonClick = ( teamName, teamDescription, teamTags) => {
@@ -34,32 +57,17 @@ const handleTeamProfileEditButtonClick = ( teamName, teamDescription, teamTags) 
         <DetailContainer>
           <DetailContainer.Section>
             <DetailContainer.Top>
-              <TeamProfileView team={team} user={user} onTeamProfileEditButtonclick={handleTeamProfileEditButtonClick}/>
-              <TeamMemberView team={team} user={getUserData.data} />
+              <TeamProfileView team={getTeamData.data} user={user} onTeamProfileEditButtonclick={handleTeamProfileEditButtonClick} />
+              <TeamMemberView teamData={getTeamData.data} user={getUserData.data} mutate={teamMutate} />
             </DetailContainer.Top>
             <DetailContainer.Bottom>
-              <TeamWorkspaceView />
+              <TeamWorkspaceView team={getTeamData.data} onFinishedButtonClick={handleFinishedButtonClick} />
             </DetailContainer.Bottom>
           </DetailContainer.Section>
         </DetailContainer>
       </OverlayProvider>
     </>
   );
-};
-
-DetailPage.defaultProps = {
-  team: {
-    ID: 1,
-    leaderID: 'jiwonlee',
-    memberID: ['seomoon', 'sulee', 'jongkim'],
-    tags: ['매일2시간', '매일2시간', '매일2시간', '매일2시간'],
-    subject: 'cub3d',
-    state: 'wait_member',
-    notionLink: '',
-    gitLink: '',
-    teamName: 'Cub3d Team',
-    startDate: new Date(2021, 4, 20)
-  }
 };
 
 export default DetailPage;
@@ -102,6 +110,19 @@ export const Loading = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-size: 40px;
+  color: #252831;
+`;
+
+Loading.Strong = styled.p`
+  font-size: 1em;
+  font-weight: bold;
+  margin-bottom: 20px;
+`;
+
+Loading.Text = styled.p`
+  font-size: 0.4em;
 `;
