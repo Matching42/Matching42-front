@@ -6,6 +6,7 @@ import Dday from '../Dday/Dday';
 import useToggleDialog from '../../hooks/useToggleDialog';
 import Dialog from '../Dialog/Dialog';
 import DialogCloseButton from '../DialogCloseButton/DialogCloseButton';
+import EditForm from '../EditForm/EditForm';
 
 const TeamProfileView = ({ team }) => {
   const { state, openButtonProps, openButtonRef } = useToggleDialog();
@@ -35,6 +36,7 @@ const TeamProfileView = ({ team }) => {
         <OverlayContainer>
           <Dialog isOpen onClose={state.close} isDimissable>
             <DialogCloseButton onCloseButton={state.close} />
+            <EditForm team={team} onCloseButton={state.close}  />
           </Dialog>
         </OverlayContainer>
       )}
