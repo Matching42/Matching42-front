@@ -42,13 +42,22 @@ const DetailPage = ({ user, history }) => {
     );
   }
 
+const handleTeamProfileEditButtonClick = ( teamName, teamDescription, teamTags) => {
+  /*
+  console.log(team.ID);
+  console.log(teamName);
+  console.log(teamDescription);
+  console.log(teamTags);
+  */
+}
+
   return (
     <>
       <OverlayProvider>
         <DetailContainer>
           <DetailContainer.Section>
             <DetailContainer.Top>
-              <TeamProfileView team={getTeamData.data} />
+              <TeamProfileView team={getTeamData.data} user={getUserData.data} onTeamProfileEditButtonclick={handleTeamProfileEditButtonClick} />
               <TeamMemberView teamData={getTeamData.data} user={getUserData.data} mutate={teamMutate} />
             </DetailContainer.Top>
             <DetailContainer.Bottom>
