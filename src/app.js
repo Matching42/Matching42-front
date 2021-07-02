@@ -80,7 +80,7 @@ function App() {
               {user && user !== 'null' ? <Redirect to="/home" /> : <LoginPage />}
             </Route>
             <Route path="/home">{user && user !== 'null' ? <MainPage user={user} /> : <Redirect to="/" />}</Route>
-            <Route path="/detail/:id">{user && user !== 'null' ? <DetailPage user={user} /> : <Redirect to="/" />}</Route>
+            <Route path="/detail/:id">{user && user !== 'null' ? props => <DetailPage user={user} {...props} /> : <Redirect to="/" />}</Route>
             <Route component={() => <Redirect to="/" />} />
           </Switch>
         </Wrapper>

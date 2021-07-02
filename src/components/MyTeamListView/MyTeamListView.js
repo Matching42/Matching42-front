@@ -1,17 +1,25 @@
 import React from 'react';
 import { useTeamData } from '../../hooks/useUserData';
-import { MyTeamListViewStyled, Topbar } from './MyTeamListView.styles';
+import { MyTeamListViewStyled, Topbar, NoneMyTeamData } from './MyTeamListView.styles';
 import TeamListItem from '../TeamListItem/TeamListItem';
-import Loader from '../loaderSpinner/loaderSpinner';
+import LoaderSpinner from '../LoaderSpinner/LoaderSpinner';
 
 const MyTeamListView = ({ myTeamList }) => {
   const { getTeamData } = useTeamData(myTeamList);
-  const teamData = getTeamData.data;
+
+  if (getTeamData.data === null || getTeamData.data?.data === null || getTeamData.data?.data === undefined) {
+    return (
+      <MyTeamListViewStyled>
+        <Topbar>My Team</Topbar>
+        <LoaderSpinner />
+      </MyTeamListViewStyled>
+    );
+  }
 
   return (
     <MyTeamListViewStyled>
       <Topbar>My Team</Topbar>
-      {teamData ? <TeamListItem teamData={teamData} /> : <Loader />}
+      {getTeamData.data.data ? <TeamListItem teamData={getTeamData.data.data} /> : <NoneMyTeamData>아직 참여중인 팀이 없습니다.</NoneMyTeamData>}
     </MyTeamListViewStyled>
   );
 };

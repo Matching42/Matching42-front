@@ -35,6 +35,7 @@ TeamProfileLeftBox.Name = styled.div`
 `;
 
 TeamProfileLeftBox.EditButton = styled.div`
+  display: ${props => (props.isActive ? 'block' : 'none')};
   cursor: pointer;
 `;
 
@@ -53,6 +54,14 @@ export const TeamTagList = styled.ul`
 
 TeamTagList.Item = styled.li`
   background-color: rgb(0, 0, 0, 0.15);
+  margin-right: 6px;
+  border-radius: 8px;
+  padding: 8px 10px;
+`;
+
+TeamTagList.Subject = styled.li`
+  background-color: #f4fbfb;
+  color: #27babb;
   margin-right: 6px;
   border-radius: 8px;
   padding: 8px 10px;

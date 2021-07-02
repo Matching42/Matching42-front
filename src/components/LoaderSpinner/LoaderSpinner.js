@@ -9,10 +9,10 @@ const LoaderWrap = styled.div`
   transform: translate(-50%, -50%);
 `;
 
-const loaderSpinner = () => (
+const LoaderSpinner = () => (
   <LoaderWrap>
     <Loader type="Oval" color="#3d66ba" width={30} height={30} timeout={10000} />
   </LoaderWrap>
 );
 
-export default loaderSpinner;
+export default LoaderSpinner;
