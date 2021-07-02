@@ -16,11 +16,10 @@ export const useFetchTeamListData = () => {
 
   const teamsData = teamListData.data ?? [];
   const teams = [];
-  const allTeamMutate = teamListData.mutate;
 
   teamsData.forEach(results => {
     teams.push(...results);
   });
 
-  return { teams, teamListData, allTeamMutate };
+  return { teams, teamListData };
 };

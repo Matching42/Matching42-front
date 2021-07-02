@@ -13,7 +13,7 @@ const DetailPage = ({ user, history }) => {
   const currentParams = useParams();
   const currentId = currentParams.id;
   const { getUserData } = useUserData(user);
-  const { getTeamData, teamMutate } = useTeamData(currentId);
+  const { getTeamData } = useTeamData(currentId);
 
   const handleFinishedButtonClick = async () => {
     await api
@@ -49,7 +49,7 @@ const DetailPage = ({ user, history }) => {
           <DetailContainer.Section>
             <DetailContainer.Top>
               <TeamProfileView team={getTeamData.data} />
-              <TeamMemberView teamData={getTeamData.data} user={getUserData.data} mutate={teamMutate} />
+              <TeamMemberView teamData={getTeamData.data} user={getUserData.data} userDataMutate={getUserData.mutate} />
             </DetailContainer.Top>
             <DetailContainer.Bottom>
               <TeamWorkspaceView team={getTeamData.data} onFinishedButtonClick={handleFinishedButtonClick} />
