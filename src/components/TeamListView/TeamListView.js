@@ -59,7 +59,7 @@ const TeamListView = ({ teamList, teamListData, onMoreTeamListItem, totalSize })
           <ToggleButton toggle={toggle} setToggle={setToggle} />
         </TeamListTopbar.Button>
       </TeamListTopbar>
-      {teamListData === null ? (
+      {teamListData === null || teamListData === undefined ? (
         <TeamListContainer>
           <LoaderSpinner />
         </TeamListContainer>
