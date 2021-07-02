@@ -1,10 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="19.295" height="21.603" viewBox="0 0 19.295 21.603">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="52.238" height="53.506" viewBox="0 0 52.238 53.506">
   <defs>
     <clipPath id="clip-path">
-      <path id="합치기_3" data-name="합치기 3" d="M0,16.505a11.093,11.093,0,0,1,9.738-5.492A10.158,10.158,0,0,1,19.3,16.505s-.986,5.1-9.842,5.1S0,16.505,0,16.505ZM4.648,5a5,5,0,1,1,5,5A5,5,0,0,1,4.648,5Z" transform="translate(681.852 526)" fill="#d5d5d5"/>
+      <path id="합치기_1" data-name="합치기 1" d="M0,34.291s5.512-11.137,20.231-11.41c14.689-.271,19.835,11.363,19.856,11.41,0,0-2.047,10.591-20.447,10.591S0,34.291,0,34.291Zm9.656-23.9A10.388,10.388,0,1,1,20.044,20.776,10.388,10.388,0,0,1,9.656,10.389Z" transform="translate(0)" fill="#d5d5d5"/>
     </clipPath>
   </defs>
-  <g id="마스크_그룹_3" data-name="마스크 그룹 3" transform="translate(-681.852 -526)" clip-path="url(#clip-path)">
-    <circle id="타원_14" data-name="타원 14" cx="12.5" cy="12.5" r="12.5" transform="translate(679 522)" fill="#d5d5d5"/>
+  <g id="그룹_18" data-name="그룹 18" transform="translate(-933.5 -301)">
+    <circle id="타원_9" data-name="타원 9" cx="26.119" cy="26.119" r="26.119" transform="translate(933.5 301)" fill="#f2f2f2"/>
+    <g id="마스크_그룹_1" data-name="마스크 그룹 1" transform="translate(939.426 309.625)" clip-path="url(#clip-path)">
+      <circle id="타원_10" data-name="타원 10" cx="26.119" cy="26.119" r="26.119" transform="translate(-5.926 -8.625)" fill="#d5d5d5"/>
+    </g>
   </g>
 </svg>
+
