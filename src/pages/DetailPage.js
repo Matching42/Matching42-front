@@ -17,7 +17,7 @@ const DetailPage = ({ user, history }) => {
 
   const handleFinishedButtonClick = async () => {
     await api
-      .patch(`/team/${getTeamData.data?.ID}`, {
+      .patch(`/team/${getTeamData.data?.data?.ID}`, {
         state: 'end'
       })
       .then(res => console.log(res))
@@ -34,7 +34,7 @@ const DetailPage = ({ user, history }) => {
     );
   }
 
-  if (getUserData.data === null || getTeamData.data === null || getTeamData.data === undefined) {
+  if (getUserData.data === null || getTeamData.data === null || getTeamData.data?.data === null || getTeamData.data?.data === undefined) {
     return (
       <Loading>
         <LoaderSpinner />
@@ -48,11 +48,11 @@ const DetailPage = ({ user, history }) => {
         <DetailContainer>
           <DetailContainer.Section>
             <DetailContainer.Top>
-              <TeamProfileView team={getTeamData.data} />
-              <TeamMemberView teamData={getTeamData.data} user={getUserData.data} userDataMutate={getUserData.mutate} />
+              <TeamProfileView team={getTeamData.data.data} />
+              <TeamMemberView teamData={getTeamData.data.data} user={getUserData.data.data} userDataMutate={getUserData.mutate} />
             </DetailContainer.Top>
             <DetailContainer.Bottom>
-              <TeamWorkspaceView team={getTeamData.data} onFinishedButtonClick={handleFinishedButtonClick} />
+              <TeamWorkspaceView team={getTeamData.data.data} onFinishedButtonClick={handleFinishedButtonClick} />
             </DetailContainer.Bottom>
           </DetailContainer.Section>
         </DetailContainer>

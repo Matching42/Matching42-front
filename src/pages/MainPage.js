@@ -49,7 +49,7 @@ const MainPage = props => {
     );
   }
 
-  if (getUserData.data === null || getUserData.data === undefined || getMatchingStateData.data === null || getMatchingStateData.data === undefined) {
+  if (getUserData.data === null || getUserData.data?.data === null || getUserData.data?.data === undefined || getMatchingStateData.data === null || getMatchingStateData.data === undefined) {
     return (
       <Loading>
         <LoaderSpinner />
@@ -62,11 +62,11 @@ const MainPage = props => {
       <MainContainer>
         <MainContainer.Section>
           <MainContainer.Left>
-            <ProfileView user={getUserData.data} />
-            <MyTeamListView myTeamList={getUserData.data.teamID} />
+            <ProfileView user={getUserData.data.data} />
+            <MyTeamListView myTeamList={getUserData.data.data.teamID} />
           </MainContainer.Left>
           <MainContainer.Right>
-            <MatchingStateView user={getUserData.data} waitList={waitList} onMatchingButtonClick={handleMatchingButtonClick} onMatchingCancelButtonClick={handleMatchingCancelButtonClick} />
+            <MatchingStateView user={getUserData.data.data} waitList={waitList} onMatchingButtonClick={handleMatchingButtonClick} onMatchingCancelButtonClick={handleMatchingCancelButtonClick} />
             <AllTeamListView teamList={teams} teamListData={teamListData.data} onMoreTeamListItem={teamListData.setSize} totalSize={totalSize} subjectList={subjectList} />
           </MainContainer.Right>
         </MainContainer.Section>

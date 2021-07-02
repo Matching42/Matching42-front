@@ -22,3 +22,12 @@ export const Topbar = styled.div`
   font-size: 0.6em;
   font-weight: bold;
 `;
+
+export const NoneMyTeamData = styled.p`
+  position: absolute;
+  top: 50%;
+  transform: translateX(-50%);
+  left: 50%;
+  font-size: 16px;
+  color: #252831;
+`;

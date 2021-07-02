@@ -40,9 +40,9 @@ const Logout = ({ user, isVisible, setIsVisible }) => {
         <LogoutStyled.UserWrap>
           <UserImageStyled size="big" src={`https://cdn.intra.42.fr/users/small_${user}.jpg`} />
           <LogoutStyled.UserInfo>
-            <h2>{getUserData.data?.ID}</h2>
+            <h2>{getUserData.data.data?.ID}</h2>
             <p>
-              Level: {getUserData.data?.intraInfo.level}% | {user && getDday(getUserData.data?.intraInfo.blackholed_at)} days left
+              Level: {getUserData.data.data?.intraInfo.level}% | {user && getDday(getUserData.data?.intraInfo.blackholed_at)} days left
             </p>
           </LogoutStyled.UserInfo>
         </LogoutStyled.UserWrap>
