@@ -17,6 +17,7 @@ const MainPage = props => {
   const { getUserData } = useUserData(user);
   const { getMatchingStateData } = useStateData();
   const { teams, teamListData } = useFetchTeamListData(subject);
+  const [responseStatus, setResponseStatus] = useState(200);
 
   useEffect(() => {
     teamListData.revalidate();
@@ -31,7 +32,10 @@ const MainPage = props => {
         cluster: preferredCluster
       })
       .then(res => console.log(res))
-      .catch(error => console.warn(error));
+      .catch(error => {
+        console.warn(error);
+        setResponseStatus(error.code);
+      });
     getUserData.mutate();
     getMatchingStateData.mutate();
   };
@@ -75,7 +79,7 @@ const MainPage = props => {
             <MyTeamListView myTeamList={getUserData.data.data.teamID} />
           </MainContainer.Left>
           <MainContainer.Right>
-            <MatchingStateView user={getUserData.data.data} waitList={waitList} onMatchingButtonClick={handleMatchingButtonClick} onMatchingCancelButtonClick={handleMatchingCancelButtonClick} />
+            <MatchingStateView user={getUserData.data.data} waitList={waitList} onMatchingButtonClick={handleMatchingButtonClick} onMatchingCancelButtonClick={handleMatchingCancelButtonClick} responseStatus={responseStatus}/>
             <AllTeamListView
               teamList={teams}
               teamListData={teamListData.data}
