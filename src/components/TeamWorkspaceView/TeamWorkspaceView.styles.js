@@ -107,7 +107,7 @@ export const TeamFinishedButton = styled.button`
 `;
 
 export const Alert = styled.div`
-  width: 100%;
+  width: 110%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -121,6 +121,7 @@ Alert.Text = styled.p`
   line-height: 1.5;
   word-break: keep-all;
   text-align: center;
+  letter-spacing: -1px;
 `;
 
 Alert.Button = styled.div`

@@ -7,16 +7,17 @@ import MatchingStateView from '../components/MatchingStateView/MatchingStateView
 import AllTeamListView from '../components/TeamListView/TeamListView';
 import LoaderSpinner from '../components/LoaderSpinner/LoaderSpinner';
 import { useFetchTeamListData } from '../hooks/useTeamListData';
-import { useUserData } from '../hooks/useUserData';
+import { useUserData, useTeamData } from '../hooks/useUserData';
 import { useStateData } from '../hooks/useStateData';
 import { api } from '../api';
 
 const MainPage = props => {
-  const { user, waitList, subjectList, totalSize } = props;
+  const { user, waitList, subjectList } = props;
   const [subject, setSubject] = useState('Subject');
   const { getUserData } = useUserData(user);
   const { getMatchingStateData } = useStateData();
   const { teams, teamListData } = useFetchTeamListData(subject);
+  const { getTeamData } = useTeamData();
 
   useEffect(() => {
     teamListData.revalidate();
@@ -80,7 +81,7 @@ const MainPage = props => {
               teamList={teams}
               teamListData={teamListData.data}
               onMoreTeamListItem={teamListData.setSize}
-              totalSize={totalSize}
+              totalSize={getTeamData.data?.data.length}
               subjectList={subjectList}
               onSelectedSubjectButtonClick={handleSelectedSubjectButtonClick}
             />
@@ -89,10 +90,6 @@ const MainPage = props => {
       </MainContainer>
     </OverlayProvider>
   );
-};
-
-MainPage.defaultProps = {
-  totalSize: 53
 };
 
 export default MainPage;

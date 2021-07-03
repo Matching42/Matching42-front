@@ -30,12 +30,12 @@ export const ToggleStyled = styled.div`
 
 export const WaitToggleButtonStyled = styled.div`
   position: relative;
-  top: 2px;
   display: flex;
   cursor: pointer;
   align-items: center;
   width: 30px;
   height: 100%;
+  line-height: 1.5;
   background-color: ${props => (props.toggle ? '#27BABB' : '#D5D5D5')};
   border-radius: 22px;
 `;
