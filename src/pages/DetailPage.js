@@ -58,7 +58,7 @@ const DetailPage = ({ user, history }) => {
               <TeamMemberView teamData={getTeamData.data?.data} user={getUserData.data?.data} userDataMutate={getUserData.mutate} />
             </DetailContainer.Top>
             <DetailContainer.Bottom>
-              <TeamWorkspaceView team={getTeamData.data?.data} onFinishedButtonClick={handleFinishedButtonClick} />
+              <TeamWorkspaceView team={getTeamData.data?.data} user={getUserData.data?.data} onFinishedButtonClick={handleFinishedButtonClick} />
             </DetailContainer.Bottom>
           </DetailContainer.Section>
         </DetailContainer>
