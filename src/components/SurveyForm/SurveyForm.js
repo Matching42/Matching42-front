@@ -5,7 +5,7 @@ import TextInput from '../TextInput/TextInput';
 import RadioButton from '../RadioButton/RadioButton';
 import Dropdown from '../Dropdown/Dropdown';
 
-const SurveyForm = ({ onCloseButton, onSubmitButton }) => {
+const SurveyForm = ({ onCloseButton, onSubmitButton, responseStatus }) => {
   const [selectedSubject, setSelectedSubject] = useState('Libft');
   const [githubId, setGithubId] = useState('');
   const [checkEmptyInput, setCheckEmptyInput] = useState(false);
@@ -16,8 +16,9 @@ const SurveyForm = ({ onCloseButton, onSubmitButton }) => {
       setCheckEmptyInput(true);
       return;
     }
+    if (responseStatus === 400)
+      return ;
     onSubmitButton?.(selectedSubject, githubId, preferredCluster);
-    onCloseButton();
   };
 
   return (
@@ -36,7 +37,7 @@ const SurveyForm = ({ onCloseButton, onSubmitButton }) => {
           <SelectItem>
             <SelectItem.Title>Github ID</SelectItem.Title>
             <SelectItem.Info>
-              <TextInput placeholderInfo="레포지토리 생성에 필요한 아이디를 입력해주세요." inputText={githubId} setInputText={setGithubId} checkEmptyInput={checkEmptyInput} />
+              <TextInput placeholderInfo="레포지토리 생성에 필요한 아이디를 입력해주세요." inputText={githubId} setInputText={setGithubId} checkEmptyInput={checkEmptyInput} responseStatus={responseStatus}/>
             </SelectItem.Info>
           </SelectItem>
           <SelectItem>
