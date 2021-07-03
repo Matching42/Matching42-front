@@ -3,7 +3,7 @@ import { useUserData } from '../../hooks/useUserData';
 import { UserImageStyled } from '../TeamListItem/common/TeamImage/TeamImage.styles';
 import { LogoutStyled } from './Logout.styles';
 
-const Logout = ({ user, isVisible, setIsVisible }) => {
+const Logout = ({ user, isVisible, setIsVisible, onLogoutButtonClick }) => {
   const { getUserData } = useUserData(user);
 
   const modalRef = useRef();
@@ -15,7 +15,7 @@ const Logout = ({ user, isVisible, setIsVisible }) => {
   };
 
   const handleLogoutButtonClick = () => {
-    console.log('Logout');
+    onLogoutButtonClick?.();
   };
 
   const getDday = date => {

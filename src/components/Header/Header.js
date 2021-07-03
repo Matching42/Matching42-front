@@ -6,7 +6,7 @@ import { UserImageStyled } from '../TeamListItem/common/TeamImage/TeamImage.styl
 import { ReactComponent as Logo } from '../../assets/images/42_logo.svg';
 
 const Header = props => {
-  const { user } = props;
+  const { user, onLogoutButtonClick } = props;
   const [isVisible, setIsVisible] = useState(false);
 
   const handleVisibleLogoutForm = event => {
@@ -15,16 +15,7 @@ const Header = props => {
   };
 
   const handleLogoutButtonClick = () => {
-    console.log('Logout');
-  };
-
-  const getDday = date => {
-    const nowDate = new Date().getTime();
-    const blackholeDate = Date.parse(date);
-    const milliseconds = blackholeDate - nowDate;
-    const days = milliseconds / 1000 / 60 / 60 / 24;
-
-    return Math.floor(days);
+    onLogoutButtonClick?.();
   };
 
   return (
@@ -39,7 +30,7 @@ const Header = props => {
           <HeaderStyled.Image>
             <UserImageStyled onClick={handleVisibleLogoutForm} key={1} size="big" src={`https://cdn.intra.42.fr/users/small_${user}.jpg`} />
           </HeaderStyled.Image>
-          {isVisible && <Logout user={user} isVisible={isVisible} setIsVisible={setIsVisible} />}
+          {isVisible && <Logout user={user} isVisible={isVisible} setIsVisible={setIsVisible} onLogoutButtonClick={handleLogoutButtonClick} />}
         </>
       )}
     </HeaderStyled>
