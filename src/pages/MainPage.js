@@ -34,7 +34,7 @@ const MainPage = props => {
       .then(res => console.log(res))
       .catch(error => {
         console.warn(error);
-        setResponseStatus(400);
+        setResponseStatus(error.code);
       });
     getUserData.mutate();
     getMatchingStateData.mutate();
