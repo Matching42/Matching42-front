@@ -1,15 +1,17 @@
 import styled from 'styled-components';
 
 export const WaitToggleStyled = styled.div`
+  font-family: 'Spoqa Han Sans', sans-serif;
   display: flex;
   flex-direction: row;
+  align-items: center;
   justify-content: space-between;
   font-size: 28px;
 `;
 
 export const WaitSpanStyled = styled.div`
-  vertical-align: middle;
-  padding: 2px 0;
+  height: auto;
+  padding-top: 2px;
   padding-right: 8px;
   font-size: 0.45em;
   color: #252831;
@@ -28,6 +30,7 @@ export const ToggleStyled = styled.div`
 
 export const WaitToggleButtonStyled = styled.div`
   position: relative;
+  top: 2px;
   display: flex;
   cursor: pointer;
   align-items: center;
