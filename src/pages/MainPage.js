@@ -17,6 +17,7 @@ const MainPage = props => {
   const { getUserData } = useUserData(user);
   const { getMatchingStateData } = useStateData();
   const { teams, teamListData } = useFetchTeamListData(subject);
+  const [requestError, setRequestError] = useState(false);
 
   useEffect(() => {
     teamListData.revalidate();
@@ -31,7 +32,11 @@ const MainPage = props => {
         cluster: preferredCluster
       })
       .then(res => console.log(res))
-      .catch(error => console.warn(error));
+      .catch(error => {
+        console.warn(error);
+        setRequestError(true);
+        console.log(requestError);
+      });
     getUserData.mutate();
     getMatchingStateData.mutate();
   };
