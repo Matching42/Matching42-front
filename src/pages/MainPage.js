@@ -81,7 +81,7 @@ const MainPage = props => {
               teamList={teams}
               teamListData={teamListData.data}
               onMoreTeamListItem={teamListData.setSize}
-              totalSize={getTeamData.data?.data.length}
+              totalSize={getTeamData.data?.data.filter(team => team.state !== 'end').length}
               subjectList={subjectList}
               onSelectedSubjectButtonClick={handleSelectedSubjectButtonClick}
             />
