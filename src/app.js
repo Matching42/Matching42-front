@@ -70,11 +70,20 @@ function App() {
     }
   }, []);
 
+  const handleLogoutButtonClick = () => {
+    if (token && user) {
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      setToken(null);
+      setUser(null);
+    }
+  };
+
   return (
     <>
       <Router history={history}>
         <Wrapper>
-          <Header user={user} />
+          <Header user={user} onLogoutButtonClick={handleLogoutButtonClick} />
           <Switch>
             <Route exact path="/">
               {user && user !== 'null' ? <Redirect to="/home" /> : <LoginPage />}
