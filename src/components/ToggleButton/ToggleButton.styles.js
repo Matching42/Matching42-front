@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const WaitToggleStyled = styled.div`
   font-family: 'Spoqa Han Sans', sans-serif;
+  position: relative;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -35,6 +36,7 @@ export const WaitToggleButtonStyled = styled.div`
   align-items: center;
   width: 30px;
   height: 100%;
+  top: calc(100% - 16px);
   line-height: 1.5;
   background-color: ${props => (props.toggle ? '#27BABB' : '#D5D5D5')};
   border-radius: 22px;
