@@ -13,7 +13,7 @@ const AddTag = ({ tags, onPlusButtonClick }) => {
   };
 
   const handleChangeInput = e => {
-    if (e.target.value.length <= 5 && tags.length <= 3) setTag(e.target.value);
+    if (e.target.value.length <= 5 && tags.length <= 3 && e.target.value.indexOf(' ') === -1) setTag(e.target.value);
   };
 
   return (
