@@ -27,5 +27,5 @@ export const PlusButton = styled.button`
   width: 8%;
   background-color: ${props => (props.length > 3 ? '#f9f9f9' : '#DEF5F5')};
   border-radius: 5px;
-  cursor: pointer;
+  cursor: ${props => (props.length > 3 ? 'default' : 'pointer')};
 `;
