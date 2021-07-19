@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { DropdownStyled, DropdownButton, DropdownBox } from './Dropdown.styles';
 import DropdownIcon from '../../assets/icons/DropdownIcon';
 
 const Dropdown = ({ subjectList, selectedSubject, setSelectedSubject, type }) => {
   const [isActive, setIsActive] = useState(false);
+
+  const modalRef = useRef();
 
   const buttonOnClick = () => {
     setIsActive(!isActive);
@@ -13,9 +15,21 @@ const Dropdown = ({ subjectList, selectedSubject, setSelectedSubject, type }) =>
     setIsActive(!isActive);
     setSelectedSubject(e.target.innerHTML);
   };
+  const handleClickOutside = ({ target }) => {
+    if (isActive && !modalRef.current?.contains(target)) {
+      setIsActive(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('click', handleClickOutside);
+    return () => {
+      window.removeEventListener('click', handleClickOutside);
+    };
+  }, []);
 
   return (
-    <DropdownStyled active={isActive} type={type}>
+    <DropdownStyled active={isActive} type={type} ref={modalRef}>
       <DropdownButton type="button" onClick={buttonOnClick} active={isActive}>
         <DropdownButton.Name>{selectedSubject}</DropdownButton.Name>
         <DropdownButton.ArrowIcon>
