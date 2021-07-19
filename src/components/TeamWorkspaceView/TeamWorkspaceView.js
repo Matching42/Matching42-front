@@ -6,7 +6,7 @@ import Dialog from '../Dialog/Dialog';
 import DialogCloseButton from '../DialogCloseButton/DialogCloseButton';
 
 const TeamWorkspaceView = props => {
-  const { team, subjectPDF, onFinishedButtonClick } = props;
+  const { team, user, subjectPDF, onFinishedButtonClick } = props;
   const { state, openButtonProps, openButtonRef } = useToggleDialog();
 
   const forBubblingEvent = () => {};
@@ -35,11 +35,11 @@ const TeamWorkspaceView = props => {
             <a href="https://github.com/Matching42/Matching42-front">{subjectPDF}</a>
           </LinkList.Link>
         </LinkList>
-        <TeamWorkspaceViewStyled.Button>
+        {user.ID === team.leaderID && (<TeamWorkspaceViewStyled.Button>
           <TeamFinishedButton {...openButtonProps} ref={openButtonRef} onClick={forBubblingEvent}>
             스터디 종료
           </TeamFinishedButton>
-        </TeamWorkspaceViewStyled.Button>
+        </TeamWorkspaceViewStyled.Button>)}
         <div className="scrollbar" />
       </TeamWorkspaceViewStyled>
       {state.isOpen && (
