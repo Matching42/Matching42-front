@@ -16,7 +16,8 @@ const EditForm = ({ team, onCloseButton, onSubmitButton }) => {
   };
 
   const handlePlusButtonClick = tag => {
-    setTags(prev => [...prev, tag]);
+    if (tags.indexOf(tag) === -1)
+      setTags(prev => [...prev, tag]);
   };
 
   return (
