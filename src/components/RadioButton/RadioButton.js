@@ -12,8 +12,8 @@ const RadioButton = ({ name, checkRadioButton, setCheckRadioButton }) => {
   return (
     <RadioButtonStyled>
       <RadioInput>
-        <CheckRadioButton type="radio" value={name} checked={name === checkRadioButton} onChange={handleChangeInput} />
-        <span>{name}</span>
+          <CheckRadioButton type="radio" value={name} checked={name === checkRadioButton} onChange={handleChangeInput} id={name}/>
+          <label htmlFor={name}>{name}</label>
       </RadioInput>
     </RadioButtonStyled>
   );
