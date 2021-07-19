@@ -18,7 +18,8 @@ export const UserImageStyled = styled.img`
   background-image: url(${nonPeople});
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: contain;
+  background-size: cover;
+  object-fit: cover;
 `;
 
 export const RestMemberImageStyled = styled.span`

@@ -44,10 +44,14 @@ const TeamWorkspaceView = props => {
       </TeamWorkspaceViewStyled>
       {state.isOpen && (
         <OverlayContainer>
-          <Dialog isOpen onClose={state.close} isDimissable type="alert">
+          <Dialog isOpen onClose={state.close} isDimissable type="alert" padding={0}>
             <DialogCloseButton onCloseButton={state.close} />
             <Alert>
-              <Alert.Text>스터디 종료 시, 팀 페이지는 사라지게 됩니다. 완전히 종료하고자 한다면 아래 버튼을 눌러주세요.</Alert.Text>
+              <Alert.Text>
+                스터디 종료 시, 팀 페이지는 사라지게 됩니다.
+                <br />
+                완전히 종료하고자 한다면 아래 버튼을 눌러주세요.
+              </Alert.Text>
               <Alert.Button>
                 <button type="button" onClick={handleFinishedButtonClick}>
                   완료
