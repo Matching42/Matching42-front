@@ -16,7 +16,7 @@ export const TeamWorkspaceViewStyled = styled.div`
 
   .scrollbar {
     width: 4px;
-    height: calc(100% - 145px);
+    height: 100%;
     max-height: 210px;
     position: absolute;
     z-index: 100;
