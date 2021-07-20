@@ -31,3 +31,9 @@ TeamListItemBox.StartDate = styled.span`
   font-weight: bold;
   color: #27babb;
 `;
+
+export const EndText = styled.span`
+  font-size: 0.7em;
+  font-weight: bold;
+  color: #bfbfbf;
+`;
