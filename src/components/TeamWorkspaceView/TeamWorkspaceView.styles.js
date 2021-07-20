@@ -5,8 +5,9 @@ export const TeamWorkspaceViewStyled = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: flex-start;
   align-items: top;
+  position: relative;
   background-color: #fff;
   padding: 30px;
   border-radius: 20px;
@@ -35,7 +36,7 @@ TeamWorkspaceViewStyled.Title = styled.div`
   font-family: 'Noto Sans KR', sans-serif;
   font-weight: bold;
   font-size: 0.55em;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 `;
 
 TeamWorkspaceViewStyled.Line = styled.div`
@@ -45,7 +46,7 @@ TeamWorkspaceViewStyled.Line = styled.div`
 export const LinkList = styled.div`
   width: 100%;
   overflow: auto;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   font-size: 0.75em;
 
   ::-webkit-scrollbar {
@@ -83,8 +84,9 @@ LinkList.Link = styled.div`
 `;
 
 TeamWorkspaceViewStyled.Button = styled.div`
-  display: flex;
-  justify-content: flex-end;
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
 `;
 
 export const TeamFinishedButton = styled.button`

@@ -35,11 +35,13 @@ const TeamWorkspaceView = props => {
             <a href="https://github.com/Matching42/Matching42-front">{subjectPDF}</a>
           </LinkList.Link>
         </LinkList>
-        {user.ID === team.leaderID && (<TeamWorkspaceViewStyled.Button>
-          <TeamFinishedButton {...openButtonProps} ref={openButtonRef} onClick={forBubblingEvent}>
-            스터디 종료
-          </TeamFinishedButton>
-        </TeamWorkspaceViewStyled.Button>)}
+        {user.ID === team.leaderID && team.state !== 'end' && (
+          <TeamWorkspaceViewStyled.Button>
+            <TeamFinishedButton {...openButtonProps} ref={openButtonRef} onClick={forBubblingEvent}>
+              스터디 종료
+            </TeamFinishedButton>
+          </TeamWorkspaceViewStyled.Button>
+        )}
         <div className="scrollbar" />
       </TeamWorkspaceViewStyled>
       {state.isOpen && (
