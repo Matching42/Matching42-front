@@ -100,6 +100,7 @@ export const TeamFinishedButton = styled.button`
   cursor: pointer;
   outline: 0;
   transition: 0.15s;
+  z-index: 100;
 
   :hover {
     background-color: #25a9aa;
