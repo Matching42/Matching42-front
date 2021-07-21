@@ -1,14 +1,13 @@
 import React, { useState, useCallback } from 'react';
-import { AddTagStyled, PlusButton } from './AddTag.styles';
+import { AddTagStyled, PlusButton, DuplicateError } from './AddTag.styles';
 import PlusIcon from '../../assets/icons/PlusIcon';
 
-const AddTag = ({ tags, onPlusButtonClick }) => {
+const AddTag = ({ tags, onPlusButtonClick, isDuplicate }) => {
   const [tag, setTag] = useState('');
 
   const handlePlusButtonClick = () => {
     if (tags.length <= 3) {
-      onPlusButtonClick?.(tag);
-      setTag('');
+      onPlusButtonClick?.(tag, setTag);
     }
   };
 
@@ -17,6 +16,7 @@ const AddTag = ({ tags, onPlusButtonClick }) => {
   };
 
   return (
+    <>
     <AddTagStyled>
       <AddTagStyled.Input
         type="text"
@@ -24,11 +24,14 @@ const AddTag = ({ tags, onPlusButtonClick }) => {
         value={tag}
         length={tags.length}
         onChange={handleChangeInput}
+        isDuplicate={isDuplicate}
       />
       <PlusButton onClick={handlePlusButtonClick} length={tags.length}>
         <PlusIcon color={tags.length > 3 ? '#252831' : '#27babb'} />
       </PlusButton>
     </AddTagStyled>
+    <DuplicateError isVisible={isDuplicate}>이미 등록된 태그입니다. </DuplicateError>
+    </>
   );
 };
 
