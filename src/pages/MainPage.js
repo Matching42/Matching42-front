@@ -18,7 +18,7 @@ const MainPage = props => {
   const { getMatchingStateData } = useStateData();
   const { teams, teamListData } = useFetchTeamListData(subject);
   const { getTeamData } = useTeamData();
-  const [responseStatus, setResponseStatus] = useState(200);
+  const [responseStatus, setResponseStatus] = useState(0);
 
   useEffect(() => {
     teamListData.revalidate();
@@ -32,10 +32,13 @@ const MainPage = props => {
         gitName: githubId,
         cluster: preferredCluster
       })
-      .then(res => console.log(res))
+      .then(res => {
+        console.log(res);
+        setResponseStatus(200);
+      })
       .catch(error => {
         console.warn(error);
-        setResponseStatus(error.code);
+        setResponseStatus(400);
       });
     getUserData.mutate();
     getMatchingStateData.mutate();
@@ -86,6 +89,7 @@ const MainPage = props => {
               onMatchingButtonClick={handleMatchingButtonClick}
               onMatchingCancelButtonClick={handleMatchingCancelButtonClick}
               responseStatus={responseStatus}
+              setResponseStatus={setResponseStatus}
             />
             <AllTeamListView
               teamList={teams}
