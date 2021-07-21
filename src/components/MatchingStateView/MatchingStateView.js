@@ -7,13 +7,14 @@ import DialogCloseButton from '../DialogCloseButton/DialogCloseButton';
 import SurveyForm from '../SurveyForm/SurveyForm';
 import { useStateData } from '../../hooks/useStateData';
 
-const MatchingStateView = ({ user, onMatchingButtonClick, onMatchingCancelButtonClick, responseStatus }) => {
+const MatchingStateView = ({ user, onMatchingButtonClick, onMatchingCancelButtonClick, responseStatus, setResponseStatus }) => {
   const { state, openButtonProps, openButtonRef } = useToggleDialog();
   const { getMatchingStateData } = useStateData();
   const [dialogType, setDialogType] = useState(null);
 
   const handleSubmitButtonClick = (selectedSubject, githubId, preferredCluster) => {
     onMatchingButtonClick?.(selectedSubject, githubId, preferredCluster);
+    state.close();
   };
 
   const handleCancelButtonClick = () => {
@@ -50,7 +51,7 @@ const MatchingStateView = ({ user, onMatchingButtonClick, onMatchingCancelButton
           <OverlayContainer>
             <Dialog isOpen onClose={state.close} isDimissable type="form">
               <DialogCloseButton onCloseButton={state.close} />
-              <SurveyForm onCloseButton={state.close} onSubmitButton={handleSubmitButtonClick} responseStatus={responseStatus}/>
+              <SurveyForm onCloseButton={state.close} onSubmitButton={handleSubmitButtonClick} responseStatus={responseStatus} setResponseStatus={setResponseStatus} />
             </Dialog>
           </OverlayContainer>
         ) : (

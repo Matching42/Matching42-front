@@ -1,10 +1,11 @@
 import React, { useCallback } from 'react';
 import { TextInputStyled } from './TextInput.styles';
 
-const TextInput = ({ placeholderInfo, inputText, setInputText, checkEmptyInput, responseStatus }) => {
+const TextInput = ({ placeholderInfo, inputText, setInputText, checkEmptyInput, responseStatus, setResponseStatus }) => {
   const handleChangeInput = useCallback(
     e => {
       setInputText(e.target.value);
+      setResponseStatus(0);
     },
     [setInputText]
   );
