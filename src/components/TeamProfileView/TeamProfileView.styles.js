@@ -35,7 +35,6 @@ TeamProfileLeftBox.Name = styled.div`
 `;
 
 TeamProfileLeftBox.EditButton = styled.div`
-  display: ${props => (props.isActive ? 'block' : 'none')};
   cursor: pointer;
 `;
 
