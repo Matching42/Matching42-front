@@ -15,7 +15,7 @@ export const RadioInput = styled.div`
 
   label {
     padding-left: 3px;
-    padding-top: 2px;
+    padding-top: 6px;
     cursor: pointer;
   }
 `;
