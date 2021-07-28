@@ -2,14 +2,13 @@ import styled from 'styled-components';
 
 export const DropdownStyled = styled.div`
   width: 100%;
-  height: 78%;
+  height: 100%;
   font-size: 16px;
   padding-right: 10px;
   box-sizing: border-box;
   padding-bottom: ${props => props.type === 'form' && '10px'};
   padding-left: ${props => props.type === 'form' && '5px'};
   border-bottom: ${props => (props.type === 'form' && !props.active ? '1px solid #252831' : 'none')};
-  cursor: pointer;
 
   .scrollbar {
     display: ${props => (props.active ? 'block' : 'none')};
@@ -27,21 +26,33 @@ export const DropdownStyled = styled.div`
   }
 `;
 
-export const DropdownButton = styled.button`
+export const DropdownButton = styled.div`
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  cursor: pointer;
+  align-items: center;
   background-color: #fff;
   color: ${props => (props.active ? '#27BABB' : '#252831')};
 `;
 
-DropdownButton.Name = styled.div`
+DropdownButton.Name = styled.button`
+  padding-top: 1px;
   margin-right: 8px;
+  cursor: pointer;
+  background-color: #fff;
 `;
 
 DropdownButton.ArrowIcon = styled.div``;
+
+export const IconButton = styled.button`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #fff;
+  cursor: pointer;
+`;
 
 export const DropdownBox = styled.div`
   display: flex;
@@ -99,6 +110,7 @@ DropdownBox.Item = styled.span`
   font-size: 0.8em;
   color: ${props => (props.selected ? '#27BABB' : '#252831')};
   padding: 5px 0;
+  cursor: pointer;
 
   :hover {
     color: #27babb;

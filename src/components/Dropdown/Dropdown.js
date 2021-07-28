@@ -1,20 +1,27 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { DropdownStyled, DropdownButton, DropdownBox } from './Dropdown.styles';
+import { DropdownStyled, DropdownButton, DropdownBox, IconButton } from './Dropdown.styles';
 import DropdownIcon from '../../assets/icons/DropdownIcon';
+import { ReactComponent as CancelIcon } from '../../assets/icons/icon-cancel.svg';
 
 const Dropdown = ({ subjectList, selectedSubject, setSelectedSubject, type }) => {
   const [isActive, setIsActive] = useState(false);
 
   const modalRef = useRef();
 
-  const buttonOnClick = () => {
+  const handleDropdownButtonClick = () => {
     setIsActive(!isActive);
   };
 
-  const subjectOnClick = e => {
-    setIsActive(!isActive);
-    setSelectedSubject(e.target.innerHTML);
+  const handleCancelButtonClick = () => {
+    setSelectedSubject('Subject');
+    setIsActive(false);
   };
+
+  const handleSubjectClick = e => {
+    setSelectedSubject(e.target.innerHTML);
+    setIsActive(!isActive);
+  };
+
   const handleClickOutside = ({ target }) => {
     if (isActive && !modalRef.current?.contains(target)) {
       setIsActive(false);
@@ -30,10 +37,20 @@ const Dropdown = ({ subjectList, selectedSubject, setSelectedSubject, type }) =>
 
   return (
     <DropdownStyled active={isActive} type={type} ref={modalRef}>
-      <DropdownButton type="button" onClick={buttonOnClick} active={isActive}>
-        <DropdownButton.Name>{selectedSubject}</DropdownButton.Name>
+      <DropdownButton active={isActive}>
+        <DropdownButton.Name type="button" onClick={handleDropdownButtonClick}>
+          {selectedSubject}
+        </DropdownButton.Name>
         <DropdownButton.ArrowIcon>
-          <DropdownIcon color={isActive ? '#27BABB' : '#252831'} active={isActive ? 'translate(1453.069 137.659) rotate(180)' : 'translate(-1439.141 -128.991)'} />
+          {selectedSubject !== 'Subject' ? (
+            <IconButton type="button" onClick={handleCancelButtonClick}>
+              <CancelIcon />
+            </IconButton>
+          ) : (
+            <IconButton type="button" onClick={handleDropdownButtonClick}>
+              <DropdownIcon color={isActive ? '#27BABB' : '#252831'} active={isActive ? 'translate(1453.069 137.659) rotate(180)' : 'translate(-1439.141 -128.991)'} />
+            </IconButton>
+          )}
         </DropdownButton.ArrowIcon>
       </DropdownButton>
       <DropdownBox active={isActive} type={type}>
@@ -41,7 +58,7 @@ const Dropdown = ({ subjectList, selectedSubject, setSelectedSubject, type }) =>
           <DropdownBox.List key={circle}>
             <DropdownBox.List.Title>{circle} Circle</DropdownBox.List.Title>
             {subjects.map((subject, index) => (
-              <DropdownBox.Item key={index} onClick={subjectOnClick} selected={subject === selectedSubject}>
+              <DropdownBox.Item key={index} onClick={handleSubjectClick} selected={subject === selectedSubject}>
                 {subject}
               </DropdownBox.Item>
             ))}
