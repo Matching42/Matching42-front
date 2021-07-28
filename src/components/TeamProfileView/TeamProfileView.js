@@ -15,17 +15,15 @@ const TeamProfileView = ({ team, user, onTeamProfileEditButtonclick }) => {
     onTeamProfileEditButtonclick?.(teamName, teamDescription, teamTags);
   }
 
-  const isTeamLeader = () => (user?.ID === team.leaderID);
-
   return (
     <>
       <TeamProfileViewStyled>
         <TeamProfileLeftBox>
           <TeamProfileLeftBox.Title>
             <TeamProfileLeftBox.Name>{team.teamName}</TeamProfileLeftBox.Name>
-            <TeamProfileLeftBox.EditButton isActive={isTeamLeader()} {...openButtonProps} ref={openButtonRef}>
+            {user?.ID === team?.leaderID && <TeamProfileLeftBox.EditButton {...openButtonProps} ref={openButtonRef}>
                 <EditIcon />
-            </TeamProfileLeftBox.EditButton>
+            </TeamProfileLeftBox.EditButton>}
           </TeamProfileLeftBox.Title>
           <TeamDescription>Team GitHub Repository, Notion, Slack 적극 활용하여 동료들과 함께 학습을 진행해보세요!</TeamDescription>
           <TeamTagList>
