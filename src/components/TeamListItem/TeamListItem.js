@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { TeamListItemStyled, TeamListItemBox } from './TeamListItem.styles';
+import { TeamListItemStyled, TeamListItemBox, EndText } from './TeamListItem.styles';
 import HashTag from './common/HashTag/HashTag';
 import TeamImage from './common/TeamImage/TeamImage';
 import Dday from '../Dday/Dday';
@@ -17,7 +17,7 @@ const TeamListItem = ({ teamData }) => {
           <TeamListItemBox.Subject>
             {teamData.subject} {teamData.state !== 'wait_member' && <LockIcon />}
           </TeamListItemBox.Subject>
-          <Dday mode="light" startDate={teamData.startDate} />
+          {teamData.state === 'end' ? <EndText>END</EndText> : <Dday mode="light" startDate={teamData.startDate} />}
         </TeamListItemBox>
         <TeamListItemBox>
           {/* team 데이터에 tags가 생기면 교체 예정 */}
