@@ -42,7 +42,7 @@ const Dropdown = ({ subjectList, selectedSubject, setSelectedSubject, type }) =>
           {selectedSubject}
         </DropdownButton.Name>
         <DropdownButton.ArrowIcon>
-          {selectedSubject !== 'Subject' ? (
+          {selectedSubject !== 'Subject' && type !== 'form' ? (
             <IconButton type="button" onClick={handleCancelButtonClick}>
               <CancelIcon />
             </IconButton>
