@@ -36,11 +36,15 @@ TeamMemberViewTop.Description = styled.p`
 
 TeamMemberViewTop.Lock = styled.div`
   width: 23px;
-  cursor: pointer;
+  cursor: ${props => (props.isLeader ? 'pointer' : 'Default')};
   margin-right: 10px;
 
   svg {
     width: 100%;
     height: 100%;
+
+    path {
+      fill: ${props => (props.isLeader ? '#27BABB' : '#D5D5D5')};
+    }
   }
 `;

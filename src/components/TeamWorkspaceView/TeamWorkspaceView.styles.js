@@ -17,7 +17,7 @@ export const TeamWorkspaceViewStyled = styled.div`
 
   .scrollbar {
     width: 4px;
-    height: calc(100% - 145px);
+    height: 100%;
     max-height: 210px;
     position: absolute;
     z-index: 100;
@@ -102,6 +102,7 @@ export const TeamFinishedButton = styled.button`
   cursor: pointer;
   outline: 0;
   transition: 0.15s;
+  z-index: 100;
 
   :hover {
     background-color: #25a9aa;

@@ -14,6 +14,7 @@ const MatchingStateView = ({ user, onMatchingButtonClick, onMatchingCancelButton
 
   const handleSubmitButtonClick = (selectedSubject, githubId, preferredCluster) => {
     onMatchingButtonClick?.(selectedSubject, githubId, preferredCluster);
+    state.close();
   };
 
   const handleCancelButtonClick = () => {
@@ -50,7 +51,7 @@ const MatchingStateView = ({ user, onMatchingButtonClick, onMatchingCancelButton
           <OverlayContainer>
             <Dialog isOpen onClose={state.close} isDimissable type="form">
               <DialogCloseButton onCloseButton={state.close} />
-              <SurveyForm onCloseButton={state.close} onSubmitButton={handleSubmitButtonClick} responseStatus={responseStatus} setResponseStatus={setResponseStatus}/>
+              <SurveyForm onCloseButton={state.close} onSubmitButton={handleSubmitButtonClick} responseStatus={responseStatus} setResponseStatus={setResponseStatus} />
             </Dialog>
           </OverlayContainer>
         ) : (

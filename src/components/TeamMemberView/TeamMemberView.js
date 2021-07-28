@@ -12,7 +12,7 @@ const TeamMemberView = ({ user, teamData, userDataMutate }) => {
   const { teamListData } = useFetchTeamListData();
 
   const changeTeamState = async () => {
-    if (teamMember.length === 5 || user.ID !== team.leaderID) return;
+    if (teamMember.length === 5 || user.ID !== team.leaderID || team.state === 'end') return;
 
     let changeState;
 
@@ -37,7 +37,9 @@ const TeamMemberView = ({ user, teamData, userDataMutate }) => {
           <TeamMemberViewTop.Title>Member</TeamMemberViewTop.Title>
           <TeamMemberViewTop.Description>현재 멤버를 모집하고 {team.state === 'wait_member' ? '있습니다.' : '있지 않습니다.'}</TeamMemberViewTop.Description>
         </TeamMemberViewTop.Wrap>
-        <TeamMemberViewTop.Lock onClick={changeTeamState}>{team.state === 'wait_member' ? <UnlockIcon /> : <LockIcon />}</TeamMemberViewTop.Lock>
+        <TeamMemberViewTop.Lock onClick={changeTeamState} isLeader={localStorage.user === team.leaderID}>
+          {team.state === 'wait_member' ? <UnlockIcon /> : <LockIcon />}
+        </TeamMemberViewTop.Lock>
       </TeamMemberViewTop>
       <TeamMemberImage teamMember={teamMember} />
     </TeamMemberViewStyled>
