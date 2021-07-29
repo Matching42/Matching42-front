@@ -9,8 +9,6 @@ const Dropdown = ({ subjectList, selectedSubject, setSelectedSubject, type }) =>
   const modalRef = useRef();
 
   const handleDropdownButtonClick = () => {
-    console.log('dropdown clicked');
-    console.log(isActive);
     setIsActive(!isActive);
   };
 
