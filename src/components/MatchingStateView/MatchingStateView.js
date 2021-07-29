@@ -56,7 +56,7 @@ const MatchingStateView = ({ user, onMatchingButtonClick, onMatchingCancelButton
           <OverlayContainer>
             <Dialog isOpen onClose={state.close} isDimissable type="form">
               <DialogCloseButton onCloseButton={state.close} />
-              <SurveyForm onCloseButton={state.close} onSubmitButton={handleSubmitButtonClick} responseStatus={responseStatus} setResponseStatus={setResponseStatus} />
+              <SurveyForm onSubmitButton={handleSubmitButtonClick} responseStatus={responseStatus} setResponseStatus={setResponseStatus} />
             </Dialog>
           </OverlayContainer>
         ) : (

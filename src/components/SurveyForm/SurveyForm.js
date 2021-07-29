@@ -5,7 +5,7 @@ import TextInput from '../TextInput/TextInput';
 import RadioButton from '../RadioButton/RadioButton';
 import Dropdown from '../Dropdown/Dropdown';
 
-const SurveyForm = ({ onCloseButton, onSubmitButton, responseStatus, setResponseStatus }) => {
+const SurveyForm = ({ onSubmitButton, responseStatus, setResponseStatus }) => {
   const [selectedSubject, setSelectedSubject] = useState('Libft');
   const [githubId, setGithubId] = useState('');
   const [checkEmptyInput, setCheckEmptyInput] = useState(false);
