@@ -17,10 +17,9 @@ export const TeamWorkspaceViewStyled = styled.div`
 
   .scrollbar {
     width: 4px;
-    height: 100%;
+    height: ${({user, team}) => user?.ID === team?.leaderID ? 'calc(100% - 142px)' : '100%'};
     max-height: 210px;
     position: absolute;
-    z-index: 100;
     top: 60px;
     right: 30px;
     background-color: #fff;
@@ -57,7 +56,7 @@ export const LinkList = styled.div`
     background-color: #d5d5d5;
   }
   ::-webkit-scrollbar-track {
-    margin: 10px 0;
+    margin: 10px 0 ${({user, team}) => user?.ID === team?.leaderID ? '35px' : '10px'};
   }
 `;
 
@@ -87,6 +86,8 @@ TeamWorkspaceViewStyled.Button = styled.div`
   position: absolute;
   bottom: 30px;
   right: 30px;
+  z-index: 100;
+
 `;
 
 export const TeamFinishedButton = styled.button`
@@ -102,7 +103,7 @@ export const TeamFinishedButton = styled.button`
   cursor: pointer;
   outline: 0;
   transition: 0.15s;
-  z-index: 100;
+
 
   :hover {
     background-color: #25a9aa;

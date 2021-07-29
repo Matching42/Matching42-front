@@ -18,10 +18,10 @@ const TeamWorkspaceView = props => {
 
   return (
     <>
-      <TeamWorkspaceViewStyled className="scrollbar">
+      <TeamWorkspaceViewStyled className="scrollbar" user={user} team={team}>
         <TeamWorkspaceViewStyled.Title>Team Workspace Link</TeamWorkspaceViewStyled.Title>
         <TeamWorkspaceViewStyled.Line />
-        <LinkList>
+        <LinkList user={user} team={team}>
           <LinkList.Title>GitHub Repository</LinkList.Title>
           <LinkList.Link>
             <a href={team.gitLink}>{team.gitLink}</a>
@@ -35,14 +35,14 @@ const TeamWorkspaceView = props => {
             <a href="https://github.com/Matching42/Matching42-front">{subjectPDF}</a>
           </LinkList.Link>
         </LinkList>
-        {user.ID === team.leaderID && team.state !== 'end' && (
+        <div className="scrollbar" />
+      {user?.ID === team?.leaderID && (
           <TeamWorkspaceViewStyled.Button>
             <TeamFinishedButton {...openButtonProps} ref={openButtonRef} onClick={forBubblingEvent}>
               스터디 종료
             </TeamFinishedButton>
           </TeamWorkspaceViewStyled.Button>
         )}
-        <div className="scrollbar" />
       </TeamWorkspaceViewStyled>
       {state.isOpen && (
         <OverlayContainer>
