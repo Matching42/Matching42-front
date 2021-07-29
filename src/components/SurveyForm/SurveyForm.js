@@ -10,6 +10,7 @@ const SurveyForm = ({ onCloseButton, onSubmitButton, responseStatus, setResponse
   const [githubId, setGithubId] = useState('');
   const [checkEmptyInput, setCheckEmptyInput] = useState(false);
   const [preferredCluster, setPreferredCluster] = useState('개포');
+  const [deadline, setDeadline] = useState('3일');
 
   const handleSubmitButtonClick = () => {
     if (githubId === '') {
@@ -37,6 +38,16 @@ const SurveyForm = ({ onCloseButton, onSubmitButton, responseStatus, setResponse
             <SelectItem.Info>
               <TextInput placeholderInfo="레포지토리 생성에 필요한 아이디를 입력해주세요." inputText={githubId} setInputText={setGithubId} checkEmptyInput={checkEmptyInput} responseStatus={responseStatus} setResponseStatus={setResponseStatus}/>
             </SelectItem.Info>
+          </SelectItem>
+          <SelectItem>
+            <SelectItem.Title>Deadline</SelectItem.Title>
+            <SelectItem.Radio>
+              <RadioButton name="3일" checkRadioButton={deadline} setCheckRadioButton={setDeadline} />
+              <RadioButton name="1주" checkRadioButton={deadline} setCheckRadioButton={setDeadline} />
+              <RadioButton name="2주" checkRadioButton={deadline} setCheckRadioButton={setDeadline} />
+              <RadioButton name="4주" checkRadioButton={deadline} setCheckRadioButton={setDeadline} />
+              <RadioButton name="6주 이상" checkRadioButton={deadline} setCheckRadioButton={setDeadline} />
+            </SelectItem.Radio>
           </SelectItem>
           <SelectItem>
             <SelectItem.Title>Preferred cluster</SelectItem.Title>
