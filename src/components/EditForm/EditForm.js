@@ -10,6 +10,7 @@ const EditForm = ({ team, onCloseButton, onSubmitButton }) => {
   const [teamDescription, setTeamDescription] = useState('Team GitHub Repository, Notion, Slack 적극 활용하여 동료들과 함께 학습을 진행해보세요!');
   const [tags, setTags] = useState(team.tags ? team.tags : []);
   const [isDuplicate, setIsDuplicate] = useState(false);
+  const [isEmpty, setIsEmpty] = useState(false);
 
   const handleSubmitButtonClick = () => {
     onSubmitButton?.(teamName, teamDescription, tags);
@@ -17,11 +18,17 @@ const EditForm = ({ team, onCloseButton, onSubmitButton }) => {
   };
 
   const handlePlusButtonClick = (tag, setTag) => {
-    if (tags.indexOf(tag) === -1)
+    if (tag === '')
+    {
+      setIsEmpty(true);
+      setIsDuplicate(false);
+    }
+    else if (tags.indexOf(tag) === -1)
     {
       setTags(prev => [...prev, tag]);
       setIsDuplicate(false);
       setTag('');
+      setIsEmpty(false);
     }
     else
       setIsDuplicate(true);
@@ -49,7 +56,7 @@ const EditForm = ({ team, onCloseButton, onSubmitButton }) => {
           <SelectItem>
             <SelectItem.Title>Tags</SelectItem.Title>
             <SelectItem.Info>
-              <AddTag tags={tags} onPlusButtonClick={handlePlusButtonClick} isDuplicate={isDuplicate}/>
+              <AddTag tags={tags} onPlusButtonClick={handlePlusButtonClick} isDuplicate={isDuplicate} isEmpty={isEmpty} />
             </SelectItem.Info>
             <TeamTagList>
               {tags && tags.length !== 0 ? (
