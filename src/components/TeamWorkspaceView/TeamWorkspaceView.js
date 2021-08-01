@@ -36,7 +36,7 @@ const TeamWorkspaceView = props => {
           </LinkList.Link>
         </LinkList>
         <div className="scrollbar" />
-      {user?.ID === team?.leaderID && (
+        {user?.ID === team?.leaderID && team.state !== 'end' && (
           <TeamWorkspaceViewStyled.Button>
             <TeamFinishedButton {...openButtonProps} ref={openButtonRef} onClick={forBubblingEvent}>
               스터디 종료
