@@ -5,7 +5,7 @@ const TextInput = ({ placeholderInfo, inputText, setInputText, checkEmptyInput, 
   const handleChangeInput = useCallback(
     e => {
       setInputText(e.target.value);
-      setResponseStatus(0);
+      setResponseStatus?.(0);
     },
     [setInputText]
   );

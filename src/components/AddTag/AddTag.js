@@ -1,18 +1,25 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import { AddTagStyled, PlusButton, DuplicateError } from './AddTag.styles';
 import PlusIcon from '../../assets/icons/PlusIcon';
 
-const AddTag = ({ tags, onPlusButtonClick, isDuplicate }) => {
+const AddTag = ({ tags, onPlusButtonClick, isDuplicate, isEmpty }) => {
   const [tag, setTag] = useState('');
+  const [isTagChanged, setIsTagChanged] = useState(false);
 
   const handlePlusButtonClick = () => {
     if (tags.length <= 3) {
       onPlusButtonClick?.(tag, setTag);
+      setIsTagChanged(false);
     }
   };
 
   const handleChangeInput = e => {
-    if (e.target.value.length <= 5 && tags.length <= 3 && e.target.value.indexOf(' ') === -1) setTag(e.target.value);
+    if (e.target.value.length <= 5 && tags.length <= 3 && e.target.value.indexOf(' ') === -1)
+    { 
+      setTag(e.target.value);
+      if (isDuplicate || isEmpty)
+        setIsTagChanged(true);
+    }
   };
 
   return (
@@ -24,13 +31,13 @@ const AddTag = ({ tags, onPlusButtonClick, isDuplicate }) => {
         value={tag}
         length={tags.length}
         onChange={handleChangeInput}
-        isDuplicate={isDuplicate}
+        isError={!isTagChanged && (isDuplicate || (isEmpty && tag === ''))}
       />
       <PlusButton onClick={handlePlusButtonClick} length={tags.length}>
         <PlusIcon color={tags.length > 3 ? '#252831' : '#27babb'} />
       </PlusButton>
     </AddTagStyled>
-    <DuplicateError isVisible={isDuplicate}>이미 등록된 태그입니다. </DuplicateError>
+    <DuplicateError isVisible={!isTagChanged && (isDuplicate || (isEmpty && tag === ''))} >{isDuplicate ? '이미 등록된 태그입니다. ' : '태그를 입력하세요. '}</DuplicateError>
     </>
   );
 };
