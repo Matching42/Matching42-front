@@ -34,7 +34,7 @@ const DetailPage = ({ user, history }) => {
     );
   }
 
-  if (getUserData.data === null || getTeamData.data === null || getTeamData.data?.data === null || getTeamData.data?.data === undefined) {
+  if (!getUserData.data?.user || !getTeamData.data?.data) {
     return (
       <Loading>
         <LoaderSpinner />
@@ -54,11 +54,11 @@ const DetailPage = ({ user, history }) => {
         <DetailContainer>
           <DetailContainer.Section>
             <DetailContainer.Top>
-              <TeamProfileView team={getTeamData.data?.data} user={getUserData.data?.data} onTeamProfileEditButtonclick={handleTeamProfileEditButtonClick} />
-              <TeamMemberView teamData={getTeamData.data?.data} user={getUserData.data?.data} userDataMutate={getUserData.mutate} />
+              <TeamProfileView team={getTeamData.data?.data} user={getUserData.data?.user} onTeamProfileEditButtonclick={handleTeamProfileEditButtonClick} />
+              <TeamMemberView teamData={getTeamData.data?.data} user={getUserData.data?.user} userDataMutate={getUserData.mutate} />
             </DetailContainer.Top>
             <DetailContainer.Bottom>
-              <TeamWorkspaceView team={getTeamData.data?.data} user={getUserData.data?.data} onFinishedButtonClick={handleFinishedButtonClick} />
+              <TeamWorkspaceView team={getTeamData.data?.data} user={getUserData.data?.user} onFinishedButtonClick={handleFinishedButtonClick} />
             </DetailContainer.Bottom>
           </DetailContainer.Section>
         </DetailContainer>

@@ -66,7 +66,7 @@ const MainPage = props => {
     );
   }
 
-  if (getUserData.data === null || getUserData.data?.data === null || getUserData.data?.data === undefined || getMatchingStateData.data === null || getMatchingStateData.data === undefined) {
+  if (getUserData.data === null || getUserData.data?.user === undefined || getMatchingStateData.data === null || getMatchingStateData.data === undefined) {
     return (
       <Loading>
         <LoaderSpinner />
@@ -79,12 +79,12 @@ const MainPage = props => {
       <MainContainer>
         <MainContainer.Section>
           <MainContainer.Left>
-            <ProfileView user={getUserData.data.data} />
-            <MyTeamListView myTeamList={getUserData.data.data.teamID} />
+            <ProfileView user={getUserData.data.user} />
+            <MyTeamListView myTeamList={getUserData.data.user.teamID} />
           </MainContainer.Left>
           <MainContainer.Right>
             <MatchingStateView
-              user={getUserData.data.data}
+              user={getUserData.data.user}
               waitList={waitList}
               onMatchingButtonClick={handleMatchingButtonClick}
               onMatchingCancelButtonClick={handleMatchingCancelButtonClick}
