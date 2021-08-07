@@ -37,7 +37,7 @@ const TeamMemberView = ({ user, teamData, userDataMutate }) => {
           <TeamMemberViewTop.Title>Member</TeamMemberViewTop.Title>
           <TeamMemberViewTop.Description>현재 멤버를 모집하고 {team.state === 'wait_member' ? '있습니다.' : '있지 않습니다.'}</TeamMemberViewTop.Description>
         </TeamMemberViewTop.Wrap>
-        <TeamMemberViewTop.Lock onClick={changeTeamState} isLeader={localStorage.user === team.leaderID} end={team.state === 'end'}>
+        <TeamMemberViewTop.Lock onClick={changeTeamState} isLeader={localStorage.user === team.leaderID} end={team.state}>
           {team.state === 'wait_member' ? <UnlockIcon /> : <LockIcon />}
         </TeamMemberViewTop.Lock>
       </TeamMemberViewTop>
