@@ -24,13 +24,14 @@ const MainPage = props => {
     teamListData.revalidate();
   }, [teamListData]);
 
-  const handleMatchingButtonClick = async (selectedSubject, githubId, preferredCluster) => {
+  const handleMatchingButtonClick = async (selectedSubject, githubId, preferredCluster, submissionDeadline) => {
     await api
       .post('/waitlist/', {
         userID: user,
         subjectName: selectedSubject,
         gitName: githubId,
-        cluster: preferredCluster
+        cluster: preferredCluster,
+        deadline: submissionDeadline,
       })
       .then(res => {
         console.log(res);
