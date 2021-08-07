@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { OverlayContainer } from '@react-aria/overlays';
 import { MatchingStateViewStyled, MatchingState, MatchingStartButton, MatchingWaitButton, Alert, MatchingInfo } from './MatchingStateView.styles';
 import useToggleDialog from '../../hooks/useToggleDialog';
@@ -12,9 +12,14 @@ const MatchingStateView = ({ user, onMatchingButtonClick, onMatchingCancelButton
   const { getMatchingStateData } = useStateData();
   const [dialogType, setDialogType] = useState(null);
 
+  const checkResponseStatus = () => {
+    if (responseStatus === 200)
+      state.close();
+  }
+  useEffect(checkResponseStatus, [responseStatus]);
+
   const handleSubmitButtonClick = (selectedSubject, githubId, preferredCluster) => {
     onMatchingButtonClick?.(selectedSubject, githubId, preferredCluster);
-    state.close();
   };
 
   const handleCancelButtonClick = () => {
@@ -51,7 +56,7 @@ const MatchingStateView = ({ user, onMatchingButtonClick, onMatchingCancelButton
           <OverlayContainer>
             <Dialog isOpen onClose={state.close} isDimissable type="form">
               <DialogCloseButton onCloseButton={state.close} />
-              <SurveyForm onCloseButton={state.close} onSubmitButton={handleSubmitButtonClick} responseStatus={responseStatus} setResponseStatus={setResponseStatus} />
+              <SurveyForm onSubmitButton={handleSubmitButtonClick} responseStatus={responseStatus} setResponseStatus={setResponseStatus} />
             </Dialog>
           </OverlayContainer>
         ) : (

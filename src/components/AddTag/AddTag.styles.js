@@ -10,7 +10,7 @@ AddTagStyled.Input = styled.input`
   width: 90%;
   border: none;
   border-bottom: ${props => {
-    if (props.isDuplicate)
+    if (props.isError)
       return '1px solid #FE4747';
     if (props.value !== '')
       return '1px solid #27babb';

@@ -23,7 +23,7 @@ const Dropdown = ({ subjectList, selectedSubject, setSelectedSubject, type }) =>
   };
 
   const handleClickOutside = ({ target }) => {
-    if (isActive && !modalRef.current?.contains(target)) {
+    if (!modalRef.current?.contains(target)) {
       setIsActive(false);
     }
   };
