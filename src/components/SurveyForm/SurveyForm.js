@@ -57,6 +57,7 @@ const SurveyForm = ({ onSubmitButton, responseStatus, setResponseStatus }) => {
             </SelectItem.Radio>
           </SelectItem>
         </SelectForm.Box>
+        <div className="scrollbar" />
         <SubmitButton onClick={handleSubmitButtonClick}>작성완료</SubmitButton>
       </SelectForm>
     </SurveyFormStyled>
