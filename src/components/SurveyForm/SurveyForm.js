@@ -10,14 +10,14 @@ const SurveyForm = ({ onSubmitButton, responseStatus, setResponseStatus }) => {
   const [githubId, setGithubId] = useState('');
   const [checkEmptyInput, setCheckEmptyInput] = useState(false);
   const [preferredCluster, setPreferredCluster] = useState('개포');
-  const [deadline, setDeadline] = useState('3일');
+  const [submissionDeadline, setSubmissionDeadline] = useState('3일');
 
   const handleSubmitButtonClick = () => {
     if (githubId === '') {
       setCheckEmptyInput(true);
       return;
     }
-    onSubmitButton?.(selectedSubject, githubId, preferredCluster);
+    onSubmitButton?.(selectedSubject, githubId, preferredCluster, submissionDeadline);
   };
 
   return (
@@ -42,11 +42,11 @@ const SurveyForm = ({ onSubmitButton, responseStatus, setResponseStatus }) => {
           <SelectItem>
             <SelectItem.Title>Deadline</SelectItem.Title>
             <SelectItem.Radio>
-              <RadioButton name="3일" checkRadioButton={deadline} setCheckRadioButton={setDeadline} />
-              <RadioButton name="1주" checkRadioButton={deadline} setCheckRadioButton={setDeadline} />
-              <RadioButton name="2주" checkRadioButton={deadline} setCheckRadioButton={setDeadline} />
-              <RadioButton name="4주" checkRadioButton={deadline} setCheckRadioButton={setDeadline} />
-              <RadioButton name="6주 이상" checkRadioButton={deadline} setCheckRadioButton={setDeadline} />
+              <RadioButton name="3일" checkRadioButton={submissionDeadline} setCheckRadioButton={setSubmissionDeadline} />
+              <RadioButton name="1주" checkRadioButton={submissionDeadline} setCheckRadioButton={setSubmissionDeadline} />
+              <RadioButton name="2주" checkRadioButton={submissionDeadline} setCheckRadioButton={setSubmissionDeadline} />
+              <RadioButton name="4주" checkRadioButton={submissionDeadline} setCheckRadioButton={setSubmissionDeadline} />
+              <RadioButton name="6주 이상" checkRadioButton={submissionDeadline} setCheckRadioButton={setSubmissionDeadline} />
             </SelectItem.Radio>
           </SelectItem>
           <SelectItem>
@@ -57,6 +57,7 @@ const SurveyForm = ({ onSubmitButton, responseStatus, setResponseStatus }) => {
             </SelectItem.Radio>
           </SelectItem>
         </SelectForm.Box>
+        <div className="scrollbar" />
         <SubmitButton onClick={handleSubmitButtonClick}>작성완료</SubmitButton>
       </SelectForm>
     </SurveyFormStyled>

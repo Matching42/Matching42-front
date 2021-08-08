@@ -18,8 +18,8 @@ const MatchingStateView = ({ user, onMatchingButtonClick, onMatchingCancelButton
   }
   useEffect(checkResponseStatus, [responseStatus]);
 
-  const handleSubmitButtonClick = (selectedSubject, githubId, preferredCluster) => {
-    onMatchingButtonClick?.(selectedSubject, githubId, preferredCluster);
+  const handleSubmitButtonClick = (selectedSubject, githubId, preferredCluster, submissionDeadline) => {
+    onMatchingButtonClick?.(selectedSubject, githubId, preferredCluster, submissionDeadline);
   };
 
   const handleCancelButtonClick = () => {
