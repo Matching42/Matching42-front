@@ -7,6 +7,7 @@ import TeamProfileView from '../components/TeamProfileView/TeamProfileView';
 import TeamWorkspaceView from '../components/TeamWorkspaceView/TeamWorkspaceView';
 import { LoaderSpinner } from '../components/Loader/Loader';
 import { useUserData, useTeamData } from '../hooks/useUserData';
+import { useFetchTeamListData } from '../hooks/useTeamListData';
 import { api } from '../api';
 
 const DetailPage = ({ user, history }) => {
@@ -14,6 +15,7 @@ const DetailPage = ({ user, history }) => {
   const currentId = currentParams.id;
   const { getUserData } = useUserData(user);
   const { getTeamData } = useTeamData(currentId);
+  const { teamListData } = useFetchTeamListData();
 
   const handleFinishedButtonClick = async () => {
     await api
@@ -23,6 +25,33 @@ const DetailPage = ({ user, history }) => {
       .then(res => console.log(res))
       .catch(error => console.warn(error));
     history.goBack();
+  };
+
+  const handleTeamProfileEditButtonClick = async (_teamName, teamDescription, teamTags) => {
+    await api
+      .patch(`/team/${getTeamData.data?.data?.ID}`, {
+        teamName: _teamName,
+        description: teamDescription
+      })
+      .then(res => console.log(res))
+      .catch(error => console.warn(error));
+
+    await api
+      .patch(`/team/tag/${getTeamData.data?.data?.ID}`, {
+        tag: teamTags
+      })
+      .then(res => console.log(res))
+      .catch(error => console.warn(error));
+
+    getTeamData.mutate();
+    teamListData.mutate();
+  };
+  
+  const handleInviteButtonClick = async () => {
+    await api
+      .post(`/team/invitetorepo/${getTeamData.data?.data?.ID}/${user}`)
+      .then(res => console.log(res))
+      .catch(error => console.warn(error));
   };
 
   if (getUserData.error) {
@@ -42,12 +71,6 @@ const DetailPage = ({ user, history }) => {
     );
   }
 
-  const handleTeamProfileEditButtonClick = (teamName, teamDescription, teamTags) => {
-    console.log(teamName);
-    console.log(teamDescription);
-    console.log(teamTags);
-  };
-
   return (
     <>
       <OverlayProvider>
@@ -58,7 +81,7 @@ const DetailPage = ({ user, history }) => {
               <TeamMemberView teamData={getTeamData.data?.data} user={getUserData.data?.user} userDataMutate={getUserData.mutate} />
             </DetailContainer.Top>
             <DetailContainer.Bottom>
-              <TeamWorkspaceView team={getTeamData.data?.data} user={getUserData.data?.user} onFinishedButtonClick={handleFinishedButtonClick} />
+              <TeamWorkspaceView team={getTeamData.data?.data} user={getUserData.data?.user} onFinishedButtonClick={handleFinishedButtonClick} onInviteButtonClick={handleInviteButtonClick} />
             </DetailContainer.Bottom>
           </DetailContainer.Section>
         </DetailContainer>

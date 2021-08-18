@@ -17,7 +17,7 @@ export const TeamWorkspaceViewStyled = styled.div`
 
   .scrollbar {
     width: 4px;
-    height: ${({user, team}) => user?.ID === team?.leaderID ? 'calc(100% - 142px)' : '100%'};
+    height: ${({ user, team }) => (user?.ID === team?.leaderID ? 'calc(100% - 142px)' : '100%')};
     max-height: 210px;
     position: absolute;
     top: 60px;
@@ -56,11 +56,14 @@ export const LinkList = styled.div`
     background-color: #d5d5d5;
   }
   ::-webkit-scrollbar-track {
-    margin: 10px 0 ${({user, team}) => user?.ID === team?.leaderID ? '35px' : '10px'};
+    margin: 10px 0 ${({ user, team }) => (user?.ID === team?.leaderID ? '35px' : '10px')};
   }
 `;
 
 LinkList.Title = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   font-size: 0.75rem;
   font-weight: bold;
   margin-top: 18px;
@@ -87,7 +90,15 @@ TeamWorkspaceViewStyled.Button = styled.div`
   bottom: 30px;
   right: 30px;
   z-index: 100;
+`;
 
+export const InviteButton = styled.button`
+  color: #27babb;
+  font-size: 12px;
+  background-color: transparent;
+  margin-left: 10px;
+  padding-top: 3px;
+  cursor: pointer;
 `;
 
 export const TeamFinishedButton = styled.button`
@@ -103,7 +114,6 @@ export const TeamFinishedButton = styled.button`
   cursor: pointer;
   outline: 0;
   transition: 0.15s;
-
 
   :hover {
     background-color: #25a9aa;
@@ -142,4 +152,11 @@ Alert.Button = styled.div`
       background-color: #25a9aa;
     }
   }
+`;
+
+export const EmptyText = styled.p`
+  color: #d3d4d6;
+  font-size: 0.55em;
+  margin-left: 6px;
+  margin-top: 8px;
 `;

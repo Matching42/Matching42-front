@@ -23,3 +23,14 @@ export const useTeamData = teamID => {
 
   return { getTeamData };
 };
+
+export const useTeamSubjectLink = subject => {
+  const getTeamSubjectLink = useSWR(['getTeamSubjectLink', subject], (_, subject) =>
+    api
+      .get(`subjectPDF/${subject}`)
+      .then(res => res.data)
+      .catch(error => console.log(error))
+  );
+
+  return { getTeamSubjectLink };
+};
