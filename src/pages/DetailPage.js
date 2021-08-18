@@ -25,6 +25,19 @@ const DetailPage = ({ user, history }) => {
     history.goBack();
   };
 
+  const handleInviteButtonClick = async () => {
+    await api
+      .post(`/team/invitetorepo/${getTeamData.data?.data?.ID}/${user}`)
+      .then(res => console.log(res))
+      .catch(error => console.warn(error));
+  };
+
+  const handleTeamProfileEditButtonClick = (teamName, teamDescription, teamTags) => {
+    console.log(teamName);
+    console.log(teamDescription);
+    console.log(teamTags);
+  };
+
   if (getUserData.error) {
     return (
       <Loading>
@@ -42,12 +55,6 @@ const DetailPage = ({ user, history }) => {
     );
   }
 
-  const handleTeamProfileEditButtonClick = (teamName, teamDescription, teamTags) => {
-    console.log(teamName);
-    console.log(teamDescription);
-    console.log(teamTags);
-  };
-
   return (
     <>
       <OverlayProvider>
@@ -58,7 +65,7 @@ const DetailPage = ({ user, history }) => {
               <TeamMemberView teamData={getTeamData.data?.data} user={getUserData.data?.user} userDataMutate={getUserData.mutate} />
             </DetailContainer.Top>
             <DetailContainer.Bottom>
-              <TeamWorkspaceView team={getTeamData.data?.data} user={getUserData.data?.user} onFinishedButtonClick={handleFinishedButtonClick} />
+              <TeamWorkspaceView team={getTeamData.data?.data} user={getUserData.data?.user} onFinishedButtonClick={handleFinishedButtonClick} onInviteButtonClick={handleInviteButtonClick} />
             </DetailContainer.Bottom>
           </DetailContainer.Section>
         </DetailContainer>
