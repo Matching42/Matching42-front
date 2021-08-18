@@ -3,9 +3,9 @@ import { TeamListViewStyled, TeamListTopbar, TeamListContainer, NoneTeamListData
 import TeamListItem from '../TeamListItem/TeamListItem';
 import Dropdown from '../Dropdown/Dropdown';
 import ToggleButton from '../ToggleButton/ToggleButton';
-import LoaderSpinner from '../LoaderSpinner/LoaderSpinner';
+import { LoaderSpinner, LoaderBubble } from '../Loader/Loader';
 
-const TeamListView = ({ teamList, teamListData, onMoreTeamListItem, totalSize, onSelectedSubjectButtonClick }) => {
+const TeamListView = ({ teamList, teamListData, onMoreTeamListItem, isValidating, totalSize, onSelectedSubjectButtonClick }) => {
   const [target, setTarget] = useState(null);
   const [toggle, setToggle] = useState(false);
   const [teams, setTeams] = useState(teamList);
@@ -50,7 +50,7 @@ const TeamListView = ({ teamList, teamListData, onMoreTeamListItem, totalSize, o
   }, [selectedSubject]);
 
   return (
-    <TeamListViewStyled>
+    <TeamListViewStyled isValidating={isValidating}>
       <TeamListTopbar>
         <TeamListTopbar.Title>
           Team List
@@ -69,11 +69,12 @@ const TeamListView = ({ teamList, teamListData, onMoreTeamListItem, totalSize, o
         </TeamListContainer>
       ) : (
         <TeamListContainer>
-          {!teams.length ? <NoneTeamListData>현재 모집중인 팀이 없습니다.</NoneTeamListData> : teams.map((team, index) => <TeamListItem key={index} teamData={team} />)}
+          {!teams.length ? <NoneTeamListData>현재 모집중인 팀이 없습니다.</NoneTeamListData> : teams.map((team, index) => <TeamListItem key={index} teamData={team} checkLast={index === teams.length - 1} />)}
           {teams && <div ref={setTarget} style={{ height: '10px' }} />}
         </TeamListContainer>
       )}
       <div className="scrollbar" />
+      {isValidating && <LoaderBubble />}
     </TeamListViewStyled>
   );
 };

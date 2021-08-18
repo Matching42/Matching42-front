@@ -9,6 +9,7 @@ export const TeamListViewStyled = styled.div`
   align-items: start;
   background-color: #fff;
   padding: 30px;
+  padding-bottom: ${props => props.isValidating ? "60px" : "30px"};
   border-radius: 20px;
   box-sizing: border-box;
   font-size: 28px;

@@ -22,5 +22,5 @@ export const useFetchTeamListData = subject => {
       teams.push(...results);
     });
 
-  return { teams, teamListData };
+  return { teams, teamListData, isValidating: teamListData.isValidating };
 };

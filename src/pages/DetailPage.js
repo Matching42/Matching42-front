@@ -5,7 +5,7 @@ import { OverlayProvider } from '@react-aria/overlays';
 import TeamMemberView from '../components/TeamMemberView/TeamMemberView';
 import TeamProfileView from '../components/TeamProfileView/TeamProfileView';
 import TeamWorkspaceView from '../components/TeamWorkspaceView/TeamWorkspaceView';
-import LoaderSpinner from '../components/LoaderSpinner/LoaderSpinner';
+import { LoaderSpinner } from '../components/Loader/Loader';
 import { useUserData, useTeamData } from '../hooks/useUserData';
 import { api } from '../api';
 
