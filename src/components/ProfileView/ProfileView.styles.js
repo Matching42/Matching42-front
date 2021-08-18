@@ -11,18 +11,18 @@ export const ProfileViewStyled = styled.div`
   padding: 35px 30px;
   box-sizing: border-box;
   color: #fff;
-  font-size: 28px;
+  font-size: 2.8rem;
 `;
 
 export const ProfileTitle = styled.h3`
-  font-size: 0.9em;
+  font-size: 0.8em;
   font-weight: bold;
 `;
 
 export const ProfileDescription = styled.p`
   font-size: 0.45em;
   line-height: 1.5;
-  padding: 10px 0;
+  padding: 15px 0;
 `;
 
 export const UserStateList = styled.ul`

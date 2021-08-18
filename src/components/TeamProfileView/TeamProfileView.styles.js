@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const TeamProfileViewStyled = styled.div`
   width: 46%;
   height: 100%;
+  position: relative;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -10,7 +11,6 @@ export const TeamProfileViewStyled = styled.div`
   padding: 30px;
   border-radius: 20px;
   box-sizing: border-box;
-  font-size: 28px;
   color: #fff;
 `;
 
@@ -19,6 +19,7 @@ export const TeamProfileLeftBox = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  font-size: 2.8rem;
 `;
 
 TeamProfileLeftBox.Title = styled.div`
@@ -26,10 +27,11 @@ TeamProfileLeftBox.Title = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  font-size: 1em;
 `;
 
 TeamProfileLeftBox.Name = styled.div`
-  font-size: 0.9em;
+  font-size: 0.8em;
   font-weight: bold;
   margin-right: 18px;
   width: 300px;
@@ -50,7 +52,7 @@ export const TeamDescription = styled.div`
 
 export const TeamTagList = styled.ul`
   display: flex;
-  font-size: 0.48em;
+  font-size: 0.4em;
   margin-top: 20px;
 `;
 
@@ -69,4 +71,8 @@ TeamTagList.Subject = styled.li`
   padding: 8px 10px;
 `;
 
-export const TeamProfileRightBox = styled.div``;
+export const TeamProfileRightBox = styled.div`
+  position: absolute;
+  top: 24px;
+  right: 24px;
+`;

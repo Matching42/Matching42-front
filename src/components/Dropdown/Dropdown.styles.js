@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const DropdownStyled = styled.div`
   width: 100%;
   height: 100%;
-  font-size: 16px;
   padding-right: 10px;
   box-sizing: border-box;
   padding-bottom: ${props => props.type === 'form' && '10px'};
@@ -35,16 +34,22 @@ export const DropdownButton = styled.div`
   align-items: center;
   background-color: #fff;
   color: ${props => (props.active ? '#27BABB' : '#252831')};
+  font-size: 1.2rem;
 `;
 
 DropdownButton.Name = styled.button`
-  padding-top: 1px;
   margin-right: 8px;
   cursor: pointer;
   background-color: #fff;
+  font-size: 1em;
+  padding-bottom: 4px;
 `;
 
-DropdownButton.ArrowIcon = styled.div``;
+DropdownButton.ArrowIcon = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 export const IconButton = styled.button`
   display: flex;
@@ -73,6 +78,7 @@ export const DropdownBox = styled.div`
   margin-top: 10px;
   overflow: auto;
   height: 80%;
+  font-size: 1.2rem;
 
   ::-webkit-scrollbar {
     width: 4px;
@@ -92,6 +98,7 @@ DropdownBox.List = styled.div`
   padding: 15px 0;
   padding-top: 20px;
   border-bottom: 2px solid #f9f9f9;
+  font-size: 1em;
 
   :last-child {
     border: none;
@@ -100,14 +107,14 @@ DropdownBox.List = styled.div`
 
 DropdownBox.List.Title = styled.p`
   margin-bottom: 8px;
-  font-size: 1em;
+  font-size: 1.1em;
   font-weight: bold;
 `;
 
 DropdownBox.Item = styled.span`
   display: inline-block;
   margin-right: 15px;
-  font-size: 0.8em;
+  font-size: 1em;
   color: ${props => (props.selected ? '#27BABB' : '#252831')};
   padding: 5px 0;
   cursor: pointer;

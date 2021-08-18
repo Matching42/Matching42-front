@@ -21,16 +21,39 @@ const GlobalStyle = createGlobalStyle`
     height: 100%;
     font-family: 'Noto Sans', sans-serif;
     font-weight: normal;
+    color: #252831;
   }
 	button {
 		border: none;
 		padding: 0;
-    font-family: 'Spoqa Han Sans', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
+    color: #252831;
 	}
   a {
     text-decoration: none;
-    color: #000;
+    color: #252831;
     width: 100%;
+  }
+
+  @media screen and (max-width : 1440px) {
+    html, body, div, p, span, button, a {
+      font-size: 10px;
+    }
+  }
+  @media screen and (min-width : 1441px) and (max-width : 1920px) {
+    html, body, div, p, span, button, a {
+      font-size: 12px;
+    }
+  }
+  @media screen and (min-width : 1921px) and (max-width : 2560px) {
+    html, body, div, p, span, button, a {
+      font-size: 16px;
+    }
+  }
+  @media screen and (min-width : 2561px) {
+    html, body, div, p, span, button, a {
+      font-size: 28px;
+    }
   }
 `;
 

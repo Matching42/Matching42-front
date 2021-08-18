@@ -9,10 +9,9 @@ export const TeamListViewStyled = styled.div`
   align-items: start;
   background-color: #fff;
   padding: 30px;
-  padding-bottom: ${({ isValidating }) => isValidating ? "60px" : "30px"};
+  padding-bottom: ${({ isValidating }) => (isValidating ? '60px' : '30px')};
   border-radius: 20px;
   box-sizing: border-box;
-  font-size: 28px;
 
   .scrollbar {
     width: 4px;
@@ -37,11 +36,12 @@ export const TeamListTopbar = styled.div`
   padding-bottom: 15px;
   display: flex;
   justify-content: space-between;
+  font-size: 2.8rem;
 `;
 
 TeamListTopbar.Title = styled.span`
   margin-left: 5px;
-  font-size: 0.6em;
+  font-size: 0.55em;
   font-weight: bold;
 `;
 
@@ -89,5 +89,4 @@ export const NoneTeamListData = styled.p`
   transform: translateX(-50%);
   left: 50%;
   font-size: 16px;
-  color: #252831;
 `;

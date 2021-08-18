@@ -16,7 +16,7 @@ const MainPage = props => {
   const [subject, setSubject] = useState('Subject');
   const { getUserData } = useUserData(user);
   const { getMatchingStateData } = useStateData();
-  const { teams, teamListData, isValidating} = useFetchTeamListData(subject);
+  const { teams, teamListData, isValidating } = useFetchTeamListData(subject);
   const { getTeamData } = useTeamData();
   const [responseStatus, setResponseStatus] = useState(0);
 
@@ -27,7 +27,7 @@ const MainPage = props => {
         subjectName: selectedSubject,
         gitName: githubId,
         cluster: preferredCluster,
-        deadline: submissionDeadline,
+        deadline: submissionDeadline
       })
       .then(res => {
         console.log(res);
@@ -149,8 +149,7 @@ export const Loading = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 40px;
-  color: #252831;
+  font-size: 4rem;
 `;
 
 Loading.Strong = styled.p`

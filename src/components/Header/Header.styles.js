@@ -18,7 +18,7 @@ const HeaderStyled = styled.nav`
   padding: 0 30px;
   box-sizing: border-box;
   background-color: #252831;
-  font-size: 28px;
+  font-size: 2.8rem;
   z-index: 1;
 
   a {

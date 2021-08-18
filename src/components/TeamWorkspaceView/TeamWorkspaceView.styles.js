@@ -12,7 +12,7 @@ export const TeamWorkspaceViewStyled = styled.div`
   padding: 30px;
   border-radius: 20px;
   box-sizing: border-box;
-  font-size: 28px;
+  font-size: 2.8rem;
   position: relative;
 
   .scrollbar {
@@ -32,7 +32,6 @@ export const TeamWorkspaceViewStyled = styled.div`
 `;
 
 TeamWorkspaceViewStyled.Title = styled.div`
-  font-family: 'Noto Sans KR', sans-serif;
   font-weight: bold;
   font-size: 0.55em;
   margin-bottom: 15px;
@@ -45,8 +44,8 @@ TeamWorkspaceViewStyled.Line = styled.div`
 export const LinkList = styled.div`
   width: 100%;
   overflow: auto;
-  margin-bottom: 20px;
-  font-size: 0.75em;
+  margin-bottom: ${({ user, team }) => (user?.ID === team?.leaderID ? '60px' : '0px')};
+  font-size: 1.6rem;
 
   ::-webkit-scrollbar {
     width: 4px;
@@ -64,19 +63,24 @@ LinkList.Title = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  font-size: 0.75rem;
+  font-size: 0.8em;
   font-weight: bold;
   margin-top: 18px;
   margin-left: 6px;
+
+  span {
+    font-size: 1em;
+  }
 `;
 
 LinkList.Link = styled.div`
   border-bottom: 2px solid #f9f9f9;
   padding-bottom: 18px;
+  margin-top: 10px;
 
   a {
     color: #d3d4d6;
-    font-size: 0.55em;
+    font-size: 1.1rem;
     margin-left: 6px;
 
     :hover {
@@ -94,10 +98,9 @@ TeamWorkspaceViewStyled.Button = styled.div`
 
 export const InviteButton = styled.button`
   color: #27babb;
-  font-size: 12px;
+  font-size: 1.1rem;
   background-color: transparent;
   margin-left: 10px;
-  padding-top: 3px;
   cursor: pointer;
 `;
 
@@ -106,7 +109,7 @@ export const TeamFinishedButton = styled.button`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.5em;
+  font-size: 1.4rem;
   font-weight: bold;
   color: #fff;
   background-color: #27babb;
@@ -130,8 +133,7 @@ export const Alert = styled.div`
 `;
 
 Alert.Text = styled.p`
-  font-size: 12px;
-  color: #252831;
+  font-size: 1.2rem;
   line-height: 1.5;
   word-break: keep-all;
   text-align: center;
@@ -156,7 +158,6 @@ Alert.Button = styled.div`
 
 export const EmptyText = styled.p`
   color: #d3d4d6;
-  font-size: 0.55em;
+  font-size: 1.1rem;
   margin-left: 6px;
-  margin-top: 8px;
 `;

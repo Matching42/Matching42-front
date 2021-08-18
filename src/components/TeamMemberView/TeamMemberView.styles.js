@@ -10,7 +10,6 @@ export const TeamMemberViewStyled = styled.div`
   padding: 30px;
   border-radius: 20px;
   box-sizing: border-box;
-  font-size: 28px;
 `;
 
 export const TeamMemberViewTop = styled.div`
@@ -19,18 +18,21 @@ export const TeamMemberViewTop = styled.div`
   justify-content: space-between;
   border-bottom: 2px solid #f9f9f9;
   padding-bottom: 15px;
+  font-size: 2.8rem;
 `;
 
-TeamMemberViewTop.Wrap = styled.div``;
+TeamMemberViewTop.Wrap = styled.div`
+  font-size: 1em;
+`;
 
 TeamMemberViewTop.Title = styled.h1`
-  font-size: 0.8em;
+  font-size: 0.6em;
   font-weight: bold;
   padding-bottom: 5px;
 `;
 
 TeamMemberViewTop.Description = styled.p`
-  font-size: 0.4em;
+  font-size: 0.3em;
   line-height: 1.5;
 `;
 

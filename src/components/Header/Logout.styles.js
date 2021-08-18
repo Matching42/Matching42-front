@@ -4,7 +4,7 @@ export const LogoutStyled = styled.div`
   display: block;
   position: absolute;
   top: 75px;
-  right: 34px;
+  right: 24px;
 
   .bubble {
     display: flex;
@@ -56,26 +56,26 @@ LogoutStyled.UserWrap = styled.div`
 `;
 
 LogoutStyled.UserInfo = styled.div`
-  margin-left: 10px;
+  margin-left: 12px;
 
   h2 {
     font-weight: bold;
-    font-size: 0.6em;
+    font-size: 1.6rem;
     margin-bottom: 8px;
   }
 
   p {
     color: #7c7e83;
-    font-size: 0.4em;
+    font-size: 1.2rem;
   }
 `;
 
 LogoutStyled.Button = styled.div`
-  color: #7c7e83;
-  font-size: 0.5em;
   margin-top: 20px;
   padding-left: 5px;
   transition: 0.2s;
+  font-size: 1.4rem;
+  color: #7c7e83;
   cursor: pointer;
 
   :hover {

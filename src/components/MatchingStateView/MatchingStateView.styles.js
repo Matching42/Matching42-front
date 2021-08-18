@@ -11,7 +11,7 @@ export const MatchingStateViewStyled = styled.div`
   padding: 30px;
   border-radius: 20px;
   box-sizing: border-box;
-  font-size: 28px;
+  font-size: 2.8rem;
 `;
 
 export const MatchingState = styled.div`
@@ -19,6 +19,7 @@ export const MatchingState = styled.div`
 `;
 
 MatchingState.Strong = styled.span`
+  font-size: 1em;
   font-weight: bold;
 `;
 
@@ -84,8 +85,7 @@ export const Alert = styled.div`
 `;
 
 Alert.Text = styled.p`
-  font-size: 12px;
-  color: #252831;
+  font-size: 1.2rem;
   line-height: 1.5;
   word-break: keep-all;
   text-align: center;
@@ -139,7 +139,7 @@ MatchingInfo.Box = styled.div`
     position: relative;
     background: #27babb;
     border-radius: 5px;
-    font-size: 12px;
+    font-size: 1.2rem;
     color: #fff;
   }
 

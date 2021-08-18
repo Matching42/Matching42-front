@@ -31,7 +31,7 @@ export const RestMemberImageStyled = styled.span`
   background-color: #f2f2f2;
   border-radius: 50%;
   margin-left: 5px;
-  font-size: 10px;
+  font-size: 1em;
   font-weight: bold;
   color: #c9c9c9;
 `;

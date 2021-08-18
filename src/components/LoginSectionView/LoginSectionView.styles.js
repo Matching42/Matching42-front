@@ -14,15 +14,10 @@ export const LoginBox = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 470px;
-  height: 430px;
   border-radius: 14px;
   background-color: #fff;
   box-shadow: 2px 2px 1.3px 1.3px rgba(0, 0, 0, 0.01);
-  text-align: center;
-  line-height: 2rem;
-  letter-spacing: 0.02rem;
-  font-size: 1.5rem;
+  padding: 60px 80px;
 `;
 
 export const LogoBox = styled.div`
@@ -36,37 +31,36 @@ LogoBox.Logo = styled.div`
 
 LogoBox.Title = styled.div`
   display: flex;
+  justify-content: flex-start;
   text-align: left;
-  margin-left: 0.9rem;
+  margin-left: 16px;
   background-position: center top;
-  line-height: 2rem;
-  letter-spacing: 0.02rem;
-  font-size: 1.5rem;
+  line-height: 4.3rem;
+  font-size: 3.2rem;
   font-weight: bold;
-  margin-top: 10px;
+  margin-top: 4px;
 `;
 
 export const Description = styled.div`
   text-align: center;
-  letter-spacing: -0.0001rem;
-  font-size: 0.7rem;
-  line-height: 0.9rem;
+  font-size: 1.4rem;
+  line-height: 2.1rem;
   padding: 20px;
 `;
 
 Description.Text = styled.span`
   font-weight: bold;
+  font-size: 1em;
 `;
 
 export const ClickButton = styled.div`
-  width: 15rem;
+  width: 70%;
   text-align: center;
-  font-size: 0.8rem;
-  background: #0bd;
+  font-size: 1.8rem;
   color: #fff;
-  background: #27babb;
-  border-radius: 5px;
-  margin-top: 1rem;
-  padding: 0.5rem;
+  background-color: #27babb;
+  border-radius: 10px;
+  margin-top: 24px;
+  padding: 20px 0;
   cursor: pointer;
 `;

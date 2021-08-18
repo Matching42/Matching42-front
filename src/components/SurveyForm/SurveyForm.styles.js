@@ -56,17 +56,16 @@ SelectForm.Box = styled.div`
 export const SelectItem = styled.div`
   width: 100%;
   padding-bottom: 40px;
-  font-size: 28px;
+  font-size: 2.8rem;
 `;
 
 SelectItem.Title = styled.p`
-  font-size: 0.6em;
+  font-size: 0.55em;
   font-weight: bold;
 `;
 
 SelectItem.Info = styled.div`
   width: 100%;
-  font-size: 0.5em;
   margin-top: 15px;
 `;
 
@@ -86,6 +85,8 @@ export const SubmitButton = styled.button`
   border-radius: 10px;
   cursor: pointer;
   transition: 0.15s;
+  font-size: 1.4rem;
+  font-weight: bold;
 
   :hover {
     background-color: #25a9aa;

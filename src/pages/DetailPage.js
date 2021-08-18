@@ -46,7 +46,7 @@ const DetailPage = ({ user, history }) => {
     getTeamData.mutate();
     teamListData.mutate();
   };
-  
+
   const handleInviteButtonClick = async () => {
     await api
       .post(`/team/invitetorepo/${getTeamData.data?.data?.ID}/${user}`)
@@ -133,8 +133,7 @@ export const Loading = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 40px;
-  color: #252831;
+  font-size: 4rem;
 `;
 
 Loading.Strong = styled.p`

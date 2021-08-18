@@ -11,7 +11,7 @@ export const MyTeamListViewStyled = styled.div`
   padding: 30px;
   border-radius: 20px;
   box-sizing: border-box;
-  font-size: 28px;
+  font-size: 2.8rem;
 `;
 
 export const Topbar = styled.div`
@@ -19,7 +19,7 @@ export const Topbar = styled.div`
   max-width: inherit;
   border-bottom: 2px solid rgba(0, 0, 0, 0.11);
   padding-bottom: 15px;
-  font-size: 0.6em;
+  font-size: 0.55em;
   font-weight: bold;
 `;
 
@@ -28,6 +28,5 @@ export const NoneMyTeamData = styled.p`
   top: 50%;
   transform: translateX(-50%);
   left: 50%;
-  font-size: 16px;
-  color: #252831;
+  font-size: 0.45em;
 `;

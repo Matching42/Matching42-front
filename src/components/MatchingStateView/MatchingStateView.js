@@ -13,9 +13,8 @@ const MatchingStateView = ({ user, onMatchingButtonClick, onMatchingCancelButton
   const [dialogType, setDialogType] = useState(null);
 
   const checkResponseStatus = () => {
-    if (responseStatus === 200)
-      state.close();
-  }
+    if (responseStatus === 200) state.close();
+  };
   useEffect(checkResponseStatus, [responseStatus]);
 
   const handleSubmitButtonClick = (selectedSubject, githubId, preferredCluster, submissionDeadline) => {
