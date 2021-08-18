@@ -7,7 +7,7 @@ export const TeamListItemStyled = styled.div`
   flex-direction: column;
   padding: 20px 5px 5px 10px;
   box-sizing: border-box;
-  border-bottom: ${props => !props.checkLast ? "1" : "0"}px solid #f9f9f9;
+  border-bottom: ${({ checkNotLast }) => checkNotLast ? "1" : "0"}px solid #f9f9f9;
   font-size: 28px;
 
   :hover {

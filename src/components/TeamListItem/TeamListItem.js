@@ -6,12 +6,12 @@ import TeamImage from './common/TeamImage/TeamImage';
 import Dday from '../Dday/Dday';
 import { ReactComponent as LockIcon } from '../../assets/icons/icon-teamListItemLock.svg';
 
-const TeamListItem = ({ teamData, checkLast }) => {
+const TeamListItem = ({ teamData, checkNotLast }) => {
   const { memberID } = teamData;
 
   return (
     <Link to={`/detail/${teamData.ID}`}>
-      <TeamListItemStyled checkLast={checkLast}>
+      <TeamListItemStyled checkNotLast={checkNotLast}>
         <TeamListItemBox>
           <TeamListItemBox.Subject>
             {teamData.teamName} {teamData.state !== 'wait_member' && <LockIcon />}
