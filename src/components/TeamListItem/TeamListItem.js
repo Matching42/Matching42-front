@@ -18,7 +18,7 @@ const TeamListItem = ({ teamData }) => {
           </TeamListItemBox.Subject>
           {teamData.state === 'end' ? <EndText>END</EndText> : <Dday mode="light" startDate={teamData.startDate} />}
         </TeamListItemBox>
-        <TeamListItemBox>d
+        <TeamListItemBox>
           <HashTag tags={teamData.tag} />
           <TeamImage teamMember={memberID} />
         </TeamListItemBox>
