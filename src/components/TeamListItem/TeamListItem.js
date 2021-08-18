@@ -6,12 +6,12 @@ import TeamImage from './common/TeamImage/TeamImage';
 import Dday from '../Dday/Dday';
 import { ReactComponent as LockIcon } from '../../assets/icons/icon-teamListItemLock.svg';
 
-const TeamListItem = ({ type, teamData }) => {
+const TeamListItem = ({ type, teamData, checkNotLast }) => {
   const { memberID } = teamData;
 
   return (
     <Link to={`/detail/${teamData.ID}`}>
-      <TeamListItemStyled>
+      <TeamListItemStyled checkNotLast={checkNotLast}>
         <TeamListItemBox>
           <TeamListItemBox.Title type={type}>
             <TeamListItemBox.Name>{teamData.teamName}</TeamListItemBox.Name> 

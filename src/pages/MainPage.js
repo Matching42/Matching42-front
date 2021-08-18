@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { OverlayProvider } from '@react-aria/overlays';
 import ProfileView from '../components/ProfileView/ProfileView';
 import MyTeamListView from '../components/MyTeamListView/MyTeamListView';
 import MatchingStateView from '../components/MatchingStateView/MatchingStateView';
 import AllTeamListView from '../components/TeamListView/TeamListView';
-import LoaderSpinner from '../components/LoaderSpinner/LoaderSpinner';
+import { LoaderSpinner } from '../components/Loader/Loader';
 import { useFetchTeamListData } from '../hooks/useTeamListData';
 import { useUserData, useTeamData } from '../hooks/useUserData';
 import { useStateData } from '../hooks/useStateData';
@@ -16,13 +16,15 @@ const MainPage = props => {
   const [subject, setSubject] = useState('Subject');
   const { getUserData } = useUserData(user);
   const { getMatchingStateData } = useStateData();
-  const { teams, teamListData } = useFetchTeamListData(subject);
+  const { teams, teamListData, isValidating} = useFetchTeamListData(subject);
   const { getTeamData } = useTeamData();
   const [responseStatus, setResponseStatus] = useState(0);
 
-  useEffect(() => {
-    teamListData.revalidate();
-  }, [teamListData]);
+  // 최신화 유지하려고 사용했는데 각 변경 지점에서 mutate를 사용해 갱신을 해준다면 해당 기능을 사용할 필요가 없다고 생각.
+  // 검증 완료후 삭제 예정
+  // useEffect(() => {
+  //   teamListData.revalidate();
+  // }, [teamListData]);
 
   const handleMatchingButtonClick = async (selectedSubject, githubId, preferredCluster, submissionDeadline) => {
     await api
@@ -96,6 +98,7 @@ const MainPage = props => {
               teamList={teams}
               teamListData={teamListData.data}
               onMoreTeamListItem={teamListData.setSize}
+              isValidating={isValidating}
               totalSize={getTeamData.data?.data.filter(team => team.state !== 'end').length}
               subjectList={subjectList}
               onSelectedSubjectButtonClick={handleSelectedSubjectButtonClick}
