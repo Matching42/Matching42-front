@@ -1,11 +1,18 @@
-import React, {useState} from 'react';
+import React, {useEffect} from 'react';
 import ToastStyled from './Toast.styles';
 
-const Toast = () => {
-    const [isActive, setIsActive] = useState(false);
-
+const Toast = ({isActive, setIsActive, type, message}) => {
+    useEffect(() => {
+        if (isActive === true)
+            setTimeout(() => {
+                setIsActive(false);
+            }, 3000);
+    });
     return (
-        <ToastStyled/>
+        <ToastStyled show={isActive} type={type}>
+            <ToastStyled.Icon />
+            {message}
+        </ToastStyled>
     );
 }
 
