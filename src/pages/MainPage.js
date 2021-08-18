@@ -20,9 +20,8 @@ const MainPage = props => {
   const { teams, teamListData, isValidating} = useFetchTeamListData(subject);
   const { getTeamData } = useTeamData();
   const [responseStatus, setResponseStatus] = useState(0);
-  const [isActive, setIsActive] = useState(true);
+  const [isActive, setIsActive] = useState(false);
 
-  
   const handleMatchingButtonClick = async (selectedSubject, githubId, preferredCluster, submissionDeadline) => {
     await api
       .post('/waitlist/', {
@@ -102,7 +101,7 @@ const MainPage = props => {
             />
           </MainContainer.Right>
         </MainContainer.Section>
-        <Toast isActive={isActive} setIsActive={setIsActive} type="error" message="에러입니다!" />
+        <Toast isActive={isActive} setIsActive={setIsActive} type="check" message="에러입니다!" />
       </MainContainer>
     </OverlayProvider>
   );
@@ -113,7 +112,6 @@ export default MainPage;
 export const MainContainer = styled.div`
   width: 100vw;
   height: calc(100vh - 170px);
-  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;

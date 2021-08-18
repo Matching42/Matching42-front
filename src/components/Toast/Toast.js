@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
-import ToastStyled from './Toast.styles';
-import { ReactComponent as check } from '../../assets/icons/icon-check.svg';
-import { ReactComponent as error } from '../../assets/icons/icon-error.svg';
-import { ReactComponent as info } from '../../assets/icons/icon-info.svg';
-import { ReactComponent as warning } from '../../assets/icons/icon-warning.svg';
+import ToastStyled, {IconWrap} from './Toast.styles';
+import { ReactComponent as CheckIcon } from '../../assets/icons/icon-check.svg';
+import { ReactComponent as ErrorIcon } from '../../assets/icons/icon-error.svg';
+import { ReactComponent as InfoIcon } from '../../assets/icons/icon-info.svg';
+import { ReactComponent as WarningIcon } from '../../assets/icons/icon-warning.svg';
 
 const Toast = ({isActive, setIsActive, type, message}) => {
   console.log("toast", type);
@@ -14,19 +14,18 @@ const Toast = ({isActive, setIsActive, type, message}) => {
       }, 3000);
   });
 
-  const typeSwitch = () => {
-    switch (type) {
-      case "check":
-        return check;
-      case "error":
-        return error;
-      case "info":
-        return info;
-      case "warning":
-        return warning;
-      default:
-        break;
+  const TypeSwitch = () => {
+    let icon;
+    if (type === "check") {
+      icon = <CheckIcon />;
+    } else if (type === "error") {
+      icon = <ErrorIcon />;
+    } else if (type === "info") {
+      icon = <InfoIcon />;
+    } else if (type === "warning") {
+      icon = <WarningIcon />;
     }
+    return icon;
   } 
 
   const bgColor = (type) => {
@@ -44,8 +43,8 @@ const Toast = ({isActive, setIsActive, type, message}) => {
   }
 
   return (
-    <ToastStyled show={isActive} type={type} bgColor={bgColor(type)}>
-      {/* {typeSwitch(type)} */}
+    <ToastStyled show={isActive} type={type}  bgColor={bgColor(type)}>
+      <IconWrap>{TypeSwitch()}</IconWrap>
       {message}
     </ToastStyled>
   );
