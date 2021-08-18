@@ -69,7 +69,7 @@ const TeamListView = ({ teamList, teamListData, onMoreTeamListItem, totalSize, o
         </TeamListContainer>
       ) : (
         <TeamListContainer>
-          {!teams.length ? <NoneTeamListData>현재 모집중인 팀이 없습니다.</NoneTeamListData> : teams.map((team, index) => <TeamListItem key={index} teamData={team} />)}
+          {!teams.length ? <NoneTeamListData>현재 모집중인 팀이 없습니다.</NoneTeamListData> : teams.map((team, index) => <TeamListItem key={index} type="allTeamList" teamData={team} />)}
           {teams && <div ref={setTarget} style={{ height: '10px' }} />}
         </TeamListContainer>
       )}
