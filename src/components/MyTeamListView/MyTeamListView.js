@@ -11,7 +11,7 @@ const MyTeamListView = ({ myTeamList }) => {
     const isLoading = getTeamData.data?.data === undefined;
 
     if (isLoading) return <LoaderSpinner />;
-    return getTeamData.data.data ? <TeamListItem teamData={getTeamData.data.data} /> : <NoneMyTeamData>아직 참여중인 팀이 없습니다.</NoneMyTeamData>;
+    return getTeamData.data.data ? <TeamListItem type="myTeamList" teamData={getTeamData.data.data} /> : <NoneMyTeamData>아직 참여중인 팀이 없습니다.</NoneMyTeamData>;
   };
 
   return (

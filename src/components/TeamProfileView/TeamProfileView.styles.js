@@ -32,6 +32,9 @@ TeamProfileLeftBox.Name = styled.div`
   font-size: 0.9em;
   font-weight: bold;
   margin-right: 18px;
+  width: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 TeamProfileLeftBox.EditButton = styled.div`
