@@ -8,15 +8,14 @@ import { useFetchTeamListData } from '../../hooks/useTeamListData';
 
 const TeamMemberView = ({ user, teamData, userDataMutate }) => {
   const [team, setTeam] = useState(teamData);
-  const teamMember = [team.leaderID, ...team.memberID];
   const { teamListData } = useFetchTeamListData();
 
   const changeTeamState = async () => {
-    if (teamMember.length === 5 || user.ID !== team.leaderID || team.state === 'end') return;
+    if (team.memberID.length === 5 || user.ID !== team.leaderID || team.state === 'end') return;
 
     let changeState;
 
-    if (teamMember.length < 3) {
+    if (team.memberID.length < 3) {
       changeState = team.state === 'less_member' ? 'wait_member' : 'less_member';
     } else {
       changeState = 'progress';
@@ -41,7 +40,7 @@ const TeamMemberView = ({ user, teamData, userDataMutate }) => {
           {team.state === 'wait_member' ? <UnlockIcon /> : <LockIcon />}
         </TeamMemberViewTop.Lock>
       </TeamMemberViewTop>
-      <TeamMemberImage teamMember={teamMember} />
+      <TeamMemberImage teamMember={team.memberID} />
     </TeamMemberViewStyled>
   );
 };
