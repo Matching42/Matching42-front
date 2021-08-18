@@ -21,6 +21,9 @@ jobs:
 
     - name: Check Node
       run: node -v
+      
+    - name: Install Dependencies
+      run: yarn install
 
     - name: Build
       run: yarn build
