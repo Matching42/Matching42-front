@@ -25,6 +25,27 @@ const DetailPage = ({ user, history }) => {
     history.goBack();
   };
 
+  const handleTeamProfileEditButtonClick = async (_teamName, teamDescription, teamTags) => {
+    await api
+      .patch(`/team/${getTeamData.data?.data?.ID}`, {
+        teamName: _teamName,
+        description: teamDescription
+      })
+      .then(res => console.log(res))
+      .catch(error => console.warn(error));
+
+    await api
+      .patch(`/team/tag/${getTeamData.data?.data?.ID}`, {
+        tag: teamTags
+      })
+      .then(res => console.log(res))
+      .catch(error => console.warn(error));
+      getUserData.mutate();
+      getTeamData.mutate();
+      console.log(teamDescription, teamTags);
+
+  };
+
   if (getUserData.error) {
     return (
       <Loading>
@@ -41,12 +62,6 @@ const DetailPage = ({ user, history }) => {
       </Loading>
     );
   }
-
-  const handleTeamProfileEditButtonClick = (teamName, teamDescription, teamTags) => {
-    console.log(teamName);
-    console.log(teamDescription);
-    console.log(teamTags);
-  };
 
   return (
     <>
