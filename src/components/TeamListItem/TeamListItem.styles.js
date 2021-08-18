@@ -21,9 +21,24 @@ export const TeamListItemBox = styled.div`
   padding-bottom: 10px;
 `;
 
-TeamListItemBox.Subject = styled.span`
+TeamListItemBox.Title = styled.span`
   font-size: 0.7em;
   font-weight: bold;
+  max-width: 400px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  position: relative;
+  svg {
+    position: absolute;
+    top: 2px;
+    right: 0px;
+  }
+  padding-right: 20px;
+  box-sizing: border-box;
+`;
+
+TeamListItemBox.Name = styled.span`
 `;
 
 TeamListItemBox.StartDate = styled.span`
