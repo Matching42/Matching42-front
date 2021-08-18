@@ -6,7 +6,7 @@ import TeamImage from './common/TeamImage/TeamImage';
 import Dday from '../Dday/Dday';
 import { ReactComponent as LockIcon } from '../../assets/icons/icon-teamListItemLock.svg';
 
-const TeamListItem = ({ teamData }) => {
+const TeamListItem = ({ teamData, checkLast }) => {
   const { memberID } = teamData;
 
   return (
