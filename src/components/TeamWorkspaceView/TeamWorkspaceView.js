@@ -4,10 +4,12 @@ import { TeamWorkspaceViewStyled, LinkList, InviteButton, TeamFinishedButton, Al
 import useToggleDialog from '../../hooks/useToggleDialog';
 import Dialog from '../Dialog/Dialog';
 import DialogCloseButton from '../DialogCloseButton/DialogCloseButton';
+import { useTeamSubjectLink } from '../../hooks/useUserData';
 
 const TeamWorkspaceView = props => {
   const { team, user, onFinishedButtonClick, onInviteButtonClick } = props;
   const { state, openButtonProps, openButtonRef } = useToggleDialog();
+  const { getTeamSubjectLink } = useTeamSubjectLink(team?.subject);
 
   const forBubblingEvent = () => {};
 
@@ -34,7 +36,7 @@ const TeamWorkspaceView = props => {
           <LinkList.Title>Notion</LinkList.Title>
           <LinkList.Link>{team.notionLink ? <a href={team.notionLink}>{team.notionLink}</a> : <EmptyText>링크가 존재하지 않습니다.</EmptyText>}</LinkList.Link>
           <LinkList.Title>Subject PDF</LinkList.Title>
-          <LinkList.Link>{team.subject ? <a href="https://github.com/Matching42/Matching42-front">{team.subject}</a> : <EmptyText>링크가 존재하지 않습니다.</EmptyText>}</LinkList.Link>
+          <LinkList.Link>{team.subject ? <a href={getTeamSubjectLink?.data?.subjectPDF}>{getTeamSubjectLink?.data?.subjectPDF}</a> : <EmptyText>링크가 존재하지 않습니다.</EmptyText>}</LinkList.Link>
         </LinkList>
         <div className="scrollbar" />
         {user?.ID === team?.leaderID && team.state !== 'end' && (
