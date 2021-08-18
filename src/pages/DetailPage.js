@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { OverlayProvider } from '@react-aria/overlays';
 import TeamMemberView from '../components/TeamMemberView/TeamMemberView';
 import TeamProfileView from '../components/TeamProfileView/TeamProfileView';
 import TeamWorkspaceView from '../components/TeamWorkspaceView/TeamWorkspaceView';
+import Toast from '../components/Toast/Toast';
 import { LoaderSpinner } from '../components/Loader/Loader';
 import { useUserData, useTeamData } from '../hooks/useUserData';
 import { useFetchTeamListData } from '../hooks/useTeamListData';
@@ -16,15 +17,21 @@ const DetailPage = ({ user, history }) => {
   const { getUserData } = useUserData(user);
   const { getTeamData } = useTeamData(currentId);
   const { teamListData } = useFetchTeamListData();
+  const [isActive, setIsActive] = useState(false);
 
   const handleFinishedButtonClick = async () => {
     await api
       .patch(`/team/${getTeamData.data?.data?.ID}`, {
         state: 'end'
       })
-      .then(res => console.log(res))
-      .catch(error => console.warn(error));
-    history.goBack();
+      .then(res => {
+        console.log(res);
+        history.goBack();
+      })
+      .catch(error => {
+        console.warn(error);
+        setIsActive(!isActive);
+      });
   };
 
   const handleTeamProfileEditButtonClick = async (_teamName, teamDescription, teamTags) => {
@@ -34,14 +41,20 @@ const DetailPage = ({ user, history }) => {
         description: teamDescription
       })
       .then(res => console.log(res))
-      .catch(error => console.warn(error));
+      .catch(error => {
+        console.warn(error);
+        setIsActive(!isActive);
+      });
 
     await api
       .patch(`/team/tag/${getTeamData.data?.data?.ID}`, {
         tag: teamTags
       })
       .then(res => console.log(res))
-      .catch(error => console.warn(error));
+      .catch(error => {
+        console.warn(error);
+        setIsActive(!isActive);
+      });
 
     getTeamData.mutate();
     teamListData.mutate();
@@ -51,7 +64,10 @@ const DetailPage = ({ user, history }) => {
     await api
       .post(`/team/invitetorepo/${getTeamData.data?.data?.ID}/${user}`)
       .then(res => console.log(res))
-      .catch(error => console.warn(error));
+      .catch(error => {
+        console.warn(error);
+        setIsActive(!isActive);
+      });
   };
 
   if (getUserData.error) {
@@ -84,6 +100,7 @@ const DetailPage = ({ user, history }) => {
               <TeamWorkspaceView team={getTeamData.data?.data} user={getUserData.data?.user} onFinishedButtonClick={handleFinishedButtonClick} onInviteButtonClick={handleInviteButtonClick} />
             </DetailContainer.Bottom>
           </DetailContainer.Section>
+          <Toast isActive={isActive} setIsActive={setIsActive} type="error" message="에러입니다!" />
         </DetailContainer>
       </OverlayProvider>
     </>

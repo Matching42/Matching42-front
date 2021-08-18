@@ -37,6 +37,7 @@ const MainPage = props => {
       })
       .catch(error => {
         console.warn(error);
+        setIsActive(!isActive);
         setResponseStatus(400);
       });
     getUserData.mutate();
@@ -47,7 +48,10 @@ const MainPage = props => {
     await api
       .delete(`/waitlist/${user}`)
       .then(res => console.log(res))
-      .catch(error => console.warn(error));
+      .catch(error => {
+        console.warn(error);
+        setIsActive(!isActive);
+      });
     getUserData.mutate();
     getMatchingStateData.mutate();
   };
