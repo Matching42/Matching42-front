@@ -15,13 +15,13 @@ const TeamListItem = ({ teamData }) => {
       <TeamListItemStyled>
         <TeamListItemBox>
           <TeamListItemBox.Subject>
-            {teamData.subject} {teamData.state !== 'wait_member' && <LockIcon />}
+            {teamData.teamName} {teamData.state !== 'wait_member' && <LockIcon />}
           </TeamListItemBox.Subject>
           {teamData.state === 'end' ? <EndText>END</EndText> : <Dday mode="light" startDate={teamData.startDate} />}
         </TeamListItemBox>
         <TeamListItemBox>
           {/* team 데이터에 tags가 생기면 교체 예정 */}
-          <HashTag tags={[]} />
+          <HashTag tags={teamData.tag} />
           <TeamImage teamMember={member} />
         </TeamListItemBox>
       </TeamListItemStyled>

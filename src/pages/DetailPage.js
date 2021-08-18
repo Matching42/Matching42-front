@@ -7,6 +7,7 @@ import TeamProfileView from '../components/TeamProfileView/TeamProfileView';
 import TeamWorkspaceView from '../components/TeamWorkspaceView/TeamWorkspaceView';
 import LoaderSpinner from '../components/LoaderSpinner/LoaderSpinner';
 import { useUserData, useTeamData } from '../hooks/useUserData';
+import { useFetchTeamListData } from '../hooks/useTeamListData';
 import { api } from '../api';
 
 const DetailPage = ({ user, history }) => {
@@ -14,6 +15,7 @@ const DetailPage = ({ user, history }) => {
   const currentId = currentParams.id;
   const { getUserData } = useUserData(user);
   const { getTeamData } = useTeamData(currentId);
+  const { teamListData } = useFetchTeamListData();
 
   const handleFinishedButtonClick = async () => {
     await api
@@ -40,10 +42,9 @@ const DetailPage = ({ user, history }) => {
       })
       .then(res => console.log(res))
       .catch(error => console.warn(error));
-      getUserData.mutate();
-      getTeamData.mutate();
-      console.log(teamDescription, teamTags);
 
+    getTeamData.mutate();
+    teamListData.mutate();
   };
 
   if (getUserData.error) {

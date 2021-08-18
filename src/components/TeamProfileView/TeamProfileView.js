@@ -25,7 +25,7 @@ const TeamProfileView = ({ team, user, onTeamProfileEditButtonclick }) => {
                 <EditIcon />
             </TeamProfileLeftBox.EditButton>}
           </TeamProfileLeftBox.Title>
-          <TeamDescription>{team.description}</TeamDescription>
+          <TeamDescription>{team.description ? team.description: 'Team GitHub Repository, Notion, Slack 적극 활용하여 동료들과 함께 학습을 진행해보세요!'}</TeamDescription>
           <TeamTagList>
             <TeamTagList.Subject># {team.subject}</TeamTagList.Subject>
             {team && team.tag ? team.tag.map((item, index) => <TeamTagList.Item key={index}># {item}</TeamTagList.Item>) : <TeamTagList.Item># 아직 등록된 태그가 없어요!</TeamTagList.Item>}
