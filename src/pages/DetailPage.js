@@ -46,6 +46,13 @@ const DetailPage = ({ user, history }) => {
     getTeamData.mutate();
     teamListData.mutate();
   };
+  
+  const handleInviteButtonClick = async () => {
+    await api
+      .post(`/team/invitetorepo/${getTeamData.data?.data?.ID}/${user}`)
+      .then(res => console.log(res))
+      .catch(error => console.warn(error));
+  };
 
   if (getUserData.error) {
     return (
@@ -74,7 +81,7 @@ const DetailPage = ({ user, history }) => {
               <TeamMemberView teamData={getTeamData.data?.data} user={getUserData.data?.user} userDataMutate={getUserData.mutate} />
             </DetailContainer.Top>
             <DetailContainer.Bottom>
-              <TeamWorkspaceView team={getTeamData.data?.data} user={getUserData.data?.user} onFinishedButtonClick={handleFinishedButtonClick} />
+              <TeamWorkspaceView team={getTeamData.data?.data} user={getUserData.data?.user} onFinishedButtonClick={handleFinishedButtonClick} onInviteButtonClick={handleInviteButtonClick} />
             </DetailContainer.Bottom>
           </DetailContainer.Section>
         </DetailContainer>

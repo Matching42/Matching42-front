@@ -7,8 +7,7 @@ import Dday from '../Dday/Dday';
 import { ReactComponent as LockIcon } from '../../assets/icons/icon-teamListItemLock.svg';
 
 const TeamListItem = ({ teamData }) => {
-  const { leaderID, memberID } = teamData;
-  const member = [leaderID, ...memberID];
+  const { memberID } = teamData;
 
   return (
     <Link to={`/detail/${teamData.ID}`}>
@@ -19,9 +18,9 @@ const TeamListItem = ({ teamData }) => {
           </TeamListItemBox.Subject>
           {teamData.state === 'end' ? <EndText>END</EndText> : <Dday mode="light" startDate={teamData.startDate} />}
         </TeamListItemBox>
-        <TeamListItemBox>
+        <TeamListItemBox>d
           <HashTag tags={teamData.tag} />
-          <TeamImage teamMember={member} />
+          <TeamImage teamMember={memberID} />
         </TeamListItemBox>
       </TeamListItemStyled>
     </Link>
