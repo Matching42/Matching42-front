@@ -18,6 +18,7 @@ const DetailPage = ({ user, history }) => {
   const { getTeamData } = useTeamData(currentId);
   const { teamListData } = useFetchTeamListData();
   const [isActive, setIsActive] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleFinishedButtonClick = async () => {
     await api
@@ -30,6 +31,7 @@ const DetailPage = ({ user, history }) => {
       })
       .catch(error => {
         console.warn(error);
+        setErrorMessage(error.message);
         setIsActive(!isActive);
       });
   };
@@ -43,6 +45,7 @@ const DetailPage = ({ user, history }) => {
       .then(res => console.log(res))
       .catch(error => {
         console.warn(error);
+        setErrorMessage(error.message);
         setIsActive(!isActive);
       });
 
@@ -53,6 +56,7 @@ const DetailPage = ({ user, history }) => {
       .then(res => console.log(res))
       .catch(error => {
         console.warn(error);
+        setErrorMessage(error.message);
         setIsActive(!isActive);
       });
 
@@ -66,6 +70,7 @@ const DetailPage = ({ user, history }) => {
       .then(res => console.log(res))
       .catch(error => {
         console.warn(error);
+        setErrorMessage(error.message);
         setIsActive(!isActive);
       });
   };
@@ -100,7 +105,7 @@ const DetailPage = ({ user, history }) => {
               <TeamWorkspaceView team={getTeamData.data?.data} user={getUserData.data?.user} onFinishedButtonClick={handleFinishedButtonClick} onInviteButtonClick={handleInviteButtonClick} />
             </DetailContainer.Bottom>
           </DetailContainer.Section>
-          <Toast isActive={isActive} setIsActive={setIsActive} type="error" message="에러입니다!" />
+          <Toast isActive={isActive} setIsActive={setIsActive} type="error" message={errorMessage} />
         </DetailContainer>
       </OverlayProvider>
     </>

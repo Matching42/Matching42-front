@@ -21,6 +21,7 @@ const MainPage = props => {
   const { getTeamData } = useTeamData();
   const [responseStatus, setResponseStatus] = useState(0);
   const [isActive, setIsActive] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleMatchingButtonClick = async (selectedSubject, githubId, preferredCluster, submissionDeadline) => {
     await api
@@ -38,6 +39,7 @@ const MainPage = props => {
       .catch(error => {
         console.warn(error);
         setIsActive(!isActive);
+        setErrorMessage(error.message);
         setResponseStatus(400);
       });
     getUserData.mutate();
@@ -50,6 +52,7 @@ const MainPage = props => {
       .then(res => console.log(res))
       .catch(error => {
         console.warn(error);
+        setErrorMessage(error.message);
         setIsActive(!isActive);
       });
     getUserData.mutate();
@@ -105,7 +108,7 @@ const MainPage = props => {
             />
           </MainContainer.Right>
         </MainContainer.Section>
-        <Toast isActive={isActive} setIsActive={setIsActive} type="check" message="에러입니다!" />
+        <Toast isActive={isActive} setIsActive={setIsActive} type="error" message={errorMessage} />
       </MainContainer>
     </OverlayProvider>
   );
