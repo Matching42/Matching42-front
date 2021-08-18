@@ -30,7 +30,7 @@ const TeamWorkspaceView = props => {
         <LinkList user={user} team={team}>
           <LinkList.Title>
             <span>GitHub Repository</span>
-            {team.gitLink && <InviteButton onClick={handleInviteButtonClick}>초대 받기</InviteButton>}
+            {team.memberID.find(id => id === user.ID) && team.gitLink && <InviteButton onClick={handleInviteButtonClick}>초대 받기</InviteButton>}
           </LinkList.Title>
           <LinkList.Link>{team.gitLink ? <a href={team.gitLink}>{team.gitLink}</a> : <EmptyText>링크가 존재하지 않습니다.</EmptyText>}</LinkList.Link>
           <LinkList.Title>Notion</LinkList.Title>
