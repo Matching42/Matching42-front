@@ -24,7 +24,7 @@ export const TeamListItemBox = styled.div`
 TeamListItemBox.Title = styled.span`
   font-size: 0.7em;
   font-weight: bold;
-  max-width: 400px;
+  max-width: ${({type}) => type === 'allTeamList' ? '400px' : '220px'};
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
