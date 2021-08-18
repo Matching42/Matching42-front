@@ -1,12 +1,12 @@
 import React from 'react';
 import { OverlayContainer } from '@react-aria/overlays';
-import { TeamWorkspaceViewStyled, LinkList, TeamFinishedButton, Alert } from './TeamWorkspaceView.styles';
+import { TeamWorkspaceViewStyled, LinkList, InviteButton, TeamFinishedButton, Alert, EmptyText } from './TeamWorkspaceView.styles';
 import useToggleDialog from '../../hooks/useToggleDialog';
 import Dialog from '../Dialog/Dialog';
 import DialogCloseButton from '../DialogCloseButton/DialogCloseButton';
 
 const TeamWorkspaceView = props => {
-  const { team, user, subjectPDF, onFinishedButtonClick } = props;
+  const { team, user, onFinishedButtonClick, onInviteButtonClick } = props;
   const { state, openButtonProps, openButtonRef } = useToggleDialog();
 
   const forBubblingEvent = () => {};
@@ -16,24 +16,25 @@ const TeamWorkspaceView = props => {
     state.close();
   };
 
+  const handleInviteButtonClick = () => {
+    onInviteButtonClick();
+  };
+
   return (
     <>
       <TeamWorkspaceViewStyled className="scrollbar" user={user} team={team}>
         <TeamWorkspaceViewStyled.Title>Team Workspace Link</TeamWorkspaceViewStyled.Title>
         <TeamWorkspaceViewStyled.Line />
         <LinkList user={user} team={team}>
-          <LinkList.Title>GitHub Repository</LinkList.Title>
-          <LinkList.Link>
-            <a href={team.gitLink}>{team.gitLink}</a>
-          </LinkList.Link>
+          <LinkList.Title>
+            <span>GitHub Repository</span>
+            {team.gitLink && <InviteButton onClick={handleInviteButtonClick}>초대 받기</InviteButton>}
+          </LinkList.Title>
+          <LinkList.Link>{team.gitLink ? <a href={team.gitLink}>{team.gitLink}</a> : <EmptyText>링크가 존재하지 않습니다.</EmptyText>}</LinkList.Link>
           <LinkList.Title>Notion</LinkList.Title>
-          <LinkList.Link>
-            <a href={team.notionLink}>{team.notionLink}</a>
-          </LinkList.Link>
+          <LinkList.Link>{team.notionLink ? <a href={team.notionLink}>{team.notionLink}</a> : <EmptyText>링크가 존재하지 않습니다.</EmptyText>}</LinkList.Link>
           <LinkList.Title>Subject PDF</LinkList.Title>
-          <LinkList.Link>
-            <a href="https://github.com/Matching42/Matching42-front">{subjectPDF}</a>
-          </LinkList.Link>
+          <LinkList.Link>{team.subject ? <a href="https://github.com/Matching42/Matching42-front">{team.subject}</a> : <EmptyText>링크가 존재하지 않습니다.</EmptyText>}</LinkList.Link>
         </LinkList>
         <div className="scrollbar" />
         {user?.ID === team?.leaderID && team.state !== 'end' && (
