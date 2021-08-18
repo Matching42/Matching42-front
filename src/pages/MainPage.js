@@ -20,12 +20,6 @@ const MainPage = props => {
   const { getTeamData } = useTeamData();
   const [responseStatus, setResponseStatus] = useState(0);
 
-  // 최신화 유지하려고 사용했는데 각 변경 지점에서 mutate를 사용해 갱신을 해준다면 해당 기능을 사용할 필요가 없다고 생각.
-  // 검증 완료후 삭제 예정
-  // useEffect(() => {
-  //   teamListData.revalidate();
-  // }, [teamListData]);
-
   const handleMatchingButtonClick = async (selectedSubject, githubId, preferredCluster, submissionDeadline) => {
     await api
       .post('/waitlist/', {

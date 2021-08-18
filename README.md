@@ -1,3 +1,3 @@
 # Matching 42
 
-Link : https://matching42.github.io/Matching42-front/
+Link : http://matching42.s3-website.ap-northeast-2.amazonaws.com/

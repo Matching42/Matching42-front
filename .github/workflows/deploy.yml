@@ -4,23 +4,29 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  deploy:
+    name: build and upload to s3
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout source code
-        uses: actions/checkout@v2
+    - name: Checkout source code
+      uses: actions/checkout@v2  
 
-      - name: Check Node
-        run: node -v
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ap-northeast-2
 
-      - name: Install Dependencies
-        run: yarn install
+    - name: Check Node
+      run: node -v
+      
+    - name: Install Dependencies
+      run: yarn install
 
-      - name: Build
-        run: yarn build
-  
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build
+    - name: Build
+      run: yarn build
+
+    - name: Upload build directory to s3
+      run: aws s3 sync ./build s3://${{ secrets.AWS_S3_BUCKET }}
