@@ -39,8 +39,7 @@ const TeamWorkspaceView = props => {
           <LinkList.Link>{team.subject ? <a href={getTeamSubjectLink?.data?.subjectPDF}>{getTeamSubjectLink?.data?.subjectPDF}</a> : <EmptyText>링크가 존재하지 않습니다.</EmptyText>}</LinkList.Link>
         </LinkList>
         <div className="scrollbar" />
-        {/* && team.state !== 'end'  */}
-        {user?.ID === team?.leaderID && (
+        {user?.ID === team?.leaderID && team.state !== 'end' && (
           <TeamWorkspaceViewStyled.Button>
             <TeamFinishedButton {...openButtonProps} ref={openButtonRef} onClick={forBubblingEvent}>
               스터디 종료
