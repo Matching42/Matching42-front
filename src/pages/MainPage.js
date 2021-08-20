@@ -108,11 +108,11 @@ export default MainPage;
 
 export const MainContainer = styled.div`
   width: 100vw;
-  height: calc(100vh - 170px);
+  height: calc(100vh - 17rem);
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 120px;
+  padding-top: 12rem;
 `;
 
 MainContainer.Section = styled.div`

@@ -11,7 +11,7 @@ export const DdayDark = styled.div`
   font-weight: bold;
   color: #ffffff;
   background-color: #219e9f;
-  padding: 8px 14px;
+  padding: 0.8rem 1.4rem;
   box-sizing: border-box;
-  border-radius: 8px;
+  border-radius: 0.8rem;
 `;

@@ -10,12 +10,12 @@ const HeaderStyled = styled.nav`
   left: 0;
   right: 0;
   width: 100%;
-  height: 70px;
+  height: 7rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 0 30px;
+  padding: 0 3rem;
   box-sizing: border-box;
   background-color: #252831;
   font-size: 2.8rem;
@@ -29,8 +29,8 @@ const HeaderStyled = styled.nav`
     color: #fff;
   }
   .logo {
-    width: 50px;
-    height: 50px;
+    width: 5rem;
+    height: 5rem;
 
     svg {
       width: 100%;

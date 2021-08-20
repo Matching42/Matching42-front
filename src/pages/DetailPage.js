@@ -94,18 +94,18 @@ export default DetailPage;
 
 export const DetailContainer = styled.div`
   width: 100vw;
-  height: calc(100vh - 170px);
+  height: calc(100vh - 17rem);
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 120px;
+  padding-top: 12rem;
 `;
 
 DetailContainer.Section = styled.div`
   width: 80%;
-  min-width: 1000px;
+  min-width: 100rem;
   height: 100%;
-  min-height: 500px;
+  min-height: 50rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -139,7 +139,7 @@ export const Loading = styled.div`
 Loading.Strong = styled.p`
   font-size: 1em;
   font-weight: bold;
-  margin-bottom: 20px;
+  margin-bottom: 2rem;
 `;
 
 Loading.Text = styled.p`

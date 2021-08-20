@@ -7,9 +7,9 @@ export const TeamImageStyled = styled.span`
 `;
 
 const staticUserImageStyled = css`
-  width: ${props => (props.size === 'small' ? '20px' : '45px')};
-  height: ${props => (props.size === 'small' ? '20px' : '45px')};
-  margin-left: ${props => (props.size === 'small' ? '5px' : '0')};
+  width: ${props => (props.size === 'small' ? '2rem' : '4.5rem')};
+  height: ${props => (props.size === 'small' ? '2rem' : '4.5rem')};
+  margin-left: ${props => (props.size === 'small' ? '0.5rem' : '0')};
 `;
 
 export const UserImageStyled = styled.img`
@@ -26,11 +26,11 @@ export const RestMemberImageStyled = styled.span`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 20px;
-  height: 20px;
+  width: 2rem;
+  height: 2rem;
   background-color: #f2f2f2;
   border-radius: 50%;
-  margin-left: 5px;
+  margin-left: 0.5rem;
   font-size: 1em;
   font-weight: bold;
   color: #c9c9c9;

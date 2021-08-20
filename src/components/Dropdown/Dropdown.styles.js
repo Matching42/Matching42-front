@@ -3,10 +3,10 @@ import styled from 'styled-components';
 export const DropdownStyled = styled.div`
   width: 100%;
   height: 100%;
-  padding-right: 10px;
+  padding-right: 1rem;
   box-sizing: border-box;
-  padding-bottom: ${props => props.type === 'form' && '10px'};
-  padding-left: ${props => props.type === 'form' && '5px'};
+  padding-bottom: ${props => props.type === 'form' && '1rem'};
+  padding-left: ${props => props.type === 'form' && '0.5rem'};
   border-bottom: ${props => (props.type === 'form' && !props.active ? '1px solid #252831' : 'none')};
 
   .scrollbar {
@@ -38,11 +38,11 @@ export const DropdownButton = styled.div`
 `;
 
 DropdownButton.Name = styled.button`
-  margin-right: 8px;
+  margin-right: 0.8rem;
   cursor: pointer;
   background-color: #fff;
   font-size: 1em;
-  padding-bottom: 4px;
+  padding-bottom: 0.4rem;
 `;
 
 DropdownButton.ArrowIcon = styled.div`
@@ -52,11 +52,18 @@ DropdownButton.ArrowIcon = styled.div`
 `;
 
 export const IconButton = styled.button`
+  width: 1.1rem;
+  height: 1.1rem;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   background-color: #fff;
   cursor: pointer;
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
 `;
 
 export const DropdownBox = styled.div`
@@ -66,37 +73,37 @@ export const DropdownBox = styled.div`
   left: ${props => (props.type === 'default' ? '50%' : '0')};
   right: 0;
   transform: ${props => props.type === 'default' && 'translate(-50%)'};
-  padding: 2px 26px;
+  padding: 0.2rem 2.6rem;
   z-index: 100;
   display: ${props => (props.active ? 'flex' : 'none')};
   opacity: ${props => (props.active ? '1' : '0')};
   transition: opacity 0.1s ease-in-out;
   flex-direction: column;
   border: 1px solid #27babb;
-  border-radius: 10px;
+  border-radius: 1rem;
   background-color: #fff;
-  margin-top: 10px;
+  margin-top: 1rem;
   overflow: auto;
   height: 80%;
   font-size: 1.2rem;
 
   ::-webkit-scrollbar {
-    width: 4px;
+    width: 0.4rem;
   }
   ::-webkit-scrollbar-thumb {
-    border-radius: 4px;
+    border-radius: 0.4rem;
     background-color: #d5d5d5;
   }
   ::-webkit-scrollbar-track {
-    margin: 10px 0;
+    margin: 1rem 0;
   }
   ::-webkit-scrollbar-track-piece {
   }
 `;
 
 DropdownBox.List = styled.div`
-  padding: 15px 0;
-  padding-top: 20px;
+  padding: 1.5rem 0;
+  padding-top: 2rem;
   border-bottom: 2px solid #f9f9f9;
   font-size: 1em;
 
@@ -106,17 +113,17 @@ DropdownBox.List = styled.div`
 `;
 
 DropdownBox.List.Title = styled.p`
-  margin-bottom: 8px;
+  margin-bottom: 0.8rem;
   font-size: 1.1em;
   font-weight: bold;
 `;
 
 DropdownBox.Item = styled.span`
   display: inline-block;
-  margin-right: 15px;
+  margin-right: 1.5rem;
   font-size: 1em;
   color: ${props => (props.selected ? '#27BABB' : '#252831')};
-  padding: 5px 0;
+  padding: 0.5rem 0;
   cursor: pointer;
 
   :hover {

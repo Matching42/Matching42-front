@@ -14,7 +14,7 @@ AddTagStyled.Input = styled.input`
     if (props.value !== '') return '1px solid #27babb';
     return '1px solid #252831';
   }};
-  padding: 10px 5px;
+  padding: 1rem 0.5rem;
   box-sizing: border-box;
   font-size: 1.2rem;
 
@@ -34,13 +34,13 @@ export const PlusButton = styled.button`
   justify-content: center;
   align-items: center;
   background-color: ${props => (props.length > 3 ? '#f9f9f9' : '#DEF5F5')};
-  border-radius: 5px;
-  cursor: ${props => (props.length > 3 ? 'default' : 'pointer')};=
+  border-radius: 0.5rem;
+  cursor: ${props => (props.length > 3 ? 'default' : 'pointer')};
 `;
 
 export const DuplicateError = styled.div`
   display: ${props => (props.isVisible ? 'block' : 'none')};
   font-size: 1rem;
   color: #fe4747;
-  margin-top: 8px;
+  margin-top: 0.8rem;
 `;

@@ -5,9 +5,9 @@ export const TeamListItemStyled = styled.div`
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  padding: 20px 5px 5px 10px;
+  padding: 2rem 0.5rem 0.5rem 1rem;
   box-sizing: border-box;
-  border-bottom: ${({ checkNotLast }) => (checkNotLast ? '1' : '0')}px solid #f9f9f9;
+  border-bottom: ${({ checkNotLast }) => (checkNotLast ? '2' : '0')}px solid #f9f9f9;
 
   :hover {
     color: #27babb;
@@ -17,25 +17,32 @@ export const TeamListItemStyled = styled.div`
 export const TeamListItemBox = styled.div`
   display: flex;
   justify-content: space-between;
-  padding-bottom: 10px;
+  padding-bottom: 1rem;
   font-size: 2.8rem;
 `;
 
 TeamListItemBox.Title = styled.span`
   font-size: 0.6em;
   font-weight: bold;
-  max-width: ${({ type }) => (type === 'allTeamList' ? '400px' : '220px')};
-  overflow: hidden;
+  max-width: ${({ type }) => (type === 'allTeamList' ? '40rem' : '22rem')};
   text-overflow: ellipsis;
   white-space: nowrap;
   position: relative;
-  svg {
-    position: absolute;
-    top: 2px;
-    right: 0px;
-  }
-  padding-right: 20px;
+  padding-right: 2rem;
   box-sizing: border-box;
+
+  .lock_icon {
+    width: 1.4rem;
+    height: 1.4rem;
+    position: absolute;
+    top: 0.2rem;
+    right: 0;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
 `;
 
 TeamListItemBox.Name = styled.span`

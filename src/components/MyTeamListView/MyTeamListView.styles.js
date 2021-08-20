@@ -8,8 +8,8 @@ export const MyTeamListViewStyled = styled.div`
   flex-direction: column;
   align-items: start;
   background-color: #fff;
-  padding: 30px;
-  border-radius: 20px;
+  padding: 3rem;
+  border-radius: 2rem;
   box-sizing: border-box;
   font-size: 2.8rem;
 `;
@@ -18,7 +18,7 @@ export const Topbar = styled.div`
   width: 100%;
   max-width: inherit;
   border-bottom: 2px solid rgba(0, 0, 0, 0.11);
-  padding-bottom: 15px;
+  padding-bottom: 1.5rem;
   font-size: 0.55em;
   font-weight: bold;
 `;

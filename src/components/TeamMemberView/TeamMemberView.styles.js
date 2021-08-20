@@ -7,8 +7,8 @@ export const TeamMemberViewStyled = styled.div`
   justify-content: space-around;
   flex-direction: column;
   background-color: #fff;
-  padding: 30px;
-  border-radius: 20px;
+  padding: 3rem;
+  border-radius: 2rem;
   box-sizing: border-box;
 `;
 
@@ -17,7 +17,7 @@ export const TeamMemberViewTop = styled.div`
   display: flex;
   justify-content: space-between;
   border-bottom: 2px solid #f9f9f9;
-  padding-bottom: 15px;
+  padding-bottom: 1.5rem;
   font-size: 2.8rem;
 `;
 
@@ -26,20 +26,20 @@ TeamMemberViewTop.Wrap = styled.div`
 `;
 
 TeamMemberViewTop.Title = styled.h1`
-  font-size: 0.6em;
+  font-size: 0.7em;
   font-weight: bold;
-  padding-bottom: 5px;
+  padding-bottom: 0.5rem;
 `;
 
 TeamMemberViewTop.Description = styled.p`
-  font-size: 0.3em;
+  font-size: 0.4em;
   line-height: 1.5;
 `;
 
 TeamMemberViewTop.Lock = styled.div`
-  width: 23px;
+  width: 2.3rem;
   cursor: ${props => (props.isLeader && !props.checkEnd ? 'pointer' : 'Default')};
-  margin-right: 10px;
+  margin-right: 1rem;
 
   svg {
     width: 100%;

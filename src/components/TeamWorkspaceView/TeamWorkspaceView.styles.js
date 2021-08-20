@@ -9,8 +9,8 @@ export const TeamWorkspaceViewStyled = styled.div`
   align-items: top;
   position: relative;
   background-color: #fff;
-  padding: 30px;
-  border-radius: 20px;
+  padding: 3rem;
+  border-radius: 2rem;
   box-sizing: border-box;
   font-size: 2.8rem;
   position: relative;
@@ -18,10 +18,10 @@ export const TeamWorkspaceViewStyled = styled.div`
   .scrollbar {
     width: 4px;
     height: ${({ user, team }) => (user?.ID === team?.leaderID ? 'calc(100% - 142px)' : '100%')};
-    max-height: 210px;
+    max-height: 21rem;
     position: absolute;
-    top: 60px;
-    right: 30px;
+    top: 6rem;
+    right: 3rem;
     background-color: #fff;
     opacity: 1;
     transition: 0.5s;
@@ -34,7 +34,7 @@ export const TeamWorkspaceViewStyled = styled.div`
 TeamWorkspaceViewStyled.Title = styled.div`
   font-weight: bold;
   font-size: 0.55em;
-  margin-bottom: 15px;
+  margin-bottom: 1.5rem;
 `;
 
 TeamWorkspaceViewStyled.Line = styled.div`
@@ -44,7 +44,7 @@ TeamWorkspaceViewStyled.Line = styled.div`
 export const LinkList = styled.div`
   width: 100%;
   overflow: auto;
-  margin-bottom: ${({ user, team }) => (user?.ID === team?.leaderID ? '60px' : '0px')};
+  margin-bottom: ${({ user, team }) => (user?.ID === team?.leaderID ? '6rem' : '0px')};
   font-size: 1.6rem;
 
   ::-webkit-scrollbar {
@@ -65,8 +65,8 @@ LinkList.Title = styled.div`
   align-items: center;
   font-size: 0.8em;
   font-weight: bold;
-  margin-top: 18px;
-  margin-left: 6px;
+  margin-top: 1.8rem;
+  margin-left: 0.6rem;
 
   span {
     font-size: 1em;
@@ -75,13 +75,13 @@ LinkList.Title = styled.div`
 
 LinkList.Link = styled.div`
   border-bottom: 2px solid #f9f9f9;
-  padding-bottom: 18px;
-  margin-top: 10px;
+  padding-bottom: 1.8rem;
+  margin-top: 1rem;
 
   a {
     color: #d3d4d6;
     font-size: 1.1rem;
-    margin-left: 6px;
+    margin-left: 0.6rem;
 
     :hover {
       color: #808080;
@@ -91,8 +91,8 @@ LinkList.Link = styled.div`
 
 TeamWorkspaceViewStyled.Button = styled.div`
   position: absolute;
-  bottom: 30px;
-  right: 30px;
+  bottom: 3rem;
+  right: 3rem;
   z-index: 100;
 `;
 
@@ -100,12 +100,12 @@ export const InviteButton = styled.button`
   color: #27babb;
   font-size: 1.1rem;
   background-color: transparent;
-  margin-left: 10px;
+  margin-left: 1rem;
   cursor: pointer;
 `;
 
 export const TeamFinishedButton = styled.button`
-  padding: 15px 20px;
+  padding: 1.5rem 2rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -113,7 +113,7 @@ export const TeamFinishedButton = styled.button`
   font-weight: bold;
   color: #fff;
   background-color: #27babb;
-  border-radius: 10px;
+  border-radius: 1rem;
   cursor: pointer;
   outline: 0;
   transition: 0.15s;
@@ -142,11 +142,11 @@ Alert.Text = styled.p`
 
 Alert.Button = styled.div`
   button {
-    padding: 15px 30px;
+    padding: 1.5rem 3rem;
     box-sizing: border-box;
     color: #fff;
     background-color: #27babb;
-    border-radius: 10px;
+    border-radius: 1rem;
     cursor: pointer;
     transition: 0.15s;
 
@@ -159,5 +159,5 @@ Alert.Button = styled.div`
 export const EmptyText = styled.p`
   color: #d3d4d6;
   font-size: 1.1rem;
-  margin-left: 6px;
+  margin-left: 0.6rem;
 `;

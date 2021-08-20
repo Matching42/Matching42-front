@@ -12,7 +12,7 @@ export const EditFormStyled = styled.div`
 export const Logo = styled.div`
   width: 30%;
   height: 100%;
-  margin-top: -14px;
+  margin-top: -1.4rem;
 `;
 
 export const SelectForm = styled.div`
@@ -28,7 +28,7 @@ SelectForm.Box = styled.div`
 
 export const SelectItem = styled.div`
   width: 100%;
-  padding-bottom: 40px;
+  padding-bottom: 4rem;
   font-size: 2.8rem;
 `;
 
@@ -39,20 +39,20 @@ SelectItem.Title = styled.p`
 
 SelectItem.Info = styled.div`
   width: 100%;
-  margin-top: 15px;
+  margin-top: 1.5rem;
 `;
 
 export const SubmitButton = styled.button`
   position: absolute;
   right: 0;
   bottom: 0;
-  padding: 15px 20px;
+  padding: 1.5rem 2rem;
   box-sizing: border-box;
   color: #fff;
   background-color: #27babb;
   font-size: 1.4rem;
   font-weight: bold;
-  border-radius: 10px;
+  border-radius: 1rem;
   cursor: pointer;
   transition: 0.15s;
 
@@ -63,23 +63,23 @@ export const SubmitButton = styled.button`
 
 export const TeamTagList = styled.ul`
   display: flex;
-  margin-top: 20px;
+  margin-top: 2rem;
   font-size: 2.4rem;
 `;
 
 TeamTagList.Item = styled.li`
   background-color: #def5f5;
   color: #27b9ba;
-  margin-right: 7px;
-  border-radius: 8px;
-  padding: 8px 10px;
+  margin-right: 0.7rem;
+  border-radius: 0.8rem;
+  padding: 0.8rem 1rem;
   font-size: 0.48em;
   font-weight: medium;
 
   svg {
-    margin-left: 12px;
-    width: 6px;
-    height: 6px;
+    margin-left: 1.2rem;
+    width: 0.6rem;
+    height: 0.6rem;
   }
   .delete-icon {
     cursor: pointer;

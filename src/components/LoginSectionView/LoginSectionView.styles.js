@@ -2,11 +2,11 @@ import styled from 'styled-components';
 
 export const LoginSectionViewStyled = styled.div`
   width: 100vw;
-  height: calc(100vh - 170px);
+  height: calc(100vh - 17rem);
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 120px;
+  padding-top: 11rem;
 `;
 
 export const LoginBox = styled.div`
@@ -14,10 +14,10 @@ export const LoginBox = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 14px;
+  border-radius: 1.4rem;
   background-color: #fff;
   box-shadow: 2px 2px 1.3px 1.3px rgba(0, 0, 0, 0.01);
-  padding: 60px 80px;
+  padding: 6rem 8rem;
 `;
 
 export const LogoBox = styled.div`
@@ -27,25 +27,29 @@ export const LogoBox = styled.div`
 LogoBox.Logo = styled.div`
   display: flex;
   text-align: center;
+
+  img {
+    width: 9.5rem;
+  }
 `;
 
 LogoBox.Title = styled.div`
   display: flex;
   justify-content: flex-start;
   text-align: left;
-  margin-left: 16px;
+  margin-left: 1.6rem;
   background-position: center top;
-  line-height: 4.3rem;
-  font-size: 3.2rem;
+  line-height: 4.1rem;
+  font-size: 3rem;
   font-weight: bold;
-  margin-top: 4px;
+  margin-top: 0.4rem;
 `;
 
 export const Description = styled.div`
   text-align: center;
-  font-size: 1.4rem;
-  line-height: 2.1rem;
-  padding: 20px;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  padding: 2rem;
 `;
 
 Description.Text = styled.span`
@@ -54,13 +58,14 @@ Description.Text = styled.span`
 `;
 
 export const ClickButton = styled.div`
-  width: 70%;
+  width: 80%;
   text-align: center;
-  font-size: 1.8rem;
+  font-size: 1.4rem;
+  font-weight: bold;
   color: #fff;
   background-color: #27babb;
-  border-radius: 10px;
-  margin-top: 24px;
-  padding: 20px 0;
+  border-radius: 1rem;
+  margin-top: 2.2rem;
+  padding: 2rem 0;
   cursor: pointer;
 `;
