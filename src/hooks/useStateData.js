@@ -6,7 +6,10 @@ export const useStateData = () => {
     api
       .get(`waitlist/`)
       .then(res => res.data)
-      .catch(error => console.log(error))
+      .catch(error => {
+        console.log(error);
+        throw error;
+      })
   );
 
   return { getMatchingStateData };
