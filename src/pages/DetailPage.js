@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { OverlayProvider } from '@react-aria/overlays';
@@ -75,7 +75,7 @@ const DetailPage = ({ user, history }) => {
       });
   };
 
-  if (getUserData.error) {
+  if (getUserData.error || getTeamData.error || teamListData.error) {
     return (
       <Loading>
         <Loading.Strong>앗!</Loading.Strong>

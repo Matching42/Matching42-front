@@ -6,7 +6,6 @@ import { ReactComponent as InfoIcon } from '../../assets/icons/icon-info.svg';
 import { ReactComponent as WarningIcon } from '../../assets/icons/icon-warning.svg';
 
 const Toast = ({isActive, setIsActive, type, message}) => {
-  console.log("toast", type);
   useEffect(() => {
     if (isActive === true)
       setTimeout(() => {
