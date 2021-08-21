@@ -16,15 +16,9 @@ const MainPage = props => {
   const [subject, setSubject] = useState('Subject');
   const { getUserData } = useUserData(user);
   const { getMatchingStateData } = useStateData();
-  const { teams, teamListData, isValidating} = useFetchTeamListData(subject);
+  const { teams, teamListData, isValidating } = useFetchTeamListData(subject);
   const { getTeamData } = useTeamData();
   const [responseStatus, setResponseStatus] = useState(0);
-
-  // 최신화 유지하려고 사용했는데 각 변경 지점에서 mutate를 사용해 갱신을 해준다면 해당 기능을 사용할 필요가 없다고 생각.
-  // 검증 완료후 삭제 예정
-  // useEffect(() => {
-  //   teamListData.revalidate();
-  // }, [teamListData]);
 
   const handleMatchingButtonClick = async (selectedSubject, githubId, preferredCluster, submissionDeadline) => {
     await api
@@ -33,7 +27,7 @@ const MainPage = props => {
         subjectName: selectedSubject,
         gitName: githubId,
         cluster: preferredCluster,
-        deadline: submissionDeadline,
+        deadline: submissionDeadline
       })
       .then(res => {
         console.log(res);
@@ -114,11 +108,11 @@ export default MainPage;
 
 export const MainContainer = styled.div`
   width: 100vw;
-  height: calc(100vh - 170px);
+  height: calc(100vh - 17rem);
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 120px;
+  padding-top: 12rem;
 `;
 
 MainContainer.Section = styled.div`
@@ -155,8 +149,7 @@ export const Loading = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 40px;
-  color: #252831;
+  font-size: 4rem;
 `;
 
 Loading.Strong = styled.p`

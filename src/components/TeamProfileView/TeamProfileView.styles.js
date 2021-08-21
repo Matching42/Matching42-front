@@ -3,14 +3,14 @@ import styled from 'styled-components';
 export const TeamProfileViewStyled = styled.div`
   width: 46%;
   height: 100%;
+  position: relative;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   background-color: #27babb;
-  padding: 30px;
-  border-radius: 20px;
+  padding: 3rem;
+  border-radius: 2rem;
   box-sizing: border-box;
-  font-size: 28px;
   color: #fff;
 `;
 
@@ -19,6 +19,7 @@ export const TeamProfileLeftBox = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  font-size: 2.8rem;
 `;
 
 TeamProfileLeftBox.Title = styled.div`
@@ -26,14 +27,14 @@ TeamProfileLeftBox.Title = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  font-size: 1em;
 `;
 
 TeamProfileLeftBox.Name = styled.div`
   font-size: 0.9em;
   font-weight: bold;
-  margin-right: 18px;
-  width: 300px;
-  overflow: hidden;
+  margin-right: 1.8rem;
+  width: 30rem;
   text-overflow: ellipsis;
 `;
 
@@ -44,29 +45,33 @@ TeamProfileLeftBox.EditButton = styled.div`
 export const TeamDescription = styled.div`
   font-size: 0.45em;
   line-height: 1.6;
-  margin-top: 24px;
+  margin-top: 1rem;
   word-break: keep-all;
 `;
 
 export const TeamTagList = styled.ul`
   display: flex;
-  font-size: 0.48em;
-  margin-top: 20px;
+  font-size: 0.4em;
+  margin-top: 1rem;
 `;
 
 TeamTagList.Item = styled.li`
   background-color: rgb(0, 0, 0, 0.15);
-  margin-right: 6px;
-  border-radius: 8px;
-  padding: 8px 10px;
+  margin-right: 0.6rem;
+  border-radius: 0.8rem;
+  padding: 0.8rem 1rem;
 `;
 
 TeamTagList.Subject = styled.li`
   background-color: #f4fbfb;
   color: #27babb;
-  margin-right: 6px;
-  border-radius: 8px;
-  padding: 8px 10px;
+  margin-right: 0.6rem;
+  border-radius: 0.8rem;
+  padding: 0.8rem 1rem;
 `;
 
-export const TeamProfileRightBox = styled.div``;
+export const TeamProfileRightBox = styled.div`
+  position: absolute;
+  top: 2.4rem;
+  right: 2.4rem;
+`;

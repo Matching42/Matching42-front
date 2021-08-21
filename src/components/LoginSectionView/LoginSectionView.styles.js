@@ -2,11 +2,11 @@ import styled from 'styled-components';
 
 export const LoginSectionViewStyled = styled.div`
   width: 100vw;
-  height: calc(100vh - 170px);
+  height: calc(100vh - 17rem);
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 120px;
+  padding-top: 11rem;
 `;
 
 export const LoginBox = styled.div`
@@ -14,15 +14,10 @@ export const LoginBox = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 470px;
-  height: 430px;
-  border-radius: 14px;
+  border-radius: 1.4rem;
   background-color: #fff;
   box-shadow: 2px 2px 1.3px 1.3px rgba(0, 0, 0, 0.01);
-  text-align: center;
-  line-height: 2rem;
-  letter-spacing: 0.02rem;
-  font-size: 1.5rem;
+  padding: 6rem 8rem;
 `;
 
 export const LogoBox = styled.div`
@@ -32,41 +27,45 @@ export const LogoBox = styled.div`
 LogoBox.Logo = styled.div`
   display: flex;
   text-align: center;
+
+  img {
+    width: 9.5rem;
+  }
 `;
 
 LogoBox.Title = styled.div`
   display: flex;
+  justify-content: flex-start;
   text-align: left;
-  margin-left: 0.9rem;
+  margin-left: 1.6rem;
   background-position: center top;
-  line-height: 2rem;
-  letter-spacing: 0.02rem;
-  font-size: 1.5rem;
+  line-height: 4.1rem;
+  font-size: 3rem;
   font-weight: bold;
-  margin-top: 10px;
+  margin-top: 0.4rem;
 `;
 
 export const Description = styled.div`
   text-align: center;
-  letter-spacing: -0.0001rem;
-  font-size: 0.7rem;
-  line-height: 0.9rem;
-  padding: 20px;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  padding: 2rem;
 `;
 
 Description.Text = styled.span`
   font-weight: bold;
+  font-size: 1em;
 `;
 
 export const ClickButton = styled.div`
-  width: 15rem;
+  width: 80%;
   text-align: center;
-  font-size: 0.8rem;
-  background: #0bd;
+  font-size: 1.4rem;
+  font-weight: bold;
   color: #fff;
-  background: #27babb;
-  border-radius: 5px;
-  margin-top: 1rem;
-  padding: 0.5rem;
+  background-color: #27babb;
+  border-radius: 1rem;
+  margin-top: 2.2rem;
+  padding: 2rem 0;
   cursor: pointer;
 `;
