@@ -7,31 +7,36 @@ import { ReactComponent as DeleteIcon } from '../../assets/icons/icon-delete.svg
 
 const EditForm = ({ team, onCloseButton, onSubmitButton }) => {
   const [teamName, setTeamName] = useState(team.teamName);
-  const [teamDescription, setTeamDescription] = useState('Team GitHub Repository, Notion, Slack 적극 활용하여 동료들과 함께 학습을 진행해보세요!');
+  const [teamDescription, setTeamDescription] = useState(team.description || 'Team GitHub Repository, Notion, Slack 적극 활용하여 동료들과 함께 학습을 진행해보세요!');
   const [tags, setTags] = useState(team.tags ? team.tags : []);
   const [isDuplicate, setIsDuplicate] = useState(false);
   const [isEmpty, setIsEmpty] = useState(false);
+  const [checkEmptyTeamName, setCheckEmptyTeamName] = useState(false);
+  const [checkEmptyTeamDescription, setCheckEmptyTeamDescription] = useState(false);
 
   const handleSubmitButtonClick = () => {
+    if (teamName === '') {
+      setCheckEmptyTeamName(true);
+      return;
+    }
+    if (teamDescription === '') {
+      setCheckEmptyTeamDescription(true);
+      return;
+    }
     onSubmitButton?.(teamName, teamDescription, tags);
     onCloseButton();
   };
 
   const handlePlusButtonClick = (tag, setTag) => {
-    if (tag === '')
-    {
+    if (tag === '') {
       setIsEmpty(true);
       setIsDuplicate(false);
-    }
-    else if (tags.indexOf(tag) === -1)
-    {
+    } else if (tags.indexOf(tag) === -1) {
       setTags(prev => [...prev, tag]);
       setIsDuplicate(false);
       setTag('');
       setIsEmpty(false);
-    }
-    else
-      setIsDuplicate(true);
+    } else setIsDuplicate(true);
   };
 
   return (
@@ -44,13 +49,13 @@ const EditForm = ({ team, onCloseButton, onSubmitButton }) => {
           <SelectItem>
             <SelectItem.Title>Team Name</SelectItem.Title>
             <SelectItem.Info>
-              <TextInput inputText={teamName} setInputText={setTeamName} />
+              <TextInput inputText={teamName} setInputText={setTeamName} checkEmptyInput={checkEmptyTeamName} />
             </SelectItem.Info>
           </SelectItem>
           <SelectItem>
             <SelectItem.Title>Description</SelectItem.Title>
             <SelectItem.Info>
-              <TextInput inputText={teamDescription} setInputText={setTeamDescription} />
+              <TextInput inputText={teamDescription} setInputText={setTeamDescription} checkEmptyInput={checkEmptyTeamDescription} />
             </SelectItem.Info>
           </SelectItem>
           <SelectItem>
