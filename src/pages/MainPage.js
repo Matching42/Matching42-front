@@ -108,7 +108,7 @@ const MainPage = props => {
             />
           </MainContainer.Right>
         </MainContainer.Section>
-        <Toast isActive={isActive} setIsActive={setIsActive} type="error" message={errorMessage} />
+        {isActive && <Toast setIsActive={setIsActive} type="error" message={errorMessage} />}
       </MainContainer>
     </OverlayProvider>
   );
