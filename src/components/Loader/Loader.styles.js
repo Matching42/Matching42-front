@@ -16,15 +16,15 @@ export const Bubbles = styled.div`
   position: absolute;
   bottom: 5%;
   left: 50%;
-  .bubble{
-    animation: expand .75s ease-in-out infinite;
-    border-radius: 20px;
+  .bubble {
+    animation: expand 0.75s ease-in-out infinite;
+    border-radius: 2rem;
     display: inline-block;
     transform-origin: ßcenter center;
-    margin: 0 3px;
-    width: 5px;
-    height: 5px;
-    background: #D5D5D5;
+    margin: 0 0.3rem;
+    width: 0.5rem;
+    height: 0.5rem;
+    background: #d5d5d5;
     &:nth-child(2) {
       animation-delay: 180ms;
     }
@@ -39,6 +39,6 @@ export const Bubbles = styled.div`
       25% {
         transform: scale(1.55);
       }
-    }    
+    }
   }
 `;

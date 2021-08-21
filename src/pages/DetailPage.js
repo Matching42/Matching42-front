@@ -63,7 +63,7 @@ const DetailPage = ({ user, history }) => {
     getTeamData.mutate();
     teamListData.mutate();
   };
-  
+
   const handleInviteButtonClick = async () => {
     await api
       .post(`/team/invitetorepo/${getTeamData.data?.data?.ID}/${user}`)
@@ -116,18 +116,18 @@ export default DetailPage;
 
 export const DetailContainer = styled.div`
   width: 100vw;
-  height: calc(100vh - 170px);
+  height: calc(100vh - 17rem);
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 120px;
+  padding-top: 12rem;
 `;
 
 DetailContainer.Section = styled.div`
   width: 80%;
-  min-width: 1000px;
+  min-width: 100rem;
   height: 100%;
-  min-height: 500px;
+  min-height: 50rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -155,14 +155,13 @@ export const Loading = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 40px;
-  color: #252831;
+  font-size: 4rem;
 `;
 
 Loading.Strong = styled.p`
   font-size: 1em;
   font-weight: bold;
-  margin-bottom: 20px;
+  margin-bottom: 2rem;
 `;
 
 Loading.Text = styled.p`

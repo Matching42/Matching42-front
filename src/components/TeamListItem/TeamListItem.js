@@ -14,8 +14,12 @@ const TeamListItem = ({ type, teamData, checkNotLast }) => {
       <TeamListItemStyled checkNotLast={checkNotLast}>
         <TeamListItemBox>
           <TeamListItemBox.Title type={type}>
-            <TeamListItemBox.Name>{teamData.teamName}</TeamListItemBox.Name> 
-            {teamData.state !== 'wait_member' && <span className="lock_icon"><LockIcon /></span>}
+            <TeamListItemBox.Name>{teamData.teamName}</TeamListItemBox.Name>
+            {teamData.state !== 'wait_member' && (
+              <span className="lock_icon">
+                <LockIcon />
+              </span>
+            )}
           </TeamListItemBox.Title>
           {teamData.state === 'end' ? <EndText>END</EndText> : <Dday mode="light" startDate={teamData.startDate} />}
         </TeamListItemBox>
