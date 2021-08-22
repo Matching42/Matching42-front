@@ -5,11 +5,21 @@ const TeamMemberImageStyled = styled.div`
   flex-direction: row;
   justify-content: flex-start;
   margin-left: 0.5rem;
-  padding-top: 1rem;
+  padding-top: 1.5rem;
   font-size: 2.4rem;
 `;
 
+TeamMemberImageStyled.Crown = styled.div`
+  width: 2rem;
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+`;
+
 TeamMemberImageStyled.Item = styled.div`
+  width: 4.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,8 +30,8 @@ TeamMemberImageStyled.Item = styled.div`
   text-align: center;
 
   svg {
-    width: 2rem;
-    height: 2rem;
+    width: 100%;
+    height: 100%;
   }
 `;
 

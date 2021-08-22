@@ -42,7 +42,9 @@ const EditForm = ({ team, onCloseButton, onSubmitButton }) => {
   return (
     <EditFormStyled>
       <Logo>
-        <img src={logoBlack} alt="logo" width="95" />
+        <Logo.ImageStyled>
+          <img src={logoBlack} alt="logo" />
+        </Logo.ImageStyled>
       </Logo>
       <SelectForm>
         <SelectForm.Box>
