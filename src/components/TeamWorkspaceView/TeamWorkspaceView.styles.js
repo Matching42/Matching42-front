@@ -78,10 +78,11 @@ LinkList.Link = styled.div`
   padding-bottom: 1.8rem;
   margin-top: 1rem;
 
-  a {
+  button {
     color: #d3d4d6;
     font-size: 1.1rem;
     margin-left: 0.6rem;
+    background-color: transparent;
 
     :hover {
       color: #808080;
