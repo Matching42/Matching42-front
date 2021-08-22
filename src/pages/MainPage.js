@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { OverlayProvider } from '@react-aria/overlays';
 import ProfileView from '../components/ProfileView/ProfileView';
@@ -63,7 +63,7 @@ const MainPage = props => {
     setSubject(selectedSubject);
   };
 
-  if (getUserData.error) {
+  if (getUserData.error || getMatchingStateData.error || teamListData.error || getTeamData.error) {
     return (
       <Loading>
         <Loading.Strong>앗!</Loading.Strong>
@@ -72,7 +72,7 @@ const MainPage = props => {
     );
   }
 
-  if (getUserData.data === null || getUserData.data?.user === undefined || getMatchingStateData.data === null || getMatchingStateData.data === undefined) {
+  if ((getUserData.data === null || getUserData.data?.user === undefined || getMatchingStateData.data === null || getMatchingStateData.data === undefined) && !isActive) {
     return (
       <Loading>
         <LoaderSpinner />
@@ -85,12 +85,12 @@ const MainPage = props => {
       <MainContainer>
         <MainContainer.Section>
           <MainContainer.Left>
-            <ProfileView user={getUserData.data.user} />
-            <MyTeamListView myTeamList={getUserData.data.user.teamID} />
+            <ProfileView user={getUserData.data?.user} />
+            <MyTeamListView myTeamList={getUserData.data?.user.teamID} />
           </MainContainer.Left>
           <MainContainer.Right>
             <MatchingStateView
-              user={getUserData.data.user}
+              user={getUserData.data?.user}
               waitList={waitList}
               onMatchingButtonClick={handleMatchingButtonClick}
               onMatchingCancelButtonClick={handleMatchingCancelButtonClick}
@@ -99,8 +99,8 @@ const MainPage = props => {
             />
             <AllTeamListView
               teamList={teams}
-              teamListData={teamListData.data}
-              onMoreTeamListItem={teamListData.setSize}
+              teamListData={teamListData?.data}
+              onMoreTeamListItem={teamListData?.setSize}
               isValidating={isValidating}
               totalSize={getTeamData.data?.data.filter(team => team.state !== 'end').length}
               subjectList={subjectList}
@@ -108,7 +108,7 @@ const MainPage = props => {
             />
           </MainContainer.Right>
         </MainContainer.Section>
-        <Toast isActive={isActive} setIsActive={setIsActive} type="error" message={errorMessage} />
+        {isActive && <Toast setIsActive={setIsActive} type="error" message={errorMessage} />}
       </MainContainer>
     </OverlayProvider>
   );

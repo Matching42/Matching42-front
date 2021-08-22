@@ -1,4 +1,4 @@
-import styled, {css, keyframes} from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 
 const fadein = keyframes`
   0% { top: 60px; opacity: 0; } 
@@ -17,17 +17,18 @@ const ToastStyled = styled.div`
   display: flex;
   align-items: center;
   z-index: 999;
-  visibility: ${({ show }) => show ? "visible" : "hidden"};
   background-color: ${({ bgColor }) => bgColor};
   color: #fff;
   text-align: center;
   border-radius: 30px;
   padding: 1rem;
-  // padding-left: 1.5rem;
-  // padding-right: 1.5rem;
   font-size: 1rem;
-  -webkit-animation: ${({ show }) => show ? css`${fadein} 0.5s, ${fadeout} 0.5s 2.5s`: ""};
-  animation: ${({ show }) => show ? css`${fadein} 0.5s, ${fadeout} 0.5s 2.5s`: ""};
+  -webkit-animation: ${css`
+    ${fadein} 0.5s, ${fadeout} 0.5s 2.5s
+  `};
+  animation: ${css`
+    ${fadein} 0.5s, ${fadeout} 0.5s 2.5s
+  `};
   animation-fill-mode: forwards;
 `;
 

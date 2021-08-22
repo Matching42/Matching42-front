@@ -6,10 +6,7 @@ export const useUserData = userId => {
     api
       .get(`user/${userId}`)
       .then(res => res.data)
-      .catch(error => {
-        console.log(error);
-        throw error;
-      })
+      .catch(error => console.log(error))
   );
 
   return { getUserData };
