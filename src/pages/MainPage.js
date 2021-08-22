@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { OverlayProvider } from '@react-aria/overlays';
 import ProfileView from '../components/ProfileView/ProfileView';
 import MyTeamListView from '../components/MyTeamListView/MyTeamListView';
 import MatchingStateView from '../components/MatchingStateView/MatchingStateView';
 import AllTeamListView from '../components/TeamListView/TeamListView';
+import Toast from '../components/Toast/Toast';
 import { LoaderSpinner } from '../components/Loader/Loader';
 import { useFetchTeamListData } from '../hooks/useTeamListData';
 import { useUserData, useTeamData } from '../hooks/useUserData';
@@ -14,11 +15,13 @@ import { api } from '../api';
 const MainPage = props => {
   const { user, waitList, subjectList } = props;
   const [subject, setSubject] = useState('Subject');
-  const { getUserData } = useUserData(user);
+  const [isActive, setIsActive] = useState(false);
+  const { getUserData } = useUserData(user, setIsActive);
   const { getMatchingStateData } = useStateData();
-  const { teams, teamListData, isValidating} = useFetchTeamListData(subject);
+  const { teams, teamListData, isValidating } = useFetchTeamListData(subject);
   const { getTeamData } = useTeamData();
   const [responseStatus, setResponseStatus] = useState(0);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleMatchingButtonClick = async (selectedSubject, githubId, preferredCluster, submissionDeadline) => {
     await api
@@ -27,7 +30,7 @@ const MainPage = props => {
         subjectName: selectedSubject,
         gitName: githubId,
         cluster: preferredCluster,
-        deadline: submissionDeadline,
+        deadline: submissionDeadline
       })
       .then(res => {
         console.log(res);
@@ -35,6 +38,8 @@ const MainPage = props => {
       })
       .catch(error => {
         console.warn(error);
+        setIsActive(!isActive);
+        setErrorMessage(error.message);
         setResponseStatus(400);
       });
     getUserData.mutate();
@@ -45,7 +50,11 @@ const MainPage = props => {
     await api
       .delete(`/waitlist/${user}`)
       .then(res => console.log(res))
-      .catch(error => console.warn(error));
+      .catch(error => {
+        console.warn(error);
+        setErrorMessage(error.message);
+        setIsActive(!isActive);
+      });
     getUserData.mutate();
     getMatchingStateData.mutate();
   };
@@ -54,7 +63,7 @@ const MainPage = props => {
     setSubject(selectedSubject);
   };
 
-  if (getUserData.error) {
+  if (getUserData.error || getMatchingStateData.error || teamListData.error || getTeamData.error) {
     return (
       <Loading>
         <Loading.Strong>앗!</Loading.Strong>
@@ -63,7 +72,7 @@ const MainPage = props => {
     );
   }
 
-  if (getUserData.data === null || getUserData.data?.user === undefined || getMatchingStateData.data === null || getMatchingStateData.data === undefined) {
+  if ((getUserData.data === null || getUserData.data?.user === undefined || getMatchingStateData.data === null || getMatchingStateData.data === undefined) && !isActive) {
     return (
       <Loading>
         <LoaderSpinner />
@@ -76,12 +85,12 @@ const MainPage = props => {
       <MainContainer>
         <MainContainer.Section>
           <MainContainer.Left>
-            <ProfileView user={getUserData.data.user} />
-            <MyTeamListView myTeamList={getUserData.data.user.teamID} />
+            <ProfileView user={getUserData.data?.user} />
+            <MyTeamListView myTeamList={getUserData.data?.user.teamID} />
           </MainContainer.Left>
           <MainContainer.Right>
             <MatchingStateView
-              user={getUserData.data.user}
+              user={getUserData.data?.user}
               waitList={waitList}
               onMatchingButtonClick={handleMatchingButtonClick}
               onMatchingCancelButtonClick={handleMatchingCancelButtonClick}
@@ -90,8 +99,8 @@ const MainPage = props => {
             />
             <AllTeamListView
               teamList={teams}
-              teamListData={teamListData.data}
-              onMoreTeamListItem={teamListData.setSize}
+              teamListData={teamListData?.data}
+              onMoreTeamListItem={teamListData?.setSize}
               isValidating={isValidating}
               totalSize={getTeamData.data?.data.filter(team => team.state !== 'end').length}
               subjectList={subjectList}
@@ -99,6 +108,7 @@ const MainPage = props => {
             />
           </MainContainer.Right>
         </MainContainer.Section>
+        {isActive && <Toast setIsActive={setIsActive} type="error" message={errorMessage} />}
       </MainContainer>
     </OverlayProvider>
   );
@@ -108,11 +118,11 @@ export default MainPage;
 
 export const MainContainer = styled.div`
   width: 100vw;
-  height: calc(100vh - 170px);
+  height: calc(100vh - 17rem);
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 120px;
+  padding-top: 12rem;
 `;
 
 MainContainer.Section = styled.div`
@@ -149,8 +159,7 @@ export const Loading = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 40px;
-  color: #252831;
+  font-size: 4rem;
 `;
 
 Loading.Strong = styled.p`

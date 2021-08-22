@@ -13,9 +13,8 @@ const MatchingStateView = ({ user, onMatchingButtonClick, onMatchingCancelButton
   const [dialogType, setDialogType] = useState(null);
 
   const checkResponseStatus = () => {
-    if (responseStatus === 200)
-      state.close();
-  }
+    if (responseStatus === 200) state.close();
+  };
   useEffect(checkResponseStatus, [responseStatus]);
 
   const handleSubmitButtonClick = (selectedSubject, githubId, preferredCluster, submissionDeadline) => {
@@ -31,13 +30,13 @@ const MatchingStateView = ({ user, onMatchingButtonClick, onMatchingCancelButton
     <>
       <MatchingStateViewStyled>
         <MatchingState>
-          현재 <MatchingState.Strong>{getMatchingStateData.data.totalWaitingNumber}명</MatchingState.Strong>이 <MatchingState.Strong>매칭</MatchingState.Strong>을 기다리고 있어요!
+          현재 <MatchingState.Strong>{getMatchingStateData.data?.totalWaitingNumber}명</MatchingState.Strong>이 <MatchingState.Strong>매칭</MatchingState.Strong>을 기다리고 있어요!
         </MatchingState>
-        {user.waitMatching !== null ? (
+        {user?.waitMatching !== null ? (
           <MatchingInfo>
             <MatchingInfo.Box>
               <div className="bubble">
-                <MatchingInfo.Text>{user.waitMatching}</MatchingInfo.Text>
+                <MatchingInfo.Text>{user?.waitMatching}</MatchingInfo.Text>
               </div>
             </MatchingInfo.Box>
             <MatchingWaitButton {...openButtonProps} ref={openButtonRef} onClick={() => setDialogType('cancel')}>

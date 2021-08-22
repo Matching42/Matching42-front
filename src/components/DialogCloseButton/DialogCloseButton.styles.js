@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
 export const CloseButton = styled.button`
-  width: 20px;
-  height: 20px;
+  width: 2rem;
+  height: 2rem;
   position: absolute;
-  top: 30px;
-  right: 30px;
+  top: 3rem;
+  right: 3rem;
   cursor: pointer;
   background-color: #fff;
   outline: 0;

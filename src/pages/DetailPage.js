@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { OverlayProvider } from '@react-aria/overlays';
 import TeamMemberView from '../components/TeamMemberView/TeamMemberView';
 import TeamProfileView from '../components/TeamProfileView/TeamProfileView';
 import TeamWorkspaceView from '../components/TeamWorkspaceView/TeamWorkspaceView';
+import Toast from '../components/Toast/Toast';
 import { LoaderSpinner } from '../components/Loader/Loader';
 import { useUserData, useTeamData } from '../hooks/useUserData';
 import { useFetchTeamListData } from '../hooks/useTeamListData';
@@ -16,15 +17,23 @@ const DetailPage = ({ user, history }) => {
   const { getUserData } = useUserData(user);
   const { getTeamData } = useTeamData(currentId);
   const { teamListData } = useFetchTeamListData();
+  const [isActive, setIsActive] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleFinishedButtonClick = async () => {
     await api
       .patch(`/team/${getTeamData.data?.data?.ID}`, {
         state: 'end'
       })
-      .then(res => console.log(res))
-      .catch(error => console.warn(error));
-    history.goBack();
+      .then(res => {
+        console.log(res);
+        history.goBack();
+      })
+      .catch(error => {
+        console.warn(error);
+        setErrorMessage(error.message);
+        setIsActive(!isActive);
+      });
   };
 
   const handleTeamProfileEditButtonClick = async (_teamName, teamDescription, teamTags) => {
@@ -34,27 +43,39 @@ const DetailPage = ({ user, history }) => {
         description: teamDescription
       })
       .then(res => console.log(res))
-      .catch(error => console.warn(error));
+      .catch(error => {
+        console.warn(error);
+        setErrorMessage(error.message);
+        setIsActive(!isActive);
+      });
 
     await api
       .patch(`/team/tag/${getTeamData.data?.data?.ID}`, {
         tag: teamTags
       })
       .then(res => console.log(res))
-      .catch(error => console.warn(error));
+      .catch(error => {
+        console.warn(error);
+        setErrorMessage(error.message);
+        setIsActive(!isActive);
+      });
 
     getTeamData.mutate();
     teamListData.mutate();
   };
-  
+
   const handleInviteButtonClick = async () => {
     await api
       .post(`/team/invitetorepo/${getTeamData.data?.data?.ID}/${user}`)
       .then(res => console.log(res))
-      .catch(error => console.warn(error));
+      .catch(error => {
+        console.warn(error);
+        setErrorMessage(error.message);
+        setIsActive(!isActive);
+      });
   };
 
-  if (getUserData.error) {
+  if (getUserData.error || getTeamData.error || teamListData.error) {
     return (
       <Loading>
         <Loading.Strong>앗!</Loading.Strong>
@@ -84,6 +105,7 @@ const DetailPage = ({ user, history }) => {
               <TeamWorkspaceView team={getTeamData.data?.data} user={getUserData.data?.user} onFinishedButtonClick={handleFinishedButtonClick} onInviteButtonClick={handleInviteButtonClick} />
             </DetailContainer.Bottom>
           </DetailContainer.Section>
+          {isActive && <Toast setIsActive={setIsActive} type="error" message={errorMessage} />}
         </DetailContainer>
       </OverlayProvider>
     </>
@@ -94,18 +116,18 @@ export default DetailPage;
 
 export const DetailContainer = styled.div`
   width: 100vw;
-  height: calc(100vh - 170px);
+  height: calc(100vh - 17rem);
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 120px;
+  padding-top: 12rem;
 `;
 
 DetailContainer.Section = styled.div`
   width: 80%;
-  min-width: 1000px;
+  min-width: 100rem;
   height: 100%;
-  min-height: 500px;
+  min-height: 50rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -133,14 +155,13 @@ export const Loading = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 40px;
-  color: #252831;
+  font-size: 4rem;
 `;
 
 Loading.Strong = styled.p`
   font-size: 1em;
   font-weight: bold;
-  margin-bottom: 20px;
+  margin-bottom: 2rem;
 `;
 
 Loading.Text = styled.p`

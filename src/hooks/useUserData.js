@@ -18,7 +18,10 @@ export const useTeamData = teamID => {
     api
       .get(`team/${ID}`)
       .then(res => res.data)
-      .catch(error => console.log(error))
+      .catch(error => {
+        console.log(error);
+        throw error;
+      })
   );
 
   return { getTeamData };
@@ -29,7 +32,10 @@ export const useTeamSubjectLink = subject => {
     api
       .get(`subjectPDF/${subject}`)
       .then(res => res.data)
-      .catch(error => console.log(error))
+      .catch(error => {
+        console.log(error);
+        throw error;
+      })
   );
 
   return { getTeamSubjectLink };

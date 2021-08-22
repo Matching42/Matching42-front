@@ -8,22 +8,23 @@ export const MatchingStateViewStyled = styled.div`
   justify-content: space-between;
   align-items: center;
   background-color: #fff;
-  padding: 30px;
-  border-radius: 20px;
+  padding: 3rem;
+  border-radius: 2rem;
   box-sizing: border-box;
-  font-size: 28px;
+  font-size: 2.8rem;
 `;
 
 export const MatchingState = styled.div`
-  font-size: 0.7em;
+  font-size: 0.65em;
 `;
 
 MatchingState.Strong = styled.span`
+  font-size: 1em;
   font-weight: bold;
 `;
 
 export const MatchingStartButton = styled.button`
-  padding: 15px 20px;
+  padding: 1.5rem 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -31,7 +32,7 @@ export const MatchingStartButton = styled.button`
   font-weight: bold;
   color: #fff;
   background-color: #27babb;
-  border-radius: 10px;
+  border-radius: 1rem;
   cursor: pointer;
   outline: 0;
   transition: 0.15s;
@@ -42,25 +43,26 @@ export const MatchingStartButton = styled.button`
 `;
 
 export const MatchingWaitButton = styled.button`
-  width: 120px;
-  height: 50px;
+  width: 10rem;
+  height: 4rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.5em;
   font-weight: bold;
   color: #fff;
   background-color: #d5d5d5;
-  border-radius: 10px;
+  border-radius: 1rem;
   cursor: pointer;
   outline: 0;
   transition: all.1s;
 
   .before {
     display: block;
+    font-size: 1.2em;
   }
   .after {
     display: none;
+    font-size: 1.2em;
   }
   :hover {
     background-color: #bfbfbf;
@@ -84,8 +86,7 @@ export const Alert = styled.div`
 `;
 
 Alert.Text = styled.p`
-  font-size: 12px;
-  color: #252831;
+  font-size: 1.4rem;
   line-height: 1.5;
   word-break: keep-all;
   text-align: center;
@@ -93,13 +94,15 @@ Alert.Text = styled.p`
 
 Alert.Button = styled.div`
   button {
-    padding: 15px 30px;
+    padding: 1.5rem 3rem;
     box-sizing: border-box;
     color: #fff;
     background-color: #27babb;
-    border-radius: 10px;
+    border-radius: 1rem;
     cursor: pointer;
     transition: 0.15s;
+    font-size: 1.4rem;
+    font-weight: bold;
 
     :hover {
       background-color: #25a9aa;
@@ -121,25 +124,25 @@ MatchingInfo.Box = styled.div`
 
   @keyframes boxAnimate {
     0% {
-      top: -34px;
+      top: -3.4rem;
     }
     50% {
-      top: -38px;
+      top: -3.8rem;
     }
     100% {
-      top: -34px;
+      top: -3.4rem;
     }
   }
 
   .bubble {
-    padding: 6px 10px;
+    padding: 0.6rem 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
     background: #27babb;
-    border-radius: 5px;
-    font-size: 12px;
+    border-radius: 0.5rem;
+    font-size: 1.2rem;
     color: #fff;
   }
 
@@ -147,12 +150,12 @@ MatchingInfo.Box = styled.div`
     content: '';
     position: absolute;
     border-style: solid;
-    border-width: 8px 5px 0;
+    border-width: 0.8rem 0.5rem 0;
     border-color: #27babb transparent;
     display: block;
     width: 0;
     z-index: 1;
-    bottom: -6px;
+    bottom: -0.6rem;
     left: 50%;
     transform: translateX(-50%);
   }

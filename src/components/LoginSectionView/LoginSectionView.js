@@ -12,7 +12,7 @@ const LoginSectionView = ({ onLoginButtonClick }) => {
       <LoginBox>
         <LogoBox>
           <LogoBox.Logo>
-            <img src={logoBlack} alt="logo" width="95" />
+            <img src={logoBlack} alt="logo" />
           </LogoBox.Logo>
           <LogoBox.Title>
             Welcome

@@ -8,11 +8,10 @@ export const TeamListViewStyled = styled.div`
   flex-direction: column;
   align-items: start;
   background-color: #fff;
-  padding: 30px;
-  padding-bottom: ${({ isValidating }) => isValidating ? "60px" : "30px"};
-  border-radius: 20px;
+  padding: 3rem;
+  padding-bottom: ${({ isValidating }) => (isValidating ? '6rem' : '3rem')};
+  border-radius: 2rem;
   box-sizing: border-box;
-  font-size: 28px;
 
   .scrollbar {
     width: 4px;
@@ -34,19 +33,21 @@ export const TeamListTopbar = styled.div`
   width: 100%;
   max-width: inherit;
   border-bottom: 2px solid rgba(0, 0, 0, 0.11);
-  padding-bottom: 15px;
+  padding-bottom: 1.5rem;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  font-size: 2.8rem;
 `;
 
 TeamListTopbar.Title = styled.span`
   margin-left: 5px;
-  font-size: 0.6em;
+  font-size: 0.55em;
   font-weight: bold;
 `;
 
 TeamListTopbar.SubTitle = styled.span`
-  margin-left: 8px;
+  margin-left: 0.8rem;
   font-size: 0.9em;
   color: #27babb;
 `;
@@ -55,7 +56,7 @@ TeamListTopbar.Button = styled.div`
   display: flex;
   justify-content: flex-end;
   width: 40%;
-  padding: 0 5px;
+  padding: 0 0.5rem;
   font-size: 0.5em;
 `;
 
@@ -68,7 +69,7 @@ export const TeamListContainer = styled.div`
   height: 100%;
   position: relative;
   overflow: auto;
-  padding-right: 10px;
+  padding-right: 1rem;
   box-sizing: border-box;
 
   ::-webkit-scrollbar {
@@ -88,6 +89,5 @@ export const NoneTeamListData = styled.p`
   top: 50%;
   transform: translateX(-50%);
   left: 50%;
-  font-size: 16px;
-  color: #252831;
+  font-size: 0.5em;
 `;
