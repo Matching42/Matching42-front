@@ -8,6 +8,5 @@ export const patchTeamData = (teamID, changeState) => {
       .then(res => res.data.data)
       .catch(error => console.log(error))
   );
-  console.log('updateTeamData: ', updateTeamData);
   return { updateTeamData };
 };

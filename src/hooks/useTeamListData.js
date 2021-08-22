@@ -11,7 +11,10 @@ export const useFetchTeamListData = subject => {
     api
       .get(getKey)
       .then(res => res.data.data)
-      .catch(error => console.log(error))
+      .catch(error => {
+        console.log(error);
+        throw error;
+      })
   );
 
   const teamsData = teamListData.data ?? [];
