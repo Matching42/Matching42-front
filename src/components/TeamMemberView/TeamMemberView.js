@@ -15,7 +15,7 @@ const TeamMemberView = ({ user, teamData, userDataMutate }) => {
 
     let changeState;
 
-    if (team.memberID.length < 3) {
+    if (team.memberID.length < 5) {
       changeState = team.state === 'less_member' ? 'wait_member' : 'less_member';
     } else {
       changeState = 'progress';
