@@ -18,7 +18,7 @@ const DetailPage = ({ user, history }) => {
   const { getTeamData } = useTeamData(currentId);
   const { teamListData } = useFetchTeamListData();
   const [isActive, setIsActive] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleFinishedButtonClick = async () => {
     await api
@@ -105,7 +105,7 @@ const DetailPage = ({ user, history }) => {
               <TeamWorkspaceView team={getTeamData.data?.data} user={getUserData.data?.user} onFinishedButtonClick={handleFinishedButtonClick} onInviteButtonClick={handleInviteButtonClick} />
             </DetailContainer.Bottom>
           </DetailContainer.Section>
-          <Toast isActive={isActive} setIsActive={setIsActive} type="error" message={errorMessage} />
+          {isActive && <Toast setIsActive={setIsActive} type="error" message={errorMessage} />}
         </DetailContainer>
       </OverlayProvider>
     </>
