@@ -8,7 +8,7 @@ const TeamMemberImage = ({ teamMember }) => {
   const teamMemberImageArray = teamMember =>
     teamMember.map((member, index) => (
       <TeamMemberImageStyled.Item key={index}>
-        {index === 0 && <CrownIcon />}
+        <TeamMemberImageStyled.Crown>{index === 0 && <CrownIcon />}</TeamMemberImageStyled.Crown>
         <UserImageStyled size="big" src={`https://cdn.intra.42.fr/users/small_${member}.jpg`} />
         {member}
       </TeamMemberImageStyled.Item>
@@ -21,7 +21,7 @@ const TeamMemberImage = ({ teamMember }) => {
     for (let i = 0; i < len; i++) {
       Array.push(
         <TeamMemberImageStyled.Item key={i + 3}>
-          <EmptyIcon width="4.5rem" height="4.5rem" />
+          <EmptyIcon />
           <TeamMemberImageStyled.EmptyName>(empty)</TeamMemberImageStyled.EmptyName>
         </TeamMemberImageStyled.Item>
       );

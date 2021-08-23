@@ -71,6 +71,7 @@ export const TeamListContainer = styled.div`
   overflow: auto;
   padding-right: 1rem;
   box-sizing: border-box;
+  font-size: 2.8rem;
 
   ::-webkit-scrollbar {
     width: 4px;
