@@ -32,11 +32,35 @@ const TeamWorkspaceView = props => {
             <span>GitHub Repository</span>
             {team.memberID.find(id => id === user.ID) && team.gitLink && <InviteButton onClick={handleInviteButtonClick}>초대 받기</InviteButton>}
           </LinkList.Title>
-          <LinkList.Link>{team.gitLink ? <a href={team.gitLink}>{team.gitLink}</a> : <EmptyText>링크가 존재하지 않습니다.</EmptyText>}</LinkList.Link>
+          <LinkList.Link>
+            {team.gitLink ? (
+              <button type="button" onClick={() => window.open(team.gitLink, '_blank')}>
+                {team.gitLink}
+              </button>
+            ) : (
+              <EmptyText>링크가 존재하지 않습니다.</EmptyText>
+            )}
+          </LinkList.Link>
           <LinkList.Title>Notion</LinkList.Title>
-          <LinkList.Link>{team.notionLink ? <a href={team.notionLink}>{team.notionLink}</a> : <EmptyText>링크가 존재하지 않습니다.</EmptyText>}</LinkList.Link>
+          <LinkList.Link>
+            {team.notionLink ? (
+              <button type="button" onClick={() => window.open(team.notionLink, '_blank')}>
+                {team.notionLink}
+              </button>
+            ) : (
+              <EmptyText>링크가 존재하지 않습니다.</EmptyText>
+            )}
+          </LinkList.Link>
           <LinkList.Title>Subject PDF</LinkList.Title>
-          <LinkList.Link>{team.subject ? <a href={getTeamSubjectLink?.data?.subjectPDF}>{getTeamSubjectLink?.data?.subjectPDF}</a> : <EmptyText>링크가 존재하지 않습니다.</EmptyText>}</LinkList.Link>
+          <LinkList.Link>
+            {team.subject ? (
+              <button type="button" onClick={() => window.open(getTeamSubjectLink?.data?.subjectPDF, '_blank')}>
+                {getTeamSubjectLink?.data?.subjectPDF}
+              </button>
+            ) : (
+              <EmptyText>링크가 존재하지 않습니다.</EmptyText>
+            )}
+          </LinkList.Link>
         </LinkList>
         <div className="scrollbar" />
         {user?.ID === team?.leaderID && team.state !== 'end' && (

@@ -15,6 +15,15 @@ export const Logo = styled.div`
   margin-top: -1.4rem;
 `;
 
+Logo.ImageStyled = styled.div`
+  width: 9rem;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+`;
+
 export const SelectForm = styled.div`
   width: 70%;
   height: 100%;

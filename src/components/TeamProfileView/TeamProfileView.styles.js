@@ -34,12 +34,19 @@ TeamProfileLeftBox.Name = styled.div`
   font-size: 0.9em;
   font-weight: bold;
   margin-right: 1.8rem;
-  width: 30rem;
+  width: 25rem;
   text-overflow: ellipsis;
 `;
 
 TeamProfileLeftBox.EditButton = styled.div`
+  width: 2rem;
+  height: 2rem;
   cursor: pointer;
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
 `;
 
 export const TeamDescription = styled.div`
