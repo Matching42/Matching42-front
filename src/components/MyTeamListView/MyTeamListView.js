@@ -1,8 +1,6 @@
 import React from 'react';
-import { useTeamData } from '../../hooks/useUserData';
 import { MyTeamListViewStyled, Topbar, NoneMyTeamData } from './MyTeamListView.styles';
 import TeamListItem from '../TeamListItem/TeamListItem';
-import { LoaderSpinner } from '../Loader/Loader';
 
 const MyTeamListView = ({ teamList }) => (
   <MyTeamListViewStyled>

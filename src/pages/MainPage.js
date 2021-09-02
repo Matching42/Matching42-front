@@ -37,9 +37,10 @@ const MainPage = props => {
         setResponseStatus(200);
       })
       .catch(error => {
-        console.warn(error);
-        setIsActive(!isActive);
-        setErrorMessage(error.message);
+        const response = error.response.data;
+        console.warn(response);
+        setIsActive(true);
+        setErrorMessage(response.error.message);
         setResponseStatus(400);
       });
     getUserData.mutate();
@@ -51,9 +52,10 @@ const MainPage = props => {
       .delete(`/waitlist/${user}`)
       .then(res => console.log(res))
       .catch(error => {
+        const response = error.response.data;
         console.warn(error);
-        setErrorMessage(error.message);
-        setIsActive(!isActive);
+        setErrorMessage(response.error.message);
+        setIsActive(true);
       });
     getUserData.mutate();
     getMatchingStateData.mutate();
@@ -88,7 +90,6 @@ const MainPage = props => {
     if (userTeam) myTeamList.push(userTeam);
     myTeamList.push(...userEndTeam);
 
-    console.log('getTeamData', getTeamData);
     return getTeamData?.data?.data?.filter(team => myTeamList.includes(team.ID));
   };
 

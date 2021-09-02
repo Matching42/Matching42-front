@@ -30,9 +30,10 @@ const DetailPage = ({ user, history }) => {
         history.goBack();
       })
       .catch(error => {
+        const response = error.response.data;
         console.warn(error);
-        setErrorMessage(error.message);
-        setIsActive(!isActive);
+        setErrorMessage(response.error.message);
+        setIsActive(true);
       });
   };
 
@@ -44,9 +45,10 @@ const DetailPage = ({ user, history }) => {
       })
       .then(res => console.log(res))
       .catch(error => {
+        const response = error.response.data;
         console.warn(error);
-        setErrorMessage(error.message);
-        setIsActive(!isActive);
+        setErrorMessage(response.error.message);
+        setIsActive(true);
       });
 
     await api
@@ -55,9 +57,10 @@ const DetailPage = ({ user, history }) => {
       })
       .then(res => console.log(res))
       .catch(error => {
+        const response = error.response.data;
         console.warn(error);
-        setErrorMessage(error.message);
-        setIsActive(!isActive);
+        setErrorMessage(response.error.message);
+        setIsActive(true);
       });
 
     getTeamData.mutate();
@@ -69,9 +72,10 @@ const DetailPage = ({ user, history }) => {
       .post(`/team/invitetorepo/${getTeamData.data?.data?.ID}/${user}`)
       .then(res => console.log(res))
       .catch(error => {
+        const response = error.response.data;
         console.warn(error);
-        setErrorMessage(error.message);
-        setIsActive(!isActive);
+        setErrorMessage(response.error.message);
+        setIsActive(true);
       });
   };
 

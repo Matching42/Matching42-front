@@ -20,8 +20,9 @@ export const useTeamData = teamID => {
       .get(path)
       .then(res => res.data)
       .catch(error => {
-        console.log(error);
-        throw error;
+        const response = error.response.data;
+        console.warn(response);
+        throw response;
       })
   );
 
@@ -34,8 +35,9 @@ export const useTeamSubjectLink = subject => {
       .get(`subjectPDF/${subject}`)
       .then(res => res.data)
       .catch(error => {
-        console.log(error);
-        throw error;
+        const response = error.response.data;
+        console.warn(response);
+        throw response;
       })
   );
 

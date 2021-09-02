@@ -12,8 +12,9 @@ export const useFetchTeamListData = subject => {
       .get(getKey)
       .then(res => res.data.data)
       .catch(error => {
-        console.log(error);
-        throw error;
+        const response = error.response.data;
+        console.warn(response);
+        throw response;
       })
   );
 
