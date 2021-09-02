@@ -103,10 +103,16 @@ const DetailPage = ({ user, history }) => {
           <DetailContainer.Section>
             <DetailContainer.Top>
               <TeamProfileView team={getTeamData.data?.data} user={getUserData.data?.user} onTeamProfileEditButtonclick={handleTeamProfileEditButtonClick} />
-              <TeamMemberView teamData={getTeamData.data?.data} user={getUserData.data?.user} userDataMutate={getUserData.mutate} />
+              <TeamMemberView teamData={getTeamData.data?.data} teamDataMutate={getTeamData.mutate} user={getUserData.data?.user} userDataMutate={getUserData.mutate} />
             </DetailContainer.Top>
             <DetailContainer.Bottom>
-              <TeamWorkspaceView team={getTeamData.data?.data} user={getUserData.data?.user} onFinishedButtonClick={handleFinishedButtonClick} onInviteButtonClick={handleInviteButtonClick} />
+              <TeamWorkspaceView
+                team={getTeamData.data?.data}
+                user={getUserData.data?.user}
+                onFinishedButtonClick={handleFinishedButtonClick}
+                onInviteButtonClick={handleInviteButtonClick}
+                teamDataMutate={getTeamData.mutate}
+              />
             </DetailContainer.Bottom>
           </DetailContainer.Section>
           {isActive && <Toast setIsActive={setIsActive} type="error" message={errorMessage} />}
