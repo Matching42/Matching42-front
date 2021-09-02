@@ -13,10 +13,11 @@ export const useUserData = userId => {
 };
 
 export const useTeamData = teamID => {
-  const ID = teamID !== undefined ? teamID : '';
-  const getTeamData = useSWR(['getTeamData', teamID], (_, teamID) =>
+  const path = teamID ? `team/${teamID}` : `team/`;
+
+  const getTeamData = useSWR(['getTeamData', teamID], () =>
     api
-      .get(`team/${ID}`)
+      .get(path)
       .then(res => res.data)
       .catch(error => {
         console.log(error);

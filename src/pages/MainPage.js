@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { OverlayProvider } from '@react-aria/overlays';
 import ProfileView from '../components/ProfileView/ProfileView';
@@ -72,7 +72,7 @@ const MainPage = props => {
     );
   }
 
-  if ((getUserData.data === null || getUserData.data?.user === undefined || getMatchingStateData.data === null || getMatchingStateData.data === undefined) && !isActive) {
+  if ((getUserData.data === null || getMatchingStateData.data === null || getMatchingStateData.data === undefined || !getTeamData.data) && !isActive) {
     return (
       <Loading>
         <LoaderSpinner />
@@ -80,13 +80,25 @@ const MainPage = props => {
     );
   }
 
+  const filterMyTeam = () => {
+    const userTeam = getUserData.data.user.teamID;
+    const userEndTeam = getUserData.data.user.endTeamList;
+    const myTeamList = [];
+
+    if (userTeam) myTeamList.push(userTeam);
+    myTeamList.push(...userEndTeam);
+
+    console.log('getTeamData', getTeamData);
+    return getTeamData?.data?.data?.filter(team => myTeamList.includes(team.ID));
+  };
+
   return (
     <OverlayProvider>
       <MainContainer>
         <MainContainer.Section>
           <MainContainer.Left>
             <ProfileView user={getUserData.data?.user} />
-            <MyTeamListView myTeamList={getUserData.data?.user.teamID} />
+            <MyTeamListView teamList={filterMyTeam()} />
           </MainContainer.Left>
           <MainContainer.Right>
             <MatchingStateView
