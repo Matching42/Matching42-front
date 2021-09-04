@@ -90,7 +90,7 @@ LinkList.Link = styled.div`
   }
 `;
 
-TeamWorkspaceViewStyled.Button = styled.div`
+TeamWorkspaceViewStyled.ButtonWrapper = styled.div`
   position: absolute;
   bottom: 3rem;
   right: 3rem;
@@ -105,7 +105,7 @@ export const InviteButton = styled.button`
   cursor: pointer;
 `;
 
-export const TeamFinishedButton = styled.button`
+TeamWorkspaceViewStyled.Button = styled.button`
   padding: 1.5rem 2rem;
   display: inline-flex;
   align-items: center;
@@ -134,6 +134,7 @@ export const Alert = styled.div`
 `;
 
 Alert.Text = styled.p`
+  color: ${({isError}) => isError ? '#ca5c59' : '#252831'};
   font-size: 1.2rem;
   line-height: 1.5;
   word-break: keep-all;

@@ -6,7 +6,11 @@ export const patchTeamData = (teamID, changeState) => {
     api
       .patch(`team/${teamID}`, changeState)
       .then(res => res.data.data)
-      .catch(error => console.log(error))
+      .catch(error => {
+        const response = error.response.data;
+        console.warn(response);
+        throw response;
+      })
   );
   return { updateTeamData };
 };
