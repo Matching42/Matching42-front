@@ -134,6 +134,7 @@ export const Alert = styled.div`
 `;
 
 Alert.Text = styled.p`
+  color: ${({isError}) => isError ? '#ca5c59' : '#252831'};
   font-size: 1.2rem;
   line-height: 1.5;
   word-break: keep-all;

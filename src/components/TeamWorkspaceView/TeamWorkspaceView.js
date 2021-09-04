@@ -43,10 +43,10 @@ const TeamWorkspaceView = props => {
   };
 
   const endStudyButton = type => {
-    const text = user.teamID ? <span style={{ color: 'red' }}>이미 참여 중인 팀이 있습니다.</span> : '스터디에 참여 하시겠습니까?';
+    const text = user.teamID ? '이미 참여 중인 팀이 있습니다.': '스터디에 참여 하시겠습니까?';
     return (
       <Alert>
-        <Alert.Text>
+        <Alert.Text isError={user.teamID}>
           {type === 'end' ? '스터디 종료 시, 팀 페이지는 사라지게 됩니다.' : text}
           <br />
           {type === 'end' ? '완전히 종료하고자 한다면 아래 버튼을 눌러주세요.' : ''}
@@ -108,6 +108,7 @@ const TeamWorkspaceView = props => {
             </TeamWorkspaceViewStyled.Button>
           </TeamWorkspaceViewStyled.ButtonWrapper>
         )}
+        {console.log(team.state, team.memberID)}
         {team.state === 'wait_member' && !team.memberID.includes(user.ID) && (
           <TeamWorkspaceViewStyled.ButtonWrapper>
             <TeamWorkspaceViewStyled.Button {...openButtonProps} ref={openButtonRef} onClick={forBubblingEvent}>
