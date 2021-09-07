@@ -43,7 +43,7 @@ const TeamWorkspaceView = props => {
   };
 
   const endStudyButton = type => {
-    const text = user.teamID ? '이미 참여 중인 팀이 있습니다.': '스터디에 참여 하시겠습니까?';
+    const text = user.teamID ? '이미 참여 중인 팀이 있습니다.' : '스터디에 참여 하시겠습니까?';
     return (
       <Alert>
         <Alert.Text isError={user.teamID}>
