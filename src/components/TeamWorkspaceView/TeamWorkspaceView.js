@@ -99,8 +99,8 @@ const TeamWorkspaceView = props => {
               <EmptyText>링크가 존재하지 않습니다.</EmptyText>
             )}
           </LinkList.Link>
+          <div className="scrollbar" />
         </LinkList>
-        <div className="scrollbar" />
         {user?.ID === team?.leaderID && team.state !== 'end' && (
           <TeamWorkspaceViewStyled.ButtonWrapper>
             <TeamWorkspaceViewStyled.Button {...openButtonProps} ref={openButtonRef} onClick={forBubblingEvent}>
@@ -108,7 +108,6 @@ const TeamWorkspaceView = props => {
             </TeamWorkspaceViewStyled.Button>
           </TeamWorkspaceViewStyled.ButtonWrapper>
         )}
-        {console.log(team.state, team.memberID)}
         {team.state === 'wait_member' && !team.memberID.includes(user.ID) && (
           <TeamWorkspaceViewStyled.ButtonWrapper>
             <TeamWorkspaceViewStyled.Button {...openButtonProps} ref={openButtonRef} onClick={forBubblingEvent}>

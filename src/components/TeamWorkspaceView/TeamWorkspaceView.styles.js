@@ -13,22 +13,6 @@ export const TeamWorkspaceViewStyled = styled.div`
   border-radius: 2rem;
   box-sizing: border-box;
   font-size: 2.8rem;
-  position: relative;
-
-  .scrollbar {
-    width: 4px;
-    height: ${({ user, team }) => (user?.ID === team?.leaderID ? 'calc(100% - 142px)' : '100%')};
-    max-height: 21rem;
-    position: absolute;
-    top: 6rem;
-    right: 3rem;
-    background-color: #fff;
-    opacity: 1;
-    transition: 0.5s;
-  }
-  :hover .scrollbar {
-    opacity: 0;
-  }
 `;
 
 TeamWorkspaceViewStyled.Title = styled.div`
@@ -46,6 +30,21 @@ export const LinkList = styled.div`
   overflow: auto;
   margin-bottom: ${({ user, team }) => (user?.ID === team?.leaderID ? '6rem' : '0px')};
   font-size: 1.6rem;
+
+  .scrollbar {
+    width: 4px;
+    height: ${({ user, team }) => (user?.ID === team?.leaderID ? 'calc(100% - 142px)' : '100%')};
+    max-height: 21rem;
+    position: absolute;
+    top: 6rem;
+    right: 3rem;
+    background-color: #fff;
+    opacity: 1;
+    transition: 0.5s;
+  }
+  :hover .scrollbar {
+    opacity: 0;
+  }
 
   ::-webkit-scrollbar {
     width: 4px;
@@ -91,9 +90,10 @@ LinkList.Link = styled.div`
 `;
 
 TeamWorkspaceViewStyled.ButtonWrapper = styled.div`
-  position: absolute;
-  bottom: 3rem;
-  right: 3rem;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-top: 10px;
   z-index: 100;
 `;
 
