@@ -7,8 +7,9 @@ export const useStateData = () => {
       .get(`waitlist/`)
       .then(res => res.data)
       .catch(error => {
-        console.log(error);
-        throw error;
+        const response = error.response.data;
+        console.warn(response);
+        throw response;
       })
   );
 
