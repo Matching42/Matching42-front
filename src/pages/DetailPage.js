@@ -9,7 +9,7 @@ import Toast from '../components/Toast/Toast';
 import { LoaderSpinner } from '../components/Loader/Loader';
 import { useUserData, useTeamData } from '../hooks/useUserData';
 import { useFetchTeamListData } from '../hooks/useTeamListData';
-import { api } from '../api';
+// import { api } from '../api';
 
 const DetailPage = ({ user, history }) => {
   const currentParams = useParams();
@@ -21,6 +21,8 @@ const DetailPage = ({ user, history }) => {
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleFinishedButtonClick = async () => {
+    // TODO : 기능 활성화
+    /*
     await api
       .patch(`/team/${getTeamData.data?.data?.ID}`, {
         state: 'end'
@@ -35,9 +37,12 @@ const DetailPage = ({ user, history }) => {
         setErrorMessage(response.error.message);
         setIsActive(true);
       });
+      */
   };
 
   const handleTeamProfileEditButtonClick = async (_teamName, teamDescription, teamTags) => {
+    // TODO : 기능 활성화
+    /*
     await api
       .patch(`/team/${getTeamData.data?.data?.ID}`, {
         teamName: _teamName,
@@ -65,9 +70,12 @@ const DetailPage = ({ user, history }) => {
 
     getTeamData.mutate();
     teamListData.mutate();
+    */
   };
 
   const handleInviteButtonClick = async () => {
+    // TODO : 기능 활성화
+    /*
     await api
       .post(`/team/invitetorepo/${getTeamData.data?.data?.ID}/${user}`)
       .then(res => console.log(res))
@@ -77,6 +85,7 @@ const DetailPage = ({ user, history }) => {
         setErrorMessage(response.error.message);
         setIsActive(true);
       });
+      */
   };
 
   if (getUserData.error || getTeamData.error || teamListData.error) {
