@@ -42,7 +42,7 @@ DropdownButton.Name = styled.button`
   cursor: pointer;
   background-color: #fff;
   font-size: 1em;
-  padding-bottom: 0.4rem;
+  ${!navigator.userAgent.includes('Windows') && 'padding-bottom: 0.1rem;'}
 `;
 
 DropdownButton.ArrowIcon = styled.div`
