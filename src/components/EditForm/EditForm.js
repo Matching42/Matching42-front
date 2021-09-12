@@ -8,7 +8,7 @@ import { ReactComponent as DeleteIcon } from '../../assets/icons/icon-delete.svg
 const EditForm = ({ team, onCloseButton, onSubmitButton }) => {
   const [teamName, setTeamName] = useState(team.teamName);
   const [teamDescription, setTeamDescription] = useState(team.description || 'Team GitHub Repository, Notion, Slack 적극 활용하여 동료들과 함께 학습을 진행해보세요!');
-  const [tags, setTags] = useState(team.tags ? team.tags : []);
+  const [tags, setTags] = useState(team.tag ? team.tag : []);
   const [isDuplicate, setIsDuplicate] = useState(false);
   const [isEmpty, setIsEmpty] = useState(false);
   const [checkEmptyTeamName, setCheckEmptyTeamName] = useState(false);
