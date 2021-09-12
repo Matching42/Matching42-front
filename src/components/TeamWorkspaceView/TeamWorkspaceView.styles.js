@@ -93,8 +93,13 @@ TeamWorkspaceViewStyled.ButtonWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
   width: 100%;
-  margin-top: 10px;
+  margin-top: 25px;
   z-index: 100;
+  @media screen and (min-height: 2160px) {
+    position: absolute;
+    bottom: 3rem;
+    right: 3rem;
+  }
 `;
 
 export const InviteButton = styled.button`
