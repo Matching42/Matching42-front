@@ -10,6 +10,7 @@ import { useTeamSubjectLink } from '../../hooks/useUserData';
 const TeamWorkspaceView = props => {
   const { team, user, onFinishedButtonClick, onInviteButtonClick, teamDataMutate } = props;
   const { state, openButtonProps, openButtonRef } = useToggleDialog();
+  const inviteModal = useToggleDialog();
   const { getTeamSubjectLink } = useTeamSubjectLink(team?.subject);
   const type = team.state === 'wait_member' && !team.memberID.includes(user.ID) ? 'join' : 'end';
 
@@ -71,7 +72,7 @@ const TeamWorkspaceView = props => {
         <LinkList user={user} team={team}>
           <LinkList.Title>
             <span>GitHub Repository</span>
-            {team.memberID.find(id => id === user.ID) && team.gitLink && <InviteButton onClick={handleInviteButtonClick}>초대 받기</InviteButton>}
+            {team.memberID.find(id => id === user.ID) && team.gitLink && <InviteButton {...inviteModal.openButtonProps} ref={inviteModal.openButtonRef} onClick={handleInviteButtonClick}>초대 받기</InviteButton>}
           </LinkList.Title>
           <LinkList.Link>
             {team.gitLink ? (
@@ -124,6 +125,17 @@ const TeamWorkspaceView = props => {
           <Dialog isOpen onClose={state.close} isDimissable type="alert" padding={0}>
             <DialogCloseButton onCloseButton={state.close} />
             {endStudyButton(type)}
+          </Dialog>
+        </OverlayContainer>
+      )}
+      {inviteModal.state.isOpen && (
+        <OverlayContainer>
+          <Dialog isOpen onClose={inviteModal.state.close} isDimissable type="alert">
+            <DialogCloseButton onCloseButton={inviteModal.state.close} />
+            <Alert>
+              <Alert.Text>깃허브 계정에 등록된 이메일 주소로 초대 메일이 발송되었습니다. 메일함을 확인해주세요.</Alert.Text>
+              <Alert.Button><button type="button" onClick={inviteModal.state.close}>확인</button></Alert.Button>
+            </Alert>
           </Dialog>
         </OverlayContainer>
       )}
