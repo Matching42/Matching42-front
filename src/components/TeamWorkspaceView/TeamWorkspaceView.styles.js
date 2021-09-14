@@ -94,7 +94,7 @@ TeamWorkspaceViewStyled.ButtonWrapper = styled.div`
   justify-content: flex-end;
   align-items: flex-end;
   width: 100%;
-  margin-top: 25px;
+  margin-top: 15px;
   z-index: 100;
   flex-grow: 1;
 `;
