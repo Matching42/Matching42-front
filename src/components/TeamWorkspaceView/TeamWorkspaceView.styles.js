@@ -92,14 +92,11 @@ LinkList.Link = styled.div`
 TeamWorkspaceViewStyled.ButtonWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
+  align-items: flex-end;
   width: 100%;
   margin-top: 25px;
   z-index: 100;
-  @media screen and (min-height: 960px) {
-    position: absolute;
-    bottom: 3rem;
-    right: 3rem;
-  }
+  flex-grow: 1;
 `;
 
 export const InviteButton = styled.button`
