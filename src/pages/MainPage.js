@@ -24,6 +24,9 @@ const MainPage = props => {
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleMatchingButtonClick = async (selectedSubject, githubId, preferredCluster, submissionDeadline) => {
+    // TODO : 기능 활성화
+    console.log(selectedSubject, githubId, preferredCluster, submissionDeadline);
+    /*
     await api
       .post('/waitlist/', {
         userID: user,
@@ -45,6 +48,7 @@ const MainPage = props => {
       });
     getUserData.mutate();
     getMatchingStateData.mutate();
+    */
   };
 
   const handleMatchingCancelButtonClick = async () => {

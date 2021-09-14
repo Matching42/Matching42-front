@@ -37,8 +37,8 @@ const Dropdown = ({ subjectList, selectedSubject, setSelectedSubject, type }) =>
 
   return (
     <DropdownStyled active={isActive} type={type} ref={modalRef}>
-      <DropdownButton active={isActive}>
-        <DropdownButton.Name type="button" onClick={handleDropdownButtonClick}>
+      <DropdownButton active={isActive} onClick={handleDropdownButtonClick}>
+        <DropdownButton.Name type="button">
           {selectedSubject}
         </DropdownButton.Name>
         <DropdownButton.ArrowIcon>
@@ -47,7 +47,7 @@ const Dropdown = ({ subjectList, selectedSubject, setSelectedSubject, type }) =>
               <CancelIcon />
             </IconButton>
           ) : (
-            <IconButton type="button" onClick={handleDropdownButtonClick}>
+            <IconButton type="button">
               <DropdownIcon color={isActive ? '#27BABB' : '#252831'} active={isActive ? 'translate(1453.069 137.659) rotate(180)' : 'translate(-1439.141 -128.991)'} />
             </IconButton>
           )}

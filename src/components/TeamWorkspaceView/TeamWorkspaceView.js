@@ -5,7 +5,7 @@ import useToggleDialog from '../../hooks/useToggleDialog';
 import Dialog from '../Dialog/Dialog';
 import DialogCloseButton from '../DialogCloseButton/DialogCloseButton';
 import { useTeamSubjectLink } from '../../hooks/useUserData';
-import { api } from '../../api';
+// import { api } from '../../api';
 
 const TeamWorkspaceView = props => {
   const { team, user, onFinishedButtonClick, onInviteButtonClick, teamDataMutate } = props;
@@ -17,6 +17,8 @@ const TeamWorkspaceView = props => {
 
   const joinTeamEvent = async () => {
     if (user.teamID) return state.close();
+    // TODO : 기능 활성화
+    /*
     if (!user.waitMatcing) {
       await api.post('/addmember', {
         teamID: team.ID,
@@ -30,6 +32,7 @@ const TeamWorkspaceView = props => {
       });
     }
     teamDataMutate();
+    */
     state.close();
   };
 
