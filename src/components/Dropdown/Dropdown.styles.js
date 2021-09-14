@@ -44,9 +44,6 @@ DropdownButton.Name = styled.button`
   background-color: #fff;
   font-size: 1em;
   line-height: 1.1rem;
-  @media screen and (min-height: 2160px) {
-    padding-bottom: 0.1rem;
-  }
 `;
 
 DropdownButton.ArrowIcon = styled.div`
