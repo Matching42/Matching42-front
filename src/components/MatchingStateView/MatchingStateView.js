@@ -19,6 +19,7 @@ const MatchingStateView = ({ user, onMatchingButtonClick, onMatchingCancelButton
 
   const handleSubmitButtonClick = (selectedSubject, githubId, preferredCluster, submissionDeadline) => {
     onMatchingButtonClick?.(selectedSubject, githubId, preferredCluster, submissionDeadline);
+    state.close();
   };
 
   const handleCancelButtonClick = () => {
