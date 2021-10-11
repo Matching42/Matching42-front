@@ -133,6 +133,9 @@ export const Alert = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  input {
+    text-align: center;
+  }
 `;
 
 Alert.Text = styled.p`
@@ -146,6 +149,7 @@ Alert.Text = styled.p`
 
 Alert.Button = styled.div`
   button {
+    margin: 3rem;
     padding: 1.5rem 3rem;
     box-sizing: border-box;
     color: #fff;

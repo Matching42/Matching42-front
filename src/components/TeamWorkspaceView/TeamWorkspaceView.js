@@ -1,40 +1,62 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { OverlayContainer } from '@react-aria/overlays';
 import { TeamWorkspaceViewStyled, LinkList, InviteButton, Alert, EmptyText } from './TeamWorkspaceView.styles';
 import useToggleDialog from '../../hooks/useToggleDialog';
 import Dialog from '../Dialog/Dialog';
 import DialogCloseButton from '../DialogCloseButton/DialogCloseButton';
 import { useTeamSubjectLink } from '../../hooks/useUserData';
+import { SelectItem } from '../SurveyForm/SurveyForm.styles';
+import TextInput from '../TextInput/TextInput';
 // import { api } from '../../api';
 
 const TeamWorkspaceView = props => {
   const { team, user, onFinishedButtonClick, onInviteButtonClick, teamDataMutate } = props;
   const { state, openButtonProps, openButtonRef } = useToggleDialog();
+  const inviteModal = useToggleDialog();
   const { getTeamSubjectLink } = useTeamSubjectLink(team?.subject);
   const type = team.state === 'wait_member' && !team.memberID.includes(user.ID) ? 'join' : 'end';
+  const [githubId, setGithubId] = useState('');
+  const [checkEmptyInput, setCheckEmptyInput] = useState(false);
+  const [responseStatus, setResponseStatus] = useState(null);
 
   const forBubblingEvent = () => {};
 
   const joinTeamEvent = async () => {
     if (user.teamID) return state.close();
     // TODO : 기능 활성화
+    let data;
+    if (!user.gitName) {
+      data = {
+        teamID: team.ID,
+        userID: user.ID,
+        gitName: githubId
+      }
+    } else {
+      data = {
+        teamID: team.ID,
+        userID: user.ID
+      }
+    }
+    console.log(data);
     /*
     if (!user.waitMatcing) {
-      await api.post('/addmember', {
-        teamID: team.ID,
-        userID: user.ID
-      });
+      await api.post('/addmember', data);
     } else {
       await api.delete(`/waitlist/${user.ID}`);
-      await api.post('/addmember', {
-        teamID: team.ID,
-        userID: user.ID
-      });
+      await api.post('/addmember', data);
     }
     teamDataMutate();
     */
     state.close();
   };
+
+  const onSubmitGithubId = () => {
+    if (githubId === '') {
+      setCheckEmptyInput(true);
+      return;
+    }
+    joinTeamEvent();
+  }
 
   const handleFinishedButtonClick = () => {
     onFinishedButtonClick?.();
@@ -71,7 +93,7 @@ const TeamWorkspaceView = props => {
         <LinkList user={user} team={team}>
           <LinkList.Title>
             <span>GitHub Repository</span>
-            {team.memberID.find(id => id === user.ID) && team.gitLink && <InviteButton onClick={handleInviteButtonClick}>초대 받기</InviteButton>}
+            {team.memberID.find(id => id === user.ID) && team.gitLink && <InviteButton {...inviteModal.openButtonProps} ref={inviteModal.openButtonRef} onClick={handleInviteButtonClick}>초대 받기</InviteButton>}
           </LinkList.Title>
           <LinkList.Link>
             {team.gitLink ? (
@@ -123,7 +145,24 @@ const TeamWorkspaceView = props => {
         <OverlayContainer>
           <Dialog isOpen onClose={state.close} isDimissable type="alert" padding={0}>
             <DialogCloseButton onCloseButton={state.close} />
-            {endStudyButton(type)}
+            {!user.gitName && 
+              <Alert>
+                <Alert.Text>팀 저장소 초대를 위해 깃허브 아이디를 입력해주세요. 
+                </Alert.Text>
+                <TextInput inputText={githubId} setInputText={setGithubId} checkEmptyInput={checkEmptyInput} responseStatus={responseStatus} setResponseStatus={setResponseStatus} />
+                <Alert.Button><button type="button" onClick={onSubmitGithubId}>스터디 참여</button></Alert.Button></Alert>}
+            {user.gitName && endStudyButton(type)}
+          </Dialog>
+        </OverlayContainer>
+      )}
+      {inviteModal.state.isOpen && (
+        <OverlayContainer>
+          <Dialog isOpen onClose={inviteModal.state.close} isDimissable type="alert">
+            <DialogCloseButton onCloseButton={inviteModal.state.close} />
+            <Alert>
+              <Alert.Text>깃허브 계정에 등록된 이메일 주소로 초대 메일이 발송되었습니다. 메일함을 확인해주세요.</Alert.Text>
+              <Alert.Button><button type="button" onClick={inviteModal.state.close}>확인</button></Alert.Button>
+            </Alert>
           </Dialog>
         </OverlayContainer>
       )}
