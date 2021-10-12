@@ -5,9 +5,9 @@ import TextInput from '../TextInput/TextInput';
 import RadioButton from '../RadioButton/RadioButton';
 import Dropdown from '../Dropdown/Dropdown';
 
-const SurveyForm = ({ onSubmitButton, responseStatus, setResponseStatus }) => {
+const SurveyForm = ({ onSubmitButton, responseStatus, gitName, setResponseStatus }) => {
   const [selectedSubject, setSelectedSubject] = useState('Libft');
-  const [githubId, setGithubId] = useState('');
+  const [githubId, setGithubId] = useState(gitName);
   const [checkEmptyInput, setCheckEmptyInput] = useState(false);
   const [preferredCluster, setPreferredCluster] = useState('개포');
   const [submissionDeadline, setSubmissionDeadline] = useState('3일');
@@ -36,7 +36,14 @@ const SurveyForm = ({ onSubmitButton, responseStatus, setResponseStatus }) => {
           <SelectItem>
             <SelectItem.Title>Github ID</SelectItem.Title>
             <SelectItem.Info>
-              <TextInput placeholderInfo="레포지토리 생성에 필요한 아이디를 입력해주세요." inputText={githubId} setInputText={setGithubId} checkEmptyInput={checkEmptyInput} responseStatus={responseStatus} setResponseStatus={setResponseStatus}/>
+              <TextInput
+                placeholderInfo="레포지토리 생성에 필요한 아이디를 입력해주세요."
+                inputText={githubId}
+                setInputText={setGithubId}
+                checkEmptyInput={checkEmptyInput}
+                responseStatus={responseStatus}
+                setResponseStatus={setResponseStatus}
+              />
             </SelectItem.Info>
           </SelectItem>
           <SelectItem>
