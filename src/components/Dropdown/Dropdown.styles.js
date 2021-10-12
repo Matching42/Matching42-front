@@ -35,6 +35,7 @@ export const DropdownButton = styled.div`
   background-color: #fff;
   color: ${props => (props.active ? '#27BABB' : '#252831')};
   font-size: 1.2rem;
+  cursor: pointer;
 `;
 
 DropdownButton.Name = styled.button`
@@ -42,7 +43,8 @@ DropdownButton.Name = styled.button`
   cursor: pointer;
   background-color: #fff;
   font-size: 1em;
-  padding-bottom: 0.4rem;
+  ${!navigator.userAgent.includes('Windows') && 'padding-bottom: 0.1rem;'}
+  line-height: 1.1rem;
 `;
 
 DropdownButton.ArrowIcon = styled.div`

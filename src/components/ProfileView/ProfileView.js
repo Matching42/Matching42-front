@@ -11,6 +11,8 @@ const ProfileView = ({ user }) => {
     return Math.floor(days);
   };
 
+  const level = exp => +`${Math.round(`${exp}e+2`)}e-2`;
+
   return (
     <ProfileViewStyled>
       <ProfileTitle>Hello, {user?.ID} !</ProfileTitle>
@@ -20,7 +22,7 @@ const ProfileView = ({ user }) => {
         오른쪽 상단의 매칭 신청하기 버튼을 눌러 시작해보세요!
       </ProfileDescription>
       <UserStateList>
-        <UserStateList.Item>Level: {user?.intraInfo.level}%</UserStateList.Item>
+        <UserStateList.Item>Level: {user && +`${Math.round(`${user?.intraInfo.level}e+2`)}e-2`}%</UserStateList.Item>
         <UserStateList.Item>Black Hole : {user && getDday(user?.intraInfo.blackholed_at)} days left</UserStateList.Item>
       </UserStateList>
     </ProfileViewStyled>

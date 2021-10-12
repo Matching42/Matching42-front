@@ -42,7 +42,7 @@ const Logout = ({ user, isVisible, setIsVisible, onLogoutButtonClick }) => {
           <LogoutStyled.UserInfo>
             <h2>{getUserData.data?.user.ID}</h2>
             <p>
-              Level: {getUserData.data?.user.intraInfo.level}% | {user && getDday(getUserData.data?.user.intraInfo.blackholed_at)} days left
+              Level: {user && +`${Math.round(`${getUserData.data?.user.intraInfo.level}e+2`)}e-2`}% | {user && getDday(getUserData.data?.user.intraInfo.blackholed_at)} days left
             </p>
           </LogoutStyled.UserInfo>
         </LogoutStyled.UserWrap>
