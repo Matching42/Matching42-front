@@ -38,9 +38,7 @@ const Dropdown = ({ subjectList, selectedSubject, setSelectedSubject, type }) =>
   return (
     <DropdownStyled active={isActive} type={type} ref={modalRef}>
       <DropdownButton active={isActive} onClick={handleDropdownButtonClick}>
-        <DropdownButton.Name type="button">
-          {selectedSubject}
-        </DropdownButton.Name>
+        <DropdownButton.Name type="button">{selectedSubject}</DropdownButton.Name>
         <DropdownButton.ArrowIcon>
           {selectedSubject !== 'Subject' && type !== 'form' ? (
             <IconButton type="button" onClick={handleCancelButtonClick}>
@@ -74,10 +72,10 @@ Dropdown.defaultProps = {
   subjectList: [
     ['Libft'],
     ['Born2beroot', 'get_next_line', 'ft_printf'],
-    ['push_swap', 'minitalk', 'pipex', 'FdF', 'fract-ol', 'Exam Rank 02'],
-    ['minishell', 'Inception', 'ft_services', 'Exam Rank 03'],
+    ['push_swap', 'minitalk', 'pipex', 'FdF', 'fract-ol', 'so_long', 'Exam Rank 02'],
+    ['minishell', 'Philosophers', 'Exam Rank 03'],
     [
-      'netwhat',
+      'NetPractice',
       'cub3d',
       'miniRT',
       'CPP Module 00',
@@ -91,7 +89,7 @@ Dropdown.defaultProps = {
       'CPP Module 08',
       'Exam Rank 04'
     ],
-    ['webserv', 'ft_irc', 'ft_containers', 'Exam Rank 05'],
+    ['webserv', 'ft_irc', 'ft_containers', 'Inception', 'Exam Rank 05'],
     ['ft_transcendence', 'Exam Rank 06']
   ],
   type: 'default'
