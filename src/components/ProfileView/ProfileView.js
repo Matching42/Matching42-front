@@ -13,10 +13,10 @@ const ProfileView = ({ user }) => {
 
   const getDescription = () => {
     if (user?.waitMatching)
-      return "매칭 신청이 완료되었어요 😃 <br />팀원을 찾을 때까지 조금만 기다려주세요 !"
+      return "매칭 신청이 완료되었어요 😃\n팀원을 찾을 때까지 조금만 기다려주세요 !"
     if (!user?.waitMatching && user?.teamID)
       return "오늘도 Matching42와 함께 즐거운 동료학습해요!";
-    return "오늘 하루도 힘차게 달려볼까요?<br />오른쪽 상단의 매칭 신청하기 버튼을 눌러 시작해보세요!";
+    return "오늘 하루도 힘차게 달려볼까요?\n오른쪽 상단의 매칭 신청하기 버튼을 눌러 시작해보세요!";
   };
 
   const level = exp => +`${Math.round(`${exp}e+2`)}e-2`;
