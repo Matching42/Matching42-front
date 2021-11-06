@@ -7,7 +7,7 @@ import DialogCloseButton from '../DialogCloseButton/DialogCloseButton';
 import { useTeamSubjectLink } from '../../hooks/useUserData';
 import { SelectItem } from '../SurveyForm/SurveyForm.styles';
 import TextInput from '../TextInput/TextInput';
-// import { api } from '../../api';
+import { api } from '../../api';
 
 const TeamWorkspaceView = props => {
   const { team, user, onFinishedButtonClick, onInviteButtonClick, teamDataMutate } = props;
@@ -23,7 +23,6 @@ const TeamWorkspaceView = props => {
 
   const joinTeamEvent = async () => {
     if (user.teamID) return state.close();
-    // TODO : 기능 활성화
     let data;
     if (!user.gitName) {
       data = {
@@ -38,7 +37,6 @@ const TeamWorkspaceView = props => {
       }
     }
     console.log(data);
-    /*
     if (!user.waitMatcing) {
       await api.post('/addmember', data);
     } else {
@@ -46,7 +44,6 @@ const TeamWorkspaceView = props => {
       await api.post('/addmember', data);
     }
     teamDataMutate();
-    */
     state.close();
   };
 
