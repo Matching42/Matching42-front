@@ -57,7 +57,7 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const history = createBrowserHistory({ basename: '/Matching42-front' });
+const history = createBrowserHistory({ basename: '/' });
 
 function App() {
   const { state, actions } = useContext(AuthContext);

@@ -23,6 +23,7 @@ export const ProfileDescription = styled.p`
   font-size: 0.45em;
   line-height: 1.5;
   padding: 1rem 0;
+  white-space: pre-wrap;
 `;
 
 export const UserStateList = styled.ul`
