@@ -1,7 +1,7 @@
-name: deploy
+name: development
 on:
   push:
-    branches: [ main ]
+    branches: [ development ]
 
 jobs:
   deploy:
@@ -29,7 +29,4 @@ jobs:
       run: yarn build
 
     - name: Upload build directory to s3
-      run: aws s3 sync ./build s3://${{ secrets.AWS_S3_BUCKET }}
-
-    - name: Invalidate CloudFront Cache
-      run: aws cloudfront create-invalidation --distribution-id ${{secrets.DEV_DISTRIBUTION_ID}} --paths "/*"
+      run: aws s3 sync ./build s3://${{ secrets.AWS_S3_BUCKET_DEV }}
