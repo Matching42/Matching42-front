@@ -1,5 +1,5 @@
 import axios from 'axios';
 
 export const api = axios.create({
-  baseURL: 'https://matching42-server.cf/'
+  baseURL: 'http://matching42-dev-server.cf'
 });
