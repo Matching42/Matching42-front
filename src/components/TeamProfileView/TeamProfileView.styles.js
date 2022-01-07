@@ -31,6 +31,7 @@ TeamProfileLeftBox.Title = styled.div`
 `;
 
 TeamProfileLeftBox.Name = styled.div`
+  overflow: hidden;
   font-size: 0.9em;
   font-weight: bold;
   margin-right: 1.8rem;
