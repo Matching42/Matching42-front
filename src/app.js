@@ -55,6 +55,59 @@ const GlobalStyle = createGlobalStyle`
       font-size: 28px;
     }
   }
+  @media screen and (max-width: 1024px)
+  {
+    html, body, div, p, span, button, a {
+      font-size: 9px;
+    }
+    .main_section__responsive {
+      min-width: 768px;
+    }
+  }
+  @media screen and (max-width: 768px)
+  {
+    html, body, div, p, span, button, a {
+      font-size: 8px;
+    }
+    .main_section__responsive {
+      min-width: 600px;
+    }
+  }
+  @media screen and (max-width: 625px)
+  {
+    .main_section__responsive {
+      flex-direction: column;
+      min-width: 350px;
+    } 
+    .main_container__responsive {
+      height: 100%;
+      padding-top: 86px;
+    }
+    .main_section__responsive > div {
+      width: 100%;
+    }
+    .main_section__responsive > div > div {
+      height: 100%;
+      margin-bottom: 20px;
+    }
+  }
+  @media screen and (max-width: 375px)
+  {
+    .main_section__responsive {
+      min-width: 300px;
+      width: 100%;
+    }
+    .main_section__responsive > div > div {
+      border-radius: 0;
+      padding: 2.5rem;
+    }
+    .main_container__responsive {
+      padding-top: 80px;
+    }
+    .team_list__responsive .scrollbar {
+      right: 2.5rem;
+    }
+  }
 `;
 
 const history = createBrowserHistory({ basename: '/' });
