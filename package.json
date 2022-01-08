@@ -53,6 +53,7 @@
     ]
   },
   "devDependencies": {
+    "env-cmd": "^10.1.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.22.1",
@@ -62,5 +63,5 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "prettier": "^2.3.0"
   },
-	"proxy": "https://matching42-server.cf/"
+  "proxy": "https://matching42-server.cf/"
 }
