@@ -95,7 +95,7 @@ const MainPage = props => {
   };
 
   return (
-    <OverlayProvider>
+    <OverlayProvider className='main_overlay_container'>
       <MainContainer className='main_container__responsive'>
         <MainContainer.Section className="main_section__responsive">
           <MainContainer.Left>

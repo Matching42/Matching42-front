@@ -35,6 +35,18 @@ const GlobalStyle = createGlobalStyle`
     width: 100%;
   }
 
+  @media screen and (min-width: 625px) {
+    .main_overlay_container {
+      height: 100%;
+    }
+  }
+  @media screen and (max-height: 600px) {
+    .main_container__responsive {
+      height: 100%;
+      padding-bottom: 6rem;
+    }
+  }
+
   @media screen and (max-width : 1440px) {
     html, body, div, p, span, button, a {
       font-size: 10px;
@@ -78,6 +90,7 @@ const GlobalStyle = createGlobalStyle`
     .main_section__responsive {
       flex-direction: column;
       min-width: 350px;
+      padding-bottom: 3rem;
     } 
     .main_container__responsive {
       height: 100%;
@@ -96,6 +109,7 @@ const GlobalStyle = createGlobalStyle`
     .main_section__responsive {
       min-width: 300px;
       width: 100%;
+      padding-bottom: 1.5rem;
     }
     .main_section__responsive > div > div {
       border-radius: 0;
