@@ -78,6 +78,9 @@ const GlobalStyle = createGlobalStyle`
     .detail_section__responsive {
       min-width: 730px;
     }
+    .team_list__responsive .scrollbar {
+      top: 68px;
+    }
   }
   @media screen and (max-width: 768px)
   {
@@ -89,6 +92,9 @@ const GlobalStyle = createGlobalStyle`
     }
     .detail_section__responsive {
       min-width: 600px;
+    }
+    .team_list__responsive .scrollbar {
+      top: 63px;
     }
   }
   @media screen and (max-width: 625px)
