@@ -50,7 +50,7 @@ const TeamListView = ({ teamList, teamListData, onMoreTeamListItem, isValidating
   }, [selectedSubject]);
 
   return (
-    <TeamListViewStyled isValidating={isValidating}>
+    <TeamListViewStyled isValidating={isValidating} className='team_list__responsive'>
       <TeamListTopbar>
         <TeamListTopbar.Title>
           Team List

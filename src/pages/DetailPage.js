@@ -100,7 +100,7 @@ const DetailPage = ({ user, history }) => {
     <>
       <OverlayProvider>
         <DetailContainer>
-          <DetailContainer.Section>
+          <DetailContainer.Section className='detail_section__responsive'>
             <DetailContainer.Top>
               <TeamProfileView team={getTeamData.data?.data} user={getUserData.data?.user} onTeamProfileEditButtonclick={handleTeamProfileEditButtonClick} />
               <TeamMemberView teamData={getTeamData.data?.data} teamDataMutate={getTeamData.mutate} user={getUserData.data?.user} userDataMutate={getUserData.mutate} />

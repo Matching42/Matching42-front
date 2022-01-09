@@ -95,9 +95,9 @@ const MainPage = props => {
   };
 
   return (
-    <OverlayProvider>
-      <MainContainer>
-        <MainContainer.Section>
+    <OverlayProvider className='main_overlay_container'>
+      <MainContainer className='main_container__responsive'>
+        <MainContainer.Section className="main_section__responsive">
           <MainContainer.Left>
             <ProfileView user={getUserData.data?.user} />
             <MyTeamListView teamList={filterMyTeam()} />

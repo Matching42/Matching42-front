@@ -35,6 +35,18 @@ const GlobalStyle = createGlobalStyle`
     width: 100%;
   }
 
+  @media screen and (min-width: 625px) {
+    .main_overlay_container {
+      height: 100%;
+    }
+  }
+  @media screen and (max-height: 600px) {
+    .main_container__responsive {
+      height: 100%;
+      padding-bottom: 6rem;
+    }
+  }
+
   @media screen and (max-width : 1440px) {
     html, body, div, p, span, button, a {
       font-size: 10px;
@@ -53,6 +65,96 @@ const GlobalStyle = createGlobalStyle`
   @media screen and (min-width : 2561px) {
     html, body, div, p, span, button, a {
       font-size: 28px;
+    }
+  }
+  @media screen and (max-width: 1024px)
+  {
+    html, body, div, p, span, button, a {
+      font-size: 9px;
+    }
+    .main_section__responsive {
+      min-width: 768px;
+    }
+    .detail_section__responsive {
+      min-width: 730px;
+    }
+    .team_list__responsive .scrollbar {
+      top: 68px;
+    }
+  }
+  @media screen and (max-width: 768px)
+  {
+    html, body, div, p, span, button, a {
+      font-size: 8px;
+    }
+    .main_section__responsive {
+      min-width: 600px;
+    }
+    .detail_section__responsive {
+      min-width: 600px;
+    }
+    .team_list__responsive .scrollbar {
+      top: 63px;
+    }
+  }
+  @media screen and (max-width: 625px)
+  {
+    .main_section__responsive {
+      flex-direction: column;
+      min-width: 350px;
+      padding-bottom: 3rem;
+    } 
+    .main_container__responsive {
+      height: 100%;
+      padding-top: 86px;
+    }
+    .main_section__responsive > div {
+      width: 100%;
+    }
+    .main_section__responsive > div > div {
+      height: 100%;
+      margin-bottom: 20px;
+    }
+    .detail_section__responsive {
+      width: 85%;
+      min-width: 300px;
+    }
+    .detail_section__responsive > div {
+      flex-direction: column;
+      height: 100%;
+    }
+    .detail_section__responsive > div > div {
+      width: 100%;
+      margin-bottom: 25px;
+    }
+  }
+  @media screen and (max-width: 375px)
+  {
+    .main_section__responsive {
+      min-width: 300px;
+      width: 100%;
+      padding-bottom: 1.5rem;
+    }
+    .main_section__responsive > div > div {
+      border-radius: 0;
+      padding: 2.5rem;
+    }
+    .main_container__responsive {
+      padding-top: 80px;
+    }
+    .team_list__responsive .scrollbar {
+      right: 2.5rem;
+    }
+    .login_box__responsive {
+      width: 100%;
+      border-radius: 0;
+      padding: 6rem 4rem;
+    }
+    .detail_section__responsive {
+      width: 100%;
+    }
+    .detail_section__responsive > div > div {
+      border-radius: 0;
     }
   }
 `;

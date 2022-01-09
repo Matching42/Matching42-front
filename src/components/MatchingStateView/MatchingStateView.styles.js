@@ -16,6 +16,8 @@ export const MatchingStateViewStyled = styled.div`
 
 export const MatchingState = styled.div`
   font-size: 0.65em;
+  word-break: keep-all;
+  line-height: 1.5;
 `;
 
 MatchingState.Strong = styled.span`
