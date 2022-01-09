@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const MyTeamListViewStyled = styled.div`
   width: 100%;
   height: 63%;
+  min-height: 150px;
   display: flex;
   position: relative;
   flex-direction: column;

@@ -54,6 +54,7 @@ export const TeamDescription = styled.div`
   font-size: 0.45em;
   line-height: 1.6;
   margin-top: 1rem;
+  padding-right: 1rem;
   word-break: keep-all;
 `;
 

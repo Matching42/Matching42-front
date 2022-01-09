@@ -78,6 +78,9 @@ LinkList.Link = styled.div`
   margin-top: 1rem;
 
   button {
+    max-width: 95%;
+    overflow: hidden;
+    text-overflow: ellipsis;
     color: #d3d4d6;
     font-size: 1.1rem;
     margin-left: 0.6rem;

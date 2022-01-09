@@ -18,7 +18,7 @@ export const TeamListViewStyled = styled.div`
     height: calc(100% - 80px);
     position: absolute;
     top: 70px;
-    right: 30px;
+    right: 3rem;
     background-color: #fff;
     opacity: 1;
     transition: 0.5s;

@@ -9,7 +9,7 @@ const LoginSectionView = ({ onLoginButtonClick }) => {
 
   return (
     <LoginSectionViewStyled>
-      <LoginBox>
+      <LoginBox className='login_box__responsive'>
         <LogoBox>
           <LogoBox.Logo>
             <img src={logoBlack} alt="logo" />
