@@ -121,6 +121,11 @@ const GlobalStyle = createGlobalStyle`
     .team_list__responsive .scrollbar {
       right: 2.5rem;
     }
+    .login_box__responsive {
+      width: 100%;
+      border-radius: 0;
+      padding: 6rem 4rem;
+    }
   }
 `;
 
